@@ -1,0 +1,89 @@
+set encoding=utf-8
+let loaded_matchparen = 1
+let g:js_indent_log = 0
+syntax on
+" autocmd BufWritePre *.cc,*.c,*.h %s/  *$//eg
+map ;<Space> :w !~/bin/giver<CR>
+
+map <Down> gj
+map <Up>   gk
+
+filetype indent on
+set tags=tags;/
+set bg=dark
+set is
+set ai
+set aw
+set noerrorbells
+set novisualbell
+set ts=8
+set sts=2
+set sw=2
+set et
+set modelines=2
+set completeopt=preview
+set nofoldenable
+set mouse=
+set cino=:0
+set shiftround
+set title
+
+" source ~/.vim/cppcomplete.vim
+
+ab helol hello
+ab fpritnf fprintf
+ab fpitnf  fprintf
+
+map Q :echo "You pressed Q"<CR>
+
+" map  <Esc>xpa
+" imap  <Esc>xpa
+
+map  <Esc>:tabnew<CR>
+map <F1> 1gt
+map <F2> 2gt
+map <F3> 3gt
+map <F4> 4gt
+map <F5> 5gt
+map <F6> 6gt
+map <F7> 7gt
+map <F8> 8gt
+map <F9> 9gt
+map <F10> 10gt
+imap <F1> <Esc>1gta
+imap <F2> <Esc>2gta
+imap <F3> <Esc>3gta
+imap <F4> <Esc>4gta
+imap <F5> <Esc>5gta
+imap <F6> <Esc>6gta
+imap <F7> <Esc>7gta
+imap <F8> <Esc>8gta
+imap <F9> <Esc>9gta
+imap <F10> <Esc>10gta
+
+set guioptions=
+set guicursor=i:block-Cursor
+set guifont=DejaVu\ Sans\ Mono\ 12
+highlight Normal     guifg=gray guibg=black
+
+map  :echo "You pressed Ctrl-O"<CR>
+
+autocmd BufWritePre *.{C,cc,cpp,c,java,h} silent! %s/[ \t]\+$//
+"autocmd BufRead *.{C,cc,cpp,c,java,h} silent! %s/[ \t]\+$//
+autocmd BufNewFile,BufRead *.m set syntax=objc
+autocmd BufNewFile,BufRead *.m call GnuIndent()
+
+hi TabLineSel term=reverse ctermfg=white ctermbg=lightblue guifg=white guibg=blue
+
+function! GnuIndent()
+  setlocal cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+  setlocal shiftwidth=2
+  setlocal tabstop=8
+endfunction
+
+au FileType c,cc call GnuIndent() 
+
+" cmap w!! w !sudo tee % >/dev/null
+
+" vdrift
+"set sts=8 sw=8 noet cinoptions=
