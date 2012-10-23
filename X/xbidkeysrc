@@ -1,0 +1,56 @@
+"amixer set Master 1%-"
+    XF86AudioLowerVolume
+
+"amixer set Master 1%+"
+    XF86AudioRaiseVolume
+
+"amixer set Master toggle; amixer get Master | grep off > /dev/null && xset led 3 || xset -led 3"
+    XF86AudioMute
+
+"urxvt"
+    Control + Alt + Return
+
+"xgamma -gamma 1"
+    Control + Alt + backslash
+
+"xgamma -gamma $(echo "$(xgamma 2>&1 | awk '{print $3}' | cut -d, -f 1) * 1.1" | bc)"
+    Control + Alt + bracketright
+
+"xgamma -gamma $(echo "$(xgamma 2>&1 | awk '{print $3}' | cut -d, -f 1) * 0.9" | bc)"
+    Control + Alt + bracketleft
+
+"exec ~/bin/calc"
+    Control + Alt + c
+
+"exec dmenu_run"
+    Control + Alt + d
+
+"exec emacs"
+    Control + Alt + e
+
+"exec xcalib -i -a"
+    Control + Alt + i
+
+"urxvt -e ~/bin/calc"
+    Control + Alt + k
+
+"exec cantera-lock"
+    Control + Alt + l
+
+"exec pkill -SIGUSR1 redshift"
+    Control + Alt + r
+
+"exec play -n -c1 synth sin %-5 fade h 0.1 0.7 0.1"
+    Control + Alt + t
+
+"exec chromium-browser `xclip -o`"
+    Control + Alt + v
+
+"xmag -source 32x32"
+    Control + Alt + z
+
+"xmag -source 64x64"
+    Control + Alt + x
+
+"xmag -source 128x128"
+    Control + Alt + c
