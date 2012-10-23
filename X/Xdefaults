@@ -1,0 +1,20 @@
+urxvt*termName: xterm-color
+# transparency - true or false (default)
+URxvt*transparent: true
+
+# tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+#   some nice listings are at:
+#     http://www.nisrv.com/drupal/?q=node/11
+#     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+URxvt*tintColor:  #00008B
+
+URxvt*foreground: White
+
+# background color (prior to tinting) (default is white)
+URxvt*background: Blue
+
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+URxvt*color4: RoyalBlue
+URxvt*color12: RoyalBlue
