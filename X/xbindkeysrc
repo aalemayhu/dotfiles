@@ -7,7 +7,7 @@
 "amixer set Master toggle; amixer get Master | grep off > /dev/null && xset led 3 || xset -led 3"
     XF86AudioMute
 
-"urxvt"
+"cantera-term"
     Control + Alt + Return
 
 "xgamma -gamma 1"
