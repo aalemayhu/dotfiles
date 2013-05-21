@@ -54,3 +54,6 @@
 
 "xmag -source 128x128"
     Control + Alt + c
+
+"exec zathura"
+    Control + Alt + p
