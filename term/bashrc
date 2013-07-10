@@ -1,5 +1,3 @@
-setxkbmap de
-
 alias mplayer-bulma="~/bin/mplayer-bulma"
 alias vnc-bulma="~/bin/bulma-vnc.sh"
 
