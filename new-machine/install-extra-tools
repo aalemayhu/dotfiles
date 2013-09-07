@@ -20,3 +20,6 @@ autoreconf -i
 ./configure 
 make 
 make install
+cd /home/ccscanf/src
+git clone httsp://github.com/mastensg/atsign/
+echo "source ~/src/atsign/atsign.sh" >> ~/.bashrc
