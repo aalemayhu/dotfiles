@@ -1,4 +1,6 @@
-	cd /home/ccscanf/src 
+#!/bin/bash
+	
+cd /home/ccscanf/src 
 git clone https://github.com/scanf/hest.git 
 cd hest/ 
 autoreconf -i 
