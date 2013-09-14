@@ -95,3 +95,8 @@ fi
 #if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 #    . /etc/bash_completion
 #fi
+source ~/src/atsign/atsign.sh
+
+alias backup_pass='scp ~/Documents/passwords.kdb alemayhu.com:~/Documents/Sicherungsdatein/passwords.kdb'
+alias wkm_extension_cp='sudo cp ~/Downloads/WkmExtension.jar /home/fozzie/SmartFoxServer_2X/SFS2X/extensions/WKM/WkmExtension.jar'
+alias ii='sudo apt-get install'
