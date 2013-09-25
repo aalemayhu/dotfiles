@@ -57,3 +57,9 @@
 
 "exec zathura"
     Control + Alt + p
+
+"exec setxkbmap us"
+  Control + Alt + u
+
+"exec setxkbmap no"
+  Control + Alt + n
