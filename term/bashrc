@@ -100,3 +100,8 @@ source ~/src/atsign/atsign.sh
 alias backup_pass='scp ~/Documents/passwords.kdb alemayhu.com:~/Documents/Sicherungsdatein/passwords.kdb'
 alias wkm_extension_cp='sudo cp ~/Downloads/WkmExtension.jar /home/fozzie/SmartFoxServer_2X/SFS2X/extensions/WKM/WkmExtension.jar'
 alias ii='sudo apt-get install'
+alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'
+
+export ANDROID_SDK_ROOT='/home/ccscanf/libs/adt-bundle-linux-x86_64-20130729/sdk'
+export NDK_ROOT='/home/ccscanf/libs/android-ndk-r9'
+ulimit -c unlimited
