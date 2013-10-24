@@ -19,9 +19,6 @@
 "xgamma -gamma $(echo "$(xgamma 2>&1 | awk '{print $3}' | cut -d, -f 1) * 0.9" | bc)"
     Control + Alt + bracketleft
 
-"exec ~/bin/calc"
-    Control + Alt + c
-
 "exec dmenu_run"
     Control + Alt + d
 
@@ -36,12 +33,6 @@
 
 "exec cantera-lock"
     Control + Alt + l
-
-"exec pkill -SIGUSR1 redshift"
-    Control + Alt + r
-
-"exec play -n -c1 synth sin %-5 fade h 0.1 0.7 0.1"
-    Control + Alt + t
 
 "exec chromium-browser `xclip -o`"
     Control + Alt + v
@@ -63,3 +54,9 @@
 
 "exec setxkbmap no"
   Control + Alt + n
+
+"exec amixer set Master 10%-"
+  Control + Down
+
+"exec amixer set Master 10%+"
+  Control + Up
