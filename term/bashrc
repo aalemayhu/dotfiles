@@ -1,6 +1,3 @@
-alias mplayer-bulma="~/bin/mplayer-bulma"
-alias vnc-bulma="~/bin/bulma-vnc.sh"
-
 [ -z "$PS1" ] && return
 
 # don't put duplicate lines in the history. See bash(1) for more options
@@ -97,7 +94,7 @@ fi
 #fi
 source ~/src/atsign/atsign.sh
 
-alias backup_pass='scp ~/Documents/passwords.kdb alemayhu.com:~/Documents/Sicherungsdatein/passwords.kdb'
+alias backup_pass='scp ~/Documents/passwords.kdb alemayhu.com:~/Documents/passwords.kdb'
 alias wkm_extension_cp='sudo cp ~/Downloads/WkmExtension.jar /home/fozzie/SmartFoxServer_2X/SFS2X/extensions/WKM/WkmExtension.jar'
 alias ii='sudo apt-get install'
 alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'
@@ -105,3 +102,5 @@ alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; 
 export ANDROID_SDK_ROOT='/home/ccscanf/libs/adt-bundle-linux-x86_64-20130729/sdk'
 export NDK_ROOT='/home/ccscanf/libs/android-ndk-r9'
 ulimit -c unlimited
+alias yuriko='ssh 162.243.134.169'
+alias alemayhu='mosh --ssh=ssh  alemayhu.com -p 60000'
