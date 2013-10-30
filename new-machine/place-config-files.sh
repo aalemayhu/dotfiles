@@ -4,11 +4,11 @@ HOMEDIR=/home/ccscanf/
 
 echo "Creating default directories."
 
-mkdir -p ~/src &&
-mkdir -p ~/Documents &&
-mkdir -p ~/Downloads &&
-mkdir -p ~/Pictures &&
-mkdir -p ~/Music &&
+mkdir -p ~/src
+mkdir -p ~/Documents
+mkdir -p ~/Downloads
+mkdir -p ~/Pictures
+mkdir -p ~/Music
 mkdir -p ~/Movies 
 
 echo "Placing configuration files."
