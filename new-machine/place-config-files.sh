@@ -10,6 +10,7 @@ mkdir -p ~/Downloads
 mkdir -p ~/Pictures
 mkdir -p ~/Music
 mkdir -p ~/Movies 
+mkdir -p ~/libs
 
 echo "Placing configuration files."
 
