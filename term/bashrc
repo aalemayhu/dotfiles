@@ -103,4 +103,5 @@ export ANDROID_SDK_ROOT='/home/ccscanf/libs/adt-bundle-linux-x86_64-20130729/sdk
 export NDK_ROOT='/home/ccscanf/libs/android-ndk-r9'
 ulimit -c unlimited
 alias yuriko='ssh 162.243.134.169'
-alias alemayhu='mosh --ssh=ssh  alemayhu.com -p 60000'
+alias alemayhu='ssh  alemayhu.com'
+alias apt-all='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean'
