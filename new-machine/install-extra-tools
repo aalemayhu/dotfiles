@@ -1,25 +1,35 @@
 #!/bin/bash
-	
-cd /home/ccscanf/src 
+
+HOMEDIR=/home/ccscanf
+
+# Window manager
+cd $HOMEDIR/src
 git clone https://github.com/scanf/hest.git 
 cd hest/ 
 autoreconf -i 
 ./configure 
 make 
-make install && cd /home/ccscanf/src 
+make install
+
+# Screensaver
+cd $HOMEDIR/src
 git clone https://github.com/scanf/cantera-lock.git 
 cd cantera-lock/ 
 autoreconf -i 
 ./configure 
 make 
 make install 
-cd /home/ccscanf/src 
+
+# Terminal
+cd $HOMEDIR/src
 git clone https://github.com/mortehu/cantera-term 
 cd cantera-term/ 
 autoreconf -i 
 ./configure 
 make 
 make install
-cd /home/ccscanf/src
+
+# Installation tool
+cd $HOMEDIR/src
 git clone https://github.com/mastensg/atsign/
 echo "source ~/src/atsign/atsign.sh" >> ~/.bashrc
