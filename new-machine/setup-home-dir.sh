@@ -18,9 +18,9 @@ cp $HOMEDIR/src/config-files/git/gitconfig $HOMEDIR/.gitconfig
 cp $HOMEDIR/src/config-files/term/bashrc $HOMEDIR/.bashrc 
 
 cp $HOMEDIR/src/config-files/vim/vimrc $HOMEDIR/.vimrc 
-mkdir $HOMEDIR/.vim  
+mkdir -p $HOMEDIR/.vim
 cp -r $HOMEDIR/src/config-files/vim/syntax $HOMEDIR/.vim/syntax 
-mkdir $HOMEDIR/.cantera
+mkdir -p $HOMEDIR/.cantera
 cp $HOMEDIR/src/config-files/term/config $HOMEDIR/.cantera/config
 
 cp $HOMEDIR/src/config-files/X/xbindkeysrc $HOMEDIR/.xbindkeysrc 
