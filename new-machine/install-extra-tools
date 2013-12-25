@@ -29,7 +29,13 @@ autoreconf -i
 make 
 make install
 
+# Video downloader
+cd $HOMEDIR/src
+git clone https://github.com/scanf/cc-y-download
+
 # Installation tool
 cd $HOMEDIR/src
 git clone https://github.com/mastensg/atsign/
 echo "source ~/src/atsign/atsign.sh" >> ~/.bashrc
+
+
