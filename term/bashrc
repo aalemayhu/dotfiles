@@ -106,3 +106,5 @@ alias yuriko='ssh 162.243.134.169'
 alias alemayhu='ssh  alemayhu.com'
 alias apt-all='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoclean'
 alias latest-log='tail -f $( ls -1tr `find . -name "*.log"` | tail -1 )'
+export DEBFULLNAME=Alexander\ Alemayhu
+export DEBEMAIL=alexander@bitraf.no
