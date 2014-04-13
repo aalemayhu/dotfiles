@@ -1,0 +1,109 @@
+# ~/.mutt/keybindings
+# $Id$
+# Mutt 1.5.13 (2006-08-11)
+
+#macro compose Q    ':toggle sidebar_newmail_only^M'
+#macro compose S    ':toggle sidebar_visible^M'
+
+# Macro Generic {{{1
+macro generic <f2> '<pipe-message>spamassassin -r<enter><save-message>=spam<enter>'
+macro generic <f3> '<pipe-message>bogofilter -s<enter><save-message>=spam<enter>'
+macro generic <f5> ':push <copy-message>=Todo<enter><enter><enter><toggle-new>'
+
+# Macro Index {{{1
+macro index   .n   '<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>*' 'Catchup all new messages
+
+# Macro Index/Pager {{{1
+#macro index,pager A '!fetchmail -v -a -F -K<enter>'
+#macro index,pager Q ':toggle sidebar_newmail_only^M'
+#macro index,pager S ':toggle sidebar_visible^M'
+#macro index,pager \cn ':push <sidebar-next-new><enter>'
+#macro index,pager \co ':push <sidebar-open><enter>'
+#macro index,pager \cp ':push <sidebar-prev-new><enter>'
+#macro index,pager \cr ':push <sidebar-prev><enter>'
+#macro index,pager \cw ':push <sidebar-next><enter>'
+#macro index,pager \es '|festival --tts<enter>'
+#macro index,pager <f1> '!less /usr/share/doc/mutt-*/manual.txt<enter>' 'Show Mutt documentation'
+#macro index,pager <f1> '!zless -R /usr/share/doc/mutt/manual.txt.gz<enter>' 'Show Mutt documentation'
+macro index,pager <f2> '<pipe-message>spamassassin -r<enter><save-message>=spam<enter>'
+macro index,pager <f3> '<pipe-message>bogofilter -s<enter><save-message>=spam<enter>'
+macro index,pager A '!fetchmail<enter>'
+macro index,pager \cb '<pipe-message>urlview<enter>'
+macro index,pager \ef '<pipe-message>view-x-face<enter>'
+macro index,pager \es '<pipe-message>festival --tts<enter>'
+macro index,pager \et ':unset weed<enter>|~/.mutt/bin/mailhops|less -c<enter>' 'Show trace of mail routing'
+
+# Bind * {{{1
+bind attach,compose,index,pager,browser Q exit
+
+# Bind Browser {{{1
+bind browser g top-page
+bind browser G bottom-page
+bind browser \cb previous-page
+bind browser \cf next-page
+bind browser <Enter> view-file
+bind browser A check-new
+
+# Bind Index {{{1
+bind index ~ set-flag
+bind index \cv what-key
+bind index i mail
+bind index g first-entry
+bind index G last-entry
+# vim uses (norm): 'z<CR>' top, 'z.' mid, 'z-' bot
+bind index H current-top
+bind index M current-middle
+bind index L current-bottom
+bind index pagedown     next-page
+bind index pageup   previous-page
+#bind index \cn sidebar-next
+#bind index \cO sidebar-open
+#bind index \cp sidebar-prev
+#bind index \ef forget-passphrase
+#bind index \ep purge-message
+
+# Bind Pager {{{1
+bind pager g   top
+bind pager G   bottom
+bind pager j next-line
+bind pager k previous-line
+bind pager i   edit
+bind pager ' ' next-page
+bind pager +   next-line
+bind pager -   previous-line
+bind pager -   previous-page
+bind pager /   search
+bind pager :   enter-command
+bind pager <down> next-line
+bind pager <up> previous-line
+bind pager G   bottom
+bind pager L   list-reply
+bind pager P   print-message
+bind pager R   list-reply
+bind pager \cd half-down
+bind pager \ce next-line
+bind pager \cf next-page
+bind pager \cm next-line
+bind pager \cn half-down
+bind pager \cn next-page
+bind pager \cp half-up
+bind pager \cu half-up
+bind pager \cy previous-line
+#bind pager \cN sidebar-next
+#bind pager \cO sidebar-open
+#bind pager \cP sidebar-prev
+#bind pager \ep purge-message
+#bind pager N
+#bind pager \cb previous-page
+# Bind Index/Pager {{{1
+bind index,pager \cn next-thread
+bind index,pager \cn read-thread
+bind index,pager \cd delete-thread
+bind index,pager f forward-message
+bind index,pager n next-undeleted
+bind index,pager p previous-undeleted
+bind index,pager N next-unread
+bind index,pager P previous-unread
+# }}}
+
+# vim: ft=muttrc
