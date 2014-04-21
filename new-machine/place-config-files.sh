@@ -23,6 +23,10 @@ cp -r $HOMEDIR/src/config-files/vim/syntax $HOMEDIR/.vim/syntax
 mkdir -p $HOMEDIR/.cantera
 cp $HOMEDIR/src/config-files/term/config $HOMEDIR/.cantera/config
 
-cp $HOMEDIR/src/config-files/X/xbindkeysrc $HOMEDIR/.xbindkeysrc 
-cp $HOMEDIR/src/config-files/X/Xdefaults $HOMEDIR/.Xdefaults 
-cp $HOMEDIR/src/config-files/X/xsession $HOMEDIR/.xsession 
+cp $HOMEDIR/src/config-files/mutt/.muttrc $HOMEDIR/.muttrc
+cp -r $HOMEDIR/src/config-files/mutt/.mutt $HOMEDIR/.mutt
+cp -r $HOMEDIR/src/config-files/mutt/.mutt_files $HOMEDIR/.mutt_files
+
+cp $HOMEDIR/src/config-files/X/xbindkeysrc $HOMEDIR/.xbindkeysrc
+cp $HOMEDIR/src/config-files/X/Xdefaults $HOMEDIR/.Xdefaults
+cp $HOMEDIR/src/config-files/X/xsession $HOMEDIR/.xsession
