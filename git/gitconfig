@@ -8,6 +8,9 @@
 	st = status
 	ci = commit
         br = branch
+        ch = checkout
+        clf = clean -fd
+        l = log
 [color]
         branch = auto
         diff = auto
@@ -28,3 +31,5 @@
         added = yellow
         changed = green
         untracked = cyan
+[push]
+	default = matching
