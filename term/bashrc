@@ -108,3 +108,6 @@ alias apt-all='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoc
 alias latest-log='tail -f $( ls -1tr `find . -name "*.log"` | tail -1 )'
 export DEBFULLNAME=Alexander\ Alemayhu
 export DEBEMAIL=alexander@bitraf.no
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
