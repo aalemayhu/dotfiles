@@ -108,3 +108,5 @@ alias apt-all='sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoc
 alias latest-log='tail -f $( ls -1tr `find . -name "*.log"` | tail -1 )'
 export DEBFULLNAME=Alexander\ Alemayhu
 export DEBEMAIL=alexander@bitraf.no
+
+alias gitlog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
