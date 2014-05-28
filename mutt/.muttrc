@@ -57,3 +57,4 @@ set crypt_autosign = yes
 set crypt_replyencrypt = yes
 
 source ~/.mutt/keybindings
+source "gpg -d ~/.mutt/passwords.gpg |"
