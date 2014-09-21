@@ -2,15 +2,16 @@
 
 echo "Creating default directories."
 
-mkdir -p "$HOME"src
-mkdir -p "$HOME"Documents
-mkdir -p "$HOME"Downloads
-mkdir -p "$HOME"Pictures
-mkdir -p "$HOME"Music
-mkdir -p "$HOME"Movies 
-mkdir -p "$HOME"libs
-mkdir -p "$HOME".cantera
-mkdir -p "$HOME".gnupg
+mkdir -p $HOME/src
+mkdir -p $HOME/Documents
+mkdir -p $HOME/Downloads
+mkdir -p $HOME/Pictures
+mkdir -p $HOME/Music
+mkdir -p $HOME/Movies
+mkdir -p $HOME/libs
+mkdir -p $HOME/.cantera
+mkdir -p $HOME/.gnupg
+mkdir -p $HOME/opt
 
 echo "Placing configuration files."
 

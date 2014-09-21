@@ -114,3 +114,11 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 alias gitlog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
+
+export GOPATH="$HOME"/opt/og
+export GOROOT="$HOME"/opt/go
+
+for i in "$HOME"/opt/*/bin
+do
+PATH="$PATH:$i"
+done
