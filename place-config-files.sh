@@ -15,11 +15,13 @@ mkdir -p $HOME/opt
 
 echo "Placing configuration files."
 
-cp "$HOME"src/config-files/git/gitconfig "$HOME".gitconfig 
-cp "$HOME"src/config-files/term/bashrc "$HOME".bashrc 
+cp $HOME/src/config-files/git/gitconfig $HOME/.gitconfig
+cp $HOME/src/config-files/term/bashrc $HOME/.bashrc
 
-cp "$HOME"src/config-files/vim/vimrc "$HOME".vimrc 
-mkdir -p "$HOME".vim
-cp -r "$HOME"src/config-files/vim/syntax "$HOME".vim/syntax 
+cp $HOME/src/config-files/vim/vimrc $HOME/.vimrc
+mkdir -p $HOME/.vim
+cp -r $HOME/src/config-files/vim/syntax $HOME/.vim/syntax
 
-cp "$HOME".gnupg/gpg.conf ~/.gnupg/
+cp $HOME/.gnupg/gpg.conf ~/.gnupg/
+
+echo "Done."

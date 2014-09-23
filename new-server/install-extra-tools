@@ -1,5 +1,0 @@
-#!/bin/bash
-	
-cd /home/ccscanf/src
-git clone https://github.com/mastensg/atsign/
-echo "source ~/src/atsign/atsign.sh" >> ~/.bashrc

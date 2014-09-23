@@ -1,24 +1,13 @@
 #!/bin/bash
 
-# Window manager
-if [ ! -d "$HOME/src/hest" ]; then
-  cd $HOME/src
-  git clone https://github.com/scanf/hest.git
-  cd hest/
-  autoreconf -i
-  ./configure
-  make
-  make install
-fi
-
 # Screensaver
 if [ ! -d "$HOME/src/cantera-lock" ]; then
   cd $HOME/src
   git clone https://github.com/scanf/cantera-lock.git 
-  cd cantera-lock/ 
-  autoreconf -i 
-  ./configure 
-  make 
+  cd cantera-lock/
+  autoreconf -i
+  ./configure
+  make
   make install 
 fi
 
@@ -27,9 +16,9 @@ if [ ! -d "$HOME/src/cantera-term" ]; then
   cd $HOME/src
   git clone https://github.com/mortehu/cantera-term 
   cd cantera-term/ 
-  autoreconf -i 
-  ./configure 
-  make 
+  autoreconf -i
+  ./configure
+  make
   make install
 fi
 
