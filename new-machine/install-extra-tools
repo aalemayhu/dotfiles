@@ -1,10 +1,8 @@
 #!/bin/bash
 
-HOMEDIR=/home/ccscanf
-
 # Window manager
-if [ ! -d "$HOMEDIR/src/hest" ]; then
-  cd $HOMEDIR/src
+if [ ! -d "$HOME/src/hest" ]; then
+  cd $HOME/src
   git clone https://github.com/scanf/hest.git
   cd hest/
   autoreconf -i
@@ -14,8 +12,8 @@ if [ ! -d "$HOMEDIR/src/hest" ]; then
 fi
 
 # Screensaver
-if [ ! -d "$HOMEDIR/src/cantera-lock" ]; then
-  cd $HOMEDIR/src
+if [ ! -d "$HOME/src/cantera-lock" ]; then
+  cd $HOME/src
   git clone https://github.com/scanf/cantera-lock.git 
   cd cantera-lock/ 
   autoreconf -i 
@@ -25,8 +23,8 @@ if [ ! -d "$HOMEDIR/src/cantera-lock" ]; then
 fi
 
 # Terminal
-if [ ! -d "$HOMEDIR/src/cantera-term" ]; then
-  cd $HOMEDIR/src
+if [ ! -d "$HOME/src/cantera-term" ]; then
+  cd $HOME/src
   git clone https://github.com/mortehu/cantera-term 
   cd cantera-term/ 
   autoreconf -i 
@@ -36,14 +34,14 @@ if [ ! -d "$HOMEDIR/src/cantera-term" ]; then
 fi
 
 # Video downloader
-if [ ! -d "$HOMEDIR/src/cc-y-download" ]; then
-  cd $HOMEDIR/src
+if [ ! -d "$HOME/src/cc-y-download" ]; then
+  cd $HOME/src
   git clone https://github.com/scanf/cc-y-download
 fi
 
 # Installation tool
-if [ ! -d "$HOMEDIR/src/atsign" ]; then
-  cd $HOMEDIR/src
+if [ ! -d "$HOME/src/atsign" ]; then
+  cd $HOME/src
   git clone https://github.com/mastensg/atsign/
   echo "source ~/src/atsign/atsign.sh" >> ~/.bashrc
 fi
