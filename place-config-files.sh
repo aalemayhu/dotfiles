@@ -27,6 +27,6 @@ cp -r $CONFIG_FILES_DIR/vim/syntax $HOME/.vim/syntax
 
 git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
-cp $HOME/.gnupg/gpg.conf ~/.gnupg/
+cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 
 echo "Done."
