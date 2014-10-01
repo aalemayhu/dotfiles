@@ -10,6 +10,7 @@ export LC_ALL=en_US.UTF-8
 # Git
 alias gitlog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
 alias gic='git clone'
+alias gip='git push'
 
 function ga () {
   git push all --all
