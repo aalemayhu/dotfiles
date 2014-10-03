@@ -20,7 +20,9 @@ CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
 cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
+
 cp $CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
+cp $CONFIG_FILES_DIR/term/lintianrc $HOME/.lintianrc
 
 cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 cp -r $CONFIG_FILES_DIR/vim/syntax $HOME/.vim/syntax

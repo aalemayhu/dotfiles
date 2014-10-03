@@ -1,0 +1,4 @@
+display-info = yes # or no
+display-experimental = yes # or no
+pedantic = yes # or no
+verbose = yes # or no
