@@ -12,6 +12,7 @@ mkdir -p $HOME/Music
 mkdir -p $HOME/Pictures
 mkdir -p $HOME/libs
 mkdir -p $HOME/opt
+mkdir -p $HOME/opt/og
 mkdir -p $HOME/src
 
 echo "Placing configuration files."
