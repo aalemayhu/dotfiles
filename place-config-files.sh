@@ -32,4 +32,6 @@ git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
 cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 
+cp -r $CONFIG_FILES_DIR/i3 $HOME/.i3
+
 echo "Done."
