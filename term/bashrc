@@ -52,3 +52,24 @@ adb shell screencap -p /sdcard/$1
 adb pull /sdcard/$1
 adb shell rm /sdcard/$1
 }
+
+linz()
+{
+  mkdir -p $HOME/tmp
+  filename=$(basename `pwd`)
+  lintian > "$HOME/tmp/$filename-lintian.log"
+}
+
+rdvid()
+{
+files=(./*)
+video="${files[RANDOM % ${#files[@]}]}"
+mplayer -fs "$video"
+read -p "Would you like to delete $video?(n/y)" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  rm "$video"
+  echo
+  echo "$video is deleted."
+fi
+}
