@@ -19,6 +19,8 @@ echo "Placing configuration files."
 
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
+cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
+
 cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
 cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
 
