@@ -10,7 +10,7 @@
         br = branch
         ch = checkout
         clf = clean -fd
-        l = log
+        l = log --oneline
 [color]
         branch = auto
         diff = auto
