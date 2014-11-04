@@ -68,6 +68,8 @@ install_osx() {
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   brew install imagemagick
+  cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
+  cp $CONFIG_FILES_DIR/term/profile $HOME/.profile
 }
 
 
