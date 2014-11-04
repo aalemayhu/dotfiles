@@ -6,41 +6,6 @@ linux_default_tools_server() {
 
 linux_default_tools_user() {
   apt-get install sudo vim git-core suckless-tools rxvt-unicode xbindkeys x-window-system make build-essential libpng12-dev libxrender-dev libx11-dev libxinerama-dev libfreetype6-dev libxxf86vm-dev libglu1-mesa-dev libxft-dev libglew-dev links chromium keepassx nicovideo-dl mplayer feh nitrogen scrot zathura xterm mutt console-data tig arandr autoconf automake autotools-dev debhelper dh-make devscripts fakeroot file gfortran git gnupg lintian patch patchutils pbuilder perl python quilt xutils-dev youtube-dl vym xclip apt-file htop screen i3 -y
-
-  # Screensaver
-  if [ ! -d "$HOME/src/cantera-lock" ]; then
-    cd $HOME/src
-    git clone https://github.com/scanf/cantera-lock.git 
-    cd cantera-lock/
-    autoreconf -i
-    ./configure
-    make
-    make install 
-  fi
-
-  # Terminal
-  if [ ! -d "$HOME/src/cantera-term" ]; then
-    cd $HOME/src
-    git clone https://github.com/mortehu/cantera-term 
-    cd cantera-term/ 
-    autoreconf -i
-    ./configure
-    make
-    make install
-  fi
-
-  # Video downloader
-  if [ ! -d "$HOME/src/cc-y-download" ]; then
-    cd $HOME/src
-    git clone https://github.com/scanf/cc-y-download
-  fi
-
-  # Installation tool
-  if [ ! -d "$HOME/src/atsign" ]; then
-    cd $HOME/src
-    git clone https://github.com/mastensg/atsign/
-    echo "source ~/src/atsign/atsign.sh" >> ~/.bashrc
-  fi
 }
 
 install_linux() {
@@ -136,7 +101,9 @@ main() {
 
   copy_config_files
 
-  ssh-keygen -t rsa -C "alexander.alemayhu@googlemail.com"
+  if [ ! -d "$HOME/.ssh" ]; then
+    ssh-keygen -t rsa -C "alexander.alemayhu@googlemail.com"
+  fi
 }
 
 main $1
