@@ -33,6 +33,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+source $HOME/github/nojhan/liquidprompt.git/liquidprompt
 #source ~/src/atsign/atsign.sh
 alias ii='sudo apt-get install'
 alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'

@@ -110,6 +110,10 @@ copy_config_files() {
 
   git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
+  mkdir -p $HOME/github/nojhan
+
+  git clone https://github.com/nojhan/liquidprompt.git $HOME/src/github/nojhan/liquidprompt.git
+
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 
   cp -r $CONFIG_FILES_DIR/i3 $HOME/.i3
