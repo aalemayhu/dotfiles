@@ -5,13 +5,15 @@
 [core]
 	editor = vim
 [alias]
-	st = status
 	ci = commit
+	st = status
         br = branch
         ch = checkout
         clf = clean -fd
-        l = log --oneline
         d = rm
+        l = log --oneline
+        pl = pull --rebase
+
 [color]
         branch = auto
         diff = auto
