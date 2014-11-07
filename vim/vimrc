@@ -18,6 +18,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-markdown'
 Plugin 'gregsexton/gitv'
 Plugin 'fatih/vim-go'
+Plugin 'Keithbsmiley/swift.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
