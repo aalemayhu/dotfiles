@@ -12,7 +12,7 @@ alias gitlog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)
 alias gic='git clone'
 alias gip='git push'
 alias git-amn='git ci -v --amend'
-alis gc='git commit -v'
+alias gc='git commit -v'
 
 function ga () {
   git push all --all
