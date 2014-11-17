@@ -14,6 +14,7 @@
         l = log --oneline
         pl = pull --rebase
         ss = status -s
+        forget = rm --cached
 
 [color]
         branch = auto
