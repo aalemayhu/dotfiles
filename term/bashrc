@@ -37,6 +37,7 @@ ulimit -c unlimited
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias reload='source ~/.bashrc'
 
 source $HOME/src/github/nojhan/liquidprompt.git/liquidprompt
 #source ~/src/atsign/atsign.sh
