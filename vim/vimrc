@@ -125,3 +125,4 @@ au FileType c,cc call GnuIndent()
 
 " vdrift
 "set sts=8 sw=8 noet cinoptions=
+let NERDTreeShowHidden=1
