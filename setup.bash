@@ -92,20 +92,22 @@ copy_config_files() {
 
 main() {
 
-  unamestr=`uname`
-  if [[ "$unamestr" == 'Linux' ]]; then
-    echo "Linux OS detected"
-    install_linux $1
-  elif [[ "$unamestr" == 'Darwin' ]]; then
-    echo "OS X detected"
-    install_osx
+  if [[ ! $1 == *conf* ]]; then
+    unamestr=`uname`
+    if [[ "$unamestr" == 'Linux' ]]; then
+      echo "Linux OS detected"
+      install_linux $1
+    elif [[ "$unamestr" == 'Darwin' ]]; then
+      echo "OS X detected"
+      install_osx
+    fi
+    if [ ! -d "$HOME/.ssh" ]; then
+      ssh-keygen -t rsa -C "alexander.alemayhu@googlemail.com"
+    fi
+
   fi
 
   copy_config_files
-
-  if [ ! -d "$HOME/.ssh" ]; then
-    ssh-keygen -t rsa -C "alexander.alemayhu@googlemail.com"
-  fi
 }
 
 main $1
