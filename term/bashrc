@@ -76,3 +76,18 @@ then
   echo "$video is deleted."
 fi
 }
+
+vimr()
+{
+  URL=$1
+  SUFFIX=$(basename $URL)
+  SHA=`echo $URL | shasum`
+  FILENAME=${SHA//[[:blank:]]/}.$SUFFIX
+  DOWNLOAD_PATH=/tmp/$FILENAME
+
+  if [ ! -f $DOWNLOAD_PATH ]; then
+    wget "$URL" -O "$DOWNLOAD_PATH"
+  fi
+
+  vim $DOWNLOAD_PATH
+}
