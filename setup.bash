@@ -37,6 +37,7 @@ install_osx() {
   brew install imagemagick wget youtube-dl
   cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
   cp $CONFIG_FILES_DIR/term/profile $HOME/.profile
+  curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
 }
 
 
