@@ -13,8 +13,9 @@ alias gic='git clone'
 alias gip='git push'
 alias git-amn='git ci -v --amend'
 alias gc='git commit -v'
+alias ga='git add -p'
 
-function ga () {
+function gp () {
   git push all --all
   git push all --tags
 }

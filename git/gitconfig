@@ -13,6 +13,7 @@
         d = rm
         l = log --oneline
         pl = pull --rebase
+        ss = status -s
 
 [color]
         branch = auto
