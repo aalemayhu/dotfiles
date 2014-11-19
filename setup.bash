@@ -66,12 +66,16 @@ copy_config_files() {
 
   echo "Placing configuration files."
 
-
   cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
+
+  cp $CONFIG_FILES_DIR/term/aliases $HOME/.aliases
+  cp $CONFIG_FILES_DIR/term/funcs $HOME/.funcs
+  cp $CONFIG_FILES_DIR/term/env $HOME/.env
 
   cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
   cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
 
+  cp $CONFIG_FILES_DIR/term/zshrc $HOME/.zshrc
   cp $CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
   cp $CONFIG_FILES_DIR/term/lintianrc $HOME/.lintianrc
 

@@ -1,0 +1,49 @@
+function gp () {
+  git push all --all
+  git push all --tags
+}
+
+function adb-screenshot()
+{
+echo $1
+exit
+adb shell screencap -p /sdcard/$1
+adb pull /sdcard/$1
+adb shell rm /sdcard/$1
+}
+
+linz()
+{
+  mkdir -p $HOME/tmp
+  filename=$(basename `pwd`)
+  lintian > "$HOME/tmp/$filename-lintian.log"
+}
+
+rdvid()
+{
+files=(./*)
+video="${files[RANDOM % ${#files[@]}]}"
+mplayer -fs "$video"
+read -p "Would you like to delete $video?(n/y)" -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  rm "$video"
+  echo
+  echo "$video is deleted."
+fi
+}
+
+vimr()
+{
+  URL=$1
+  SUFFIX=$(basename $URL)
+  SHA=`echo $URL | shasum`
+  FILENAME=${SHA//[[:blank:]]/}.$SUFFIX
+  DOWNLOAD_PATH=/tmp/$FILENAME
+
+  if [ ! -f $DOWNLOAD_PATH ]; then
+    wget "$URL" -O "$DOWNLOAD_PATH"
+  fi
+
+  vim $DOWNLOAD_PATH
+}
