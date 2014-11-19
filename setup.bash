@@ -92,7 +92,7 @@ copy_config_files() {
 
 main() {
 
-  if [[ ! $1 == *conf* ]]; then
+  if [[ $1 == *setup* ]]; then
     unamestr=`uname`
     if [[ "$unamestr" == 'Linux' ]]; then
       echo "Linux OS detected"
