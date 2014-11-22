@@ -2,50 +2,17 @@
 
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
-linux_default_tools_server() {
-  apt-get install sudo vim git-core suckless-tools rxvt-unicode make build-essential libpng12-dev libfreetype6-dev links console-data tig autoconf automake autotools-dev debhelper dh-make devscripts fakeroot file gfortran git gnupg lintian patch patchutils pbuilder perl python quilt xutils-dev vym xclip apt-file htop screen -y
-}
-
-linux_default_tools_user() {
+install_linux_extra() {
   apt-get install sudo vim git-core suckless-tools rxvt-unicode xbindkeys x-window-system make build-essential libpng12-dev libxrender-dev libx11-dev libxinerama-dev libfreetype6-dev libxxf86vm-dev libglu1-mesa-dev libxft-dev libglew-dev links chromium keepassx nicovideo-dl mplayer feh nitrogen scrot zathura xterm mutt console-data tig arandr autoconf automake autotools-dev debhelper dh-make devscripts fakeroot file gfortran git gnupg lintian patch patchutils pbuilder perl python quilt xutils-dev youtube-dl vym xclip apt-file htop screen i3 -y
 }
 
-install_linux() {
-
-  if [[ "$1" == "" ]]
-  then
-    print_usage
-    exit
-  fi
-
-  # TODO: Merge linux_default_tools_server and linux_default_tools_user
-  if [[ "$1" == "user" ]]
-  then
-    linux_default_tools_user
-  elif [[ "$1" == "server" ]]
-  then
-    linux_default_tools_server
-  else
-    echo Nothing todo for $1
-    exit
-  fi
-}
-
-install_osx() {
+install_osx_extra() {
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   brew install imagemagick wget youtube-dl
   cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
   cp $CONFIG_FILES_DIR/term/profile $HOME/.profile
   curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
-  curl -L http://install.ohmyz.sh | sh
-}
-
-
-
-print_usage() {
-  echo "Please add an argument!"
-  echo "user or server"
 }
 
 copy_config_files() {
@@ -95,23 +62,25 @@ copy_config_files() {
   echo "Done."
 }
 
-main() {
-
+install_stuff() {
   if [[ $1 == *setup* ]]; then
+    curl -L http://install.ohmyz.sh | sh
     unamestr=`uname`
     if [[ "$unamestr" == 'Linux' ]]; then
       echo "Linux OS detected"
-      install_linux $1
+      install_linux_extra $1
     elif [[ "$unamestr" == 'Darwin' ]]; then
       echo "OS X detected"
-      install_osx
+      install_osx_extra
     fi
     if [ ! -d "$HOME/.ssh" ]; then
       ssh-keygen -t rsa -C "alexander.alemayhu@googlemail.com"
     fi
-
   fi
+}
 
+main() {
+  install_stuff $1
   copy_config_files
 }
 
