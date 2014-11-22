@@ -47,7 +47,6 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/term/lintianrc $HOME/.lintianrc
 
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
-  cp -r $CONFIG_FILES_DIR/vim/syntax $HOME/.vim/syntax
 
   git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
