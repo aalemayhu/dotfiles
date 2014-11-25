@@ -47,3 +47,13 @@ vimr()
 
   vim $DOWNLOAD_PATH
 }
+
+haxm_off()
+{
+  sudo kextunload –b com.intel.kext.intelhaxm
+}
+
+haxm_on()
+{
+  sudo kextload –b com.intel.kext.intelhaxm
+}
