@@ -9,7 +9,10 @@ install_linux_extra() {
 install_osx_extra() {
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-  brew install imagemagick wget youtube-dl htop
+  for prog in $(cat beverage); do
+     brew install $prog
+  done
+
   cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
   cp $CONFIG_FILES_DIR/term/profile $HOME/.profile
   curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
@@ -29,7 +32,10 @@ copy_config_files() {
   mkdir -p $HOME/libs
   mkdir -p $HOME/opt
   mkdir -p $HOME/opt/og
-  mkdir -p $HOME/src
+
+  mkdir -p $HOME/src/tmp
+  mkdir -p $HOME/src/github.com
+  mkdir -p $HOME/src/bitbucket.org
 
   echo "Placing configuration files."
 
