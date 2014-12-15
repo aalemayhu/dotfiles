@@ -38,3 +38,8 @@
         untracked = cyan
 [push]
 	default = matching
+[diff]
+        tool = icdiff
+
+[difftool "icdiff"]
+        cmd = icdiff $LOCAL $REMOTE
