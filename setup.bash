@@ -9,7 +9,7 @@ install_linux_extra() {
 install_osx_extra() {
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-  brew install imagemagick wget youtube-dl
+  brew install imagemagick wget youtube-dl htop
   cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
   cp $CONFIG_FILES_DIR/term/profile $HOME/.profile
   curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
