@@ -57,3 +57,10 @@ haxm_on()
 {
   sudo kextload –b com.intel.kext.intelhaxm
 }
+
+gicp() {
+  GITHUB_USER=$(basename `pwd`)
+  GITHUB_PROJECT=$1
+  echo $GITHUB_USER
+  git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
+}
