@@ -8,6 +8,7 @@ alias gaa='git add'
 alias ga='git add -p'
 alias gs='git status -s'
 alias gss='git status'
+alias gitp='git push origin'
 
 # Stuff
 alias ll='ls -alF'
