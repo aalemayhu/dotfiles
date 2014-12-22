@@ -15,6 +15,7 @@
         pl = pull --rebase
         ss = status -s
         forget = rm --cached
+	unstage = reset HEAD --
 
 [color]
         branch = auto
