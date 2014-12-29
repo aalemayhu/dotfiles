@@ -24,6 +24,8 @@ copy_config_files() {
   mkdir -p $HOME/.ssh
   mkdir -p $HOME/.cantera
   mkdir -p $HOME/.gnupg
+  mkdir -p $HOME/.mutt
+  mkdir -p $HOME/.mutt_files
   mkdir -p $HOME/.vim
   mkdir -p $HOME/Documents
   mkdir -p $HOME/Downloads
@@ -33,14 +35,17 @@ copy_config_files() {
   mkdir -p $HOME/libs
   mkdir -p $HOME/opt
   mkdir -p $HOME/opt/og
-
-  mkdir -p $HOME/src/tmp
-  mkdir -p $HOME/src/github.com
   mkdir -p $HOME/src/bitbucket.org
+  mkdir -p $HOME/src/github.com
+  mkdir -p $HOME/src/tmp
 
   echo "Placing configuration files."
 
   cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
+
+  cp $CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
+  cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
+  cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
 
   cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
 

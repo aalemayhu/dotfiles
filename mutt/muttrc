@@ -58,3 +58,4 @@ set crypt_replyencrypt = yes
 
 source ~/.mutt/keybindings
 source "gpg -d ~/.mutt/passwords.gpg |"
+set smtp_authenticators = 'gssapi:login'
