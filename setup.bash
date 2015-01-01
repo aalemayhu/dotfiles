@@ -21,6 +21,7 @@ install_osx_extra() {
 copy_config_files() {
   echo "Creating default directories."
 
+  mkdir -p $HOME/.ssh
   mkdir -p $HOME/.cantera
   mkdir -p $HOME/.gnupg
   mkdir -p $HOME/.vim
@@ -38,6 +39,8 @@ copy_config_files() {
   mkdir -p $HOME/src/bitbucket.org
 
   echo "Placing configuration files."
+
+  cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
 
   cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
 
