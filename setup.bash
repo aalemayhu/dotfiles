@@ -1,10 +1,9 @@
 #!/bin/bash
 
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+S=/usr/bin/sudo
 
 install_linux_extra() {
-
-  S=/usr/bin/sudo
 
   $S apt-get update
   $S apt-get autoclean
@@ -51,6 +50,7 @@ copy_config_files() {
   echo "Placing configuration files."
 
   cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
+  cp $CONFIG_FILES_DIR/cantera/config $HOME/.cantera/
 
   cp $CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
   cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
