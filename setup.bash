@@ -82,9 +82,17 @@ copy_config_files() {
     cd -
   fi
 
-  mkdir -p $HOME/github/nojhan
-
-  git clone https://github.com/nojhan/liquidprompt.git $HOME/src/github/nojhan/liquidprompt.git
+  mkdir -p $HOME/src/github.com/nojhan/
+  LIQUID_PROMPT_DIR=$HOME/src/github.com/nojhan/liquidprompt.git
+  if [ ! -d "$LIQUID_PROMPT_DIR" ]; then
+    echo "liquidprompt not found cloning.."
+  git clone https://github.com/nojhan/liquidprompt.git $LIQUID_PROMPT_DIR
+  else
+    echo "Attempting to pull latest liquidprompt"
+    cd $LIQUID_PROMPT_DIR
+    git pull
+    cd -
+  fi
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 

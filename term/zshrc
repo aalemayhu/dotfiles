@@ -8,7 +8,7 @@ ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
-source $HOME/src/github/nojhan/liquidprompt.git/liquidprompt.plugin.zsh
+source $HOME/src/github.com/nojhan/liquidprompt.git/liquidprompt.plugin.zsh
 source $HOME/.aliases
 source $HOME/.funcs
 source $HOME/.env
