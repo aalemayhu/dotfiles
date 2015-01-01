@@ -71,11 +71,10 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
-  cp $CONFIG_FILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
-  cp $CONFIG_FILES_DIR/X/xsession ~/.xsession
-  cp $CONFIG_FILES_DIR/X/Xdefaults .Xdefaults
-  cp $CONFIG_FILES_DIR/X/.Xmodmap .Xmodmap
-
+  cp $CONFIG_FILES_DIR/X/xbindkeysrc $HOME/.xbindkeysrc
+  cp $CONFIG_FILES_DIR/X/xsession $HOME/.xsession
+  cp $CONFIG_FILES_DIR/X/Xdefaults $HOME/.Xdefaults
+  cp $CONFIG_FILES_DIR/X/.Xmodmap $HOME/.Xmodmap
 
   VUNDLE_DIR=$HOME/.vim/bundle/Vundle.vim
   if [ ! -d "$VUNDLE_DIR" ]; then
