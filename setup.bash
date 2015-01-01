@@ -3,14 +3,23 @@
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 install_linux_extra() {
-  apt-get install sudo vim git-core suckless-tools rxvt-unicode xbindkeys x-window-system make build-essential libpng12-dev libxrender-dev libx11-dev libxinerama-dev libfreetype6-dev libxxf86vm-dev libglu1-mesa-dev libxft-dev libglew-dev links chromium keepassx nicovideo-dl mplayer feh nitrogen scrot zathura xterm mutt console-data tig arandr autoconf automake autotools-dev debhelper dh-make devscripts fakeroot file gfortran git gnupg lintian patch patchutils pbuilder perl python quilt xutils-dev youtube-dl vym xclip apt-file htop screen i3 ruby -y
+
+  S=/usr/bin/sudo
+
+  $S apt-get update
+  $S apt-get autoclean
+  $S apt-get autoremove
+
+  for package in $(cat packages); do
+    $S apt-get install $package
+  done
 }
 
 install_osx_extra() {
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   for prog in $(cat beverage); do
-     brew install $prog
+    brew install $prog
   done
 
   cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
