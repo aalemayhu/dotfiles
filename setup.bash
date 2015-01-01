@@ -71,6 +71,12 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
+  cp $CONFIG_FILES_DIR/X/xbindkeysrc ~/.xbindkeysrc
+  cp $CONFIG_FILES_DIR/X/xsession ~/.xsession
+  cp $CONFIG_FILES_DIR/X/Xdefaults .Xdefaults
+  cp $CONFIG_FILES_DIR/X/.Xmodmap .Xmodmap
+
+
   VUNDLE_DIR=$HOME/.vim/bundle/Vundle.vim
   if [ ! -d "$VUNDLE_DIR" ]; then
     echo "Vundle not found cloning.."
@@ -86,7 +92,7 @@ copy_config_files() {
   LIQUID_PROMPT_DIR=$HOME/src/github.com/nojhan/liquidprompt.git
   if [ ! -d "$LIQUID_PROMPT_DIR" ]; then
     echo "liquidprompt not found cloning.."
-  git clone https://github.com/nojhan/liquidprompt.git $LIQUID_PROMPT_DIR
+    git clone https://github.com/nojhan/liquidprompt.git $LIQUID_PROMPT_DIR
   else
     echo "Attempting to pull latest liquidprompt"
     cd $LIQUID_PROMPT_DIR
