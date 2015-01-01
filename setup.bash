@@ -71,7 +71,16 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
-  git clone https://github.com/gmarik/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+  VUNDLE_DIR=$HOME/.vim/bundle/Vundle.vim
+  if [ ! -d "$VUNDLE_DIR" ]; then
+    echo "Vundle not found cloning.."
+    git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_DIR
+  else
+    echo "Attempting to pull latest Vundle.."
+    cd $VUNDLE_DIR
+    git pull
+    cd -
+  fi
 
   mkdir -p $HOME/github/nojhan
 
