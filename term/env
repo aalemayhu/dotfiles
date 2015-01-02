@@ -18,6 +18,4 @@ done
 
 # Stuff
 
-export CCC=$HOME/src/github/scanf
-
 eval $(gpg-agent --daemon)
