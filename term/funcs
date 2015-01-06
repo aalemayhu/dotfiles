@@ -70,3 +70,7 @@ gicp() {
   echo $GITHUB_USER
   git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
 }
+
+lingb() {
+  LINGUA=nb make build
+}
