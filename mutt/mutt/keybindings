@@ -4,6 +4,21 @@
 
 #macro compose Q    ':toggle sidebar_newmail_only^M'
 #macro compose S    ':toggle sidebar_visible^M'
+#
+
+bind editor <Tab> complete-query
+bind editor ^T complete
+bind editor <space> noop
+bind  index,pager a  group-reply  #Reply all
+macro pager \cb 'urlview' 'Follow links with urlview'
+
+# Gmail-style keyboard shortcuts
+macro index,pager y "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+macro index,pager d "<enter-command>set trash=\"imaps://imap.googlemail.com/[GMail]/Bin\"\n <delete-message>" "Gmail delete message"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
 # Macro Generic {{{1
 macro generic <f2> '<pipe-message>spamassassin -r<enter><save-message>=spam<enter>'
@@ -14,17 +29,6 @@ macro generic <f5> ':push <copy-message>=Todo<enter><enter><enter><toggle-new>'
 macro index   .n   '<tag-pattern>~N<enter><tag-prefix><clear-flag>N<clear-flag>*' 'Catchup all new messages
 
 # Macro Index/Pager {{{1
-#macro index,pager A '!fetchmail -v -a -F -K<enter>'
-#macro index,pager Q ':toggle sidebar_newmail_only^M'
-#macro index,pager S ':toggle sidebar_visible^M'
-#macro index,pager \cn ':push <sidebar-next-new><enter>'
-#macro index,pager \co ':push <sidebar-open><enter>'
-#macro index,pager \cp ':push <sidebar-prev-new><enter>'
-#macro index,pager \cr ':push <sidebar-prev><enter>'
-#macro index,pager \cw ':push <sidebar-next><enter>'
-#macro index,pager \es '|festival --tts<enter>'
-#macro index,pager <f1> '!less /usr/share/doc/mutt-*/manual.txt<enter>' 'Show Mutt documentation'
-#macro index,pager <f1> '!zless -R /usr/share/doc/mutt/manual.txt.gz<enter>' 'Show Mutt documentation'
 macro index,pager <f2> '<pipe-message>spamassassin -r<enter><save-message>=spam<enter>'
 macro index,pager <f3> '<pipe-message>bogofilter -s<enter><save-message>=spam<enter>'
 macro index,pager A '!fetchmail<enter>'
