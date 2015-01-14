@@ -65,7 +65,6 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
   cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
 
-  cp $CONFIG_FILES_DIR/term/zshrc $HOME/.zshrc
   cp $CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
   cp $CONFIG_FILES_DIR/term/lintianrc $HOME/.lintianrc
 
