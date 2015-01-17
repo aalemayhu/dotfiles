@@ -117,7 +117,7 @@ install_stuff() {
       install_osx_extra
     fi
     if [ ! -d "$HOME/.ssh" ]; then
-      ssh-keygen -t rsa -C "alexander.alemayhu@googlemail.com"
+      ssh-keygen -t rsa -C "alexander@alemayhu.com"
     fi
   fi
 }
