@@ -1,7 +1,20 @@
 #!/bin/bash
 
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+GITHUB_ME=$HOME/src/github.com/`whoami`
 S=/usr/bin/sudo
+
+source $CONFIG_FILES_DIR/term/funcs # We need it for gicp
+
+install_program() {
+  echo Will be installing $1
+  cd $GITHUB_ME
+  gicp $1
+  cd $1
+  autoreconf -i
+  ./configure
+  $S make install
+}
 
 install_linux_extra() {
   $S apt-get update
@@ -10,18 +23,10 @@ install_linux_extra() {
   $S apt-get install $(cat packages |tr '\n' ' ') -y
   $S apt-get autoclean -y
   $S apt-get autoremove -y
-}
 
-install_osx_extra() {
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-  for prog in $(cat beverage); do
-    brew install $prog
-  done
-
-  cp $CONFIG_FILES_DIR/term/bash_profile $HOME/.bash_profile
-  cp $CONFIG_FILES_DIR/term/profile $HOME/.profile
-  curl -fsSL https://raw.github.com/supermarin/Alcatraz/master/Scripts/install.sh | sh
+  install_program cantera-wm
+  install_program cantera-term
+  install_program cantera-lock
 }
 
 copy_config_files() {
@@ -43,7 +48,7 @@ copy_config_files() {
   mkdir -p $HOME/opt
   mkdir -p $HOME/opt/og
   mkdir -p $HOME/src/bitbucket.org
-  mkdir -p $HOME/src/github.com
+  mkdir -p $GITHUB_ME
   mkdir -p $HOME/src/tmp
 
   echo "Placing configuration files."
@@ -74,46 +79,19 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/X/Xdefaults $HOME/.Xdefaults
   cp $CONFIG_FILES_DIR/X/.Xmodmap $HOME/.Xmodmap
 
-  VUNDLE_DIR=$HOME/.vim/bundle/Vundle.vim
-  if [ ! -d "$VUNDLE_DIR" ]; then
-    echo "Vundle not found cloning.."
-    git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_DIR
-  else
-    echo "Attempting to pull latest Vundle.."
-    cd $VUNDLE_DIR
-    git pull
-    cd -
-  fi
-
-  mkdir -p $HOME/src/github.com/nojhan/
-  LIQUID_PROMPT_DIR=$HOME/src/github.com/nojhan/liquidprompt.git
-  if [ ! -d "$LIQUID_PROMPT_DIR" ]; then
-    echo "liquidprompt not found cloning.."
-    git clone https://github.com/nojhan/liquidprompt.git $LIQUID_PROMPT_DIR
-  else
-    echo "Attempting to pull latest liquidprompt"
-    cd $LIQUID_PROMPT_DIR
-    git pull
-    cd -
-  fi
+  cd $GITHUB_ME
+  gicp Vundle.vim
+  gicp liquidprompt
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
-
   cp -r $CONFIG_FILES_DIR/i3 $HOME/.i3
-
   echo "Done."
 }
 
 install_stuff() {
   if [[ $1 == *setup* ]]; then
     unamestr=`uname`
-    if [[ "$unamestr" == 'Linux' ]]; then
-      echo "Linux OS detected"
-      install_linux_extra $1
-    elif [[ "$unamestr" == 'Darwin' ]]; then
-      echo "OS X detected"
-      install_osx_extra
-    fi
+    install_linux_extra $1
     if [ ! -d "$HOME/.ssh" ]; then
       ssh-keygen -t rsa -C "alexander@alemayhu.com"
     fi
