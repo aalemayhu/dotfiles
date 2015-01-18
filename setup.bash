@@ -24,7 +24,7 @@ install_linux_extra() {
   $S apt-get autoclean -y
   $S apt-get autoremove -y
 
-  install_program cantera-wm
+  install_program hest
   install_program cantera-term
   install_program cantera-lock
 }
