@@ -29,6 +29,7 @@ install_osx_extra() {
 copy_config_files() {
   echo "Creating default directories."
 
+  mkdir -p $HOME/.term/
   mkdir -p $HOME/.ssh
   mkdir -p $HOME/.cantera
   mkdir -p $HOME/.gnupg
@@ -58,9 +59,9 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
 
-  cp $CONFIG_FILES_DIR/term/aliases $HOME/.aliases
-  cp $CONFIG_FILES_DIR/term/funcs $HOME/.funcs
-  cp $CONFIG_FILES_DIR/term/env $HOME/.env
+  cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
+  cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
+  cp $CONFIG_FILES_DIR/term/env $HOME/.term/.env
 
   cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
   cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash

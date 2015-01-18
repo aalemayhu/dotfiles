@@ -1,6 +1,6 @@
-source $HOME/.aliases
-source $HOME/.funcs
-source $HOME/.env
+source $HOME/.term/.aliases
+source $HOME/.term/.funcs
+source $HOME/.term/.env
 
 ulimit -c unlimited
 
