@@ -4,15 +4,10 @@ CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 S=/usr/bin/sudo
 
 install_linux_extra() {
-
   $S apt-get update
-  $S apt-get autoclean
-  $S apt-get autoremove
-
-  for package in $(cat packages); do
-    $S apt-get install $package -y
-  done
-
+  $S apt-get upgrade -y
+  $S apt-get dist-upgrade -y
+  $S apt-get install $(cat packages |tr '\n' ' ') -y
   $S apt-get autoclean -y
   $S apt-get autoremove -y
 }
