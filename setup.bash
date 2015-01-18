@@ -78,6 +78,7 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/X/xsession $HOME/.xsession
   cp $CONFIG_FILES_DIR/X/Xdefaults $HOME/.Xdefaults
   cp $CONFIG_FILES_DIR/X/.Xmodmap $HOME/.Xmodmap
+  cp $CONFIG_FILES_DIR/X/.Xresources $HOME/.Xresources
 
   cd $GITHUB_ME
   gicp Vundle.vim
