@@ -60,3 +60,4 @@ ruby
 apt-listbugs
 gpodder
 strace
+curl
