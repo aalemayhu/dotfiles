@@ -10,7 +10,7 @@ install_linux_extra() {
   $S apt-get autoremove
 
   for package in $(cat packages); do
-    $S apt-get install $package
+    $S apt-get install $package -y
   done
 }
 
