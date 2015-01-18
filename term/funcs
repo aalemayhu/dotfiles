@@ -19,7 +19,7 @@ linz()
   lintian > "$HOME/tmp/$filename-lintian.log"
 }
 
-rdvid()
+rv()
 {
 files=(./*)
 video="${files[RANDOM % ${#files[@]}]}"
