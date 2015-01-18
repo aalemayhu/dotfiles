@@ -12,6 +12,9 @@ install_linux_extra() {
   for package in $(cat packages); do
     $S apt-get install $package -y
   done
+
+  $S apt-get autoclean
+  $S apt-get autoremove
 }
 
 install_osx_extra() {
