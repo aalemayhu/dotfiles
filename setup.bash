@@ -108,7 +108,6 @@ copy_config_files() {
 
 install_stuff() {
   if [[ $1 == *setup* ]]; then
-    curl -L http://install.ohmyz.sh | sh
     unamestr=`uname`
     if [[ "$unamestr" == 'Linux' ]]; then
       echo "Linux OS detected"
