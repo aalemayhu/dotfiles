@@ -67,8 +67,16 @@ haxm_on()
 gicp() {
   GITHUB_USER=$(basename `pwd`)
   GITHUB_PROJECT=$1
-  echo $GITHUB_USER
-  git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
+
+  if [ ! -d "$GITHUB_PROJECT" ]; then
+    echo Cloning $GITHUB_PROJECT
+    git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
+  else
+    echo There seems to already be directory named $GITHUB_PROJECT
+    echo Updating instead.
+    cd $GITHUB_PROJECT
+    git pull
+  fi
 }
 
 lingb() {

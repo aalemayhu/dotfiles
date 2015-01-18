@@ -10,7 +10,7 @@ install_program() {
   echo Will be installing $1
   cd $GITHUB_ME
   gicp $1
-  cd $1
+  cd $GITHUB_ME/$1
   autoreconf -i
   ./configure
   $S make install
@@ -81,6 +81,7 @@ copy_config_files() {
 
   cd $GITHUB_ME
   gicp Vundle.vim
+  cd $GITHUB_ME
   gicp liquidprompt
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
