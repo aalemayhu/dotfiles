@@ -101,8 +101,6 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 
-  cp -r $CONFIG_FILES_DIR/i3 $HOME/.i3
-
   echo "Done."
 }
 
