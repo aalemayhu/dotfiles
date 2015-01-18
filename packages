@@ -6,6 +6,7 @@ automake
 autotools-dev
 build-essential
 chromium
+cloc
 console-data
 curl
 debhelper
