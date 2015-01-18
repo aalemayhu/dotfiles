@@ -13,8 +13,8 @@ install_linux_extra() {
     $S apt-get install $package -y
   done
 
-  $S apt-get autoclean
-  $S apt-get autoremove
+  $S apt-get autoclean -y
+  $S apt-get autoremove -y
 }
 
 install_osx_extra() {
