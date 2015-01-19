@@ -541,6 +541,7 @@ libbs2b0					install
 libbsd0:amd64					install
 libburn4					install
 libbz2-1.0:amd64				install
+libc-ares2:amd64				install
 libc-bin					install
 libc-dev-bin					install
 libc6:amd64					install
@@ -1352,6 +1353,7 @@ libuuid-perl					install
 libuuid1:amd64					install
 libv4l-0:amd64					install
 libv4lconvert0:amd64				install
+libv8-3.14.5					install
 libva1:amd64					install
 libvdpau1:amd64					install
 libvisual-0.4-0:amd64				install
@@ -1500,6 +1502,7 @@ libyajl2:amd64					install
 libyaml-0-2:amd64				install
 libyaml-libyaml-perl				install
 libyaml-perl					install
+libydpdict2:amd64				install
 libyelp0					install
 libytnef0:amd64					install
 libzapojit-0.0-0				install
@@ -1572,6 +1575,7 @@ network-manager-gnome				install
 nfs-common					install
 nicovideo-dl					install
 nitrogen					install
+nodejs						install
 notification-daemon				install
 ntfs-3g						install
 obex-data-server				install
@@ -1952,6 +1956,7 @@ xtrans-dev					install
 xutils-dev					install
 xwayland					install
 xz-utils					install
+ydpdict						install
 yelp						install
 yelp-xsl					install
 youtube-dl					install
