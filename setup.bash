@@ -29,6 +29,8 @@ install_linux_extra() {
   install_program cantera-lock
 
   cd $GITHUB_ME && gicp go
+  git ch go1.4.1
+  cd src/ && ./all.bash
 }
 
 copy_config_files() {
