@@ -27,6 +27,8 @@ install_linux_extra() {
   install_program hest
   install_program cantera-term
   install_program cantera-lock
+
+  cd $GITHUB_ME && gicp go
 }
 
 copy_config_files() {
