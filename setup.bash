@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-GITHUB_ME=$HOME/src/github.com/`whoami`
+GITHUB_ME=$HOME/src/github.com/scanf
 S=/usr/bin/sudo
 
 source $CONFIG_FILES_DIR/term/funcs # We need it for gicp
