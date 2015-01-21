@@ -1,6 +1,6 @@
 Some configuration files I use for my machines, which mostly run [Debian](https://debian.org).
 
-Onliner for myself(requires sudo):
+Oneliner for myself(requires sudo):
 
     wget -qO- https://raw.githubusercontent.com/scanf/config-files/master/config-files.bash | bash
 
