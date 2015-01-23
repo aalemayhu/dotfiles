@@ -1,6 +1,7 @@
 [user]
   email = alexander@bitraf.no
   name = Alexander Alemayhu
+  signingkey = 756753E5
         
 [core]
 	editor = vim
