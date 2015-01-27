@@ -1,16 +1,8 @@
-function gp () {
+gp () {
   git push all --all
   git push all --tags
 }
 
-function adb-screenshot()
-{
-echo $1
-exit
-adb shell screencap -p /sdcard/$1
-adb pull /sdcard/$1
-adb shell rm /sdcard/$1
-}
 
 linz()
 {
@@ -21,22 +13,22 @@ linz()
 
 rv()
 {
-files=(./*)
-video="${files[RANDOM % ${#files[@]}]}"
+  files=(./*)
+  video="${files[RANDOM % ${#files[@]}]}"
 
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-mplayer -fs "$video"
-read -p "Would you like to delete $video?(n/y)" -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-  rm "$video"
-  echo
-  echo "$video is deleted."
-fi
-else
-open "$video"
-fi
+  unamestr=`uname`
+  if [[ "$unamestr" == 'Linux' ]]; then
+    mplayer -fs "$video"
+    read -p "Would you like to delete $video?(n/y)" -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      rm "$video"
+      echo
+      echo "$video is deleted."
+    fi
+  else
+    open "$video"
+  fi
 }
 
 vimr()
@@ -99,5 +91,5 @@ note() {
 }
 
 pbcopy() {
-xclip -selection clipboard
+  xclip -selection clipboard
 }
