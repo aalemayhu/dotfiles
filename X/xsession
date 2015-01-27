@@ -32,5 +32,5 @@ xbindkeys -p || xbindkeys
 xscreensaver -no-capture-stderr -no-splash &
 xpmsvol
 
-hest
+cantera-wm
 test -f /usr/bin/urxvt && urxvt -geometry 234x50 || xterm -geometry 234x50
