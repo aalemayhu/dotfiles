@@ -82,3 +82,18 @@ gicp() {
 lingb() {
   LINGUA=nb make build
 }
+
+note() {
+  D=`date +"%A, %d. %Y"`
+  TIME=`date "+%H:%M:%S"`
+  NOTE="$D.note"
+
+  if [ ! -f "$NOTE" ];
+  then
+    echo [Date: $D >> "${NOTE}"]
+  fi
+
+  echo [$TIME] >> "${NOTE}"
+  echo >> "${NOTE}"
+  cat >> "${NOTE}"
+}
