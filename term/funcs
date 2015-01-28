@@ -78,11 +78,14 @@ lingb() {
 note() {
   D=`date +"%A, %d. %Y"`
   TIME=`date "+%H:%M:%S"`
-  NOTE="$D.note"
+  NOTE_DIR=$HOME/notes
+  NOTE=$NOTE_DIR/"$D.note"
+
+  mkdir -p $NOTE_DIR
 
   if [ ! -f "$NOTE" ];
   then
-    echo [Date: $D >> "${NOTE}"]
+    echo [Date: $D >> "${NOTE}"
   fi
 
   echo [$TIME] >> "${NOTE}"
