@@ -42,7 +42,7 @@ create_directories() {
   echo "Will try to create default directories."
   mkdir -p $GITHUB_ME
   for d in `cat directories`; do
-    echo mkdir -p $HOME/$d
+    mkdir -p $HOME/$d
   done
 }
 
