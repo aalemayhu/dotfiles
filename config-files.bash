@@ -16,6 +16,13 @@ install_program() {
   $S make install
 }
 
+install_go() {
+  cd $GITHUB_ME && gicp go
+  cd go/
+  git ch go1.4.1
+  cd src/ && ./all.bash
+}
+
 install_linux_extra() {
   $S apt-get update
   $S apt-get upgrade -y
@@ -28,9 +35,7 @@ install_linux_extra() {
   install_program cantera-term
   install_program cantera-lock
 
-  cd $GITHUB_ME && gicp go
-  git ch go1.4.1
-  cd src/ && ./all.bash
+  install_go
 }
 
 copy_config_files() {
