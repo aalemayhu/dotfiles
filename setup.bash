@@ -104,6 +104,12 @@ install_stuff() {
 }
 
 main() {
+  if [ ! -d "$GITHUB_ME" ]; then
+    cd $GITHUB_ME
+    git clone https://github.com/scanf/config-files
+    cd config-files
+  fi
+
   install_stuff $1
   copy_config_files
 }
