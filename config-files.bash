@@ -38,27 +38,16 @@ install_linux_extra() {
   install_go
 }
 
+create_directories() {
+  echo "Will try to create default directories."
+  mkdir -p $GITHUB_ME
+  for d in `cat directories`; do
+    echo mkdir -p $HOME/$d
+  done
+}
+
 copy_config_files() {
   echo "Creating default directories."
-
-  mkdir -p $HOME/.term/
-  mkdir -p $HOME/.ssh
-  mkdir -p $HOME/.cantera
-  mkdir -p $HOME/.gnupg
-  mkdir -p $HOME/.mutt
-  mkdir -p $HOME/.mutt_files
-  mkdir -p $HOME/.vim
-  mkdir -p $HOME/Documents
-  mkdir -p $HOME/Downloads
-  mkdir -p $HOME/Movies
-  mkdir -p $HOME/Music
-  mkdir -p $HOME/Pictures
-  mkdir -p $HOME/libs
-  mkdir -p $HOME/opt
-  mkdir -p $HOME/opt/og
-  mkdir -p $HOME/src/bitbucket.org
-  mkdir -p $GITHUB_ME
-  mkdir -p $HOME/src/tmp
 
   echo "Placing configuration files."
 
@@ -115,6 +104,7 @@ main() {
     cd config-files
   fi
 
+  create_directories
   install_stuff $1
   copy_config_files
 }
