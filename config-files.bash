@@ -27,7 +27,7 @@ install_linux_extra() {
   $S apt-get update
   $S apt-get upgrade -y
   $S apt-get dist-upgrade -y
-  $S dpkg --set-selections < $CONFIG_FILES_DIR/dpkg-selections
+  $S apt-get install $(cat packages |tr '\n' ' ') -y
   $S apt-get autoclean -y
   $S apt-get autoremove -y
 
