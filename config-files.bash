@@ -18,9 +18,7 @@ install_program() {
 
 install_go() {
   cd $GITHUB_ME && gicp go
-  cd go/
-  git ch go1.4.1
-  cd src/ && ./all.bash
+  cd go/src/ && ./all.bash
 }
 
 install_linux_extra() {
