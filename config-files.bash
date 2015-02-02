@@ -87,7 +87,6 @@ copy_config_files() {
 
 install_stuff() {
   if [[ $1 == *setup* ]]; then
-    unamestr=`uname`
     install_linux_extra $1
     if [ ! -d "$HOME/.ssh" ]; then
       ssh-keygen -t rsa -C "alexander@alemayhu.com"
