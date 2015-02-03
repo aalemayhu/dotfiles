@@ -37,7 +37,6 @@ install_linux_extra() {
 }
 
 create_directories() {
-  echo "Will try to create default directories."
   mkdir -p $GITHUB_ME
   for d in `cat directories`; do
     mkdir -p $HOME/$d
@@ -45,10 +44,6 @@ create_directories() {
 }
 
 copy_config_files() {
-  echo "Creating default directories."
-
-  echo "Placing configuration files."
-
   cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $CONFIG_FILES_DIR/cantera/config $HOME/.cantera/
 
@@ -82,7 +77,6 @@ copy_config_files() {
   gicp liquidprompt
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
-  echo "Done."
 }
 
 install_stuff() {
