@@ -23,7 +23,6 @@ set message_cachedir=~/.mutt/cache/bodies
 set move = no
 set pgp_sign_as = 756753E5 
 set pgp_timeout = 3600
-set pgp_use_gpg_agent = yes
 set postponed = "+[GMail]/Drafts"
 set realname = "Alexander Alemayhu"
 set record = "+[GMail]/Sent Mail"
