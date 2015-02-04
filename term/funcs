@@ -111,3 +111,16 @@ _cd() {
     cd $me_dir
   fi
 }
+
+_archive() {
+  currentdir=`pwd`
+  tmpdir="/tmp/`date | shasum | tr -d ' '`"
+  mkdir -p $tmpdir
+
+  revisions=`git rev-list --all --reverse`
+  for rev in $revisions; do
+    git archive --format=tar.gz $rev > $tmpdir/$rev.tar.gz
+  done
+
+  echo Stored archives in $tmpdir
+}
