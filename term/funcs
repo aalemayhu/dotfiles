@@ -96,3 +96,18 @@ note() {
 pbcopy() {
   xclip -selection clipboard
 }
+
+_cd() {
+  src_dir=$HOME/src/github.com
+  work_dir=$src_dir/profsys/
+  me_dir=$src_dir/`whoami`
+
+  mkdir -p $work_dir
+  mkdir -p $me_dir
+
+  if [[ $1 == *work* ]]; then
+    cd $work_dir
+  else
+    cd $me_dir
+  fi
+}
