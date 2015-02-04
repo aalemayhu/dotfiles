@@ -16,7 +16,7 @@ set hostname = gmail.com
 set imap_check_subscribed
 set imap_keepalive = 300
 set imap_pass = ""
-set imap_user = "alexander.alemayhu@gmail.com"
+set imap_user = "alexander@alemayhu.com"
 set include
 set mail_check = 120
 set message_cachedir=~/.mutt/cache/bodies
@@ -29,7 +29,7 @@ set realname = "Alexander Alemayhu"
 set record = "+[GMail]/Sent Mail"
 set smtp_authenticators = 'gssapi:login'
 set smtp_pass = ""
-set smtp_url = "smtp://alexander.alemayhu@smtp.gmail.com:587/"
+set smtp_url = "smtp://alexander@alemayhu.com@smtp.gmail.com:587/"
 set sort=threads
 set sort_aux=last-date-received
 set spoolfile = "+INBOX"
