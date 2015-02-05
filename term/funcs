@@ -100,7 +100,7 @@ pbcopy() {
 _cd() {
   src_dir=$HOME/src/github.com
   work_dir=$src_dir/profsys/
-  me_dir=$src_dir/`whoami`
+  me_dir=$src_dir/scanf
   download_dir=$HOME/Downloads
 
   mkdir -p $work_dir
