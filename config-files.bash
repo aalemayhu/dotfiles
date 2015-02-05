@@ -22,13 +22,7 @@ install_go() {
 }
 
 install_linux_extra() {
-  $S apt-get update
-  $S apt-get upgrade -y
-  $S apt-get dist-upgrade -y
   $S apt-get install $(cat packages |tr '\n' ' ') -y
-  $S apt-get autoclean -y
-  $S apt-get autoremove -y
-
   install_program cantera-wm
   install_program cantera-term
   install_program cantera-lock
@@ -80,12 +74,17 @@ copy_config_files() {
 }
 
 install_stuff() {
+  $S apt-get update
+  $S apt-get upgrade -y
   if [[ $1 == *setup* ]]; then
     install_linux_extra $1
     if [ ! -d "$HOME/.ssh" ]; then
       ssh-keygen -t rsa -C "alexander@alemayhu.com"
     fi
   fi
+  $S apt-get dist-upgrade -y
+  $S apt-get autoclean -y
+  $S apt-get autoremove -y
 }
 
 main() {
