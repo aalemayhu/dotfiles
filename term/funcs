@@ -129,3 +129,7 @@ _archive() {
 
   echo Stored archives in $tmpdir
 }
+
+_ymp3() {
+  youtube-dl --extract-audio --audio-format mp3 $1
+}
