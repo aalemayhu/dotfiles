@@ -1,6 +1,5 @@
 gp()
 {
-  git pull origin
   git push origin --all
   git push origin --tags
 }
