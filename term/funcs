@@ -1,6 +1,8 @@
-gp () {
-  git push all --all
-  git push all --tags
+gp()
+{
+  git pull origin
+  git push origin --all
+  git push origin --tags
 }
 
 
