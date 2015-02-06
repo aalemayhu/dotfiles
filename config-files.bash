@@ -21,15 +21,6 @@ install_go() {
   cd go/src/ && ./all.bash
 }
 
-install_linux_extra() {
-  $S apt-get install $(cat packages |tr '\n' ' ') -y
-  install_program cantera-wm
-  install_program cantera-term
-  install_program cantera-lock
-
-  install_go
-}
-
 create_directories() {
   mkdir -p $GITHUB_ME
   for d in `cat directories`; do
@@ -76,15 +67,20 @@ copy_config_files() {
 install_stuff() {
   $S apt-get update
   $S apt-get upgrade -y
-  if [[ $1 == *setup* ]]; then
-    install_linux_extra $1
-    if [ ! -d "$HOME/.ssh" ]; then
-      ssh-keygen -t rsa -C "alexander@alemayhu.com"
-    fi
-  fi
+
+  $S apt-get install $(cat packages |tr '\n' ' ') -y
+  install_program cantera-wm
+  install_program cantera-term
+  install_program cantera-lock
+
+  install_go
   $S apt-get dist-upgrade -y
   $S apt-get autoclean -y
   $S apt-get autoremove -y
+
+  if [ ! -d "$HOME/.ssh" ]; then
+    ssh-keygen -t rsa -C "alexander@alemayhu.com"
+  fi
 }
 
 main() {
@@ -95,7 +91,9 @@ main() {
   fi
 
   create_directories
-  install_stuff $1
+  if [[ $1 == *setup* ]]; then
+    install_stuff $1
+  fi
   copy_config_files
 }
 
