@@ -14,6 +14,7 @@ export GOPATH="$HOME"/opt/og
 export GOROOT="$HOME"/src/github.com/scanf/go
 export GOROOT_BOOTSTRAP="$HOME"/src/github.com/scanf/go
 PATH="$PATH:$GOROOT/bin"
+PATH="$PATH:$GOPATH/bin"
 
 for i in "$HOME"/opt/*/bin
 do
