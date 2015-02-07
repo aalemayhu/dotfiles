@@ -17,13 +17,16 @@ PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 
 LIBS=$HOME/libs
-ANDROID_HOME=$LIBS_DIR/android-sdk-linux
-NDK_ROOT=$LIBS_DIR/android-ndk-r9d
-GRADLE=$LIBS_DIR/gradle-2.1
+ANDROID_HOME=$LIBS/android-sdk-linux
+NDK_ROOT=$LIBS/android-ndk-r9d
+GRADLE=$LIBS/gradle-2.1
+PATH=$PATH:$ANDROID_HOME/tools
+PATH=$PATH:$ANDROID_HOME/platform-tools
+PATH=$PATH:$NDK_ROOT
 
 for i in "$HOME"/opt/*/bin
 do
-PATH="$PATH:$i"
+  PATH="$PATH:$i"
 done
 
 # Stuff
