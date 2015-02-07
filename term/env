@@ -16,6 +16,11 @@ export GOROOT_BOOTSTRAP="$HOME"/src/github.com/scanf/go
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 
+LIBS=$HOME/libs
+ANDROID_HOME=$LIBS_DIR/android-sdk-linux
+NDK_ROOT=$LIBS_DIR/android-ndk-r9d
+GRADLE=$LIBS_DIR/gradle-2.1
+
 for i in "$HOME"/opt/*/bin
 do
 PATH="$PATH:$i"
