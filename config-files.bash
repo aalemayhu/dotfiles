@@ -75,25 +75,24 @@ install_stuff() {
 
 
   LIBS=$HOME/libs
-
-  ANDROID_HOME=$LIBS_DIR/android-sdk-linux
+  ANDROID_HOME=$LIBS/android-sdk-linux
   if [ ! -d "$ANDROID_HOME" ]; then
-    curl -L http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz | tar xz -C $LIBS_DIR/
+    curl -L http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz | tar xz -C $LIBS/
     echo y | $ANDROID_HOME/tools/android update sdk --no-ui --all --filter build-tools-19.1.0 && \
       echo y | $ANDROID_HOME/tools/android update sdk --no-ui --all --filter platform-tools && \
       echo y | $ANDROID_HOME/tools/android update sdk --no-ui --all --filter android-19
   fi
 
   # Install Android NDK.
-  NDK_ROOT=$LIBS_DIR/android-ndk-r9d
+  NDK_ROOT=$LIBS/android-ndk-r9d
   if [ ! -d "$NDK_ROOT" ]; then
-    curl -L http://dl.google.com/android/ndk/android-ndk-r9d-linux-x86_64.tar.bz2 | tar xj -C $LIBS_DIR/
+    curl -L http://dl.google.com/android/ndk/android-ndk-r9d-linux-x86_64.tar.bz2 | tar xj -C $LIBS/
     $NDK_ROOT/build/tools/make-standalone-toolchain.sh --platform=android-9 --install-dir=$NDK_ROOT --system=linux-x86_64
   fi
 
-  GRADLE=$LIBS_DIR/gradle-2.1
+  GRADLE=$LIBS/gradle-2.1
   if [ ! -d "$GRADLE" ]; then
-    curl -L http://services.gradle.org/distributions/gradle-2.1-all.zip -o /tmp/gradle-2.1-all.zip && unzip /tmp/gradle-2.1-all.zip -d $LIBS_DIR && rm /tmp/gradle-2.1-all.zip
+    curl -L http://services.gradle.org/distributions/gradle-2.1-all.zip -o /tmp/gradle-2.1-all.zip && unzip /tmp/gradle-2.1-all.zip -d $LIBS && rm /tmp/gradle-2.1-all.zip
   fi
 
   install_go
