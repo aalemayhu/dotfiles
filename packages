@@ -822,6 +822,7 @@ logrotate
 lsb-base					
 lsb-release					
 lsof						
+lynx
 m4						
 mailagent					
 make						
