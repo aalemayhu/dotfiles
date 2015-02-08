@@ -99,10 +99,6 @@ install_stuff() {
   $S apt-get dist-upgrade -y
   $S apt-get autoclean -y
   $S apt-get autoremove -y
-
-  if [ ! -d "$HOME/.ssh" ]; then
-    ssh-keygen -t rsa -C "alexander@alemayhu.com"
-  fi
 }
 
 main() {
@@ -115,6 +111,7 @@ main() {
   create_directories
   if [[ $1 == *setup* ]]; then
     install_stuff $1
+    echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
   copy_config_files
 }
