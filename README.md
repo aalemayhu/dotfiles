@@ -1,9 +1,9 @@
-Some configuration files I use for my machines, which mostly run [Debian](https://debian.org).
+Some configuration files I use for my machines, which mostly run
+[Debian](https://debian.org).
 
 Oneliner for myself(requires sudo):
 
-    wget -qO- https://raw.githubusercontent.com/scanf/config-files/master/config-files.bash | bash
-
+    wget -qO- http://git.io/bH2r | bash
 
 /etc/apt/sources.list:
 
