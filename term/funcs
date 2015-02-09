@@ -140,3 +140,7 @@ _refreshk() {
   gpg --keyserver pool.sks-keyservers.net --send-key $myid
   gpg --refresh-key $myid
 }
+
+_href() {
+  lynx -dump -listonly
+}
