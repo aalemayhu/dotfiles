@@ -18,7 +18,8 @@ install_program() {
 
 install_go() {
   cd $GITHUB_ME && gicp go
-  cd go/src/ && ./all.bash
+  cd go/src/ && git ch go1.4
+  ./all.bash
 }
 
 create_directories() {
@@ -73,6 +74,7 @@ install_stuff() {
   install_program cantera-term
   install_program cantera-lock
 
+  install_go
 
   LIBS=$HOME/libs
   ANDROID_HOME=$LIBS/android-sdk-linux
@@ -95,7 +97,6 @@ install_stuff() {
     curl -L http://services.gradle.org/distributions/gradle-2.1-all.zip -o /tmp/gradle-2.1-all.zip && unzip /tmp/gradle-2.1-all.zip -d $LIBS && rm /tmp/gradle-2.1-all.zip
   fi
 
-  install_go
   $S apt-get dist-upgrade -y
   $S apt-get autoclean -y
   $S apt-get autoremove -y
