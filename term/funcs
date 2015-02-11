@@ -69,6 +69,7 @@ gicp() {
     echo Updating instead.
     cd $GITHUB_PROJECT
     git pull
+    cd ..
   fi
 }
 
