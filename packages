@@ -1154,6 +1154,7 @@ wdiff
 wget						
 whiptail					
 whois						
+wicd
 wireless-regdb					
 wireless-tools					
 wpasupplicant					
@@ -1250,6 +1251,3 @@ zeitgeist-core
 zenity						
 zenity-common					
 zip						
-wicd
-libxcomposite-dev
-suckless-tools
