@@ -15,6 +15,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-markdown'
 Plugin 'fatih/vim-go'
 Plugin 'wting/rust.vim'
+Plugin 'tfnico/vim-gradle'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
