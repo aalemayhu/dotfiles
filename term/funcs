@@ -145,3 +145,9 @@ _refreshk() {
 _href() {
   lynx -dump -listonly
 }
+
+# Source Start { http://www.commandlinefu.com/
+_fetchMissingKeys() {
+  for i in `gpg --list-sigs | perl -ne 'if(/User ID not found/){s/^.+([a-fA-F0-9]{8}).*/\1/; print}' | sort | uniq`; do gpg --keyserver-options no-auto-key-retrieve --recv-keys $i; done
+}
+# } Source End
