@@ -1,10 +1,19 @@
 #!/bin/bash
 
-CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-GITHUB_ME=$HOME/src/github.com/scanf
-S=/usr/bin/sudo
-
-source $CONFIG_FILES_DIR/term/funcs # We need it for gicp
+gicp() {
+  GITHUB_USER=$(basename `pwd`)
+  GITHUB_PROJECT=$1
+  if [ ! -d "$GITHUB_PROJECT" ]; then
+    echo Cloning $GITHUB_PROJECT
+    git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
+  else
+    echo There seems to already be directory named $GITHUB_PROJECT
+    echo Updating instead.
+    cd $GITHUB_PROJECT
+    git pull
+    cd ..
+  fi
+}
 
 install_program() {
   echo Will be installing $1
@@ -76,7 +85,6 @@ install_stuff() {
 
   install_go
 
-  LIBS=$HOME/libs
   ANDROID_HOME=$LIBS/android-sdk-linux
   if [ ! -d "$ANDROID_HOME" ]; then
     curl -L http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz | tar xz -C $LIBS/
@@ -103,6 +111,10 @@ install_stuff() {
 }
 
 init() {
+  S=/usr/bin/sudo
+  GITHUB_ME=$HOME/src/github.com/scanf
+  CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+  LIBS=$HOME/libs
   if [ ! -d "$GITHUB_ME/config-files" ]; then
     cd $GITHUB_ME
     git clone https://github.com/scanf/config-files
