@@ -122,9 +122,9 @@ init() {
   fi
 }
 
-setup_ssh() {
+extras() {
   if [[ $1 == *setup* ]]; then
-    install_stuff $1
+    install_stuff
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
 }
@@ -133,7 +133,7 @@ main() {
   init
   create_directories
   copy_config_files
-  setup_ssh
+  extras $1
 }
 
 main $1
