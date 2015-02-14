@@ -102,19 +102,26 @@ install_stuff() {
   $S apt-get autoremove -y
 }
 
-main() {
+init() {
   if [ ! -d "$GITHUB_ME/config-files" ]; then
     cd $GITHUB_ME
     git clone https://github.com/scanf/config-files
     cd config-files
   fi
+}
 
-  create_directories
+setup_ssh() {
   if [[ $1 == *setup* ]]; then
     install_stuff $1
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
+}
+
+main() {
+  init
+  create_directories
   copy_config_files
+  setup_ssh
 }
 
 main $1
