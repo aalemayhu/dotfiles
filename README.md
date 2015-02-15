@@ -3,7 +3,7 @@ Some configuration files I use for my machines, which mostly run
 
 Oneliner for myself(requires sudo):
 
-    wget -qO- http://git.io/bH2r | bash
+    wget -qO- http://git.io/NPJh | bash
 
 /etc/apt/sources.list:
 
