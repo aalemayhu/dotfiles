@@ -74,20 +74,16 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 }
 
-install_stuff() {
-  $S apt-get update
-  $S apt-get upgrade -y
-
+install_packages() {
   $S apt-get install $(cat packages |tr '\n' ' ') -y
+}
+
+install_extra() {
+  install_packages
   install_program cantera-wm
   install_program cantera-term
   install_program cantera-lock
-
   install_go
-
-  $S apt-get dist-upgrade -y
-  $S apt-get autoclean -y
-  $S apt-get autoremove -y
 }
 
 init() {
@@ -103,10 +99,15 @@ init() {
 }
 
 extras() {
+  $S apt-get update
+  $S apt-get upgrade -y
   if [[ $1 == *setup* ]]; then
     install_stuff
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
+  $S apt-get dist-upgrade -y
+  $S apt-get autoclean -y
+  $S apt-get autoremove -y
 }
 
 main() {
