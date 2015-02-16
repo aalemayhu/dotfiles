@@ -13,7 +13,7 @@
         clf = clean -fd
         d = rm
         l = log --oneline
-        pl = pull --rebase
+        p = pull
         ss = status -s
         forget = rm --cached
 	unstage = reset HEAD --
