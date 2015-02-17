@@ -28,7 +28,3 @@ for i in "$HOME"/opt/*/bin
 do
   PATH="$PATH:$i"
 done
-
-# Stuff
-
-eval $(gpg-agent --daemon)
