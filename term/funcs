@@ -99,7 +99,7 @@ pbcopy() {
   xclip -selection clipboard
 }
 
-_cd() {
+_xcd() {
   src_dir=$HOME/src/github.com
   work_dir=$src_dir/profsys/
   me_dir=$src_dir/scanf
