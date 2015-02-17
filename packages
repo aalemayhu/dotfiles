@@ -214,6 +214,7 @@ git-man
 gjs
 gkbd-capplet
 gksu
+glances
 glib-networking-common
 glib-networking-services
 gnu-standards
@@ -858,6 +859,7 @@ software-properties-common
 software-properties-gtk
 spamassassin
 spamc
+speedometer
 ssl-cert
 startpar
 strace
