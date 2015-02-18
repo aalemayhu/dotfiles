@@ -100,14 +100,10 @@ init() {
 
 extras() {
   $S apt-get update
-  $S apt-get upgrade -y
   if [[ $1 == *setup* ]]; then
     install_stuff
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
-  $S apt-get dist-upgrade -y
-  $S apt-get autoclean -y
-  $S apt-get autoremove -y
 }
 
 main() {
