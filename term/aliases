@@ -8,9 +8,10 @@ alias gs='git status -s'
 alias gss='git status'
 
 # Stuff
+alias g='grep --color'
+alias l='ls -CF --color'
 alias ll='ls -alF'
 alias la='ls -A'
-alias l='ls -CF'
 alias reload='source ~/.bashrc'
 alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'
 alias latest-log='tail -f $( ls -1tr `find . -name "*.log"` | tail -1 )'
