@@ -101,7 +101,7 @@ init() {
 extras() {
   $S apt-get update
   if [[ $1 == *setup* ]]; then
-    install_stuff
+    install_extra
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
 }
