@@ -151,3 +151,16 @@ _fetchMissingKeys() {
   for i in `gpg --list-sigs | perl -ne 'if(/User ID not found/){s/^.+([a-fA-F0-9]{8}).*/\1/; print}' | sort | uniq`; do gpg --keyserver-options no-auto-key-retrieve --recv-keys $i; done
 }
 # } Source End
+
+alem() {
+  origin=`pwd`
+  cd $HOME/alemayhu.com
+  for d in $(ls . | grep -Fv .git); do
+    if [  -d "$d/.git" ]; then
+      cd $d;
+      git push origin master
+      cd ..
+    fi
+  done
+  cd "$origin"
+}
