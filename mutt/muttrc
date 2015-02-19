@@ -10,7 +10,7 @@ set crypt_autosign = yes
 set crypt_replyencrypt = yes
 set editor = "vi"
 set folder = "imaps://imap.gmail.com:993"
-set from = "alexander.alemayhu@gmail.com"
+set from = "alexander@alemayhu.com"
 set header_cache=~/.mutt/cache/headers
 set hostname = gmail.com
 set imap_check_subscribed
