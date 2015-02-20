@@ -11,6 +11,7 @@ mutt
 openssh-server
 speedometer
 tmux
+turses
 urlview
 vim
 vlock
