@@ -158,6 +158,7 @@ alem() {
   for d in $(ls . | grep -Fv .git); do
     if [  -d "$d/.git" ]; then
       cd $d;
+      git pull origin master
       git push origin master
       cd ..
     fi
