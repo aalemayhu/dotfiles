@@ -75,6 +75,7 @@ copy_config_files() {
 }
 
 install_packages() {
+  $S apt-get update
   $S apt-get install $(cat packages |tr '\n' ' ') -y
 }
 
@@ -99,7 +100,6 @@ init() {
 }
 
 extras() {
-  $S apt-get update
   if [[ $1 == *setup* ]]; then
     install_extra
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
