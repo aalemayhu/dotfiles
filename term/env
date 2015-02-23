@@ -1,6 +1,6 @@
 # Debian packaging
 export DEBFULLNAME=Alexander\ Alemayhu
-export DEBEMAIL=alexander@alemayhu.com
+export DEBEMAIL=alexander@bitraf.no
 
 export VISUAL=vi
 
