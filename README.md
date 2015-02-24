@@ -7,7 +7,7 @@ Oneliner for myself(requires sudo):
 
 /etc/apt/sources.list:
 
-    deb http://ftp.no.debian.org/debian/ experimental main contrib non-free
-    deb http://ftp.no.debian.org/debian/ unstable main contrib non-free
-    deb-src http://ftp.no.debian.org/debian/ unstable main contrib non-free
-    deb http://repository.spotify.com stable non-free
+    deb http://ftp.no.debian.org/debian/ experimental main contrib
+    deb http://ftp.no.debian.org/debian/ unstable main contrib
+    deb-src http://ftp.no.debian.org/debian/ unstable main contrib
+    deb http://repository.spotify.com stable 
