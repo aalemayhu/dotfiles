@@ -2,10 +2,8 @@ build-essential
 curl
 developers-reference
 devscripts
-elinks2
 glances
 links
-lynx
 mplayer
 mutt
 openssh-server
@@ -15,6 +13,3 @@ turses
 urlview
 vim
 vlock
-w3m
-wicd-curses
-youtube-dl
