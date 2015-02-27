@@ -15,16 +15,6 @@ gicp() {
   fi
 }
 
-install_program() {
-  echo Will be installing $1
-  cd $GITHUB_ME
-  gicp $1
-  cd $GITHUB_ME/$1
-  autoreconf -i
-  ./configure
-  $S make install
-}
-
 install_go() {
   cd $GITHUB_ME && gicp go
   cd go/src/ && git ch go1.4
@@ -40,7 +30,6 @@ create_directories() {
 
 copy_config_files() {
   cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
-  cp $CONFIG_FILES_DIR/cantera/config $HOME/.cantera/
 
   cp $CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
   cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
@@ -81,9 +70,6 @@ install_packages() {
 
 install_extra() {
   install_packages
-  install_program cantera-wm
-  install_program cantera-term
-  install_program cantera-lock
   install_go
 }
 
