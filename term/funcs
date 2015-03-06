@@ -165,3 +165,7 @@ alem() {
   done
   cd "$origin"
 }
+
+adblog() {
+  adb logcat -d > /tmp/logcat.log
+}
