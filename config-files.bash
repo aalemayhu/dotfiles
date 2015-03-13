@@ -64,7 +64,6 @@ copy_config_files() {
 }
 
 install_packages() {
-  $S apt-get update
   $S apt-get install $(cat packages |tr '\n' ' ') -y
 }
 
