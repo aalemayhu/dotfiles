@@ -104,15 +104,19 @@ xcd() {
   work_dir=$src_dir/profsys/
   me_dir=$src_dir/scanf
   download_dir=$HOME/Downloads
+  a_dir=$HOME/alemayhu.com
 
   mkdir -p $work_dir
   mkdir -p $me_dir
   mkdir -p $download_dir
+  mkdir -p $a_dir
 
   if [[ $1 == *work* ]]; then
     cd $work_dir
   elif [[ $1 == *down* ]]; then
     cd $download_dir
+  elif [[ $1 == *a* ]]; then
+    cd $a_dir
   else
     cd $me_dir
   fi
