@@ -3,7 +3,7 @@ Some configuration files I use for my machines, which mostly run
 
 /etc/apt/sources.list:
 
-    deb http://ftp.no.debian.org/debian/ experimental main contrib
-    deb http://ftp.no.debian.org/debian/ unstable main contrib
-    deb-src http://ftp.no.debian.org/debian/ unstable main contrib
+    deb http://ftp.no.debian.org/debian/ experimental main
+    deb http://ftp.no.debian.org/debian/ unstable main
+    deb-src http://ftp.no.debian.org/debian/ unstable main
     deb http://repository.spotify.com stable 
