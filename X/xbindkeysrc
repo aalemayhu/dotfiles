@@ -34,7 +34,7 @@
 "exec cantera-lock"
     Control + Alt + l
 
-"exec chromium-browser `xclip -o`"
+"exec opera `xclip -o`"
     Control + Alt + v
 
 "xmag -source 32x32"
