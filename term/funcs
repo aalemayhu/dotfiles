@@ -173,3 +173,17 @@ alem() {
 adblog() {
   adb logcat -d > /tmp/logcat.log
 }
+
+
+apull() {
+  origin=`pwd`
+  for d in $(ls . | grep -Fv .git); do
+    if [  -d "$d/.git" ]; then
+      cd $d;
+      git pull origin master
+      cd ..
+    fi
+  done
+  cd "$origin"
+}
+
