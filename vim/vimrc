@@ -19,6 +19,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'jceb/vim-orgmode'
 Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'gorkunov/smartgf.vim'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
