@@ -18,6 +18,7 @@ Plugin 'wting/rust.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'jceb/vim-orgmode'
 Plugin 'severin-lemaignan/vim-minimap'
+Plugin 'vim-scripts/gotofile'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
