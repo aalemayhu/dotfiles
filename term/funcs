@@ -201,3 +201,7 @@ readlater() {
   gic $1
   cd -
 }
+
+cpa() {
+  git shortlog -s -n
+}
