@@ -20,6 +20,7 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'gorkunov/smartgf.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vivien/vim-addon-linux-coding-style'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
