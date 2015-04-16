@@ -33,6 +33,7 @@ set sort=threads
 set sort_aux=last-date-received
 set spoolfile = "+INBOX"
 set timeout = 300
+set signature="~/.signature"
 source "gpg -d ~/.mutt/passwords.gpg |"
 source ~/.mutt/keybindings
 source ~/.mutt_files/gpg.rc
