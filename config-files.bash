@@ -61,6 +61,7 @@ copy_config_files() {
   gicp liquidprompt
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
+  cp $CONFIG_FILES_DIR/jrnl_config $HOME/.jrnl_config
 }
 
 install_packages() {
