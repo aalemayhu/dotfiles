@@ -15,11 +15,6 @@ gicp() {
   fi
 }
 
-install_go() {
-  cd $GITHUB_ME && gicp go
-  cd go/src/ && git ch go1.4
-  ./all.bash
-}
 
 create_directories() {
   mkdir -p $GITHUB_ME
@@ -70,7 +65,6 @@ install_packages() {
 
 install_extra() {
   install_packages
-  install_go
 }
 
 init() {
