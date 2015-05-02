@@ -1,4 +1,6 @@
 alternative_order text/plain text/html *
+set mbox_type   = Maildir
+set sendmail    = /usr/bin/msmtp
 auto_view text/html
 hdr_order Date From To Cc
 ignore "Authentication-Results:"
@@ -9,8 +11,9 @@ set certificate_file=~/.mutt/certificates
 set crypt_autosign = yes
 set crypt_replyencrypt = yes
 set editor = "vi"
-set folder = "imaps://imap.gmail.com:993"
+set folder      = ~/Mail
 set from = "alexander@alemayhu.com"
+set mbox        = "+[Gmail]/All Mail"
 set header_cache=~/.mutt/cache/headers
 set hostname = gmail.com
 set imap_check_subscribed
@@ -23,9 +26,10 @@ set message_cachedir=~/.mutt/cache/bodies
 set move = no
 set pgp_sign_as = 756753E5 
 set pgp_timeout = 3600
-set postponed = "+[GMail]/Drafts"
+set postponed   = "+[Gmail]/Drafts"
 set realname = "Alexander Alemayhu"
-set record = "+[GMail]/Sent Mail"
+unset record
+mailboxes +INBOX
 set smtp_authenticators = 'gssapi:login'
 set smtp_pass = ""
 set smtp_url = "smtp://alexander@alemayhu.com@smtp.gmail.com:587/"
