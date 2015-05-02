@@ -31,6 +31,7 @@ copy_config_files() {
   cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
   cp $CONFIG_FILES_DIR/mutt/signature $HOME/.signature
   cp $CONFIG_FILES_DIR/mutt/offlineimaprc $HOME/.offlineimaprc
+  cp $CONFIG_FILES_DIR/mutt/msmtprc $HOME/.msmtprc
   cp $CONFIG_FILES_DIR/mutt/colors $HOME/colors
 
   cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
