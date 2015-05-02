@@ -16,10 +16,6 @@ set from = "alexander@alemayhu.com"
 set mbox        = "+[Gmail]/All Mail"
 set header_cache=~/.mutt/cache/headers
 set hostname = gmail.com
-set imap_check_subscribed
-set imap_keepalive = 300
-set imap_pass = ""
-set imap_user = "alexander@alemayhu.com"
 set include
 set mail_check = 120
 set message_cachedir=~/.mutt/cache/bodies
@@ -30,35 +26,10 @@ set postponed   = "+[Gmail]/Drafts"
 set realname = "Alexander Alemayhu"
 unset record
 mailboxes +INBOX
-set smtp_authenticators = 'gssapi:login'
-set smtp_pass = ""
-set smtp_url = "smtp://alexander@alemayhu.com@smtp.gmail.com:587/"
 set sort=threads
 set sort_aux=last-date-received
 set spoolfile = "+INBOX"
-set timeout = 300
 set signature="~/.signature"
-source "gpg -d ~/.mutt/passwords.gpg |"
 source ~/.mutt/keybindings
 source ~/.mutt_files/gpg.rc
-color body green default "^diff \-.*"
-color body green default "^index [a-f0-9].*"
-color body green default "^\-\-\- .*"
-color body green default "^[\+]{3} .*"
-color body cyan default "^[\+][^\+]+.*"
-color body red  default "^\-[^\-]+.*"
-color body brightblue default "^@@ .*"
-#make mutt colorful!
-color attachment brightmagenta default
-color error      brightred    default
-color hdrdefault red          default
-color indicator  brightyellow red
-color markers    brightcyan   default
-color message    brightcyan   default
-color normal     default      default
-color quoted     brightblue   default
-color search     default      green
-color signature  red          default
-color status     yellow       blue
-color tilde      magenta      default
-color tree       magenta      default
+source ~/.mutt/colors
