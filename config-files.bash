@@ -60,7 +60,10 @@ copy_config_files() {
 }
 
 install_packages() {
-  $S apt install $(cat $CONFIG_FILES_DIR/packages |tr '\n' ' ') -y
+  for p in $(cat $CONFIG_FILES_DIR/packages);
+  do
+    $S apt install -y
+  done
 }
 
 install_extra() {
