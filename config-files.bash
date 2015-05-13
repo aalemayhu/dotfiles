@@ -68,8 +68,6 @@ copy_config_files() {
 
   cd $GITHUB_ME
   gicp Vundle.vim
-  cd $GITHUB_ME
-  gicp liquidprompt
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 }
