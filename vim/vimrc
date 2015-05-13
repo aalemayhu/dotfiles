@@ -19,6 +19,7 @@ Plugin 'tfnico/vim-gradle'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'jceb/vim-orgmode'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
