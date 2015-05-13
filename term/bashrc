@@ -4,6 +4,5 @@ source $HOME/.term/.env
 
 ulimit -c unlimited
 
-source $HOME/src/github.com/scanf/liquidprompt/liquidprompt
 #source ~/src/atsign/atsign.sh
 source $HOME/.git-completion.bash
