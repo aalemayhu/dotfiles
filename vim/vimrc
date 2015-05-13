@@ -18,6 +18,7 @@ Plugin 'wting/rust.vim'
 Plugin 'tfnico/vim-gradle'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'jceb/vim-orgmode'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
