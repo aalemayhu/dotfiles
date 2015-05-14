@@ -9,18 +9,21 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+Plugin 'Raimondi/delimitMate'
+Plugin 'Yggdroot/indentLine'
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'gorkunov/smartgf.vim'
+Plugin 'jceb/vim-orgmode'
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-markdown'
-Plugin 'fatih/vim-go'
-Plugin 'wting/rust.vim'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'jceb/vim-orgmode'
 Plugin 'severin-lemaignan/vim-minimap'
-Plugin 'gorkunov/smartgf.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-markdown'
 Plugin 'vivien/vim-addon-linux-coding-style'
+Plugin 'wting/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -36,6 +39,11 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
+" vertical line indentation
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#09AA08'
+let g:indentLine_char = '│'
 
 set encoding=utf-8
 let loaded_matchparen = 1

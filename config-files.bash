@@ -56,7 +56,6 @@ copy_config_files() {
 
   cd $GITHUB_ME
   gicp Vundle.vim
-  cd $GITHUB_ME
 
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
   cp $CONFIG_FILES_DIR/jrnl_config $HOME/.jrnl_config

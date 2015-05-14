@@ -1,7 +1,3 @@
-# Debian packaging
-export DEBFULLNAME=Alexander\ Alemayhu
-export DEBEMAIL=a@alemayhu.com
-
 export VISUAL=vi
 
 # Locale
