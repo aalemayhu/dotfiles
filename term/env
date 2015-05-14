@@ -5,13 +5,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# golang
-export GOPATH="$HOME"/opt/og
-export GOROOT="$HOME"/src/github.com/scanf/go
-export GOROOT_BOOTSTRAP="$HOME"/src/github.com/scanf/go
-PATH="$PATH:$GOROOT/bin"
-PATH="$PATH:$GOPATH/bin"
-
 for i in "$HOME"/opt/*/bin
 do
   PATH="$PATH:$i"
