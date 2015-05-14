@@ -111,9 +111,9 @@ xcd() {
   mkdir -p $download_dir
   mkdir -p $a_dir
 
-  if [[ $1 == *work* ]]; then
+  if [[ $1 == *w* ]]; then
     cd $work_dir
-  elif [[ $1 == *down* ]]; then
+  elif [[ $1 == *d* ]]; then
     cd $download_dir
   elif [[ $1 == *a* ]]; then
     cd $a_dir
