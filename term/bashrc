@@ -1,8 +1,6 @@
+source $HOME/.git-completion.bash
 source $HOME/.term/.aliases
-source $HOME/.term/.funcs
 source $HOME/.term/.env
+source $HOME/.term/.funcs
 
 ulimit -c unlimited
-
-#source ~/src/atsign/atsign.sh
-source $HOME/.git-completion.bash
