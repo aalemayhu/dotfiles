@@ -34,8 +34,6 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/mutt/msmtprc $HOME/.msmtprc
   cp $CONFIG_FILES_DIR/mutt/colors $HOME/colors
 
-  cp $CONFIG_FILES_DIR/db/psqlrc $HOME/.psqlrc
-
   cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
   cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
   cp $CONFIG_FILES_DIR/term/env $HOME/.term/.env
