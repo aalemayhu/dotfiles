@@ -30,8 +30,13 @@ copy_config_files() {
   cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
   cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
   cp $CONFIG_FILES_DIR/mutt/signature $HOME/.signature
-  cp $CONFIG_FILES_DIR/mutt/offlineimaprc $HOME/.offlineimaprc
-  cp $CONFIG_FILES_DIR/mutt/msmtprc $HOME/.msmtprc
+
+  if [ ! -f $HOME/.offlineimaprc ]; then
+    cp $CONFIG_FILES_DIR/mutt/offlineimaprc $HOME/.offlineimaprc
+  fi
+  if [ ! -f $HOME/.msmtprc ]; then
+    cp $CONFIG_FILES_DIR/mutt/msmtprc $HOME/.msmtprc
+  fi
   cp $CONFIG_FILES_DIR/mutt/colors $HOME/colors
 
   cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
