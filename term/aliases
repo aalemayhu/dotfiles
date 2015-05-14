@@ -3,8 +3,8 @@ alias ga='git add -p'
 alias gc='git commit -v'
 alias gic='git clone'
 alias git-amn='git ci -v --amend'
-alias gitlog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
-alias gitshort="git show -s --pretty='tformat: %h (%s, %ad)' --date=short"
+alias glog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
+alias gshort="git show -s --pretty='tformat: %h (%s, %ad)' --date=short"
 alias gs='git status -s'
 alias gss='git status'
 
