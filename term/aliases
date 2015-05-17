@@ -1,5 +1,6 @@
 # Git
 alias ga='git add -p'
+alias gbvv='git branch -v -v'
 alias gc='git commit -v'
 alias gic='git clone'
 alias git-amn='git ci -v --amend'
