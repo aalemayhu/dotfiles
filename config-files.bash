@@ -52,8 +52,6 @@ copy_config_files() {
 
   cd $GITHUB_ME
   gicp Vundle.vim
-
-  cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 }
 
 install_packages() {

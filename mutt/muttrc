@@ -20,8 +20,6 @@ set include
 set mail_check = 120
 set message_cachedir=~/.mutt/cache/bodies
 set move = no
-set pgp_sign_as = 756753E5 
-set pgp_timeout = 3600
 set postponed   = "+[Gmail]/Drafts"
 set realname = "Alexander Alemayhu"
 unset record
@@ -31,5 +29,4 @@ set sort_aux=last-date-received
 set spoolfile = "+Gmail/INBOX"
 set signature="~/.signature"
 source ~/.mutt/keybindings
-source ~/.mutt_files/gpg.rc
 source ~/.mutt/colors
