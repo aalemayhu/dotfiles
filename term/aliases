@@ -6,7 +6,6 @@ alias git-amn='git ci -v --amend'
 alias glog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
 alias gshort="git show -s --pretty='tformat: %h (%s, %ad)' --date=short"
 alias gs='git status -s'
-alias gss='git status'
 
 # Stuff
 alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'
