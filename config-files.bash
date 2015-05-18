@@ -28,7 +28,6 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
   cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
-  cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
   cp $CONFIG_FILES_DIR/mutt/signature $HOME/.signature
 
   if [ ! -f $HOME/.offlineimaprc ]; then
