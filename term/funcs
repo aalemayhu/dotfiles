@@ -104,19 +104,15 @@ xcd() {
   work_dir=$src_dir/profsys/
   me_dir=$src_dir/scanf
   download_dir=$HOME/Downloads
-  a_dir=$HOME/alemayhu.com
 
   mkdir -p $work_dir
   mkdir -p $me_dir
   mkdir -p $download_dir
-  mkdir -p $a_dir
 
   if [[ $1 == *w* ]]; then
     cd $work_dir
   elif [[ $1 == *d* ]]; then
     cd $download_dir
-  elif [[ $1 == *a* ]]; then
-    cd $a_dir
   else
     cd $me_dir
   fi
@@ -155,20 +151,6 @@ _fetchMissingKeys() {
   for i in `gpg --list-sigs | perl -ne 'if(/User ID not found/){s/^.+([a-fA-F0-9]{8}).*/\1/; print}' | sort | uniq`; do gpg --keyserver-options no-auto-key-retrieve --recv-keys $i; done
 }
 # } Source End
-
-alem() {
-  origin=`pwd`
-  cd $HOME/alemayhu.com
-  for d in $(ls . | grep -Fv .git); do
-    if [  -d "$d/.git" ]; then
-      cd $d;
-      git pull origin master
-      git push origin master
-      cd ..
-    fi
-  done
-  cd "$origin"
-}
 
 adblog() {
   adb logcat -d > /tmp/logcat.log
