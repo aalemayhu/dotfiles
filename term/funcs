@@ -157,16 +157,16 @@ adblog() {
 }
 
 
-apull() {
-  origin=`pwd`
-  for d in $(ls . | grep -Fv .git); do
-    if [  -d "$d/.git" ]; then
-      cd $d;
-      git pull origin master
-      cd ..
-    fi
+afetch() {
+  prev=`pwd`
+  src_dir=$HOME/src/github.com/scanf
+  cd $src_dir;
+  for d in `find -maxdepth 1`; do
+    cd "$src_dir/$d";
+    git fetch --all
+    cd ..
   done
-  cd "$origin"
+  cd "$prev"
 }
 
 orgclone() {
