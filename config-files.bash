@@ -34,7 +34,7 @@ copy_config_files() {
   if [ ! -f $HOME/.msmtprc ]; then
     cp $CONFIG_FILES_DIR/mutt/msmtprc $HOME/.msmtprc
   fi
-  cp $CONFIG_FILES_DIR/mutt/colors $HOME/colors
+  cp $CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
 
   cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
   cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
