@@ -7,7 +7,6 @@ color body red  default "^\-[^\-]+.*"
 color body brightblue default "^@@ .*"
 color attachment brightmagenta default
 color error      brightred    default
-color hdrdefault red          default
 color indicator  brightyellow red
 color markers    brightcyan   default
 color message    brightcyan   default
