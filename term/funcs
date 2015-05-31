@@ -161,7 +161,8 @@ afetch() {
   prev=`pwd`
   src_dir=$HOME/src/github.com/scanf
   cd $src_dir;
-  for d in `find -maxdepth 1`; do
+  for d in *; do
+    echo   $d
     cd "$src_dir/$d";
     git fetch --all
     cd ..
