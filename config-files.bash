@@ -54,7 +54,7 @@ copy_config_files() {
 install_packages() {
   for p in $(cat $CONFIG_FILES_DIR/packages);
   do
-    $S apt install -y
+    $S apt install -y $p
   done
 }
 
