@@ -1,11 +1,11 @@
+color attachment brightmagenta default
+color body brightblue default "^@@ .*"
+color body cyan default "^[\+][^\+]+.*"
+color body green default "^[\+]{3} .*"
+color body green default "^\-\-\- .*"
 color body green default "^diff \-.*"
 color body green default "^index [a-f0-9].*"
-color body green default "^\-\-\- .*"
-color body green default "^[\+]{3} .*"
-color body cyan default "^[\+][^\+]+.*"
 color body red  default "^\-[^\-]+.*"
-color body brightblue default "^@@ .*"
-color attachment brightmagenta default
 color error      brightred    default
 color indicator  brightyellow red
 color markers    brightcyan   default
