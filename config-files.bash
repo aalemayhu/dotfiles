@@ -39,6 +39,7 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
   cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
   cp $CONFIG_FILES_DIR/term/env $HOME/.term/.env
+  cp $CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
 
   cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
   cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
