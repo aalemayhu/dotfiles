@@ -20,7 +20,7 @@ set include
 set mail_check = 120
 set message_cachedir=~/.mutt/cache/bodies
 set move = no
-set postponed   = "+[Gmail].Drafts"
+set postponed   = "+Postponed"
 set realname = "Alexander Alemayhu"
 unset record
 mailboxes +INBOX
