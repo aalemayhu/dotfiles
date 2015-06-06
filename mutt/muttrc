@@ -8,8 +8,6 @@ ignore "DKIM-Signature:"
 ignore "DomainKey-Signature:"
 set auto_tag = yes
 set certificate_file=~/.mutt/certificates
-set crypt_autosign = yes
-set crypt_replyencrypt = yes
 set editor = "vi"
 set folder      = ~/Mail
 set from = "alexander@alemayhu.com"
