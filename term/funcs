@@ -162,10 +162,14 @@ afetch() {
   src_dir=$HOME/src/github.com/scanf
   cd $src_dir;
   for d in *; do
-    echo   $d
-    cd "$src_dir/$d";
-    git fetch --all
-    cd ..
+    if [ ! -d "$d/.git" ]; then
+      echo $d is not a git repository
+    else
+      echo   $d
+      cd "$src_dir/$d";
+      git fetch --all
+      cd ..
+    fi
   done
   cd "$prev"
 }
