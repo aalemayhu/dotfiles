@@ -3,7 +3,7 @@ build-essential
 curl
 glances
 htop
-links
+lynx
 mplayer
 mutt
 offlineimap
