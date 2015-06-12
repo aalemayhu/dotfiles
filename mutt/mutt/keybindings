@@ -6,9 +6,6 @@
 #macro compose S    ':toggle sidebar_visible^M'
 #
 
-bind editor <Tab> complete-query
-bind editor ^T complete
-bind editor <space> noop
 bind  index,pager a  group-reply  #Reply all
 macro pager \cb 'urlview' 'Follow links with urlview'
 
