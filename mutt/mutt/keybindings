@@ -19,7 +19,7 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-macro index D "<save-message>+[Gmail]/Trash<enter>" "move message to the trash"
+macro index D "<save-message>+[Gmail].Papierkorb/<enter>" "move message to the trash"
 
 # Macro Generic {{{1
 macro generic <f2> '<pipe-message>spamassassin -r<enter><save-message>=spam<enter>'
