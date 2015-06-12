@@ -1,30 +1,30 @@
 alternative_order text/plain text/html *
-set mbox_type   = Maildir
-set sendmail    = /usr/bin/msmtp
 auto_view text/html
 hdr_order Date From To Cc
 ignore "Authentication-Results:"
 ignore "DKIM-Signature:"
 ignore "DomainKey-Signature:"
+mailboxes +INBOX
 set auto_tag = yes
 set certificate_file=~/.mutt/certificates
 set editor = "vi"
 set folder      = ~/Mail
 set from = "alexander@alemayhu.com"
-set mbox        = "+[Gmail]/All Mail"
 set header_cache=~/.mutt/cache/headers
 set hostname = gmail.com
 set include
 set mail_check = 120
+set mbox        = "+[Gmail]/All Mail"
+set mbox_type   = Maildir
 set message_cachedir=~/.mutt/cache/bodies
 set move = no
 set postponed   = "+Postponed"
 set realname = "Alexander Alemayhu"
-unset record
-mailboxes +INBOX
+set sendmail    = /usr/bin/msmtp
+set signature="~/.signature"
 set sort=threads
 set sort_aux=last-date-received
 set spoolfile = "+Gmail/INBOX"
-set signature="~/.signature"
-source ~/.mutt/keybindings
 source ~/.mutt/colors
+source ~/.mutt/keybindings
+unset record
