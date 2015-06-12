@@ -10,10 +10,6 @@ bind  index,pager a  group-reply  #Reply all
 macro pager \cb 'urlview' 'Follow links with urlview'
 
 macro index D "<save-message>+[Gmail].Papierkorb/<enter>" "move message to the trash"
-
-# Macro Generic {{{1
-macro generic <f2> '<pipe-message>spamassassin -r<enter><save-message>=spam<enter>'
-macro generic <f3> '<pipe-message>bogofilter -s<enter><save-message>=spam<enter>'
 macro generic <f5> ':push <copy-message>=Todo<enter><enter><enter><toggle-new>'
 
 # Macro Index {{{1
