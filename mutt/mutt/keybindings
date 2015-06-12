@@ -94,13 +94,6 @@ bind pager \cn next-page
 bind pager \cp half-up
 bind pager \cu half-up
 bind pager \cy previous-line
-#bind pager \cN sidebar-next
-#bind pager \cO sidebar-open
-#bind pager \cP sidebar-prev
-#bind pager \ep purge-message
-#bind pager N
-#bind pager \cb previous-page
-# Bind Index/Pager {{{1
 bind index,pager \cn next-thread
 bind index,pager \cn read-thread
 bind index,pager \cd delete-thread
