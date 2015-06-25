@@ -41,6 +41,7 @@
 	default = matching
 [diff]
         tool = icdiff
+        renames = true
 
 [difftool "icdiff"]
         cmd = icdiff $LOCAL $REMOTE
