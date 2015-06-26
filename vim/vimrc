@@ -12,18 +12,14 @@ call vundle#begin()
 Plugin 'Raimondi/delimitMate'
 Plugin 'Yggdroot/indentLine'
 Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'gorkunov/smartgf.vim'
-Plugin 'jceb/vim-orgmode'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'severin-lemaignan/vim-minimap'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-markdown'
 Plugin 'vivien/vim-addon-linux-coding-style'
-Plugin 'wting/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
