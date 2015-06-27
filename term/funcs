@@ -95,10 +95,6 @@ note() {
   cat >> "${NOTE}"
 }
 
-pbcopy() {
-  xclip -selection clipboard
-}
-
 xcd() {
   src_dir=$HOME/src/github.com
   work_dir=$src_dir/profsys/
