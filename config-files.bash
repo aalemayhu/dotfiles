@@ -81,6 +81,7 @@ extras() {
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install the_silver_searcher
 }
 
 main() {
