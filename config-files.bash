@@ -48,8 +48,8 @@ copy_config_files() {
 
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
-  cd $GITHUB_ME
-  gicp Vundle.vim
+  cd $HOME/src/github.com/VundleVim
+  git clone https://github.com/VundleVim/Vundle.vim.git
 }
 
 install_packages() {
