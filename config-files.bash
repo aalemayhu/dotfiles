@@ -80,6 +80,7 @@ extras() {
     install_extra
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 main() {
