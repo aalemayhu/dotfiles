@@ -52,6 +52,12 @@ copy_config_files() {
   git clone https://github.com/VundleVim/Vundle.vim.git
 }
 
+install_go() {
+  cd $GITHUB_ME && gicp go
+  cd go/src/ && git ch go1.4
+  ./all.bash
+}
+
 install_packages() {
   for p in $(cat $CONFIG_FILES_DIR/packages);
   do
