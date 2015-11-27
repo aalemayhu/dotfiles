@@ -23,6 +23,7 @@ Plugin 'vivien/vim-addon-linux-coding-style'
 Plugin 'tpope/vim-fireplace'
 Plugin 'bpdp/vim-java'
 Plugin 'tfnico/vim-gradle'
+Plugin 'adragomir/javacomplete'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
