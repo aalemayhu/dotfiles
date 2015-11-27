@@ -25,6 +25,7 @@ Plugin 'bpdp/vim-java'
 Plugin 'tfnico/vim-gradle'
 Plugin 'adragomir/javacomplete'
 Plugin 'majutsushi/tagbar'
+Plugin 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
