@@ -24,6 +24,7 @@ create_directories() {
 }
 
 copy_config_files() {
+  cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
   cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
   cp $CONFIG_FILES_DIR/mutt/signature $HOME/.signature
