@@ -9,6 +9,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
+Plugin 'Keithbsmiley/swift.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Yggdroot/indentLine'
 Plugin 'adragomir/javacomplete'
