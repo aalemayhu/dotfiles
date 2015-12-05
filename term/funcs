@@ -99,6 +99,7 @@ xcd() {
   src_dir=$HOME/src/github.com
   work_dir=$src_dir/profsys/
   me_dir=$src_dir/scanf
+  a_dir=$src_dir/apple
   download_dir=$HOME/Downloads
 
   mkdir -p $work_dir
@@ -109,6 +110,8 @@ xcd() {
     cd $work_dir
   elif [[ $1 == *d* ]]; then
     cd $download_dir
+  elif [[ $1 == *a* ]]; then
+    cd $a_dir
   else
     cd $me_dir
   fi
