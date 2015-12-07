@@ -18,3 +18,4 @@ do
 done
 
 PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+PATH=/Applications/Xcode-beta.app/Contents//Developer/usr/bin:"${PATH}"
