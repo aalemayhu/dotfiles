@@ -16,3 +16,5 @@ for i in "$HOME"/opt/*/bin
 do
   PATH="$PATH:$i"
 done
+
+PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
