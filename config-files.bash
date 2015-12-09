@@ -50,7 +50,9 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
   cd $HOME/src/github.com/VundleVim
-  git clone https://github.com/VundleVim/Vundle.vim.git
+  if [ ! -d "Vundle.vim" ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git
+  fi
 }
 
 install_go() {
@@ -87,8 +89,11 @@ extras() {
     install_extra
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew install the_silver_searcher
+
+  if ! [ -x "$(command -v brew)" ]; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install the_silver_searcher
+  fi
 }
 
 main() {
