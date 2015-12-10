@@ -9,24 +9,15 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'keith/swift.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'Yggdroot/indentLine'
-Plugin 'adragomir/javacomplete'
-Plugin 'bpdp/vim-java'
 Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'gorkunov/smartgf.vim'
+Plugin 'keith/sourcekittendaemon.vim'
+Plugin 'keith/swift.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'tfnico/vim-gradle'
-Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-markdown'
-Plugin 'vivien/vim-addon-linux-coding-style'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
