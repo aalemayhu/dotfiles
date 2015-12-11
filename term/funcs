@@ -100,7 +100,7 @@ xcd() {
   work_dir=$src_dir/profsys/
   me_dir=$src_dir/scanf
   a_dir=$src_dir/apple
-  c_dir=$HOME/Library/Mobile\ Documents/com~apple~CloudDocs
+  c_dir="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
   download_dir=$HOME/Downloads
 
   mkdir -p $work_dir
