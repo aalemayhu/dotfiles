@@ -113,7 +113,7 @@ xcd() {
     cd $download_dir
   elif [[ $1 == *a* ]]; then
     cd $a_dir
-  elif [[ $1 == *c* ]]: then
+  elif [[ $1 == *c* ]]; then
     cd $c_dir
   else
     cd $me_dir
