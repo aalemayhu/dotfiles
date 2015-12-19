@@ -3,4 +3,4 @@ source $HOME/.term/.aliases
 source $HOME/.term/.env
 source $HOME/.term/.funcs
 
-ulimit -c unlimited
+#ulimit -c unlimited
