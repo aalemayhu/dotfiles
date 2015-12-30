@@ -194,3 +194,9 @@ readlater() {
 cpa() {
   git shortlog -s -n
 }
+
+tempfileswift() {
+  tempfile=$(echo "`date`" | shasum | cut -c-6).swift
+  touch /tmp/$tempfile
+  echo "$tempfile created in /tmp"
+}
