@@ -13,10 +13,8 @@ Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'gorkunov/smartgf.vim'
 Plugin 'keith/sourcekittendaemon.vim'
-Plugin 'keith/swift.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
