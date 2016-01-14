@@ -16,4 +16,4 @@ remoteuser = alexander@alemayhu.com
 remotepass = <secret>
 realdelete = no
 maxconnections = 3
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile = /usr/local/etc/openssl/cert.pem
