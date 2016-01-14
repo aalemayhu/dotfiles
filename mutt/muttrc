@@ -28,3 +28,4 @@ set spoolfile = "+Gmail/INBOX"
 source ~/.mutt/colors
 source ~/.mutt/keybindings
 unset record
+source "gpg -d ~/.mutt/passwords.gpg |"
