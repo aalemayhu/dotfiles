@@ -18,7 +18,7 @@ gicp() {
 
 create_directories() {
   mkdir -p $GITHUB_ME
-  for d in `cat directories`; do
+  for d in `cat all/directories`; do
     mkdir -p $HOME/$d
   done
 }
