@@ -24,18 +24,18 @@ create_directories() {
 }
 
 copy_config_files() {
-  cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
-  cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
-  cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
-  cp $CONFIG_FILES_DIR/term/env $HOME/.term/.env
-  cp $CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
+  cp $CONFIG_FILES_DIR/all/ssh/config $HOME/.ssh/config
+  cp $CONFIG_FILES_DIR/all/term/aliases $HOME/.term/.aliases
+  cp $CONFIG_FILES_DIR/all/term/funcs $HOME/.term/.funcs
+  cp $CONFIG_FILES_DIR/all/term/env $HOME/.term/.env
+  cp $CONFIG_FILES_DIR/all/term/tmux.conf $HOME/.tmux.conf
 
-  cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
-  cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
+  cp $CONFIG_FILES_DIR/all/git/gitconfig $HOME/.gitconfig
+  cp $CONFIG_FILES_DIR/all/git/git-completion.bash $HOME/.git-completion.bash
 
-  cp $CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
+  cp $CONFIG_FILES_DIR/all/term/bashrc $HOME/.bashrc
 
-  cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
+  cp $CONFIG_FILES_DIR/all/vim/vimrc $HOME/.vimrc
 
   cd $HOME/src/github.com/VundleVim
   if [ ! -d "Vundle.vim" ]; then
@@ -50,7 +50,7 @@ install_go() {
 }
 
 install_packages() {
-  for p in $(cat $CONFIG_FILES_DIR/packages);
+  for p in $(cat $CONFIG_FILES_DIR/all/packages);
   do
     $S apt install -y $p
   done
