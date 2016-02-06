@@ -1,35 +1,8 @@
 gp()
 {
+  echo "Pushing tags and branches"
   git push origin --all
   git push origin --tags
-}
-
-
-linz()
-{
-  mkdir -p $HOME/tmp
-  filename=$(basename `pwd`)
-  lintian > "$HOME/tmp/$filename-lintian.log"
-}
-
-rv()
-{
-  files=(./*)
-  video="${files[RANDOM % ${#files[@]}]}"
-
-  unamestr=`uname`
-  if [[ "$unamestr" == 'Linux' ]]; then
-    mplayer -fs "$video"
-    read -p "Would you like to delete $video?(n/y)" -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-      rm "$video"
-      echo
-      echo "$video is deleted."
-    fi
-  else
-    open "$video"
-  fi
 }
 
 vimr()
@@ -39,6 +12,8 @@ vimr()
   SHA=`echo $URL | shasum`
   FILENAME=${SHA//[[:blank:]]/}.$SUFFIX
   DOWNLOAD_PATH=/tmp/$FILENAME
+  
+  echo "Will open remote $FILENAME in vim"
 
   if [ ! -f $DOWNLOAD_PATH ]; then
     wget "$URL" -O "$DOWNLOAD_PATH"
@@ -47,19 +22,11 @@ vimr()
   vim $DOWNLOAD_PATH
 }
 
-haxm_off()
-{
-  sudo kextunload –b com.intel.kext.intelhaxm
-}
-
-haxm_on()
-{
-  sudo kextload –b com.intel.kext.intelhaxm
-}
-
 gicp() {
   GITHUB_USER=$(basename `pwd`)
   GITHUB_PROJECT=$1
+
+  echo "Will clone $GITHUB_PROJECT for $GITHUB_USER" 
 
   if [ ! -d "$GITHUB_PROJECT" ]; then
     echo Cloning $GITHUB_PROJECT
@@ -73,15 +40,14 @@ gicp() {
   fi
 }
 
-lingb() {
-  LINGUA=nb make build
-}
-
 note() {
   D=`date +"%A, %d. %Y"`
   TIME=`date "+%H:%M:%S"`
   NOTE_DIR=$HOME/notes
   NOTE=$NOTE_DIR/"$D.note"
+
+  echo "Write your note, end by CTRL-{D,C}"
+  echo "The note can be found in $NOTE_DIR"
 
   mkdir -p $NOTE_DIR
 
@@ -120,25 +86,13 @@ xcd() {
   fi
 }
 
-_archive() {
-  currentdir=`pwd`
-  tmpdir="/tmp/`date | shasum | tr -d ' '`"
-  mkdir -p $tmpdir
-
-  revisions=`git rev-list --all --reverse`
-  for rev in $revisions; do
-    git archive --format=tar.gz $rev > $tmpdir/$rev.tar.gz
-  done
-
-  echo Stored archives in $tmpdir
-}
-
 _ymp3() {
   youtube-dl --extract-audio --audio-format mp3 $1
 }
 
 _refreshk() {
   myid=756753E5
+  echo "Refreshing $myid"
   gpg --keyserver pgp.mit.edu --send-key $myid
   gpg --keyserver pool.sks-keyservers.net --send-key $myid
   gpg --refresh-key $myid
@@ -150,31 +104,10 @@ _href() {
 
 # Source Start { http://www.commandlinefu.com/
 _fetchMissingKeys() {
+  echo "Fetching any missing keys for $myid"
   for i in `gpg --list-sigs | perl -ne 'if(/User ID not found/){s/^.+([a-fA-F0-9]{8}).*/\1/; print}' | sort | uniq`; do gpg --keyserver-options no-auto-key-retrieve --recv-keys $i; done
 }
 # } Source End
-
-adblog() {
-  adb logcat -d > /tmp/logcat.log
-}
-
-
-afetch() {
-  prev=`pwd`
-  src_dir=$HOME/src/github.com/scanf
-  cd $src_dir;
-  for d in *; do
-    if [ ! -d "$d/.git" ]; then
-      echo $d is not a git repository
-    else
-      echo   $d
-      cd "$src_dir/$d";
-      git fetch --all
-      cd ..
-    fi
-  done
-  cd "$prev"
-}
 
 orgclone() {
   mkdir -p $1
@@ -183,15 +116,8 @@ orgclone() {
   cd -
 }
 
-readlater() {
-  l=$HOME/src/tmp
-  mkdir -p $l
-  cd $l
-  gic $1
-  cd -
-}
-
 cpa() {
+  echo "Commits by authors"
   git shortlog -s -n
 }
 
