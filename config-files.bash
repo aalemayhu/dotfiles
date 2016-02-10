@@ -1,21 +1,5 @@
 #!/bin/bash
 
-gicp() {
-  GITHUB_USER=$(basename `pwd`)
-  GITHUB_PROJECT=$1
-  if [ ! -d "$GITHUB_PROJECT" ]; then
-    echo Cloning $GITHUB_PROJECT
-    git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
-  else
-    echo There seems to already be directory named $GITHUB_PROJECT
-    echo Updating instead.
-    cd $GITHUB_PROJECT
-    git pull
-    cd ..
-  fi
-}
-
-
 create_directories() {
   mkdir -p $GITHUB_ME
   for d in `cat all/directories`; do
@@ -41,12 +25,6 @@ copy_config_files() {
   if [ ! -d "Vundle.vim" ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git
   fi
-}
-
-install_go() {
-  cd $GITHUB_ME && gicp go
-  cd go/src/ && git ch go1.4
-  ./all.bash
 }
 
 install_packages() {
