@@ -5,7 +5,4 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
-PATH=/Applications/Xcode-beta.app/Contents//Developer/usr/bin:"${PATH}"
-
 export SWIFT_BASE_DIR=$HOME/src/github.com/apple
