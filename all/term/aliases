@@ -12,7 +12,6 @@ alias gshort="git show -s --pretty='tformat: %h (%s, %ad)' --date=short"
 alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'
 alias ccdate='date +"%A, %d. %B %Y"'
 alias g='grep --color'
-alias l='ls -CF --color'
 alias latest-log='tail -f $( ls -1tr `find . -name "*.log"` | tail -1 )'
 alias lprtwo='lpr -o sides=two-sided-long-edge'
 alias pyserve='python -m SimpleHTTPServer'
