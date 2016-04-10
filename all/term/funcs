@@ -93,7 +93,6 @@ _ymp3() {
 _refreshk() {
   myid=756753E5
   echo "Refreshing $myid"
-  gpg --keyserver pgp.mit.edu --send-key $myid
   gpg --keyserver pool.sks-keyservers.net --send-key $myid
   gpg --refresh-key $myid
 }
