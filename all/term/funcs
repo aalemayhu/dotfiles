@@ -125,3 +125,7 @@ tempfileswift() {
   touch /tmp/$tempfile
   echo "$tempfile created in /tmp"
 }
+
+transfer() {
+  curl --upload-file $1 https://transfer.sh/
+}
