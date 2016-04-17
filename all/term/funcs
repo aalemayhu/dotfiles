@@ -67,16 +67,16 @@ xcd() {
   me_dir=$src_dir/scanf
   a_dir=$src_dir/apple
   c_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
-  download_dir=$HOME/Downloads
+  dropbox_dir=$HOME/Dropbox
 
   mkdir -p $work_dir
   mkdir -p $me_dir
-  mkdir -p $download_dir
+  mkdir -p $dropbox_dir
 
   if [[ $1 == *w* ]]; then
     cd $work_dir
   elif [[ $1 == *d* ]]; then
-    cd $download_dir
+    cd $dropbox_dir
   elif [[ $1 == *a* ]]; then
     cd $a_dir
   elif [[ $1 == *c* ]]; then
