@@ -68,6 +68,7 @@ xcd() {
   a_dir=$src_dir/apple
   c_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
   dropbox_dir=$HOME/Dropbox
+  tmpdir=/tmp/
 
   mkdir -p $work_dir
   mkdir -p $me_dir
@@ -81,6 +82,8 @@ xcd() {
     cd $a_dir
   elif [[ $1 == *c* ]]; then
     cd "$c_dir"
+  elif [[ $1 == *t* ]]; then
+    cd $tmpdir
   else
     cd $me_dir
   fi
