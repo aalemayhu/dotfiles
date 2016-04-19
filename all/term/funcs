@@ -43,7 +43,7 @@ gicp() {
 note() {
   D=`date +"%A, %d. %Y"`
   TIME=`date "+%H:%M:%S"`
-  NOTE_DIR=$HOME/notes
+  NOTE_DIR=$HOME/Dropbox/OSS/Notes/
   NOTE=$NOTE_DIR/"$D.note"
 
   echo "Write your note, end by CTRL-{D,C}"
