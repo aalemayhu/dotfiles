@@ -132,3 +132,8 @@ tempfileswift() {
 transfer() {
   curl --upload-file $1 https://transfer.sh/
 }
+
+tohtml() {
+  vim +TOhtml +wqall "$1"
+  open "$1".html
+}
