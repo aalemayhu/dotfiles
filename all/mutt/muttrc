@@ -1,3 +1,18 @@
+set from = "alexander@alemayhu.com"
+set realname = "Alexander Alemayhu"
+
+set smtp_url = "smtp://alexander@alemayhu.com@smtp.gmail.com:587/"
+source "gpg -d ~/.mutt/passwords.gpg |"
+set imap_user = "alexander@alemayhu.com"
+
+set folder      = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed   = "+[Gmail]/Drafts"
+
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+
 alternative_order text/plain text/html *
 auto_view text/html
 hdr_order Date From To Cc
@@ -6,32 +21,20 @@ ignore "DKIM-Signature:"
 ignore "DomainKey-Signature:"
 mailboxes +INBOX
 set auto_tag = yes
-set certificate_file=~/.mutt/certificates
-set imap_user = "alexander@alemayhu.com"
 set editor = "vi"
-set folder      = ~/Mail
-set from = "alexander@alemayhu.com"
-set header_cache=~/.mutt/cache/headers
 set hostname = gmail.com
-set include
 set mail_check = 120
 set mbox        = "+[Gmail]/All Mail"
 set mbox_type   = Maildir
-set message_cachedir=~/.mutt/cache/bodies
 set move = no
 set pgp_sign_as = 756753E5 
 set pgp_timeout = 3600
 set timeout=15
-set postponed   = "+Postponed"
 set postponed   = "+[Gmail]/Drafts"
-set realname = "Alexander Alemayhu"
-set smtp_url = "smtp://alexander@alemayhu.com@smtp.gmail.com:587/"
 set signature="~/.signature"
 set sort=threads
 set sort_aux=last-date-received
-set spoolfile = "+Gmail/INBOX"
 source ~/.mutt/colors
 source ~/.mutt/keybindings
 source ~/.mutt_files/gpg.rc
 unset record
-source "gpg -d ~/.mutt/passwords.gpg |"
