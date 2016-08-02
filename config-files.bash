@@ -70,11 +70,6 @@ extras() {
     install_extra
     echo ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
-
-  if ! [ -x "$(command -v brew)" ]; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew install the_silver_searcher
-  fi
 }
 
 main() {
