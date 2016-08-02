@@ -18,7 +18,10 @@ set mbox        = "+[Gmail]/All Mail"
 set mbox_type   = Maildir
 set message_cachedir=~/.mutt/cache/bodies
 set move = no
+set pgp_sign_as = 756753E5 
+set pgp_timeout = 3600
 set postponed   = "+Postponed"
+set postponed   = "+[Gmail]/Drafts"
 set realname = "Alexander Alemayhu"
 set sendmail    = /usr/bin/msmtp
 set signature="~/.signature"
@@ -27,5 +30,6 @@ set sort_aux=last-date-received
 set spoolfile = "+Gmail/INBOX"
 source ~/.mutt/colors
 source ~/.mutt/keybindings
+source ~/.mutt_files/gpg.rc
 unset record
 source "gpg -d ~/.mutt/passwords.gpg |"

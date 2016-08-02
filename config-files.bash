@@ -38,6 +38,8 @@ copy_config_files() {
   if [ ! -d "Vundle.vim" ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git
   fi
+
+  cp $CONFIG_FILES_DIR/all/gnupg/gpg.conf $HOME/.gnupg/
 }
 
 install_packages() {
