@@ -8,7 +8,20 @@ create_directories() {
 }
 
 copy_config_files() {
+  
   cp $CONFIG_FILES_DIR/all/ssh/config $HOME/.ssh/config
+  cp $CONFIG_FILES_DIR/all/mutt/muttrc $HOME/.muttrc
+  cp -r $CONFIG_FILES_DIR/all/mutt/mutt/* $HOME/.mutt/
+  cp $CONFIG_FILES_DIR/all/mutt/signature $HOME/.signature
+
+  if [ ! -f $HOME/.offlineimaprc ]; then
+    cp $CONFIG_FILES_DIR/all/mutt/offlineimaprc $HOME/.offlineimaprc
+  fi
+  if [ ! -f $HOME/.msmtprc ]; then
+    cp $CONFIG_FILES_DIR/all/mutt/msmtprc $HOME/.msmtprc
+  fi
+  cp $CONFIG_FILES_DIR/all/mutt/colors $HOME/.mutt/colors
+
   cp $CONFIG_FILES_DIR/all/term/aliases $HOME/.term/.aliases
   cp $CONFIG_FILES_DIR/all/term/funcs $HOME/.term/.funcs
   cp $CONFIG_FILES_DIR/all/term/env $HOME/.term/.env

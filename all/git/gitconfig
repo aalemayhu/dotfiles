@@ -45,3 +45,5 @@
 
 [difftool "icdiff"]
         cmd = icdiff $LOCAL $REMOTE
+[sendemail]
+	smtpserver = /usr/local/bin/msmtp

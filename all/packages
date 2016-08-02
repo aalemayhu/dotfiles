@@ -5,6 +5,8 @@ glances
 htop
 lynx
 mplayer
+mutt
+offlineimap
 openssh-server
 pry
 silversearcher-ag
@@ -16,6 +18,7 @@ vim
 vlock
 wikipedia2text
 wyrd
+msmtp
 strace
 fbterm
 tree

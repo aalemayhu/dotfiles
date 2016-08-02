@@ -1,0 +1,31 @@
+bind  index,pager a  group-reply  
+bind attach,compose,index,pager,browser Q exit
+bind browser <Enter> view-file
+bind browser G bottom-page
+bind browser g top-page
+bind index G last-entry
+bind index M current-middle
+bind index g first-entry
+bind index i mail
+bind index pagedown     next-page
+bind index pageup   previous-page
+bind index ~ set-flag
+bind index,pager N next-unread
+bind index,pager P previous-unread
+bind index,pager \cd delete-thread
+bind index,pager \cn next-thread
+bind index,pager \cn read-thread
+bind index,pager f forward-message
+bind index,pager n next-undeleted
+bind index,pager p previous-undeleted
+bind pager +   next-line
+bind pager -   previous-page
+bind pager /   search
+bind pager :   enter-command
+bind pager <down> next-line
+bind pager <up> previous-line
+bind pager j next-line
+bind pager k previous-line
+macro generic <f5> ':push <copy-message>=Todo<enter><enter><enter><toggle-new>'
+macro index D "<save-message>+[Gmail].Papierkorb/<enter>" "move message to the trash"
+macro pager \cb 'urlview' 'Follow links with urlview'

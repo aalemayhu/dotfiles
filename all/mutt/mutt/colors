@@ -1,0 +1,20 @@
+color body green default "^diff \-.*"
+color body green default "^index [a-f0-9].*"
+color body green default "^\-\-\- .*"
+color body green default "^[\+]{3} .*"
+color body cyan default "^[\+][^\+]+.*"
+color body red  default "^\-[^\-]+.*"
+color body brightblue default "^@@ .*"
+color attachment brightmagenta default
+color error      brightred    default
+color hdrdefault red          default
+color indicator  brightyellow red
+color markers    brightcyan   default
+color message    brightcyan   default
+color normal     default      default
+color quoted     brightblue   default
+color search     default      green
+color signature  red          default
+color status     yellow       blue
+color tilde      magenta      default
+color tree       magenta      default

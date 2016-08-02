@@ -1,0 +1,19 @@
+[general]
+ui = ttyui
+accounts = Gmail
+
+[Account Gmail]
+localrepository = Gmail-Local
+remoterepository = Gmail-Remote
+
+[Repository Gmail-Local]
+type = Maildir
+localfolders = ~/Mail/Gmail
+
+[Repository Gmail-Remote]
+type = Gmail
+remoteuser = alexander@alemayhu.com
+remotepass = <secret>
+realdelete = no
+maxconnections = 3
+sslcacertfile = /usr/local/etc/openssl/cert.pem
