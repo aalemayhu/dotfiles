@@ -18,9 +18,6 @@ copy_config_files() {
   if [ ! -f $HOME/.offlineimaprc ]; then
     cp $CONFIG_FILES_DIR/all/mutt/offlineimaprc $HOME/.offlineimaprc
   fi
-  if [ ! -f $HOME/.msmtprc ]; then
-    cp $CONFIG_FILES_DIR/all/mutt/msmtprc $HOME/.msmtprc
-  fi
   cp $CONFIG_FILES_DIR/all/mutt/colors $HOME/.mutt/colors
 
   cp $CONFIG_FILES_DIR/all/term/aliases $HOME/.term/.aliases

@@ -7,6 +7,7 @@ ignore "DomainKey-Signature:"
 mailboxes +INBOX
 set auto_tag = yes
 set certificate_file=~/.mutt/certificates
+set imap_user = "alexander@alemayhu.com"
 set editor = "vi"
 set folder      = ~/Mail
 set from = "alexander@alemayhu.com"
@@ -20,10 +21,11 @@ set message_cachedir=~/.mutt/cache/bodies
 set move = no
 set pgp_sign_as = 756753E5 
 set pgp_timeout = 3600
+set timeout=15
 set postponed   = "+Postponed"
 set postponed   = "+[Gmail]/Drafts"
 set realname = "Alexander Alemayhu"
-set sendmail    = /usr/bin/msmtp
+set smtp_url = "smtp://alexander@alemayhu.com@smtp.gmail.com:587/"
 set signature="~/.signature"
 set sort=threads
 set sort_aux=last-date-received
