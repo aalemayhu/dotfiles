@@ -12,6 +12,7 @@ copy_config_files() {
   cp $CONFIG_FILES_DIR/all/ssh/config $HOME/.ssh/config
   cp $CONFIG_FILES_DIR/all/mutt/muttrc $HOME/.muttrc
   cp -r $CONFIG_FILES_DIR/all/mutt/mutt/* $HOME/.mutt/
+  cp -r $CONFIG_FILES_DIR/all/mutt/mutt_files/* $HOME/.mutt_files/
   cp $CONFIG_FILES_DIR/all/mutt/signature $HOME/.signature
 
   if [ ! -f $HOME/.offlineimaprc ]; then
