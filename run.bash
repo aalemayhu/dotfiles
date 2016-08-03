@@ -2,7 +2,7 @@
 
 create_directories() {
   mkdir -p $GITHUB_ME
-  for d in `cat $ALL_CONFIG_FILES_DIR/directories`; do
+  for d in `cat $ALL_CONFIG_FILES_DIR/DirectoriesList`; do
     mkdir -p $HOME/$d
   done
 }
