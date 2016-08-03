@@ -30,10 +30,6 @@ copy_files() {
 
   cp $ALL_CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
-  cd $HOME/src/github.com/VundleVim
-  if [ ! -d "Vundle.vim" ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git
-  fi
 
   cp $ALL_CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 }
@@ -58,7 +54,7 @@ configure() {
   echo "}"
 }
 
-clone_or_update_self() {
+clone_or_update() {
   if [ ! -d "$GITHUB_ME/config-files" ]; then
     cd $GITHUB_ME
     git clone https://github.com/scanf/config-files
@@ -68,11 +64,18 @@ clone_or_update_self() {
     git pull
     cd -
   fi
+  cd $HOME/src/github.com/VundleVim
+  if [ ! -d "Vundle.vim" ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git
+  else
+    cd Vundle.vim
+    git pull
+  fi
 }
 
 main() {
   configure
-  clone_or_update_self
+  clone_or_update
   create_directories
   copy_files
   install_packages
