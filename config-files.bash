@@ -8,36 +8,38 @@ create_directories() {
 }
 
 copy_config_files() {
-  
-  cp $CONFIG_FILES_DIR/all/ssh/config $HOME/.ssh/config
-  cp $CONFIG_FILES_DIR/all/mutt/muttrc $HOME/.muttrc
-  cp -r $CONFIG_FILES_DIR/all/mutt/mutt/* $HOME/.mutt/
-  cp -r $CONFIG_FILES_DIR/all/mutt/mutt_files/* $HOME/.mutt_files/
-  cp $CONFIG_FILES_DIR/all/mutt/signature $HOME/.signature
+ 
+  ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/all
+
+  cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
+  cp $ALL_CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
+  cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
+  cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
+  cp $ALL_CONFIG_FILES_DIR/mutt/signature $HOME/.signature
 
   if [ ! -f $HOME/.offlineimaprc ]; then
-    cp $CONFIG_FILES_DIR/all/mutt/offlineimaprc $HOME/.offlineimaprc
+    cp $ALL_CONFIG_FILES_DIR/mutt/offlineimaprc $HOME/.offlineimaprc
   fi
-  cp $CONFIG_FILES_DIR/all/mutt/colors $HOME/.mutt/colors
+  cp $ALL_CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
 
-  cp $CONFIG_FILES_DIR/all/term/aliases $HOME/.term/.aliases
-  cp $CONFIG_FILES_DIR/all/term/funcs $HOME/.term/.funcs
-  cp $CONFIG_FILES_DIR/all/term/env $HOME/.term/.env
-  cp $CONFIG_FILES_DIR/all/term/tmux.conf $HOME/.tmux.conf
+  cp $ALL_CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
+  cp $ALL_CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
+  cp $ALL_CONFIG_FILES_DIR/term/env $HOME/.term/.env
+  cp $ALL_CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
 
-  cp $CONFIG_FILES_DIR/all/git/gitconfig $HOME/.gitconfig
-  cp $CONFIG_FILES_DIR/all/git/git-completion.bash $HOME/.git-completion.bash
+  cp $ALL_CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
+  cp $ALL_CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
 
-  cp $CONFIG_FILES_DIR/all/term/bashrc $HOME/.bashrc
+  cp $ALL_CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
 
-  cp $CONFIG_FILES_DIR/all/vim/vimrc $HOME/.vimrc
+  cp $ALL_CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
   cd $HOME/src/github.com/VundleVim
   if [ ! -d "Vundle.vim" ]; then
     git clone https://github.com/VundleVim/Vundle.vim.git
   fi
 
-  cp $CONFIG_FILES_DIR/all/gnupg/gpg.conf $HOME/.gnupg/
+  cp $ALL_CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
 }
 
 install_packages() {
