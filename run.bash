@@ -34,7 +34,7 @@ copy_files() {
 }
 
 install_packages() {
-  for p in $(cat $CONFIG_FILES_DIR/all/PackagesList);
+  for p in $(cat $ALL_CONFIG_FILES_DIR/PackagesList);
   do
     $S aptitude install -y $p
   done
@@ -44,7 +44,7 @@ configure() {
   S=/usr/bin/sudo
   GITHUB_ME=$HOME/src/github.com/scanf
   CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-  ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/all
+  ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/files
   echo "configure() {"
   echo "    ALL_CONFIG_FILES_DIR=$ALL_CONFIG_FILES_DIR"
   echo "    CONFIG_FILES_DIR=$CONFIG_FILES_DIR"
