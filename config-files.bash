@@ -16,9 +16,6 @@ copy_files() {
   cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
   cp $ALL_CONFIG_FILES_DIR/mutt/signature $HOME/.signature
 
-  if [ ! -f $HOME/.offlineimaprc ]; then
-    cp $ALL_CONFIG_FILES_DIR/mutt/offlineimaprc $HOME/.offlineimaprc
-  fi
   cp $ALL_CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
 
   cp $ALL_CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
