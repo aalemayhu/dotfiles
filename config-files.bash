@@ -79,7 +79,9 @@ main() {
   create_directories
   copy_files
   install_packages
-  echo ssh-keygen -t rsa -C alexander@alemayhu.com
+  if [ ! -d "$HOME/.ssh" ]; then
+    ssh-keygen -t rsa -C alexander@alemayhu.com
+  fi
 }
 
 main $1
