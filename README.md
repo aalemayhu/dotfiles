@@ -13,8 +13,10 @@ alphabetical particular order:
 - [mutt][2], text-based mailreader supporting MIME, GPG, PGP and threading
 - [vim][3], Vi IMproved - enhanced vi editor
 
+For more packages see [packages][4].
 
 [0]: https://git-scm.com/
 [1]: https://www.gnupg.org
 [2]: http://www.mutt.org/
 [3]: http://www.vim.org/
+[4]: ./all/packages
