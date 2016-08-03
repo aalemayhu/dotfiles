@@ -19,4 +19,4 @@ For more packages see [packages][4].
 [1]: https://www.gnupg.org
 [2]: http://www.mutt.org/
 [3]: http://www.vim.org/
-[4]: ./all/packages
+[4]: ./all/PackagesList

@@ -33,7 +33,7 @@ copy_files() {
 }
 
 install_packages() {
-  for p in $(cat $CONFIG_FILES_DIR/all/packages);
+  for p in $(cat $CONFIG_FILES_DIR/all/PackagesList);
   do
     $S aptitude install -y $p
   done
