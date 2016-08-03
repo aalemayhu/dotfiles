@@ -55,7 +55,6 @@ init() {
   S=/usr/bin/sudo
   GITHUB_ME=$HOME/src/github.com/scanf
   CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-  LIBS=$HOME/libs
   if [ ! -d "$GITHUB_ME/config-files" ]; then
     cd $GITHUB_ME
     git clone https://github.com/scanf/config-files
