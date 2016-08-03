@@ -2,14 +2,12 @@
 
 create_directories() {
   mkdir -p $GITHUB_ME
-  for d in `cat all/directories`; do
+  for d in `cat $ALL_CONFIG_FILES_DIR/directories`; do
     mkdir -p $HOME/$d
   done
 }
 
 copy_files() {
-
-
   cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $ALL_CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
   cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
