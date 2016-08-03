@@ -46,10 +46,10 @@ configure() {
   CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
   ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/all
   echo "configure() {"
-  echo "    S=$S"
-  echo "    GITHUB_ME=$GITHUB_ME"
-  echo "    CONFIG_FILES_DIR=$CONFIG_FILES_DIR"
   echo "    ALL_CONFIG_FILES_DIR=$ALL_CONFIG_FILES_DIR"
+  echo "    CONFIG_FILES_DIR=$CONFIG_FILES_DIR"
+  echo "    GITHUB_ME=$GITHUB_ME"
+  echo "    S=$S"
   echo "}"
 }
 
