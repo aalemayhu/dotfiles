@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for p in `cat PackagesList`;
+do
+  website=`apt-cache show $p |grep "Homepage"| head -n1 | sed -r 's/Homepage\://g'`
+  desc=`apt-cache show $p |grep "Description-en" |head -n1| sed -r 's/Description\-en\://g'`
+  echo "- [$p]($website), $desc"
+done
