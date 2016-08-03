@@ -3,7 +3,7 @@
 .mutt
 .mutt_files
 .ssh
-.term
+.shell
 .vim
 Downloads
 src/tmp

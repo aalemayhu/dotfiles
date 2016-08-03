@@ -17,15 +17,15 @@ copy_files() {
   cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
 
   # Shell
-  cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
-  cp $CONFIG_FILES_DIR/term/env $HOME/.term/.env
-  cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
-  cp $CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
+  cp $CONFIG_FILES_DIR/shell/aliases $HOME/.shell/.aliases
+  cp $CONFIG_FILES_DIR/shell/bashrc $HOME/.bashrc
+  cp $CONFIG_FILES_DIR/shell/env $HOME/.shell/.env
+  cp $CONFIG_FILES_DIR/shell/funcs $HOME/.shell/.funcs
+  cp $CONFIG_FILES_DIR/shell/tmux.conf $HOME/.tmux.conf
 
   # Misc
   cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
   cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
-  cp $CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
   # Git
