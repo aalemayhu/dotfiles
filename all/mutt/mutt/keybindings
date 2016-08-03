@@ -29,3 +29,4 @@ bind pager k previous-line
 macro generic <f5> ':push <copy-message>=Todo<enter><enter><enter><toggle-new>'
 macro index D "<save-message>+[Gmail].Papierkorb/<enter>" "move message to the trash"
 macro pager \cb 'urlview' 'Follow links with urlview'
+macro index,pager A  "<save-message>=Mail/archive<enter>"  "mark message as Archived"
