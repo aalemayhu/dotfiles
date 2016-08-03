@@ -7,8 +7,8 @@ create_directories() {
   done
 }
 
-copy_config_files() {
- 
+copy_files() {
+
 
   cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $ALL_CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
@@ -48,10 +48,6 @@ install_packages() {
   done
 }
 
-install_extra() {
-  install_packages
-}
-
 configure() {
   S=/usr/bin/sudo
   GITHUB_ME=$HOME/src/github.com/scanf
@@ -65,27 +61,25 @@ configure() {
   echo "}"
 }
 
-selfCheck() {
+clone_or_update_self() {
   if [ ! -d "$GITHUB_ME/config-files" ]; then
     cd $GITHUB_ME
     git clone https://github.com/scanf/config-files
     cd config-files
-  fi
-}
-
-extras() {
-  if [[ $1 == *setup* ]]; then
-    install_extra
-    echo ssh-keygen -t rsa -C alexander@alemayhu.com
+  else
+    cd $CONFIG_FILES_DIR
+    git pull
+    cd -
   fi
 }
 
 main() {
   configure
-  selfCheck
+  clone_or_update_self
   create_directories
-  copy_config_files
-  extras $1
+  copy_files
+  install_packages
+  echo ssh-keygen -t rsa -C alexander@alemayhu.com
 }
 
 main $1
