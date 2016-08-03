@@ -9,7 +9,6 @@ create_directories() {
 
 copy_config_files() {
  
-  ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/all
 
   cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $ALL_CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
@@ -53,10 +52,20 @@ install_extra() {
   install_packages
 }
 
-init() {
+configure() {
   S=/usr/bin/sudo
   GITHUB_ME=$HOME/src/github.com/scanf
   CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+  ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/all
+  echo "configure() {"
+  echo "    S=$S"
+  echo "    GITHUB_ME=$GITHUB_ME"
+  echo "    CONFIG_FILES_DIR=$CONFIG_FILES_DIR"
+  echo "    ALL_CONFIG_FILES_DIR=$ALL_CONFIG_FILES_DIR"
+  echo "}"
+}
+
+selfCheck() {
   if [ ! -d "$GITHUB_ME/config-files" ]; then
     cd $GITHUB_ME
     git clone https://github.com/scanf/config-files
@@ -72,7 +81,8 @@ extras() {
 }
 
 main() {
-  init
+  configure
+  selfCheck
   create_directories
   copy_config_files
   extras $1
