@@ -2,7 +2,7 @@
 
 create_directories() {
   mkdir -p $GITHUB_ME
-  for d in `cat $ALL_CONFIG_FILES_DIR/DirectoriesList`; do
+  for d in `cat $CONFIG_FILES_DIR/DirectoriesList`; do
     mkdir -p $HOME/$d
   done
 }
@@ -10,31 +10,31 @@ create_directories() {
 copy_files() {
   
   # mutt 
-  cp $ALL_CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
-  cp $ALL_CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
-  cp $ALL_CONFIG_FILES_DIR/mutt/signature $HOME/.signature
-  cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
-  cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
+  cp $CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
+  cp $CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
+  cp $CONFIG_FILES_DIR/mutt/signature $HOME/.signature
+  cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
+  cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
 
   # Shell
-  cp $ALL_CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
-  cp $ALL_CONFIG_FILES_DIR/term/env $HOME/.term/.env
-  cp $ALL_CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
-  cp $ALL_CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
+  cp $CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
+  cp $CONFIG_FILES_DIR/term/env $HOME/.term/.env
+  cp $CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
+  cp $CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
 
   # Misc
-  cp $ALL_CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
-  cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
-  cp $ALL_CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
-  cp $ALL_CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
+  cp $CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
+  cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
+  cp $CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
+  cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
   # Git
-  cp $ALL_CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
-  cp $ALL_CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
+  cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
+  cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
 }
 
 install_packages() {
-  for p in $(cat $ALL_CONFIG_FILES_DIR/PackagesList);
+  for p in $(cat $CONFIG_FILES_DIR/PackagesList);
   do
     $S aptitude install -y $p
   done
@@ -44,9 +44,7 @@ configure() {
   S=/usr/bin/sudo
   GITHUB_ME=$HOME/src/github.com/scanf
   CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-  ALL_CONFIG_FILES_DIR=$CONFIG_FILES_DIR/files
   echo "configure() {"
-  echo "    ALL_CONFIG_FILES_DIR=$ALL_CONFIG_FILES_DIR"
   echo "    CONFIG_FILES_DIR=$CONFIG_FILES_DIR"
   echo "    GITHUB_ME=$GITHUB_ME"
   echo "    S=$S"
