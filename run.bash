@@ -8,28 +8,29 @@ create_directories() {
 }
 
 copy_files() {
-  cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
+  
+  # mutt 
+  cp $ALL_CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
   cp $ALL_CONFIG_FILES_DIR/mutt/muttrc $HOME/.muttrc
+  cp $ALL_CONFIG_FILES_DIR/mutt/signature $HOME/.signature
   cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
   cp -r $ALL_CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
-  cp $ALL_CONFIG_FILES_DIR/mutt/signature $HOME/.signature
 
-  cp $ALL_CONFIG_FILES_DIR/mutt/colors $HOME/.mutt/colors
-
+  # Shell
   cp $ALL_CONFIG_FILES_DIR/term/aliases $HOME/.term/.aliases
-  cp $ALL_CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
   cp $ALL_CONFIG_FILES_DIR/term/env $HOME/.term/.env
+  cp $ALL_CONFIG_FILES_DIR/term/funcs $HOME/.term/.funcs
   cp $ALL_CONFIG_FILES_DIR/term/tmux.conf $HOME/.tmux.conf
 
-  cp $ALL_CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
-  cp $ALL_CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
-
+  # Misc
+  cp $ALL_CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
+  cp $ALL_CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $ALL_CONFIG_FILES_DIR/term/bashrc $HOME/.bashrc
-
   cp $ALL_CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
-
-  cp $ALL_CONFIG_FILES_DIR/gnupg/gpg.conf $HOME/.gnupg/
+  # Git
+  cp $ALL_CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
+  cp $ALL_CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
 }
 
 install_packages() {
