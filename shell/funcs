@@ -41,7 +41,7 @@ gicp() {
 }
 
 note() {
-  D=`date +"%A, %d. %Y"`
+  D=`date +"%A, %d. %B %Y"`
   NOTE_DIR=$HOME/Notes/
   NOTE=$NOTE_DIR/"$D.md"
 
