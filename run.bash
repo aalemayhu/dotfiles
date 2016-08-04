@@ -34,10 +34,13 @@ copy_files() {
 }
 
 install_packages() {
+  $S aptitude update
   for p in $(cat $CONFIG_FILES_DIR/PackagesList);
   do
     $S aptitude install -y $p
   done
+  $S aptitude clean
+  $S aptitude autoclean
 }
 
 configure() {
