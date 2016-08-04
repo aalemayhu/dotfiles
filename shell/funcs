@@ -42,9 +42,8 @@ gicp() {
 
 note() {
   D=`date +"%A, %d. %Y"`
-  TIME=`date "+%H:%M:%S"`
-  NOTE_DIR=$HOME/Dropbox/OSS/Notes/
-  NOTE=$NOTE_DIR/"$D.note"
+  NOTE_DIR=$HOME/Notes/
+  NOTE=$NOTE_DIR/"$D.md"
 
   echo "Write your note, end by CTRL-{D,C}"
   echo "The note can be found in $NOTE_DIR"
@@ -53,10 +52,9 @@ note() {
 
   if [ ! -f "$NOTE" ];
   then
-    echo [Date: $D >> "${NOTE}"
+    echo Date: $D >> "${NOTE}"
   fi
 
-  echo [$TIME] >> "${NOTE}"
   echo >> "${NOTE}"
   cat >> "${NOTE}"
 }
