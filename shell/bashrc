@@ -1,6 +1,6 @@
 source $HOME/.git-completion.bash
-source $HOME/.term/.aliases
-source $HOME/.term/.env
-source $HOME/.term/.funcs
+source $HOME/.shell/.aliases
+source $HOME/.shell/.env
+source $HOME/.shell/.funcs
 
 #ulimit -c unlimited
