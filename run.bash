@@ -79,8 +79,8 @@ clone_or_update() {
 main() {
   configure
   install_packages
-  clone_or_update
   create_directories
+  clone_or_update
   copy_files
   if [ ! -d "$HOME/.ssh" ]; then
     ssh-keygen -t rsa -C alexander@alemayhu.com
