@@ -1,5 +1,7 @@
+project=scanf/config-files 
+
 docker:
-	docker build -t scanf/config-files .
+	docker build -t ${project} .
 
 push_hub:
-	docker push scanf/config-files
+	docker push ${project}
