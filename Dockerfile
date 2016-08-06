@@ -7,7 +7,6 @@ RUN apt-get install -y sudo git vim
 
 ADD . /tmp/config-files
 WORKDIR /tmp/config-files
-RUN ls *
 
 RUN echo "postfix postfix/mailname string container.alemayhu.com" | debconf-set-selections
 RUN echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
