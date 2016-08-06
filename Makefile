@@ -1,4 +1,4 @@
-project=scanf/config-files 
+project=scanf/config-files
 
 docker:
 	docker build -t ${project} .
