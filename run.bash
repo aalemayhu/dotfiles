@@ -28,6 +28,8 @@ copy_files() {
   cp $CONFIG_FILES_DIR/ssh/config $HOME/.ssh/config
   cp $CONFIG_FILES_DIR/vim/vimrc $HOME/.vimrc
 
+  vim +PluginInstall +qa!
+
   # Git
   cp $CONFIG_FILES_DIR/git/git-completion.bash $HOME/.git-completion.bash
   cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
