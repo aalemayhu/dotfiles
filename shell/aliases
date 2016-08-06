@@ -1,7 +1,7 @@
 # Git
 alias ga='git add -p'
 alias gbvv='git branch -v -v'
-alias gc='git commit -v'
+alias gc='git commit -v -s'
 alias gic='git clone'
 alias git-amn='git ci -v --amend'
 alias glog='git log -10 --graph --date-order -C -M --pretty=format:"%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) " --abbrev-commit --date=short'
