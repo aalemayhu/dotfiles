@@ -36,13 +36,13 @@ copy_files() {
 }
 
 install_packages() {
-  $S aptitude update
+  $S apt-get update
   for p in $(cat $CONFIG_FILES_DIR/PackagesList);
   do
-    $S aptitude install -y $p
+    $S apt-get install -y $p
   done
-  $S aptitude clean
-  $S aptitude autoclean
+  $S apt-get autoremove
+  $S apt-get autoclean
 }
 
 configure() {
