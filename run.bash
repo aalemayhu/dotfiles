@@ -37,6 +37,7 @@ copy_files() {
 
 install_packages() {
   $S apt-get update
+  $S apt-get install git vim 
   for p in $(cat $CONFIG_FILES_DIR/PackagesList);
   do
     $S apt-get install -y $p

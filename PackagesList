@@ -1,5 +1,4 @@
 curl
-git
 glances
 gnupg
 htop
@@ -9,4 +8,3 @@ tig
 tmux
 tree
 urlview
-vim
