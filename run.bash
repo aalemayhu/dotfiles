@@ -15,6 +15,7 @@ copy_files() {
   cp $CONFIG_FILES_DIR/mutt/signature $HOME/.signature
   cp -r $CONFIG_FILES_DIR/mutt/mutt/* $HOME/.mutt/
   cp -r $CONFIG_FILES_DIR/mutt/mutt_files/* $HOME/.mutt_files/
+  cp -r $CONFIG_FILES_DIR/vim/syntax $HOME/.vim/syntax
 
   # Shell
   cp $CONFIG_FILES_DIR/shell/aliases $HOME/.shell/.aliases
