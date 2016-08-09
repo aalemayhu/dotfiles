@@ -1,0 +1,10 @@
+!
+! Comments begin with a "!" character.
+!
+
+XTerm*background:       black
+XTerm*foreground:       white
+XTerm*cursorColor:      white
+XTerm.vt100.geometry:   79x25
+XTerm*scrollBar:        true
+XTerm*scrollTtyOutput:  false
