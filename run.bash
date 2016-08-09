@@ -47,6 +47,7 @@ install_packages() {
     done
     $S apt-get autoremove
     $S apt-get autoclean
+    $S locale-gen "en_US.UTF-8"
   fi
 }
 
