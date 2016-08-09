@@ -21,3 +21,8 @@ alphabetical particular order:
 - urlview, Extracts URLs from text
 - [vim](http://www.vim.org/), Vi IMproved - enhanced vi editor
 
+
+## TODO
+
+- [ ] Have a way to distinguish packages for machines. Like some things I want
+  on servers and others on desktops.
