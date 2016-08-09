@@ -17,25 +17,28 @@ clone_or_update() {
 }
 
 install_program() {
-  echo Will be installing $1
-  cd $GITHUB_ROOT
-  gicp $1
-  cd $GITHUB_ROOT/$1
+  GITHUB_USER=$1
+  GITHUB_PROJECT=$2
+  EXPECTED_PATH=$GITHUB_ROOT/$GITHUB_USER/$GITHUB_PROJECT
+  echo Will be installing $GITHUB_PROJECT
+  cd $EXPECTED_PATH
   autoreconf -i
   ./configure
   $S make install
+  cd -
 }
 
 main() {
+  S=/usr/bin/sudo
   GITHUB_ROOT=$HOME/src/github.com
   clone_or_update mortehu cantera-wm
   clone_or_update mortehu cantera-term
   clone_or_update mortehu cantera-lock
   clone_or_update git git
 
-  install_program cantera-wm
-  install_program cantera-term
-  install_program cantera-lock
+  install_program mortehu cantera-wm
+  install_program mortehu cantera-term
+  install_program mortehu cantera-lock
   install_program git git
 }
 
