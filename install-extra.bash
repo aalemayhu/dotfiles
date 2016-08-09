@@ -24,7 +24,7 @@ install_program() {
   cd $EXPECTED_PATH
   autoreconf -i
   ./configure
-  $S make install
+  $S make -j install
   cd -
 }
 
