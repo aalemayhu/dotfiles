@@ -17,7 +17,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scanf/swift.vim'
-Plugin 'ervandew/supertab'
 Plugin 'msanders/snipmate.vim'
 Plugin 'vivien/vim-addon-linux-coding-style'
 
