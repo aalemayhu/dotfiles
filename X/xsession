@@ -19,6 +19,8 @@ xinput set-int-prop "DualPoint Stick" "Evdev Middle Button Emulation" 8 1
 xinput set-int-prop "DualPoint Stick" "Evdev Middle Button Timeout" 8 50
 xinput set-prop 12 "Device Enabled" 0
 
+unclutter -display :0 -noevents -grab
+
 nitrogen --restore
 
 pkill gnome-terminal
