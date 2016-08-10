@@ -40,6 +40,8 @@ main() {
   install_program mortehu cantera-term
   install_program mortehu cantera-lock
   install_program git git
+
+  $S apt-get install unclutter
 }
 
 main $1
