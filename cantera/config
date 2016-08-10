@@ -11,6 +11,6 @@ terminal
 hotkey
 {
     b "cantera-term"
-    f "google-chrome"
+    f "chromium-browser"
     l "cantera-lock"
 }
