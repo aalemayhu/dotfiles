@@ -13,4 +13,5 @@ hotkey
     b "cantera-term"
     f "chromium-browser"
     l "cantera-lock"
+    m "tuxmath"
 }
