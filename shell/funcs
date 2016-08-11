@@ -135,3 +135,7 @@ tohtml() {
   vim +TOhtml +wqall "$1"
   open "$1".html
 }
+
+get_patch_work() {
+  wget $1/raw/ -o "echo $1|tr -d ' '|shasum".patch
+}
