@@ -137,5 +137,12 @@ tohtml() {
 }
 
 get_patch_work() {
-  wget $1/raw/ -o "echo $1|tr -d ' '|shasum".patch
+  patch_url="https://patchwork.kernel.org/patch/$1/raw/"
+  local_path="`echo $1|shasum|tr -d ' '`".patch
+  echo "Using patch from $patch_url"
+  wget  $patch_url -O  $local_path
+
+  echo "Patch stored at $local_path"
+  echo "You can easily apply it via: git am < $local_path"
+  # TODO: ask to apply it
 }
