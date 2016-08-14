@@ -104,7 +104,7 @@ main() {
   copy_files
   
   cd $GITHUB_ME/xcd.rb
-  make install
+  $S make install
 
   if [ ! -d "$HOME/.ssh" ]; then
     ssh-keygen -t rsa -C alexander@alemayhu.com
