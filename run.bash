@@ -88,6 +88,9 @@ clone_or_update() {
     cd Vundle.vim
     git pull
   fi
+
+  cd $GITHUB_ME
+  git clone https://github.com/scanf/xcd.rb
 }
 
 install_X_desktop_essentials() {
@@ -99,6 +102,10 @@ main() {
   create_directories
   clone_or_update
   copy_files
+  
+  cd $GITHUB_ME/xcd.rb
+  make install
+
   if [ ! -d "$HOME/.ssh" ]; then
     ssh-keygen -t rsa -C alexander@alemayhu.com
   fi
