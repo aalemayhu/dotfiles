@@ -3,7 +3,7 @@ FROM ubuntu
 MAINTAINER Alexander Alemayhu
 
 RUN apt-get update
-RUN apt-get install -y sudo git vim
+RUN apt-get install -y sudo git vim make ruby
 
 ADD . /tmp/config-files
 WORKDIR /tmp/config-files
