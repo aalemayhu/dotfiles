@@ -71,27 +71,6 @@ configure() {
   echo "}"
 }
 
-clone_or_update() {
-  if [ ! -d "$GITHUB_ME/config-files" ]; then
-    cd $GITHUB_ME
-    git clone https://github.com/scanf/config-files
-    cd config-files
-  else
-    cd $CONFIG_FILES_DIR
-    git pull
-    cd -
-  fi
-  cd $HOME/src/github.com/VundleVim
-  if [ ! -d "Vundle.vim" ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git
-  else
-    cd Vundle.vim
-    git pull
-  fi
-
-  cd $GITHUB_ME
-  git clone https://github.com/scanf/xcd.rb
-}
 
 install_X_desktop_essentials() {
   $CONFIG_FILES_DIR/install-extra.bash
@@ -100,7 +79,7 @@ main() {
   configure
   install_packages
   create_directories
-  clone_or_update
+  $CONFIG_FILES_DIR/clone_or_update.rb
   copy_files
   
   cd $GITHUB_ME/xcd.rb
