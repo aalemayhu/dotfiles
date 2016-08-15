@@ -10,6 +10,7 @@ repositories = {
     "#{github}/mortehu/cantera-term" => "https://github.com/mortehu/cantera-term",
     "#{github}/mortehu/cantera-lock" => "https://github.com/mortehu/cantera-lock",
     "#{github}/git/git" => "https://github.com/git/git",
+    "#{home}/Scripts" => "https://github.com/scanf/Scripts",
 }
 
 repositories.each_pair do |path, url|
