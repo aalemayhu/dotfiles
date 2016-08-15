@@ -3,7 +3,7 @@
 home = "#{ENV['HOME']}"
 github = "#{home}/src/github.com"
 repositories = {
-    "#{github}/VundleVim/Vundle.vim.gi" => "https://github.com/VundleVim/Vundle.vim.git",
+    "#{github}/VundleVim/Vundle.vim" => "https://github.com/VundleVim/Vundle.vim.git",
     "#{github}/git/git" => "https://github.com/git/git",
     "#{github}/mortehu/cantera-lock" => "https://github.com/mortehu/cantera-lock",
     "#{github}/mortehu/cantera-term" => "https://github.com/mortehu/cantera-term",
