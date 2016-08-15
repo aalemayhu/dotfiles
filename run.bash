@@ -1,40 +1,25 @@
 #!/bin/bash
 
-configure() {
-  S=/usr/bin/sudo
-  GITHUB_ME=$HOME/src/github.com/scanf
-  CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
-  echo "configure() {"
-  echo "    CONFIG_FILES_DIR=$CONFIG_FILES_DIR"
-  echo "    GITHUB_ME=$GITHUB_ME"
-  echo "    S=$S"
-  echo "}"
-}
+CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+GITHUB_ME=$HOME/src/github.com/scanf
+S=/usr/bin/sudo
 
+configure
+$S $CONFIG_FILES_DIR/install_packages.rb
+$CONFIG_FILES_DIR/create_directories.rb
+$CONFIG_FILES_DIR/clone_or_update.rb
+$CONFIG_FILES_DIR/copy_files.rb
 
-install_X_desktop_essentials() {
-  $CONFIG_FILES_DIR/install-extra.bash
-}
-main() {
-  configure
-  $S $CONFIG_FILES_DIR/install_packages.rb
-  $CONFIG_FILES_DIR/create_directories.rb
-  $CONFIG_FILES_DIR/clone_or_update.rb
-  $CONFIG_FILES_DIR/copy_files.rb
+vim +PluginInstall +qa!
 
-  vim +PluginInstall +qa!
+cd $GITHUB_ME/xcd.rb
+$S make install
 
-  cd $GITHUB_ME/xcd.rb
-  $S make install
-
-  if [ ! -d "$HOME/.ssh" ]; then
-    ssh-keygen -t rsa -C alexander@alemayhu.com
-  fi
-  if ! xset q &>/dev/null; then
-    exit
-  fi
-  echo "X server detected at \$DISPLAY [$DISPLAY]" >&2
-  install_X_desktop_essentials
-}
-
-main
+if [ ! -d "$HOME/.ssh" ]; then
+  ssh-keygen -t rsa -C alexander@alemayhu.com
+fi
+if ! xset q &>/dev/null; then
+  exit
+fi
+echo "X server detected at \$DISPLAY [$DISPLAY]" >&2
+$CONFIG_FILES_DIR/install-extra.bash
