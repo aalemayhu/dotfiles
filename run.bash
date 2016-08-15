@@ -45,20 +45,7 @@ copy_files() {
   cp $CONFIG_FILES_DIR/git/gitconfig $HOME/.gitconfig
 }
 
-install_packages() {
-  unamestr=`uname`
-  if [[ "$unamestr" == 'Linux' ]]; then
-    $S apt-get update
-    $S apt-get install git vim
-    for p in $(cat $CONFIG_FILES_DIR/PackagesList);
-    do
-      $S apt-get install -y $p
-    done
-    $S apt-get autoremove
-    $S apt-get autoclean
-    $S locale-gen "en_US.UTF-8"
-  fi
-}
+
 
 configure() {
   S=/usr/bin/sudo
@@ -77,7 +64,7 @@ install_X_desktop_essentials() {
 }
 main() {
   configure
-  install_packages
+  $S $CONFIG_FILES_DIR/install_packages.rb
   create_directories
   $CONFIG_FILES_DIR/clone_or_update.rb
   copy_files
