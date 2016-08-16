@@ -9,7 +9,6 @@ HOME=ENV['HOME']
 `cp #{CONFIG_FILES_DIR}/mutt/signature #{HOME}/.signature`
 `cp -r #{CONFIG_FILES_DIR}/mutt/mutt/* #{HOME}/.mutt/`
 `cp -r #{CONFIG_FILES_DIR}/mutt/mutt_files/* #{HOME}/.mutt_files/`
-`cp -r #{CONFIG_FILES_DIR}/vim/syntax #{HOME}/.vim/syntax`
 
 # X11
 
@@ -30,7 +29,6 @@ HOME=ENV['HOME']
 `cp #{CONFIG_FILES_DIR}/cantera/config #{HOME}/.cantera/`
 `cp #{CONFIG_FILES_DIR}/gnupg/gpg.conf #{HOME}/.gnupg/`
 `cp #{CONFIG_FILES_DIR}/ssh/config #{HOME}/.ssh/config`
-`cp #{CONFIG_FILES_DIR}/vim/vimrc #{HOME}/.vimrc`
 
 # Git
 `cp #{CONFIG_FILES_DIR}/git/git-completion.bash #{HOME}/.git-completion.bash`

@@ -11,6 +11,7 @@ repositories = {
     "#{github}/scanf/config-files" => "https://github.com/scanf/config-files",
     "#{github}/scanf/xcd.rb" => "https://github.com/scanf/xcd.rb",
     "#{home}/Scripts" => "https://github.com/scanf/Scripts",
+    "#{home}/.vim" => "--recursive https://github.com/scanf/.vim",
 }
 
 repositories.each_pair do |path, url|
