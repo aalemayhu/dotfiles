@@ -5,6 +5,6 @@ home=ENV['HOME']
 
 file='DirectoriesList'
 File.readlines(file).each do |directory|
-  `mkdir #{home}/#{directory}`
+  `mkdir -p #{home}/#{directory}`
 end
 
