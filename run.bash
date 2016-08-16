@@ -1,5 +1,6 @@
 #!/bin/bash
 
+VERSION=0
 CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 GITHUB_ME=$HOME/src/github.com/scanf
 S=/usr/bin/sudo
