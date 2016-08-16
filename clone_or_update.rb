@@ -16,8 +16,8 @@ repositories = {
 
 repositories.each_pair do |path, url|
   if !File.exist?(path)
-    `git clone #{url} #{path}`
+    `git clone #{url} #{path} --recurse-submodules`
   else
-    `git -C #{path} pull`
+    `git -C #{path} pull --recurse-submodules`
   end
 end
