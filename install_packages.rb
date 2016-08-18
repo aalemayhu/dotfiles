@@ -11,5 +11,5 @@ if unamestr.start_with?('Linux')
   `apt-get autoremove`
   `apt-get autoclean`
   `locale-gen "en_US.UTF-8"`
-  `cd #{ENV['Home']}/src/github.com/scanf/xcd.rb && /usr/bin/sudo make install`
+  `cd "#{ENV['Home']}"/src/github.com/scanf/xcd.rb && /usr/bin/sudo make install`
 end
