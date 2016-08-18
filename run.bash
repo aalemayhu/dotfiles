@@ -9,7 +9,7 @@ $CONFIG_FILES_DIR/create_directories.rb
 $CONFIG_FILES_DIR/clone_or_update.rb
 $CONFIG_FILES_DIR/copy_files.rb
 
-ln -sf $HOME/.vim/vimrc $HOME/.vimrc
+ln -sf $HOME/.vim/.vimrc $HOME/.vimrc
 vim +PluginInstall +qa!
 
 
