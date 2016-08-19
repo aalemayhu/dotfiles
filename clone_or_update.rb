@@ -17,6 +17,9 @@ repositories = {
 repositories.each_pair do |path, url|
   if !File.exist?(path)
     `git clone #{url} #{path} --recurse-submodules`
+  elsif File.exist?("#{path}/.git")
+    STDERR.puts "error: directory exists at #{path} but is not a git directory"
+    exit
   else
     `git -C #{path} pull --recurse-submodules`
   end
