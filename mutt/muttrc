@@ -38,3 +38,7 @@ source ~/.mutt/colors
 source ~/.mutt/keybindings
 source ~/.mutt_files/gpg.rc
 unset record
+
+set query_command="goobook query %s"
+macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+bind editor <Tab> complete-query
