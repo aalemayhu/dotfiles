@@ -3,13 +3,6 @@
 CONFIG_FILES_DIR=File.dirname(__FILE__)
 HOME=ENV['HOME']
 
-# mutt
-`cp #{CONFIG_FILES_DIR}/mutt/colors #{HOME}/.mutt/colors`
-`cp #{CONFIG_FILES_DIR}/mutt/muttrc #{HOME}/.muttrc`
-`cp #{CONFIG_FILES_DIR}/mutt/signature #{HOME}/.signature`
-`cp -r #{CONFIG_FILES_DIR}/mutt/mutt/* #{HOME}/.mutt/`
-`cp -r #{CONFIG_FILES_DIR}/mutt/mutt_files/* #{HOME}/.mutt_files/`
-
 # X11
 
 `cp #{CONFIG_FILES_DIR}/X/xbindkeysrc #{HOME}/.xbindkeysrc`

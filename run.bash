@@ -10,6 +10,7 @@ $CONFIG_FILES_DIR/clone_or_update.rb
 $CONFIG_FILES_DIR/copy_files.rb
 
 ln -sf $HOME/.vim/.vimrc $HOME/.vimrc
+ln -sf $HOME/.mutt/.muttrc $HOME/.muttrc
 vim +PluginInstall +qa!
 
 

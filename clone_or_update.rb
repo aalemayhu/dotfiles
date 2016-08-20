@@ -12,6 +12,7 @@ repositories = {
     "#{github}/scanf/xcd.rb" => "https://github.com/scanf/xcd.rb",
     "#{home}/Scripts" => "https://github.com/scanf/Scripts",
     "#{home}/.vim" => "https://github.com/scanf/.vim",
+    "#{home}/.mutt" => "https://github.com/scanf/.mutt",
 }
 
 repositories.each_pair do |path, url|
