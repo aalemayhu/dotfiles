@@ -13,6 +13,7 @@ repositories = {
     "#{home}/Scripts" => "https://github.com/scanf/Scripts",
     "#{home}/.vim" => "https://github.com/scanf/.vim",
     "#{home}/.mutt" => "https://github.com/scanf/.mutt",
+    "#{home}/CamDesk" => "https://github.com/AlvaroMaceda/CamDesk",
 }
 
 repositories.each_pair do |path, url|
