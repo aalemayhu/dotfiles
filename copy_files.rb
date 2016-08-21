@@ -22,6 +22,7 @@ HOME=ENV['HOME']
 `cp #{CONFIG_FILES_DIR}/cantera/config #{HOME}/.cantera/`
 `cp #{CONFIG_FILES_DIR}/gnupg/gpg.conf #{HOME}/.gnupg/`
 `cp #{CONFIG_FILES_DIR}/ssh/config #{HOME}/.ssh/config`
+`chmod 600 #{HOME}/.ssh/config`
 
 # Git
 `cp #{CONFIG_FILES_DIR}/git/git-completion.bash #{HOME}/.git-completion.bash`
