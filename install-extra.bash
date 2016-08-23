@@ -19,7 +19,6 @@ main() {
   install_program mortehu cantera-wm
   install_program mortehu cantera-term
   install_program mortehu cantera-lock
-  install_program git git
 }
 
 main $1
