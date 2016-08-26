@@ -13,6 +13,9 @@ ln -sf $HOME/.vim/.vimrc $HOME/.vimrc
 ln -sf $HOME/.mutt/.muttrc $HOME/.muttrc
 vim +PluginInstall +qa!
 
+if [ ! -f $HOME/.msmtprc ]; then
+  cp $CONFIG_FILES_DIR/msmtprc $HOME/.msmtprc
+fi
 
 if [ ! -d "$HOME/.ssh" ]; then
   ssh-keygen -t rsa -C alexander@alemayhu.com
