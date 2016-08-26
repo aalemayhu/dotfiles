@@ -16,6 +16,9 @@ vim +PluginInstall +qa!
 if [ ! -f $HOME/.msmtprc ]; then
   cp $CONFIG_FILES_DIR/msmtprc $HOME/.msmtprc
 fi
+if [ ! -f $HOME/.offlineimaprc ]; then
+  cp $CONFIG_FILES_DIR/mutt/offlineimaprc $HOME/.offlineimaprc
+fi
 
 if [ ! -d "$HOME/.ssh" ]; then
   ssh-keygen -t rsa -C alexander@alemayhu.com
