@@ -1,4 +1,4 @@
-export VISUAL=vi
+export VISUAL=vim
 
 # Locale
 export LANGUAGE=en_US.UTF-8
