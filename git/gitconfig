@@ -16,6 +16,7 @@
         ss = status -s
         forget = rm --cached
 	unstage = reset HEAD --
+        ll = !git --no-pager log -1 --pretty='tformat:%h (%s, %ad)' --date=short
 
 [color]
         branch = auto
