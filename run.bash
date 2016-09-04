@@ -23,8 +23,3 @@ fi
 if [ ! -d "$HOME/.ssh" ]; then
   ssh-keygen -t rsa -C alexander@alemayhu.com
 fi
-if ! xset q &>/dev/null; then
-  exit
-fi
-echo "X server detected at \$DISPLAY [$DISPLAY]" >&2
-$CONFIG_FILES_DIR/install-extra.bash
