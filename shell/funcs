@@ -118,3 +118,7 @@ get_patch_work() {
   echo "You can easily apply it via: git am < $local_path"
   # TODO: ask to apply it
 }
+
+dev() {
+  vim +NERDTree
+}
