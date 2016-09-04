@@ -1,0 +1,5 @@
+filename: fix typos in {comments, functions, etc}
+
+o s/OLD/NEW
+
+...
