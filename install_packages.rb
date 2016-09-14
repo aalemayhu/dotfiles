@@ -20,5 +20,5 @@ if unamestr.start_with?('Linux')
    system("sudo #{pm} autoclean")
   end
   system('locale-gen "en_US.UTF-8"')
-  system("cd #{ENV['Home']}/src/github.com/scanf/xcd.rb && /usr/bin/sudo make install")
+  system("cd #{ENV['HOME']}/src/github.com/scanf/xcd.rb && /usr/bin/sudo make install")
 end
