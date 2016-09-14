@@ -10,10 +10,8 @@ if unamestr.start_with?('Linux')
 
   system("sudo #{pm} update")
   system("sudo #{pm} install git vim")
-  file='PackagesList'
-  File.readlines(file).each do |package|
-    system("sudo #{pm} install -y #{package}")
-  end
+  packages = File.readlines("PackagesList").join(" ").delete!("\n")
+  system("sudo #{pm} install -y #{packages}")
   system("sudo #{pm} autoremove")
 
   if pm == "apt-get"
