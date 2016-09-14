@@ -22,9 +22,3 @@ alphabetical particular order:
 - gcc, GNU C compiler
 - goobook
 - [newsbeuter](http://www.newsbeuter.org),  text mode rss feed reader with podcast support
-
-
-## TODO
-
-- [ ] Have a way to distinguish packages for machines. Like some things I want
-  on servers and others on desktops.
