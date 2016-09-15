@@ -17,3 +17,5 @@ offlineimap
 sudo
 make
 pry
+suckless-tools
+youtube-dl
