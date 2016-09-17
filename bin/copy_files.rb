@@ -27,3 +27,13 @@ HOME=ENV['HOME']
 # Git
 `cp #{CONFIG_FILES_DIR}/git/git-completion.bash #{HOME}/.git-completion.bash`
 `cp #{CONFIG_FILES_DIR}/git/gitconfig #{HOME}/.gitconfig`
+
+# Email
+msmtprc_path="#{HOME}/.msmtprc"
+if !File.exist?(msmtprc_path)
+  `cp #{CONFIG_FILES_DIR}/email/msmtprc $HOME/.msmtprc`
+end
+offlineimaprc_path="#{HOME}/.offlineimaprc"
+if !File.exist?(offlineimaprc_path)
+  `cp #{CONFIG_FILES_DIR}/email/offlineimaprc $HOME/.offlineimaprc`
+end
