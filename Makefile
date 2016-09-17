@@ -1,6 +1,6 @@
 project=scanf/config-files
 
-install:
+all:
 	bin/run.bash
 
 install-desktop: install
