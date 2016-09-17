@@ -2,6 +2,9 @@
 
 This repository contains the configurations files I use both on Linux and macOS.
 
+To install just on a server just run `make`. For a desktop enviornment `make
+desktop`.
+
 ## Essential packages
 
 Below is a short list of some tools I really want to have on my UNIX like
