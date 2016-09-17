@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 
-CONFIG_FILES_DIR=File.dirname(__FILE__)
+CONFIG_FILES_DIR="#{File.dirname(__FILE__)}/.."
 HOME=ENV['HOME']
 
 # X11
