@@ -2,8 +2,7 @@
 
 This repository contains the configurations files I use both on Linux and macOS.
 
-To install just on a server just run `make`. For a desktop enviornment `make
-desktop`.
+To install on a server run `make` or `make desktop` for a desktop environment.
 
 ## Essential packages
 
