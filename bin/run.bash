@@ -14,10 +14,10 @@ ln -sf $HOME/.mutt/.muttrc $HOME/.muttrc
 vim +PluginInstall +qa!
 
 if [ ! -f $HOME/.msmtprc ]; then
-  cp $BIN_DIRECTORY/msmtprc $HOME/.msmtprc
+  cp $BIN_DIRECTORY/../email/msmtprc $HOME/.msmtprc
 fi
 if [ ! -f $HOME/.offlineimaprc ]; then
-  cp $BIN_DIRECTORY/../mutt/offlineimaprc $HOME/.offlineimaprc
+  cp $BIN_DIRECTORY/../email/offlineimaprc $HOME/.offlineimaprc
 fi
 
 if [ ! -d "$HOME/.ssh" ]; then
