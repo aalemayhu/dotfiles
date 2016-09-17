@@ -3,7 +3,7 @@ project=scanf/config-files
 all:
 	bin/run.bash
 
-install-desktop: install
+desktop: install
 	bin/setup-desktop.bash
 
 docker-deploy: docker push_hub
