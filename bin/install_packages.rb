@@ -2,9 +2,8 @@
 
 unamestr = `uname`.strip
 if unamestr.start_with?('Linux')
-  distro_id = `/etc/lsb_release -i`.strip
   pm = "apt-get" # assuming Debian
-  if distro_id.end_with?("Fedora")
+  if File.exist?("/etc/fedora-release")
    pm = "dnf"
   end
 
