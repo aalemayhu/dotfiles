@@ -6,10 +6,11 @@ all:
 desktop: install
 	bin/setup-desktop.bash
 
-docker-deploy: docker push_hub
-	echo "Pushed to docker"
 docker:
 	docker build -t ${project} .
+
+docker-deploy: docker push_hub
+	echo "Pushed to docker"
 
 push_hub:
 	docker push ${project}
