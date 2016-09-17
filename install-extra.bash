@@ -19,6 +19,8 @@ main() {
   install_program mortehu cantera-wm
   install_program mortehu cantera-term
   install_program mortehu cantera-lock
+
+  $S modprobe -rvf psmouse
 }
 
 main $1
