@@ -7,3 +7,9 @@ docker:
 
 push_hub:
 	docker push ${project}
+
+install:
+	bin/run.bash
+
+install-desktop: install
+	bin/setup-desktop.bash
