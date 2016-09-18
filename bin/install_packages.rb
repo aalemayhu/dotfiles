@@ -4,7 +4,7 @@ unamestr = `uname`.strip
 sudo_path = "/usr/bin/sudo"
 
 def run_as_priviliged_user(cmd)
-  system("#{sudo_path} #{cmd}"
+  system("#{sudo_path} #{cmd}")
 end
 
 if unamestr.start_with?('Linux')
