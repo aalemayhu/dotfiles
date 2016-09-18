@@ -13,7 +13,7 @@ if !File.exist?(sudo_path)
   exit
 end
 
-if unamestr.start_with?('Linux')
+if `uname`.strip.start_with?('Linux')
   pm = "apt-get" # assuming Debian
   if File.exist?("/etc/fedora-release")
    pm = "dnf"
