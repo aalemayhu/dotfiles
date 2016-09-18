@@ -1,7 +1,9 @@
 #!/usr/bin/ruby
 
-unamestr = `uname`.strip
-sudo_path = "/usr/bin/sudo"
+def sudo_path
+  "/usr/bin/sudo"
+end
+
 def run_as_priviliged_user(cmd)
   system("#{sudo_path} #{cmd}")
 end
