@@ -2,9 +2,13 @@
 
 unamestr = `uname`.strip
 sudo_path = "/usr/bin/sudo"
-
 def run_as_priviliged_user(cmd)
   system("#{sudo_path} #{cmd}")
+end
+
+if !File.exist?(sudo_path)
+  puts "error: expected #{sudo_path} to exist. unsupported system"
+  exit
 end
 
 if unamestr.start_with?('Linux')
