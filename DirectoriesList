@@ -2,7 +2,6 @@
 .gnupg
 .ssh
 .shell
-.vim
 Downloads
 src/tmp
 src/github.com/VundleVim
