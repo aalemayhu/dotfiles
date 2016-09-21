@@ -15,13 +15,15 @@ end
 
 if `uname`.strip.start_with?('Linux')
   pm = "apt-get" # assuming Debian
+  packages = "Debian.packages"
   if File.exist?("/etc/fedora-release")
    pm = "dnf"
+   packages = "Fedora.packages"
   end
 
   run_as_priviliged_user("#{pm} update")
   run_as_priviliged_user("#{pm} install git vim")
-  packages = File.readlines("PackagesList").join(" ").delete!("\n")
+  packages = File.readlines(packages).join(" ").delete!("\n")
   run_as_priviliged_user("#{pm} install -y #{packages}")
   run_as_priviliged_user("#{pm} autoremove")
 
