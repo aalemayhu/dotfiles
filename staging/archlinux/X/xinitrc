@@ -1,7 +1,6 @@
 PATH=~/src/xpmsvol:$PATH
 
 PATH=$PATH:~/src/dmenu
-PATH=$PATH:~/src/hest
 PATH=$PATH:~/src/xbindkeys
 PATH=$PATH:~/opt/bin
 
@@ -26,10 +25,13 @@ pkill ssh-agent
 pkill unclutter
 pkill xpmsvol
 
-xbindkeys -p || xbindkeys
+if [ `type -P xbindkeys` ]; then
+    # Load custom keyboard key bindings
+    xbindkeys
+fi;
 
-xscreensaver -no-capture-stderr -no-splash &
 xpmsvol
 
 cantera-wm
 test -f /usr/bin/urxvt && urxvt -geometry 234x50
+redshift &
