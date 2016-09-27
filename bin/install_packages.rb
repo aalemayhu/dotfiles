@@ -14,15 +14,15 @@ if !File.exist?(sudo_path)
 end
 
 pm = "apt-get" # assuming Debian
-packages = "Debian.packages"
+packages = "packages/Debian"
 if File.exist?("/etc/fedora-release")
   pm = "dnf"
-  packages = "Fedora.packages"
+  packages = "packages/Fedora"
 end
 
 if `uname`.strip.start_with?('Darwin')
   pm = "brew"
-  packages = "macOS.packages"
+  packages = "packages/macOS"
   packages = File.readlines(packages).join(" ").delete!("\n")
   `#{pm} install #{packages}`
 else
