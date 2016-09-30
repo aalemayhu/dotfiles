@@ -16,9 +16,6 @@ vlock
 offlineimap
 sudo
 make
-pry
-suckless-tools
 youtube-dl
-libssl-dev
-irssi-plugin-otr
+openssl-libs
 the_silver_searcher
