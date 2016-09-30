@@ -33,6 +33,7 @@ msmtprc_path="#{HOME}/.msmtprc"
 if !File.exist?(msmtprc_path)
   `cp #{CONFIG_FILES_DIR}/email/msmtprc $HOME/.msmtprc`
 end
+`chmod 0600 #{msmtprc_path}`
 offlineimaprc_path="#{HOME}/.offlineimaprc"
 if !File.exist?(offlineimaprc_path)
   `cp #{CONFIG_FILES_DIR}/email/offlineimaprc $HOME/.offlineimaprc`
