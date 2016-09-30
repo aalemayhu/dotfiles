@@ -37,4 +37,3 @@ else
   end
   run_as_priviliged_user("locale-gen \"en_US.UTF-8\"")
 end
-system("cd #{ENV['HOME']}/src/github.com/scanf/xcd.rb && #{sudo_path} make install")
