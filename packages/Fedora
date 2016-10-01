@@ -21,3 +21,5 @@ openssl-libs
 the_silver_searcher
 gcc-c++
 redhat-rpm-config
+python-devel
+ruby-devel
