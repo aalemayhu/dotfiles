@@ -13,7 +13,6 @@ repositories = {
     "#{home}/Scripts" => "https://github.com/scanf/Scripts",
     "#{home}/.vim" => "https://github.com/scanf/.vim",
     "#{home}/.mutt" => "https://github.com/scanf/.mutt",
-    "#{home}/CamDesk" => "https://github.com/AlvaroMaceda/CamDesk",
     "#{github}/ggreer/the_silver_searcher" => "https://github.com/ggreer/the_silver_searcher",
 }
 
