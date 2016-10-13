@@ -23,3 +23,5 @@ gcc-c++
 redhat-rpm-config
 python-devel
 ruby-devel
+terminus-fonts
+terminus-fonts-console
