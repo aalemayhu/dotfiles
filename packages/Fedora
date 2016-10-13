@@ -26,3 +26,4 @@ ruby-devel
 terminus-fonts
 terminus-fonts-console
 openssl-devel
+elfutils-libelf-devel
