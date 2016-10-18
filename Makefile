@@ -3,6 +3,8 @@ project=scanf/config-files
 all:
 	bin/run.bash
 
+run: all
+
 desktop: install
 	bin/setup-desktop.bash
 
