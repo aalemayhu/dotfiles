@@ -27,3 +27,4 @@ terminus-fonts
 terminus-fonts-console
 openssl-devel
 elfutils-libelf-devel
+git-email
