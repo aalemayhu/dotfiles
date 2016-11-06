@@ -10,7 +10,6 @@ urlview
 autoconf
 automake
 gcc
-goobook
 newsbeuter
 vlock
 offlineimap
