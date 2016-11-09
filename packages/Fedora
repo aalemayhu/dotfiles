@@ -28,3 +28,6 @@ terminus-fonts-console
 openssl-devel
 elfutils-libelf-devel
 git-email
+powerline
+tmux-powerline
+powerline-docs
