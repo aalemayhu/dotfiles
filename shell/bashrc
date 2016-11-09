@@ -2,6 +2,6 @@ source $HOME/.git-completion.bash
 source $HOME/.shell/.aliases
 source $HOME/.shell/.env
 source $HOME/.shell/.funcs
-. /usr/share/powerline/bindings/bash/powerline.sh
+. /usr/share/powerline/bash/powerline.sh
 
 #ulimit -c unlimited
