@@ -2,6 +2,11 @@ source $HOME/.git-completion.bash
 source $HOME/.shell/.aliases
 source $HOME/.shell/.env
 source $HOME/.shell/.funcs
-. /usr/share/powerline/bash/powerline.sh
+
+if [ -f /etc/fedora-release ]; then
+  . /usr/share/powerline/bash/powerline.sh
+else
+  . /usr/share/powerline/bindings/bash/powerline.sh
+fi
 
 #ulimit -c unlimited
