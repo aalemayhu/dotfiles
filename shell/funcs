@@ -120,5 +120,5 @@ get_patch_work() {
 }
 
 dev() {
-  vim +NERDTree
+  vim +NERDTree +Tagbar
 }
