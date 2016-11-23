@@ -3,14 +3,6 @@
 CONFIG_FILES_DIR="#{File.dirname(__FILE__)}/.."
 HOME=ENV['HOME']
 
-# X11
-
-`cp #{CONFIG_FILES_DIR}/X/xbindkeysrc #{HOME}/.xbindkeysrc`
-`cp #{CONFIG_FILES_DIR}/X/xsession #{HOME}/.xsession`
-`cp #{CONFIG_FILES_DIR}/X/Xdefaults #{HOME}/.Xdefaults`
-`cp #{CONFIG_FILES_DIR}/X/Xmodmap #{HOME}/.Xmodmap`
-`cp #{CONFIG_FILES_DIR}/X/Xresources #{HOME}/.Xresources`
-
 # Shell
 `cp #{CONFIG_FILES_DIR}/shell/aliases #{HOME}/.shell/.aliases`
 `cp #{CONFIG_FILES_DIR}/shell/bashrc #{HOME}/.bashrc`
