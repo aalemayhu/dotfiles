@@ -25,6 +25,8 @@ main() {
   $S modprobe -rvf psmouse
 }
 
+
+bin/clone_or_update.rb desktop
 main $1
 
 # X11
