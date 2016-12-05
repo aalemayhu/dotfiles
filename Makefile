@@ -7,6 +7,8 @@ run: all
 
 desktop: install
 	bin/setup-desktop.bash
+copy:
+	bin/copy_files.rb
 
 docker:
 	docker build -t ${project} .
