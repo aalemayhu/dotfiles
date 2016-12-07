@@ -25,6 +25,7 @@ clone_or_update({
   "#{home}/.vim" => "https://github.com/scanf/.vim",
   "#{home}/.mutt" => "https://github.com/scanf/.mutt",
   "#{github}/ggreer/the_silver_searcher" => "https://github.com/ggreer/the_silver_searcher",
+  "#{github}/vrothberg/vgrep" => "https://github.com/vrothberg/vgrep",
 })
 
 if not ARGV[0]
