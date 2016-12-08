@@ -1,7 +1,6 @@
 autoconf
 automake
 curl
-fonts-powerline
 gcc
 git
 glances
@@ -16,9 +15,7 @@ msmtp
 mutt
 newsbeuter
 offlineimap
-powerline
 pry
-python-powerline
 silversearcher-ag
 suckless-tools
 sudo

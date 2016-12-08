@@ -3,10 +3,4 @@ source $HOME/.shell/.aliases
 source $HOME/.shell/.env
 source $HOME/.shell/.funcs
 
-if [ -f /etc/fedora-release ]; then
-  . /usr/share/powerline/bash/powerline.sh
-elif [ -f /etc/debian-release ]; then
-  . /usr/share/powerline/bindings/bash/powerline.sh
-fi
-
 #ulimit -c unlimited
