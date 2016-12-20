@@ -27,13 +27,3 @@ clone_or_update({
   "#{github}/ggreer/the_silver_searcher" => "https://github.com/ggreer/the_silver_searcher",
   "#{github}/vrothberg/vgrep" => "https://github.com/vrothberg/vgrep",
 })
-
-if not ARGV[0]
-  exit 0
-end
-
-clone_or_update({
-  "#{github}/scanf/cantera-lock" => "https://github.com/scanf/cantera-lock",
-  "#{github}/scanf/cantera-term" => "https://github.com/scanf/cantera-term",
-  "#{github}/scanf/cantera-wm" => "https://github.com/scanf/cantera-wm",
-})
