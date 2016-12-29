@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_FILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+BIN_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 
 install_program() {
   GITHUB_USER=$1
@@ -31,8 +31,8 @@ main $1
 
 # X11
 
-cp $CONFIG_FILES_DIR/X/xbindkeysrc $HOME/.xbindkeysrc
-cp $CONFIG_FILES_DIR/X/xsession $HOME/.xsession
-cp $CONFIG_FILES_DIR/X/Xdefaults $HOME/.Xdefaults
-cp $CONFIG_FILES_DIR/X/Xmodmap $HOME/.Xmodmap
-cp $CONFIG_FILES_DIR/X/Xresources $HOME/.Xresources
+cp $BIN_DIR/../X/xbindkeysrc $HOME/.xbindkeysrc
+cp $BIN_DIR/../X/xsession $HOME/.xsession
+cp $BIN_DIR/../X/Xdefaults $HOME/.Xdefaults
+cp $BIN_DIR/../X/Xmodmap $HOME/.Xmodmap
+cp $BIN_DIR/../X/Xresources $HOME/.Xresources
