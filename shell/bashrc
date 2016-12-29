@@ -3,4 +3,4 @@ source $HOME/.shell/.aliases
 source $HOME/.shell/.env
 source $HOME/.shell/.funcs
 
-#ulimit -c unlimited
+ulimit -c unlimited
