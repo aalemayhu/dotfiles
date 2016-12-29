@@ -5,7 +5,7 @@ all:
 
 run: all
 
-desktop: install
+desktop: run
 	bin/setup-desktop.bash
 copy:
 	bin/copy_files.rb
