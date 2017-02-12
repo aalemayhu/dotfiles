@@ -4,7 +4,13 @@ servers = (
     chatnet = "freenode";
     port = "6667";
     autoconnect = "yes";
-  }
+  },
+  {
+    address = "irc.oftc.net";
+    chatnet = "oftc";
+    port = "6667";
+    autoconnect = "yes";
+  },
 );
 freenode = {
   type = "IRC";
@@ -14,9 +20,10 @@ freenode = {
   autosendcmd = "";
 };
 channels = (
-  { name = "#bitraf"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#frikanalen"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#moosader"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#moosader"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#nuug"; chatnet = "freenode"; autojoin = "yes"; },
+  { name ="#kernelnewbies"; chatnet = "oftc"; autojoin = "yes" },
 );
 
 settings = {
