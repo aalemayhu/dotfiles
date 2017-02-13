@@ -1,5 +1,8 @@
-Host hotell.nuug.no nerdhaven.nuug.no profsys-integrator.no test.profsys-integrator.no nuug.no bomba.local
+Host hotell.nuug.no profsys-integrator.no test.profsys-integrator.no nuug.no bomba.local
     User ccscanf
 Host alemayhu.com rubina.alemayhu.com alemayhu.de
     User a
     ServerAliveInterval 120
+Host nerdhaven.nuug.no
+    User ccscanf
+    HostkeyAlgorithms +ssh-dss
