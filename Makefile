@@ -18,3 +18,5 @@ docker-run: docker
 	docker run -t -i ${project} /bin/bash
 docker-push:
 	docker push ${project}
+
+.PHONY: all
