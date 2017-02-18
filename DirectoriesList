@@ -1,8 +1,8 @@
 .cantera
 .gnupg
-.ssh
 .shell
+.ssh
 Downloads
-src/tmp
-src/github.com/VundleVim
 Mail
+src/github.com/VundleVim
+src/tmp
