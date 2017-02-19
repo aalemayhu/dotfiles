@@ -33,6 +33,6 @@ else
 
   if pm == "apt-get"
     run_as_priviliged_user("#{pm} autoclean")
+    run_as_priviliged_user("locale-gen \"en_US.UTF-8\"")
   end
-  run_as_priviliged_user("locale-gen \"en_US.UTF-8\"")
 end
