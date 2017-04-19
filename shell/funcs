@@ -1,3 +1,4 @@
+# vi: filetype=sh
 gp()
 {
   echo "Pushing tags and branches"
