@@ -1,15 +1,18 @@
 FROM ubuntu
 
-LABEL maintainer Alexander Alemayhu
+ENV MAIL_NAME "postfix postfix/mailname string container.alemayhu.com"
+ENV MAIL_TYPE "postfix postfix/main_mailer_type string 'Internet Site'"
 
-RUN apt-get update
-RUN apt-get install -y sudo git vim make ruby
+LABEL maintainer Alexander Alemayhu
 
 ADD . /tmp/config-files
 WORKDIR /tmp/config-files
 
-RUN echo "postfix postfix/mailname string container.alemayhu.com" | debconf-set-selections
-RUN echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
-RUN /bin/bash bin/run.bash
-RUN apt-get clean
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN \
+      apt-get update && \
+      apt-get install -y sudo git vim make ruby && \
+      echo $MAIL_NAME | debconf-set-selections && \
+      echo $MAIL_TYPE | debconf-set-selections && \
+      /bin/bash bin/run.bash && \
+      apt-get clean && \
+      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
