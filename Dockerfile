@@ -1,6 +1,6 @@
 FROM ubuntu
 
-MAINTAINER Alexander Alemayhu
+LABEL maintainer Alexander Alemayhu
 
 RUN apt-get update
 RUN apt-get install -y sudo git vim make ruby
