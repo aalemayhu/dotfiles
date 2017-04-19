@@ -1,15 +1,14 @@
-# Git
+# Interactively pick chunks for upcoming commit(s).
 alias ga='git add -p'
+# Verify that we are using the right branch.
 alias gbvv='git branch -v -v'
+# Perform verbose commit with sign off.
 alias gc='git commit -v -s'
+# Clone a repository.
 alias gic='git clone'
+# Reword a the last commit.
 alias git-amn='git ci -v --amend'
+# Show very short repository status.
 alias gs='git status -s'
-
-# Stuff
-alias batch_resize_jpg='for i in $( ls *.jpg); do convert -resize 50% $i re_$i; done'
-alias latest-log='tail -f $( ls -1tr `find . -name "*.log"` | tail -1 )'
-alias lprtwo='lpr -o sides=two-sided-long-edge'
-alias pyserve='python -m SimpleHTTPServer'
+# Pull in new changes from configuration files if any.
 alias reload='source ~/.bashrc'
-alias xc='open *.xcworkspace'
