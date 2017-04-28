@@ -16,6 +16,8 @@ newsbeuter
 offlineimap
 openssl-devel
 openssl-libs
+powerline
+powerline-docs
 python-devel
 redhat-rpm-config
 ruby-devel
@@ -26,11 +28,11 @@ terminus-fonts-console
 the_silver_searcher
 tig
 tmux
+tmux-powerline
 tree
 urlview
 vim
 vlock
 youtube-dl
-awesome
 links
 msmtp

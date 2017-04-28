@@ -1,10 +1,13 @@
+# vi: filetype=sh
+
+# Push all the local branches and tags
 gp()
 {
-  echo "Pushing tags and branches"
   git push origin --all
   git push origin --tags
 }
 
+# Fire up vim with a remote file temporarily downloaded.
 vimr()
 {
   URL=$1
@@ -22,6 +25,8 @@ vimr()
   vim $DOWNLOAD_PATH
 }
 
+# Clone a users repository, this depends on the current directory having the
+# correct username.
 gicp() {
   GITHUB_USER=$(basename `pwd`)
   GITHUB_PROJECT=$1
@@ -40,29 +45,12 @@ gicp() {
   fi
 }
 
-note() {
-  D=`date +"%A, %d. %B %Y"`
-  NOTE_DIR=$HOME/Notes/
-  NOTE=$NOTE_DIR/"$D.md"
-
-  echo "Write your note, end by CTRL-{D,C}"
-  echo "The note can be found in $NOTE_DIR"
-
-  mkdir -p $NOTE_DIR
-
-  if [ ! -f "$NOTE" ];
-  then
-    echo Date: $D >> "${NOTE}"
-  fi
-
-  echo >> "${NOTE}"
-  cat >> "${NOTE}"
-}
-
+# Create mp3 file from youtube video.
 _ymp3() {
   youtube-dl --extract-audio --audio-format mp3 $1
 }
 
+# Retrieve new updates to my key.
 _refreshk() {
   myid=756753E5
   echo "Refreshing $myid"
@@ -70,17 +58,20 @@ _refreshk() {
   gpg --refresh-key $myid
 }
 
+# List URLs from website.
 _href() {
   lynx -dump -listonly
 }
 
-# Source Start { http://www.commandlinefu.com/
+# Retrieve missing keys for email verification.
 _fetchMissingKeys() {
+# Source Start { http://www.commandlinefu.com/
   echo "Fetching any missing keys for $myid"
   for i in `gpg --list-sigs | perl -ne 'if(/User ID not found/){s/^.+([a-fA-F0-9]{8}).*/\1/; print}' | sort | uniq`; do gpg --keyserver-options no-auto-key-retrieve --recv-keys $i; done
-}
 # } Source End
+}
 
+# Clone a whole github organization.
 orgclone() {
   mkdir -p $1
   cd $1
@@ -88,37 +79,13 @@ orgclone() {
   cd -
 }
 
+# Show commits by authors.
 cpa() {
-  echo "Commits by authors"
   git shortlog -s -n
 }
 
-tempfileswift() {
-  tempfile=$(echo "`date`" | shasum | cut -c-6).swift
-  touch /tmp/$tempfile
-  echo "$tempfile created in /tmp"
-}
-
-transfer() {
-  curl --upload-file $1 https://transfer.sh/
-}
-
-tohtml() {
-  vim +TOhtml +wqall "$1"
-  open "$1".html
-}
-
-get_patch_work() {
-  patch_url="https://patchwork.kernel.org/patch/$1/raw/"
-  local_path="`echo $1|shasum|tr -d ' '`".patch
-  echo "Using patch from $patch_url"
-  wget  $patch_url -O  $local_path
-
-  echo "Patch stored at $local_path"
-  echo "You can easily apply it via: git am < $local_path"
-  # TODO: ask to apply it
-}
-
-dev() {
-  vim +NERDTree +Tagbar
+# Compile BPF program.
+__bcc() {
+  clang -O2 -emit-llvm -c $1 -o - | \
+    llc -march=bpf -filetype=obj -o "`basename $1 .c`.o"
 }

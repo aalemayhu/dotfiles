@@ -5,9 +5,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export SWIFT_BASE_DIR=$HOME/src/github.com/apple
-
 export PATH=$PATH:~/Scripts
-export PATH=$PATH:/usr/src/arm/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin
 export GOPATH="$HOME"/opt/og
 export PATH=$PATH:$GOPATH/bin
