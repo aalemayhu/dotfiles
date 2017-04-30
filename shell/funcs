@@ -89,3 +89,8 @@ __bcc() {
   clang -O2 -emit-llvm -c $1 -o - | \
     llc -march=bpf -filetype=obj -o "`basename $1 .c`.o"
 }
+
+# Compile with local LLVM and clang
+make_with_clang() {
+  make CLANG=~/src/llvm.org/llvm/build/bin/clang LLC=~/src/llvm.org/llvm/build/bin/llc
+}
