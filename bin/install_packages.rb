@@ -15,12 +15,9 @@ end
 
 pm = "apt-get" # assuming Debian
 packages = "packages/Debian"
-if File.exist?("/etc/fedora-release") or File.exist?("/usr/bin/yum")
-  pm = "yum"
+if File.exist?("/etc/fedora-release")
+  pm = "dnf"
   packages = "packages/Fedora"
-else
-  STDERR.puts "error: unknown `cat /etc/os-release`"
-  exit
 end
 
 if `uname`.strip.start_with?('Darwin')
