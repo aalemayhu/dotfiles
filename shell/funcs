@@ -7,24 +7,6 @@ gp()
   git push origin --tags
 }
 
-# Fire up vim with a remote file temporarily downloaded.
-vimr()
-{
-  URL=$1
-  SUFFIX=$(basename $URL)
-  SHA=`echo $URL | shasum`
-  FILENAME=${SHA//[[:blank:]]/}.$SUFFIX
-  DOWNLOAD_PATH=/tmp/$FILENAME
-  
-  echo "Will open remote $FILENAME in vim"
-
-  if [ ! -f $DOWNLOAD_PATH ]; then
-    wget "$URL" -O "$DOWNLOAD_PATH"
-  fi
-
-  vim $DOWNLOAD_PATH
-}
-
 # Clone a users repository, this depends on the current directory having the
 # correct username.
 gicp() {
