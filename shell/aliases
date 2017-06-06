@@ -12,3 +12,5 @@ alias git-amn='git ci -v --amend'
 alias gs='git status -s'
 # Pull in new changes from configuration files if any.
 alias reload='source ~/.bashrc'
+
+alias tt='make tt'
