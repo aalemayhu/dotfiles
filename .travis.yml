@@ -1,0 +1,5 @@
+sudo: required
+
+services:
+  - docker build -t scanf/config-files .
+  - #TODO: run some tests
