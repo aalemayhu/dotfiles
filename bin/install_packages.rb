@@ -27,7 +27,7 @@ if `uname`.strip.start_with?('Darwin')
   `#{pm} install #{packages}`
 else
   packages = File.readlines(packages).join(" ").delete!("\n")
-  run_as_priviliged_user("#{pm} update")
+  run_as_priviliged_user("#{pm} update -y")
   run_as_priviliged_user("#{pm} install -y #{packages}")
   run_as_priviliged_user("#{pm} autoremove")
 
