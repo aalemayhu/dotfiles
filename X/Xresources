@@ -4,7 +4,7 @@
 
 XTerm*renderFont: true
 XTerm*faceName: VeraMono
-XTerm*faceSize: 14
+XTerm*faceSize: 15
 XTerm*background:       black
 XTerm*foreground:       white
 XTerm*cursorColor:      white
