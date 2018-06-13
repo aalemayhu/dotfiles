@@ -3,7 +3,7 @@
 # Push all the local branches and tags
 gp()
 {
-  git push origin --all
+  git remote | xargs -L1 git push --all
   git push origin --tags
 }
 
