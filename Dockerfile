@@ -2,6 +2,7 @@ FROM ubuntu
 
 ENV MAIL_NAME "postfix postfix/mailname string container.alemayhu.com"
 ENV MAIL_TYPE "postfix postfix/main_mailer_type string 'Internet Site'"
+ENV DEBIAN_FRONTEND noninteractive
 
 LABEL maintainer Alexander Alemayhu
 
