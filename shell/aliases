@@ -10,6 +10,8 @@ alias gic='git clone'
 alias git-amn='git ci -v --amend'
 # Show very short repository status.
 alias gs='git status -s'
+# Show the commits for today
+alias heute='git shortlog --since=1day'
 # Pull in new changes from configuration files if any.
 alias reload='source ~/.bashrc'
 
