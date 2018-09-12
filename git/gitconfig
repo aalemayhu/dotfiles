@@ -1,14 +1,14 @@
 [user]
-  email = alexander@alemayhu.com
-  name = Alexander Alemayhu
-  signingkey = 756753E5
-        
+        email = alexander@alemayhu.com
+        name = Alexander Alemayhu
+        signingkey = 756753E5
+
 [core]
-	editor = vim
+        editor = vim
         abbrev = 12
 [alias]
-	ci = commit
-	st = status
+	      ci = commit
+	      st = status
         br = branch
         ch = checkout
         clf = clean -fd
@@ -16,7 +16,7 @@
         p = pull
         ss = status -s
         forget = rm --cached
-	unstage = reset HEAD --
+        unstage = reset HEAD --
         ll = !git --no-pager log -1 --pretty='tformat:%h (%s, %ad)' --date=short
 
 [color]
@@ -40,7 +40,7 @@
         changed = green
         untracked = cyan
 [push]
-	default = matching
+	      default = matching
 [diff]
         tool = icdiff
         renames = true
@@ -49,7 +49,7 @@
 [difftool "icdiff"]
         cmd = icdiff $LOCAL $REMOTE
 [sendemail]
-	smtpserver = /usr/local/bin/msmtp
+	      smtpserver = /usr/local/bin/msmtp
         chainreplyto = false
 [log]
         decorate = auto
