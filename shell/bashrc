@@ -1,3 +1,5 @@
+# vi:syntax=sh
+
 source $HOME/.git-completion.bash
 source $HOME/.shell/.aliases
 source $HOME/.shell/.env

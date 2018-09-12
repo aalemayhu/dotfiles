@@ -1,3 +1,5 @@
+# vi:syntax=sh
+
 # Interactively pick chunks for upcoming commit(s).
 alias ga='git add -p'
 # Verify that we are using the right branch.

@@ -1,3 +1,5 @@
+# vi:syntax=sh
+
 export VISUAL=vim
 
 # Locale
