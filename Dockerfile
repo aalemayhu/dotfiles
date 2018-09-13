@@ -10,7 +10,8 @@ ADD . /tmp/config-files
 WORKDIR /tmp/config-files
 ADD . /tmp/config-files
 
-RUN apt-get update && \
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+      apt-get update && \
       apt-get install -y sudo git vim make ruby && \
       echo $MAIL_NAME | debconf-set-selections && \
       echo $MAIL_TYPE | debconf-set-selections && \
