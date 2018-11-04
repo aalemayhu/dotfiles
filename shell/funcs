@@ -4,7 +4,7 @@
 gp()
 {
   git remote | xargs -L1 git push --all
-  git push origin --tags
+  git remote | xargs -L1 git push --tags
 }
 
 # Clone a users repository, this depends on the current directory having the
