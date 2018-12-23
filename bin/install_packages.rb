@@ -36,3 +36,6 @@ else
     run_as_priviliged_user("locale-gen \"en_US.UTF-8\"")
   end
 end
+
+# Install node packages
+run_as_priviliged_user("npm install -g ggrep")
