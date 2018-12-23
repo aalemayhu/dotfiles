@@ -17,4 +17,6 @@ alias heute='git shortlog --since=1day'
 # Pull in new changes from configuration files if any.
 alias reload='source ~/.bashrc'
 
+alias vgrep='ggrep'
+
 alias tt='make tt'
