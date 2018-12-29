@@ -39,3 +39,4 @@ end
 
 # Install node packages
 run_as_priviliged_user("npm install -g ggrep")
+run_as_priviliged_user("npm install -g liyu")
