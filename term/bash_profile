@@ -1,3 +1,8 @@
-source $HOME/.bashrc
+source ~/.bashrc
+eval "$(rbenv init -)"
+source ~/.swift-package-complete.bash
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"

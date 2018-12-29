@@ -10,6 +10,10 @@ HOME=ENV['HOME']
 `cp #{CONFIG_FILES_DIR}/shell/funcs #{HOME}/.shell/.funcs`
 `cp #{CONFIG_FILES_DIR}/shell/tmux.conf #{HOME}/.tmux.conf`
 
+if `uname`.strip.start_with?('Darwin')
+`cp #{CONFIG_FILES_DIR}/term/bash_profile #{HOME}/.bash_profile`
+end
+
 # Misc
 `cp #{CONFIG_FILES_DIR}/cantera/config #{HOME}/.cantera/`
 `cp #{CONFIG_FILES_DIR}/gnupg/gpg.conf #{HOME}/.gnupg/`
