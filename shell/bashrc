@@ -11,3 +11,7 @@ if [ -f /etc/fedora-release ]; then
 elif [ -f /etc/debian-release ]; then
   . /usr/share/powerline/bindings/bash/powerline.sh
 fi
+
+if [[ "$TERMINOLOGY" -eq "1" ]]; then
+    pokemon
+fi
