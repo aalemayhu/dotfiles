@@ -1,6 +1,5 @@
 source ~/.bashrc
 eval "$(rbenv init -)"
-source ~/.swift-package-complete.bash
 
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
