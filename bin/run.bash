@@ -16,5 +16,3 @@ vim +PluginInstall +qa!
 if [ ! -d "$HOME/.ssh" ]; then
   ssh-keygen -t rsa -C alexander@alemayhu.com
 fi
-
-exit 1
