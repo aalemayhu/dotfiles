@@ -20,3 +20,4 @@ ranger
 node
 nvm
 rbenv
+cloc
