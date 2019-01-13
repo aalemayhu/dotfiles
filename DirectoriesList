@@ -8,3 +8,4 @@ src/github.com/VundleVim
 src/tmp
 opt/og
 .local/bin
+src/gitlab.com/scanf
