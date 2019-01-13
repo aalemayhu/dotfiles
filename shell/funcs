@@ -32,6 +32,11 @@ _ymp3() {
   youtube-dl --extract-audio --audio-format mp3 $1
 }
 
+# Only download mp4 files
+_onlymp4() {
+  youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4' $1
+}
+
 # Retrieve new updates to my key.
 _refreshk() {
   myid=756753E5
