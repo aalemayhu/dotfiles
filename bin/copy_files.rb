@@ -34,3 +34,8 @@ offlineimaprc_path="#{HOME}/.offlineimaprc"
 if !File.exist?(offlineimaprc_path)
   `cp #{CONFIG_FILES_DIR}/email/offlineimaprc $HOME/.offlineimaprc`
 end
+
+# PHP
+
+`wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O ~/.local/bin/php-cs-fixer`
+`chmod +x ~/.local/bin/php-cs-fixer`
