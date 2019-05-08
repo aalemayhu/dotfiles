@@ -15,4 +15,4 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=~/.local/bin:$PATH
 export PATH=$HOME/src/llvm.org/llvm/build/bin:$PATH
 export PATH=/Applications/Wine\ Stable.app/Contents/Resources/wine/bin:$PATH
-export PATH="/Users/scanf/.deno/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
