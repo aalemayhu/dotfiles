@@ -16,14 +16,27 @@ async function cloneOrUpdate(mappings) {
     const foundRepo = existsSync(repo.local);
     if (!foundRepo) {
       jobs.push(
-        Deno.run({ args: ['git', 'clone', repo.remote, repo.local, '--recurse-submodules'] })
-      )
+        Deno.run({
+          args: [
+            "git",
+            "clone",
+            repo.remote,
+            repo.local,
+            "--recurse-submodules"
+          ]
+        })
+      );
     } else if (!existsSync(`${repo.local}/.git`)) {
-      console.log('error', `directory exists at ${repo.local} but is not a git directory`)
+      console.log(
+        "error",
+        `directory exists at ${repo.local} but is not a git directory`
+      );
     } else {
       jobs.push(
-        Deno.run({args: ['git', '-C', repo.local, 'pull', '--recurse-submodules']})
-      )
+        Deno.run({
+          args: ["git", "-C", repo.local, "pull", "--recurse-submodules"]
+        })
+      );
     }
   }
   // Wait for all the jobs to finish
@@ -37,16 +50,25 @@ export async function syncRepositories() {
   const src = `${home}/src/github.com`;
 
   const mappings = [
-    new Repository(`${src}/VundleVim/Vundle.vim`, "https://github.com/VundleVim/Vundle.vim.git"),
-    new Repository(`${src}/scanf/dotfiles`, "https://github.com/scanf/dotfiles" ),
-    new Repository(`${src}/scanf/xcd.rb`, "https://github.com/scanf/xcd.rb" ),
-    new Repository(`${home}/.vim`, "https://github.com/scanf/.vim" ),
-    new Repository(`${src}/ggreer/the_silver_searcher`, "https://github.com/ggreer/the_silver_searcher" )
+    new Repository(
+      `${src}/VundleVim/Vundle.vim`,
+      "https://github.com/VundleVim/Vundle.vim.git"
+    ),
+    new Repository(
+      `${src}/scanf/dotfiles`,
+      "https://github.com/scanf/dotfiles"
+    ),
+    new Repository(`${src}/scanf/xcd.rb`, "https://github.com/scanf/xcd.rb"),
+    new Repository(`${home}/.vim`, "https://github.com/scanf/.vim"),
+    new Repository(
+      `${src}/ggreer/the_silver_searcher`,
+      "https://github.com/ggreer/the_silver_searcher"
+    )
   ];
 
   await cloneOrUpdate(mappings);
 }
 
 if (import.meta.main) {
-  syncRepositories()
+  syncRepositories();
 }
