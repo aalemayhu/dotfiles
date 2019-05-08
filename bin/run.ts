@@ -16,6 +16,6 @@
 
   await Deno.run({ args: ["vim", "+PluginInstall", "+qa!"] }).status();
   await Deno.run({
-    args: ["ssh-keygen", "-t", "ed25519", "C", "a@alemayhu.com"]
+    args: ["ssh-keygen", "-t", "ed25519", "-C", "a@alemayhu.com"]
   }).status();
 })();
