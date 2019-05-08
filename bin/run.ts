@@ -21,7 +21,7 @@ import { existsSync } from "https://deno.land/std/fs/mod.ts";
 
   await Deno.run({ args: ["vim", "+PluginInstall", "+qa!"] }).status();
 
-  if (!existsSync(`${home}/.ssh`)) {
+  if (!existsSync(`${home}/.ssh/id_ed25519`)) {
     await Deno.run({
       args: ["ssh-keygen", "-t", "ed25519", "-C", "a@alemayhu.com", "-N", "''"]
     }).status();
