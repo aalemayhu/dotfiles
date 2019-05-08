@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env deno run --allow-read --allow-write#!/bin/sh
 
-src=https://github.com/scanf/dotfiles/
-dst=/tmp/dotfiles
+(async function() {
+const repo = 'https://github.com/scanf/dotfiles/':
+const dst = '/tmp/dotfiles';
 
-sudo apt-get install -y git ruby make
-git clone $src $dst
-cd $dst
-make
+await Deno.run(({args: ['sudo', 'apt-get', 'install', '-y', 'git', 'ruby', 'make']})).status();
+await Deno.run({args: ['git', 'clone', repo, dst]}).status()
+await Deno.run({args: ['make', '-C', dst]}).status()
+})()
