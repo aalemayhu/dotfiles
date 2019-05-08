@@ -11,6 +11,9 @@ desktop: run
 copy:
 	bin/copy_files.rb
 
+fmt:
+	deno fmt bin/*.ts
+
 docker:
 	docker build -t ${project} .
 docker_deploy: docker docker_push
