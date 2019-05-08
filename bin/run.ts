@@ -9,7 +9,7 @@ import { createDirectories } from "./create_directories.ts";
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");
   await Deno.run({ args: ["ruby", `${dirname}/install_packages.rb`] }).status();
-  createDirectories(`${home}/src/github.com/scanf`, "./DirectoriesList");
+  createDirectories(home, "./DirectoriesList");
   await Deno.run({ args: ["ruby", `${dirname}/clone_or_update.rb`] }).status();
   await Deno.run({ args: ["ruby", `${dirname}/copy_files.rb`] }).status();
 
