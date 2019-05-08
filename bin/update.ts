@@ -1,9 +1,9 @@
 #!/usr/bin/env deno run --allow-read
-import { exists } from "https://deno.land/std/fs/mod.ts";
+import { isDebian, isFedora } from "./distro.ts";
 
 (async () => {
-  const isFedora = await exists("/etc/fedora-release");
-  if (isFedora) {
+  let fedora = await isFedora();
+  if (fedora) {
     const commands = ["update", "upgrade", "autoremove"];
     for (const cmd of commands) {
       await Deno.run({ args: ["dnf", "-y", cmd] }).status();
@@ -12,17 +12,8 @@ import { exists } from "https://deno.land/std/fs/mod.ts";
     Deno.exit(0);
   }
 
-  const isDebian = await exists("/etc/debian-release");
-  let hasAptGet = isDebian;
-
-  if (!isDebian) {
-    try {
-      await Deno.run({ args: ["sudo", "apt-get", "--version", ">", "/dev/null"] }).status();
-      hasAptGet = true;
-    } catch (error) {}
-  }
-
-  if (isDebian || hasAptGet) {
+  let debian = await isDebian();
+  if (debian) {
     await Deno.run({ args: ["sudo", "apt-get", "update"] }).status();
     await Deno.run({ args: ["sudo", "apt-get", "upgrade", "-y"] }).status();
     await Deno.run({ args: ["sudo", "apt-get", "upgrade", "-y"] }).status();
