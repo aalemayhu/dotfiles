@@ -1,5 +1,5 @@
 #!/usr/bin/env deno run --allow-read --allow-write
-import { exists } from "https://deno.land/std/fs/mod.ts";
+import { existsSync } from "https://deno.land/std/fs/mod.ts";
 
 import { isDebian, isFedora } from "./distro.ts";
 
@@ -7,16 +7,13 @@ import { isDebian, isFedora } from "./distro.ts";
   const repo = "https://github.com/scanf/dotfiles/";
   const dst = "/tmp/dotfiles";
 
-  if (exists(dst)) {
+  if (existsSync(dst)) {
     await Deno.run({ args: ["git", "-C", dst, "pull", "origin"] }).status();
   } else {
     await Deno.run({ args: ["git", "clone", repo, dst] }).status();
   }
 
-  const debian = await isDebian();
-  const fedora = await isFedora();
-
-  if (debian) {
+  if (isDebian()) {
     await Deno.run({
       args: [
         "sudo",
@@ -29,7 +26,7 @@ import { isDebian, isFedora } from "./distro.ts";
         "locales"
       ]
     }).status();
-  } else if (fedora) {
+  } else if (isFedora()) {
     await Deno.run({
       args: ["sudo", "dnf", "install", "-y", "git", "ruby", "make"]
     }).status();
