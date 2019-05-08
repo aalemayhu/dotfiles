@@ -27,5 +27,5 @@ curl -fsSL https://deno.land/x/install/install.sh | sh
 --allow-read \
 --allow-run \
  --allow-env \
- https://raw.githubusercontent.com/scanf/dotfiles/master/bin/bootstrap-debian.ts
+ https://raw.githubusercontent.com/scanf/dotfiles/master/bin/bootstrap-fedora.ts
 ```
