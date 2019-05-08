@@ -10,5 +10,9 @@ your default setup.
 
 ```sh
 curl -fsSL https://deno.land/x/install/install.sh | sh
-~/.deno/bin/deno run --allow-write --allow-read --allow-run --allow-env https://raw.githubusercontent.com/scanf/dotfiles/master/bin/bootstrap-debian.ts
+~/.deno/bin/deno run --allow-write \
+--allow-read \
+--allow-run \
+ --allow-env \
+ https://raw.githubusercontent.com/scanf/dotfiles/master/bin/bootstrap-debian.ts
 ```
