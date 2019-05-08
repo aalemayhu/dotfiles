@@ -21,7 +21,6 @@ clone_or_update({
   "#{github}/scanf/dotfiles" => "https://github.com/scanf/dotfiles",
   "#{github}/scanf/xcd.rb" => "https://github.com/scanf/xcd.rb",
   "#{home}/.vim" => "https://github.com/scanf/.vim",
-  "#{home}/.mutt" => "https://github.com/scanf/.mutt",
   "#{github}/ggreer/the_silver_searcher" => "https://github.com/ggreer/the_silver_searcher",
 })
 
