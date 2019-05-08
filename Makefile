@@ -1,6 +1,7 @@
 project=scanf/config-files
 
 all:
+	curl -fsSL https://deno.land/x/install/install.sh | sh
 	bin/run.bash
 
 run: all
