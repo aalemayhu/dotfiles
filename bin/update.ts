@@ -24,4 +24,4 @@ import { isDebian, isFedora } from "./distro.ts";
 
   console.error("fatal: unsupported system");
   Deno.exit(1);
-})()
+})();
