@@ -6,6 +6,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 LABEL maintainer Alexander Alemayhu
 
+ADD . /tmp/config-files
+WORKDIR /tmp/config-files
+
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
       apt-get update && \
       apt-get install -y sudo git vim make ruby curl locales && \
@@ -13,6 +16,4 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
       echo $MAIL_TYPE | debconf-set-selections && \
       make all && \
       apt-get clean && \
-      rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-WORKDIR /tmp/config-files
+      rm -rf /var/lib/apt/lists/* /var/tmp/*
