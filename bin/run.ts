@@ -1,5 +1,7 @@
 #!/usr/bin/env deno run --allow-read --allow-write
 
+import { existsSync } from "https://deno.land/std/fs/mod.ts";
+
 (async function() {
   const home = Deno.env().HOME;
   let dirname = import.meta.url
@@ -12,7 +14,10 @@
   await Deno.run({ args: ["ruby", `${dirname}/clone_or_update.rb`] }).status();
   await Deno.run({ args: ["ruby", `${dirname}/copy_files.rb`] }).status();
 
-  await Deno.symlink(`${home}/.vim/.vimrc`, `${home}/.vimrc`);
+  const vimrc = `${home}/.vimrc`;
+  if (!existsSync(vimrc)) {
+    await Deno.symlink(`${home}/.vim/.vimrc`, vimrc);
+  }
 
   await Deno.run({ args: ["vim", "+PluginInstall", "+qa!"] }).status();
   await Deno.run({
