@@ -1,3 +1,0 @@
-@reboot ~/.dropbox-dist/dropboxd
-@reboot /srv/etherpad-lite/bin/run.sh
-@reboot docker start gogs
