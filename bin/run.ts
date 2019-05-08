@@ -1,8 +1,10 @@
 #!/usr/bin/env deno run --allow-read --allow-write
 
 import { existsSync } from "https://deno.land/std/fs/mod.ts";
+
 import { createDirectories } from "./create_directories.ts";
 import { copyFiles } from "./copy_files.ts";
+import { syncRepositories } from "./clone_or_update.ts"
 
 (async function() {
   const home = Deno.env().HOME;
@@ -11,7 +13,7 @@ import { copyFiles } from "./copy_files.ts";
     .replace("file:/", "");
   await Deno.run({ args: ["ruby", `${dirname}/install_packages.rb`] }).status();
   createDirectories(home, "./DirectoriesList");
-  await Deno.run({ args: ["ruby", `${dirname}/clone_or_update.rb`] }).status();
+  syncRepositories();
   copyFiles();
 
   const vimrc = `${home}/.vimrc`;
