@@ -2,6 +2,7 @@
 
 import { existsSync } from "https://deno.land/std/fs/mod.ts";
 import { createDirectories } from "./create_directories.ts";
+import { copyFiles } from "./copy_files.ts";
 
 (async function() {
   const home = Deno.env().HOME;
@@ -11,7 +12,7 @@ import { createDirectories } from "./create_directories.ts";
   await Deno.run({ args: ["ruby", `${dirname}/install_packages.rb`] }).status();
   createDirectories(home, "./DirectoriesList");
   await Deno.run({ args: ["ruby", `${dirname}/clone_or_update.rb`] }).status();
-  await Deno.run({ args: ["ruby", `${dirname}/copy_files.rb`] }).status();
+  copyFiles();
 
   const vimrc = `${home}/.vimrc`;
   if (!existsSync(vimrc)) {

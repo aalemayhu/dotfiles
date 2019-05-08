@@ -9,7 +9,7 @@ run: all
 desktop: run
 	bin/setup-desktop.bash
 copy:
-	bin/copy_files.rb
+	deno run --allow-read --allow-write --allow-env --allow-run bin/copy_files.ts
 
 fmt:
 	deno fmt bin/*.ts

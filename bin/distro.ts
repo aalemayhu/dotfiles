@@ -7,3 +7,11 @@ export function isFedora() {
 export function isDebian() {
   return existsSync("/usr/bin/apt-get");
 }
+
+export async function isDarwin() {
+  const uname = await Deno.run({ args: ["uname"], stdout: "piped" });
+  const decoder = new TextDecoder();
+  const stdout = decoder.decode(await Deno.readAll(uname.stdout));
+  await uname.status();
+  return stdout.trim().includes("Darwin");
+}
