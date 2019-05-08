@@ -12,7 +12,7 @@ ADD . /tmp/config-files
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
       apt-get update && \
-      apt-get install -y sudo git vim make ruby curl && \
+      apt-get install -y sudo git vim make ruby curl locales && \
       echo $MAIL_NAME | debconf-set-selections && \
       echo $MAIL_TYPE | debconf-set-selections && \
       make && \

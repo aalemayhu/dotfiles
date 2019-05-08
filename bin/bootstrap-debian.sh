@@ -3,7 +3,7 @@
 src=https://github.com/scanf/dotfiles/
 dst=/tmp/dotfiles
 
-sudo apt-get install -y git ruby make
+sudo apt-get install -y git ruby make locales
 git clone $src $dst
 cd $dst
 make
