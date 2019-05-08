@@ -1,6 +1,7 @@
 #!/usr/bin/env deno run --allow-read --allow-write
 
 import { existsSync } from "https://deno.land/std/fs/mod.ts";
+import { createDirectories } from "./create_directories.ts";
 
 (async function() {
   const home = Deno.env().HOME;
@@ -8,9 +9,7 @@ import { existsSync } from "https://deno.land/std/fs/mod.ts";
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");
   await Deno.run({ args: ["ruby", `${dirname}/install_packages.rb`] }).status();
-  await Deno.run({
-    args: ["ruby", `${dirname}/create_directories.rb`]
-  }).status();
+  createDirectories(`${home}/src/github.com/scanf`, "./DirectoriesList");
   await Deno.run({ args: ["ruby", `${dirname}/clone_or_update.rb`] }).status();
   await Deno.run({ args: ["ruby", `${dirname}/copy_files.rb`] }).status();
 
