@@ -25,7 +25,7 @@ import { syncRepositories } from "./clone_or_update.ts"
 
   if (!existsSync(`${home}/.ssh/id_ed25519`)) {
     await Deno.run({
-      args: ["ssh-keygen", "-t", "ed25519", "-C", "a@alemayhu.com", "-N", "''"]
+      args: ["ssh-keygen", "-t", "ed25519", "-C", "a@alemayhu.com"]
     }).status();
   }
 })();
