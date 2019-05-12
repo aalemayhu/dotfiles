@@ -6,6 +6,4 @@ RUN mkdir -pv /tmp/
 ADD . /tmp/config-files
 WORKDIR /tmp/config-files
 
-RUN make all && \
-      apt-get clean && \
-      rm -rf /var/lib/apt/lists/* /var/tmp/*
+RUN make all
