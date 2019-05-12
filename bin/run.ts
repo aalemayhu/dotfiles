@@ -14,8 +14,8 @@ import { installPackages } from "./install_packages.ts";
     .replace("file:/", "");
   await installPackages();
   createDirectories(home, "./DirectoriesList");
-  syncRepositories();
-  copyFiles();
+  await syncRepositories();
+  await copyFiles();
 
   const vimrc = `${home}/.vimrc`;
   if (!existsSync(vimrc)) {
