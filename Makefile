@@ -1,7 +1,7 @@
 project=scanf/config-files
 
 all:
-	curl -fsSL https://deno.land/x/install/install.sh | sh
+	$(shell grep curl README.md)
 	~/.deno/bin/deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
 
 run: all
