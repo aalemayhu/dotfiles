@@ -33,3 +33,9 @@ export async function installPackages() {
     await Deno.run({ args: ["sudo", "locale-gen", '"en_US.UTF-8"'] }).status();
   }
 }
+
+if (import.meta.main) {
+  (async () => {
+    await installPackages();
+  })();
+}
