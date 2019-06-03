@@ -6,13 +6,15 @@ macOS.
 Use this at your own risk and don't expect any support from me if you break
 your default setup.
 
-## Debian
+## Installing
 
 ```sh
 curl -fsSL https://deno.land/x/install/install.sh | sh
+git clone https://github.com/scanf/dotfiles ~/src/github.com/scanf/dotfiles
+cd ~/src/github.com/scanf/dotfiles
 ~/.deno/bin/deno run --allow-write \
 --allow-read \
 --allow-run \
  --allow-env \
- https://raw.githubusercontent.com/scanf/dotfiles/master/bin/bootstrap.ts
+ bin/bootstrap.ts
 ```
