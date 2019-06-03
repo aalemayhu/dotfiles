@@ -12,11 +12,12 @@ export async function installPackages() {
 
   let dirname = import.meta.url
     .substring(0, import.meta.url.lastIndexOf("/"))
-    .replace("file:/", "")
+    .replace("file:/", "");
+  const configDir = `${dirname}/..`;
 
   const darwin = await isDarwin();
   if (darwin) {
-    const packagesFile = readFileStrSync(`${dirname}/packages/macOS`);
+    const packagesFile = readFileStrSync(`${configDir}/packages/macOS`);
     const packages = packagesFile.split("\n").join(" ");
     await Deno.run({ args: ["brew", "install"].concat(packages) }).status();
   } else if (isDebian()) {
@@ -24,7 +25,7 @@ export async function installPackages() {
     await Deno.run({ args: ["sudo", pm, "update", "-y"] }).status();
 
     const packagesFilePath = isDebian() ? "packages/Debian" : "packages/Fedora";
-    const packages = readFileStrSync(`${dirname}/${packagesFilePath}`)
+    const packages = readFileStrSync(`${configDir}/${packagesFilePath}`)
       .split("\n")
       .join(" ");
 
