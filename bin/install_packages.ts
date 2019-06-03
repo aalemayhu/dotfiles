@@ -24,7 +24,7 @@ export async function installPackages() {
     await Deno.run({ args: ["sudo", pm, "update", "-y"] }).status();
 
     const packagesFilePath = isDebian() ? "packages/Debian" : "packages/Fedora";
-    const packages = readFileStrSync(`${dirname}/packagesFilePath`)
+    const packages = readFileStrSync(`${dirname}/${packagesFilePath}`)
       .split("\n")
       .join(" ");
 
