@@ -9,7 +9,7 @@ your default setup.
 ## Debian
 
 ```sh
-curl -fsSL https://deno.land/x/install/install.sh
+curl -fsSL https://deno.land/x/install/install.sh | sh
 ~/.deno/bin/deno run --allow-write \
 --allow-read \
 --allow-run \
