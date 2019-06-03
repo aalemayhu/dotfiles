@@ -3,9 +3,10 @@ import { existsSync } from "https://deno.land/std/fs/mod.ts";
 
 import { isDebian, isFedora } from "./distro.ts";
 
-(async function() {
+(async function () {
   const repo = "https://github.com/scanf/dotfiles/";
-  const dst = "/tmp/dotfiles";
+  const home = Deno.env().HOME;
+  const dst = `${home}/src/github.com/scanf`
 
   if (existsSync(dst)) {
     await Deno.run({ args: ["git", "-C", dst, "pull", "origin"] }).status();

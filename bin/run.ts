@@ -7,13 +7,13 @@ import { copyFiles } from "./copy_files.ts";
 import { syncRepositories } from "./clone_or_update.ts";
 import { installPackages } from "./install_packages.ts";
 
-(async function() {
+(async function () {
   const home = Deno.env().HOME;
   let dirname = import.meta.url
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");
   await installPackages();
-  createDirectories(home, "./DirectoriesList");
+  createDirectories(home, `${dirname}/DirectoriesList`);
   await syncRepositories();
   await copyFiles();
 
