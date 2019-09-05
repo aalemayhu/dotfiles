@@ -13,7 +13,7 @@ import { installPackages } from "./install_packages.ts";
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");
   await installPackages();
-  createDirectories(home, `${dirname}/DirectoriesList`);
+  createDirectories(home, `${dirname}/../DirectoriesList`);
   await syncRepositories();
   await copyFiles();
 
