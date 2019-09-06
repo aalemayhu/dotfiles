@@ -4,7 +4,7 @@
 alias ga='git add -p'
 # Verify that we are using the right branch.
 alias gbvv='git branch -v -v'
-# Perform verbose commit with sign off.
+# Perform verbose commit.
 alias gc='git commit -v -s'
 # Clone a repository.
 alias gic='git clone'
