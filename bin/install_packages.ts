@@ -19,7 +19,13 @@ export async function installPackages() {
   if (darwin) {
     const packagesFile = readFileStrSync(`${configDir}/packages/macOS`);
     const packages = packagesFile.split("\n");
-    await Deno.run({ args: ["brew", "install"].concat(packages) }).status();
+    try {
+      await Deno.run({ args: ["brew", "install"].concat(packages) }).status();
+    } catch {
+      console.log('Failed to install packages via brew, trying to install brew')
+      await Deno.run({ args: ["/usr/bin/ruby", "-e", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"]}).status();
+      await Deno.run({ args: ["brew", "install"].concat(packages) }).status();
+    }
   } else if (isDebian()) {
     const pm = isDebian() ? "apt-get" : "dnf";
     await Deno.run({ args: ["sudo", pm, "update", "-y"] }).status();
