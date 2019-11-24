@@ -63,7 +63,11 @@ export async function syncRepositories() {
     new Repository(
       `${src}/ggreer/the_silver_searcher`,
       "https://github.com/ggreer/the_silver_searcher"
-    )
+    ),
+    new Repository(
+      `${home}/.mutt`,
+      "https://github.com/scanf/.mutt"
+    ),
   ];
 
   await cloneOrUpdate(mappings);
