@@ -75,6 +75,10 @@ export async function syncRepositories() {
     new Repository(
       `${home}/.oh-my-zsh/custom/themes/spaceship-prompt`,
       "https://github.com/denysdovhan/spaceship-prompt.git",
+    ),
+    new Repository(
+      `${home}/.oh-my-zsh/custom/plugins/yarn-completion`,
+      "https://github.com/buonomo/yarn-completion"
     )
   ];
 
