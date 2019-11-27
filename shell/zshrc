@@ -46,3 +46,7 @@ if typeset -f nvm > /dev/null; then
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 fi
+
+# Use Spaceship prompt
+autoload -U promptinit; promptinit
+prompt spaceship
