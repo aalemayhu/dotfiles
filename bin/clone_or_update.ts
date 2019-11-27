@@ -68,6 +68,10 @@ export async function syncRepositories() {
       `${home}/.mutt`,
       "https://github.com/scanf/.mutt"
     ),
+    new Repository(
+      `${home}/.oh-my-zsh/custom/plugins/zsh-nvm`,
+      "https://github.com/lukechilds/zsh-nvm"
+    )
   ];
 
   await cloneOrUpdate(mappings);
