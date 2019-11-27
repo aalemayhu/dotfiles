@@ -1,1 +1,4 @@
 source $HOME/.shell/.aliases
+
+# Add Git completion
+autoload -Uz compinit && compinit
