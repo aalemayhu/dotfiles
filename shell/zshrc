@@ -3,3 +3,5 @@ source $HOME/.shell/.funcs
 
 # Add Git completion
 autoload -Uz compinit && compinit
+
+setopt autocd
