@@ -1,8 +1,11 @@
 project=scanf/config-files
 
 all:
-	$(shell grep curl README.md)
+	if [ ! -d "${HOME}/.deno" ]; then ${MAKE} install_deno; fi
 	~/.deno/bin/deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
+
+install_deno:
+	$(shell grep curl README.md)
 
 run: all
 
