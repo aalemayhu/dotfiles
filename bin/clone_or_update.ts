@@ -71,6 +71,10 @@ export async function syncRepositories() {
     new Repository(
       `${home}/.oh-my-zsh/custom/plugins/zsh-nvm`,
       "https://github.com/lukechilds/zsh-nvm"
+    ),
+    new Repository(
+      `${home}/.oh-my-zsh/custom/themes/spaceship-prompt`,
+      "https://github.com/denysdovhan/spaceship-prompt.git",
     )
   ];
 
