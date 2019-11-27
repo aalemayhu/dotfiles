@@ -1,4 +1,4 @@
-#!/usr/bin/env deno run --allow-read --allow-write --allow-env --allow-net
+#!/usr/bin/env deno run --allow-read --allow-write --allow-env --allow-net --allow-run
 import { existsSync, readFileStrSync } from "https://deno.land/std/fs/mod.ts";
 import { isDarwin, isDebian, isFedora } from "./distro.ts";
 
@@ -18,7 +18,7 @@ export async function installPackages() {
   const darwin = await isDarwin();
   if (darwin) {
     const packagesFile = readFileStrSync(`${configDir}/packages/macOS`);
-    const packages = packagesFile.split("\n");
+    const packages = packagesFile.trim().split("\n");
     await Deno.run({ args: ["brew", "install"].concat(packages) }).status();
   } else if (isDebian()) {
     const pm = isDebian() ? "apt-get" : "dnf";
