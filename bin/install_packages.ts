@@ -19,7 +19,11 @@ export async function installPackages() {
   if (darwin) {
     const packagesFile = readFileStrSync(`${configDir}/packages/macOS`);
     const packages = packagesFile.trim().split("\n");
-    await Deno.run({ args: ["brew", "install"].concat(packages) }).status();
+
+    for (const pkg of packages) {
+      const check = await Deno.run({ args: ["brew", "ls", "--versions", pkg] }).status();
+      await Deno.run({ args: ["brew", check.success ? "upgrade" : "install", pkg] }).status();
+    }
   } else if (isDebian()) {
     const pm = isDebian() ? "apt-get" : "dnf";
     await Deno.run({ args: ["sudo", pm, "update", "-y"] }).status();
