@@ -15,6 +15,7 @@ export async function copyFiles() {
   Deno.copyFileSync(`${configDir}/shell/env`, `${home}/.shell/.env`);
   Deno.copyFileSync(`${configDir}/shell/funcs`, `${home}/.shell/.funcs`);
   Deno.copyFileSync(`${configDir}/shell/tmux.conf`, `${home}/.tmux.conf`);
+  Deno.copyFileSync(`${configDir}/shell/zshrc`, `${home}/.zshrc`);
 
   const darwin = await isDarwin();
   if (darwin) {
