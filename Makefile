@@ -3,9 +3,13 @@ project=scanf/config-files
 all:
 	if [ ! -d "${HOME}/.deno" ]; then ${MAKE} install_deno; fi
 	~/.deno/bin/deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
+	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
 
 install_deno:
 	$(shell grep curl README.md)
+
+install_rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 run: all
 
