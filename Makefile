@@ -4,12 +4,18 @@ all:
 	if [ ! -d "${HOME}/.deno" ]; then ${MAKE} install_deno; fi
 	~/.deno/bin/deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
+	if [ ! -d "${HOME}/.rvm" ]; then ${MAKE} install_rust; fi
 
 install_deno:
 	$(shell grep curl README.md)
 
 install_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+install_ruby:
+	command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+	command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
+	curl -L https://get.rvm.io | bash -s stable
 
 run: all
 
