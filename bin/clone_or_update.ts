@@ -79,6 +79,10 @@ export async function syncRepositories() {
     new Repository(
       `${home}/.oh-my-zsh/custom/plugins/yarn-completion`,
       "https://github.com/buonomo/yarn-completion"
+    ),
+    new Repository(
+      `${src}/golang/go`,
+      "https://github.com/golang/go"
     )
   ];
 
