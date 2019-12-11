@@ -20,3 +20,5 @@ alias reload='source ~/.bashrc'
 alias vgrep='ggrep'
 
 alias tt='make tt'
+
+alias q='exit'
