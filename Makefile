@@ -17,6 +17,9 @@ install_ruby:
 	command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 	curl -L https://get.rvm.io | bash -s stable
 
+install_wasmtime:
+	curl https://wasmtime.dev/install.sh -sSf | bash
+
 run: all
 
 desktop: run
