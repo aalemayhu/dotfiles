@@ -1,8 +1,11 @@
 project=scanf/config-files
+PATH :=${HOME}/.local/bin:${HOME}/.deno/bin:${PATH}
 
 all:
-	if [ ! -d "${HOME}/.deno" ]; then ${MAKE} install_deno; fi
-	~/.deno/bin/deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
+	if ! which deno; then \
+		${MAKE} install_deno; \
+	fi
+	deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
 	if [ ! -d "${HOME}/.rvm" ]; then ${MAKE} install_rust; fi
 
