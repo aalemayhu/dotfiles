@@ -29,3 +29,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Fix Yarn path
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# Fix permission issue on macOS
+export GEM_HOME="$HOME/.gem"
