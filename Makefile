@@ -7,7 +7,6 @@ all:
 	fi
 	deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
-	if [ ! -d "${HOME}/.rvm" ]; then ${MAKE} install_rust; fi
 
 install_deno:
 	$(shell grep curl README.md)
