@@ -15,11 +15,6 @@ install_deno:
 install_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
-install_ruby:
-	command curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-	command curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
-	curl -L https://get.rvm.io | bash -s stable
-
 install_wasmtime:
 	curl https://wasmtime.dev/install.sh -sSf | bash
 
