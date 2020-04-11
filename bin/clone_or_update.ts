@@ -10,7 +10,7 @@ class Repository {
   }
 }
 
-async function cloneOrUpdate(mappings) {
+async function cloneOrUpdate(mappings: Repository[]) {
   const jobs = [];
   for (const repo of mappings) {
     const foundRepo = existsSync(repo.local);
