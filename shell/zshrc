@@ -59,3 +59,4 @@ setopt inc_append_history # save history entries as soon as they are entered
 setopt share_history # share history between different instances of the shell
 
 unset LESS;
+eval "$(rbenv init -)"
