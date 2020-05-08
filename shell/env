@@ -7,12 +7,13 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export GOROOT=~/opt/go
+export GOPATH="$HOME"/opt/og
+if [[ `uname` == 'Darwin' ]]; then
+  export GOROOT=/usr/local/opt/go/libexec
+else
+  export GOROOT="$HOME"/src/github.com/scanf/go
+fi
 export PATH=$PATH:$GOROOT/bin
-export GOPATH="$HOME"/opt/og
-
-export GOPATH="$HOME"/opt/og
-export GOROOT="$HOME"/src/github.com/scanf/go
 export GOROOT_BOOTSTRAP="$HOME"/src/github.com/scanf/go
 
 export PATH=$PATH:~/Scripts
