@@ -17,7 +17,7 @@ async function cloneOrUpdate(mappings: Repository[]) {
     if (!foundRepo) {
       jobs.push(
         Deno.run({
-          args: [
+          cmd: [
             "git",
             "clone",
             repo.remote,
@@ -34,7 +34,7 @@ async function cloneOrUpdate(mappings: Repository[]) {
     } else {
       jobs.push(
         Deno.run({
-          args: ["git", "-C", repo.local, "pull", "--recurse-submodules"]
+          cmd: ["git", "-C", repo.local, "pull", "--recurse-submodules"]
         })
       );
     }
@@ -46,7 +46,7 @@ async function cloneOrUpdate(mappings: Repository[]) {
 }
 
 export async function syncRepositories() {
-  const home = Deno.env().HOME;
+  const home = Deno.dir("home");
   const src = `${home}/src/github.com`;
 
   const mappings = [

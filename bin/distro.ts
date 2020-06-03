@@ -9,7 +9,7 @@ export function isDebian() {
 }
 
 export async function isDarwin() {
-  const uname = await Deno.run({ args: ["uname"], stdout: "piped" });
+  const uname = await Deno.run({ cmd: ["uname"], stdout: "piped" });
   const decoder = new TextDecoder();
   const stdout = decoder.decode(await Deno.readAll(uname.stdout));
   await uname.status();

@@ -16,7 +16,7 @@ export function createDirectories(prefix: string, listFile: string) {
 
 if (import.meta.main) {
   createDirectories(
-    `${Deno.env().HOME}/src/github.com/scanf`,
+    `${Deno.dir("home")}/src/github.com/scanf`,
     "./DirectoriesList"
   );
 }

@@ -3,7 +3,7 @@
 import { isDarwin } from "./distro.ts";
 
 export async function copyFiles() {
-  const home = Deno.env().HOME;
+  const home = Deno.dir("home");
   let dirname = import.meta.url
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");

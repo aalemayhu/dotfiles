@@ -5,7 +5,7 @@ all:
 	if ! which deno; then \
 		${MAKE} install_deno; \
 	fi
-	deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
+	deno run --unstable --allow-write --allow-read --allow-run --allow-env bin/run.ts
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
 
 install_deno:
