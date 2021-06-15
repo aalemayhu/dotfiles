@@ -17,13 +17,13 @@ async function cloneOrUpdate(mappings: Repository[]) {
     if (!foundRepo) {
       jobs.push(
         Deno.run({
-          args: [
+          cmd: [
             "git",
             "clone",
             repo.remote,
             repo.local,
-            "--recurse-submodules"
-          ]
+            "--recurse-submodules",
+          ],
         })
       );
     } else if (!existsSync(`${repo.local}/.git`)) {
@@ -34,7 +34,7 @@ async function cloneOrUpdate(mappings: Repository[]) {
     } else {
       jobs.push(
         Deno.run({
-          args: ["git", "-C", repo.local, "pull", "--recurse-submodules"]
+          cmd: ["git", "-C", repo.local, "pull", "--recurse-submodules"],
         })
       );
     }
@@ -64,26 +64,20 @@ export async function syncRepositories() {
       `${src}/ggreer/the_silver_searcher`,
       "https://github.com/ggreer/the_silver_searcher"
     ),
-    new Repository(
-      `${home}/.mutt`,
-      "https://github.com/scanf/.mutt"
-    ),
+    new Repository(`${home}/.mutt`, "https://github.com/scanf/.mutt"),
     new Repository(
       `${home}/.oh-my-zsh/custom/plugins/zsh-nvm`,
       "https://github.com/lukechilds/zsh-nvm"
     ),
     new Repository(
       `${home}/.oh-my-zsh/custom/themes/spaceship-prompt`,
-      "https://github.com/denysdovhan/spaceship-prompt.git",
+      "https://github.com/denysdovhan/spaceship-prompt.git"
     ),
     new Repository(
       `${home}/.oh-my-zsh/custom/plugins/yarn-completion`,
       "https://github.com/buonomo/yarn-completion"
     ),
-    new Repository(
-      `${src}/ruby/ruby`,
-      "https://github.com/ruby/ruby"
-    )
+    new Repository(`${src}/ruby/ruby`, "https://github.com/ruby/ruby"),
   ];
 
   await cloneOrUpdate(mappings);

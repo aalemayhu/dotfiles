@@ -22,11 +22,11 @@ import { installPackages } from "./install_packages.ts";
     await Deno.symlink(`${home}/.vim/.vimrc`, vimrc);
   }
 
-  await Deno.run({ args: ["vim", "+PluginInstall", "+qa!"] }).status();
+  await Deno.run({ cmd: ["vim", "+PluginInstall", "+qa!"] }).status();
 
   if (!existsSync(`${home}/.ssh/id_ed25519`)) {
     await Deno.run({
-      args: ["ssh-keygen", "-t", "ed25519", "-C", "a@alemayhu.com"]
+      cmd: ["ssh-keygen", "-t", "ed25519", "-C", "a@alemayhu.com"],
     }).status();
   }
 })();
