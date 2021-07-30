@@ -34,7 +34,7 @@ export async function installPackages() {
 
     const packagesFilePath = isDebian() ? "packages/Debian" : "packages/Fedora";
     const packages = readFileStrSync(`${configDir}/${packagesFilePath}`).split(
-      "\n"
+      "\n",
     );
 
     await Deno.run({

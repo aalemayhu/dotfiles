@@ -5,7 +5,7 @@ import { isDebian, isFedora } from "./distro.ts";
 
 (async function () {
   const repo = "https://github.com/scanf/dotfiles/";
-  const home = Deno.env().HOME;
+  const home = Deno.env.get("HOME");
   const dst = `${home}/src/github.com/scanf`;
 
   if (existsSync(dst)) {

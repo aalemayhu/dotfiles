@@ -3,7 +3,7 @@
 import { isDarwin } from "./distro.ts";
 
 export async function copyFiles() {
-  const home = Deno.env().HOME;
+  const home = Deno.env.get("HOME");
   let dirname = import.meta.url
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");
@@ -21,7 +21,7 @@ export async function copyFiles() {
   if (darwin) {
     Deno.copyFileSync(
       `${configDir}/term/bash_profile`,
-      `${home}/.bash_profile`
+      `${home}/.bash_profile`,
     );
   }
 
@@ -33,7 +33,7 @@ export async function copyFiles() {
   // Git
   Deno.copyFileSync(
     `${configDir}/git/git-completion.bash`,
-    `${home}/.git-completion.bash`
+    `${home}/.git-completion.bash`,
   );
   Deno.copyFileSync(`${configDir}/git/gitconfig`, `${home}/.gitconfig`);
 }

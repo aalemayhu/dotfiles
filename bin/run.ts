@@ -8,7 +8,7 @@ import { syncRepositories } from "./clone_or_update.ts";
 import { installPackages } from "./install_packages.ts";
 
 (async function () {
-  const home = Deno.env().HOME;
+  const home = Deno.env.get("HOME");
   let dirname = import.meta.url
     .substring(0, import.meta.url.lastIndexOf("/"))
     .replace("file:/", "");
