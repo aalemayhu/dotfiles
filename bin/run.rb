@@ -6,8 +6,9 @@ require_relative './copy_files'
 require_relative './clone_or_update'
 require_relative './install_packages'
 
+home Dir.home
 remote_repository = 'https://github.com/scanf/dotfiles/'
-local_repository = "#{Dir.home}/src/github.com/scanf/dotfiles"
+local_repository = "#{home}/src/github.com/scanf/dotfiles"
 if File.exist?(local_repository)
   puts "Already checked out #{local_repository}. Updating!"
   system("git -C #{local_repository} pull origin")
