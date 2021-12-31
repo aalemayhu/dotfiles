@@ -19,7 +19,7 @@ copy:
 	ruby bin/copy_files.rb
 
 fmt:
-	deno fmt bin/*.ts
+	rubocop --fix-layout bin/*.rb
 
 docker:
 	docker build -t ${project} .
