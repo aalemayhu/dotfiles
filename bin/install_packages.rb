@@ -12,8 +12,7 @@ end
 
 def install_macos_packages(config_dir)
   packages_file = File.readlines("#{config_dir}/packages/macos.txt")
-  packages = packages_file.strip.split("\n")
-  packages.each do |package|
+  packages_file.each do |package|
     check = system("brew ls --versions #{package}")
     system("brew #{check ? 'upgrade' : 'install'} #{package}")
   end
@@ -21,8 +20,7 @@ end
 
 def install_debian_packages(config_dir)
   packages_file = File.readlines("#{config_dir}/packages/debian.txt")
-  packages = packages_file.strip.split("\n")
-  packages.each do |package|
+  packages_file.each do |package|
     system("sudo apt-get install -y #{package}")
   end
   system('sudo apt-get autoremove')
@@ -32,8 +30,7 @@ end
 
 def install_fedora_packages(config_dir)
   packages_file = File.readlines("#{config_dir}/packages/fedora.txt")
-  packages = packages_file.strip.split("\n")
-  packages.each do |package|
+  packages_file.each do |package|
     system("sudo dnf install -y #{package}")
   end
 end
