@@ -42,9 +42,9 @@ def install_packages
   ensure_sudo
   config_dir = "#{File.dirname(__FILE__)}/.."
 
-  if darwin? return install_macos_packages(config_dir)
-  if debian?  return install_debian_packages(config_dir)
-  if fedora? return install_fedora_packages(config_dir)
+  return install_macos_packages(config_dir) if darwin?
+  return install_debian_packages(config_dir) if debian?
+  return install_fedora_packages(config_dir) if fedora?
 
   puts 'fatal: unsupported system'
   exit 1
