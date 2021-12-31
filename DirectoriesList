@@ -9,3 +9,4 @@ src/tmp
 opt/og
 .local/bin
 src/gitlab.com/scanf
+.gem
