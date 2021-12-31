@@ -6,7 +6,7 @@ require_relative './copy_files'
 require_relative './clone_or_update'
 require_relative './install_packages'
 
-home Dir.home
+home = Dir.home
 remote_repository = 'https://github.com/scanf/dotfiles/'
 local_repository = "#{home}/src/github.com/scanf/dotfiles"
 if File.exist?(local_repository)
