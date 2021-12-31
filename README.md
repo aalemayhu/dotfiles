@@ -9,12 +9,7 @@ your default setup.
 ## Installing
 
 ```sh
-curl -fsSL https://deno.land/x/install/install.sh | sh
 git clone https://github.com/scanf/dotfiles ~/src/github.com/scanf/dotfiles
 cd ~/src/github.com/scanf/dotfiles
-~/.deno/bin/deno run --allow-write \
---allow-read \
---allow-run \
- --allow-env \
- bin/bootstrap.ts
+ruby bin/bootstrap.rb
 ```
