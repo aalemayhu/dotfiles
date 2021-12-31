@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-def create_directories(prefix, listFile)
-  list = File.readlines(listFile)
+def create_directories(prefix, directories_list_file)
+  list = File.readlines(directories_list_file)
   list.each do |dir|
     dir = dir.chomp
     p "ensuring #{prefix}/#{dir} exists"

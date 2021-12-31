@@ -2,9 +2,9 @@
 # frozen_string_literal: true
 
 require_relative './create_directories'
-require_relative './copy_files.ts'
-require_relative './clone_or_update.ts'
-require_relative './install_packages.ts'
+require_relative './copy_files'
+require_relative './clone_or_update'
+require_relative './install_packages'
 
 install_packages
 create_directories(home, "#{File.dirname(__FILE__)}/../DirectoriesList")

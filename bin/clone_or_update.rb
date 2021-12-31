@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Abstraction for GitHub repository
 class Repository
   attr_accessor :local, :remote
 

@@ -1,15 +1,9 @@
 project=scanf/config-files
-PATH :=${HOME}/.local/bin:${HOME}/.deno/bin:${PATH}
+PATH :=${HOME}/.local/bin
 
 all:
-	if ! which deno; then \
-		${MAKE} install_deno; \
-	fi
-	deno run --allow-write --allow-read --allow-run --allow-env bin/run.ts
+	ruby bin/run.rb
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
-
-install_deno:
-	$(shell grep curl README.md)
 
 install_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -22,7 +16,7 @@ run: all
 desktop: run
 	bin/setup-desktop.bash
 copy:
-	deno run --allow-read --allow-write --allow-env --allow-run bin/copy_files.ts
+	ruby bin/copy_files.rb
 
 fmt:
 	deno fmt bin/*.ts
