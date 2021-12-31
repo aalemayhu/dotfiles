@@ -1,5 +1,5 @@
 project=scanf/config-files
-PATH :=${HOME}/.local/bin
+PATH :=${HOME}/.local/bin:${PATH}
 
 all:
 	ruby bin/run.rb
