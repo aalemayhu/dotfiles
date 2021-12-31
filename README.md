@@ -9,5 +9,5 @@ your default setup.
 ```sh
 git clone https://github.com/scanf/dotfiles ~/src/github.com/scanf/dotfiles
 cd ~/src/github.com/scanf/dotfiles
-ruby bin/bootstrap.rb
+ruby bin/run.rb
 ```

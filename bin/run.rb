@@ -6,6 +6,16 @@ require_relative './copy_files'
 require_relative './clone_or_update'
 require_relative './install_packages'
 
+remote_repository = 'https://github.com/scanf/dotfiles/'
+local_repository = "#{Dir.home}/src/github.com/scanf/dotfiles"
+if File.exist?(local_repository)
+  puts "Already checked out #{local_repository}. Updating!"
+  system("git -C #{local_repository} pull origin")
+else
+  puts "Checking out #{local_repository}"
+  system("git clone #{remote_repository} #{local_repository}")
+end
+
 install_packages
 create_directories(home, "#{File.dirname(__FILE__)}/../DirectoriesList")
 synchronize_repositories

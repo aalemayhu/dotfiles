@@ -11,6 +11,7 @@ def ensure_sudo
 end
 
 def install_macos_packages(config_dir)
+  system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
   packages_file = File.readlines("#{config_dir}/packages/macos.txt")
   packages_file.each do |package|
     check = system("brew ls --versions #{package}")
@@ -19,6 +20,8 @@ def install_macos_packages(config_dir)
 end
 
 def install_debian_packages(config_dir)
+  system('sudo apt-get update')
+  system('sudo apt-get install -y git ruby make locales')
   packages_file = File.readlines("#{config_dir}/packages/debian.txt")
   packages_file.each do |package|
     system("sudo apt-get install -y #{package}")
@@ -29,6 +32,8 @@ def install_debian_packages(config_dir)
 end
 
 def install_fedora_packages(config_dir)
+  system('dnf install -y git ruby make ')
+  system('sudo dnf C Development Tools and Libraries')
   packages_file = File.readlines("#{config_dir}/packages/fedora.txt")
   packages_file.each do |package|
     system("sudo dnf install -y #{package}")
