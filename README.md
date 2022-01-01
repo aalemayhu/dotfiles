@@ -1,3 +1,5 @@
+![Build Status](https://github.com/aalemayhu/dotfiles/actions/workflows/dockerimage.yml/badge.svg)
+
 This repository contains the ⚙️ configurations files I use both on Linux and
 macOS.
 
