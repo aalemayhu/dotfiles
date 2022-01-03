@@ -33,7 +33,7 @@ end
 
 def install_fedora_packages(config_dir)
   system('dnf install -y git ruby make ')
-  system('sudo dnf C Development Tools and Libraries')
+  system('sudo dnf group install "C Development Tools and Libraries"')
   packages_file = File.readlines("#{config_dir}/packages/fedora.txt")
   packages_file.each do |package|
     system("sudo dnf install -y #{package}")
