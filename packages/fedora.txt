@@ -11,3 +11,4 @@ tmux-powerline
 tree
 vim
 youtube-dl
+rbenv
