@@ -81,3 +81,8 @@ __bcc() {
 make_with_clang() {
   make CLANG=~/src/llvm.org/llvm/build/bin/clang LLC=~/src/llvm.org/llvm/build/bin/llc
 }
+
+# Delete merged branches
+dmb() {
+  git branch -d `git branch --merged`
+}
