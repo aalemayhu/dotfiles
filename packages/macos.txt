@@ -10,3 +10,4 @@ youtube-dl
 yarn
 rbenv
 swiftlint
+fish
