@@ -53,3 +53,5 @@
         chainreplyto = false
 [log]
         decorate = auto
+[pull]
+	rebase = true
