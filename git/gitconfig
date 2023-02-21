@@ -55,3 +55,5 @@
         decorate = auto
 [pull]
 	rebase = true
+[checkout]
+	defaultRemote = origin
