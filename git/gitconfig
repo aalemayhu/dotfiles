@@ -53,3 +53,7 @@
         chainreplyto = false
 [log]
         decorate = auto
+[pull]
+	rebase = true
+[checkout]
+	defaultRemote = origin

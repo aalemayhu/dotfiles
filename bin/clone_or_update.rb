@@ -26,7 +26,6 @@ class Repository
       Repository.new("#{home}/.vim", 'https://github.com/scanf/.vim'),
       Repository.new("#{src}/ggreer/the_silver_searcher", 'https://github.com/ggreer/the_silver_searcher'),
       Repository.new("#{home}/.mutt", 'https://github.com/scanf/.mutt'),
-      Repository.new("#{src}/ruby/ruby", 'https://github.com/ruby/ruby'),
       Repository.new("#{src}/ankitects/anki", 'https://github.com/ankitects/anki')
     ]
   end
