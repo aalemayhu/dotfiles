@@ -10,3 +10,4 @@ opt/og
 .local/bin
 src/gitlab.com/scanf
 .gem
+.config/fish

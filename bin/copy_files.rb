@@ -12,6 +12,7 @@ def copy_shell_files(config_dir, home)
   FileUtils.cp "#{config_dir}/shell/funcs", "#{home}/.shell/.funcs"
   FileUtils.cp "#{config_dir}/shell/tmux.conf", "#{home}/.tmux.conf"
   FileUtils.cp "#{config_dir}/shell/zshrc", "#{home}/.zshrc"
+  FileUtils.cp "#{config_dir}/shell/config.fish", "#{home}/.config/fish/config.fish"
 
   FileUtils.cp "#{config_dir}/term/bash_profile", "#{home}/.bash_profile" if darwin?
 end
