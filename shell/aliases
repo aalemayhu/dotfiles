@@ -23,3 +23,4 @@ alias tt='make tt'
 
 alias q='exit'
 alias lock='i3lock --color 000000'
+alias p='python'
