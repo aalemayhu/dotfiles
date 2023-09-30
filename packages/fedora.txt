@@ -7,7 +7,6 @@ sudo
 the_silver_searcher
 tig
 tmux
-tmux-powerline
 tree
 vim
 youtube-dl

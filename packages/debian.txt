@@ -1,12 +1,13 @@
 cloc
 curl
-fonts-powerline
+emacs
+fish
 git
 htop
 libssl-dev
 links
 make
-powerline
+rbenv
 silversearcher-ag
 sudo
 tig
@@ -14,5 +15,3 @@ tmux
 tree
 vim
 youtube-dl
-rbenv
-fish
