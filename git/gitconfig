@@ -56,4 +56,7 @@
 [pull]
 	rebase = true
 [checkout]
-	defaultRemote = origin
+        defaultRemote = origin
+
+[pager]
+    status = false
