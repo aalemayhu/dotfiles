@@ -59,4 +59,5 @@
         defaultRemote = origin
 
 [pager]
-    status = false
+        status = false
+        branch = false
