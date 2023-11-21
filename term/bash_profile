@@ -1,5 +1,4 @@
 source ~/.bashrc
-eval "$(rbenv init -)"
 
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"

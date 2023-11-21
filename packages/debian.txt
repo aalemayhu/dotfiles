@@ -7,7 +7,6 @@ htop
 libssl-dev
 links
 make
-rbenv
 silversearcher-ag
 sudo
 tig

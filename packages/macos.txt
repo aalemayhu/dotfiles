@@ -8,7 +8,6 @@ tree
 macvim
 youtube-dl
 yarn
-rbenv
 swiftlint
 fish
 emacs
