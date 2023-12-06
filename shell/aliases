@@ -25,3 +25,5 @@ alias q='exit'
 alias lock='i3lock --color 000000'
 alias p='python'
 alias dcc='curl https://dc.alemayhu.com/api/contributions | jq'
+alias vimide="vim +:NERDTree +':vertical botright term'"
+alias vid='vimide'
