@@ -4,12 +4,16 @@ PATH :=${HOME}/.local/bin:${PATH}
 all:
 	ruby bin/run.rb
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
+	if [ ! -d "${HOME}/.nvm" ]; then ${MAKE} install_node; fi
 
 install_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 install_wasmtime:
 	curl https://wasmtime.dev/install.sh -sSf | bash
+
+install_node:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 run: all
 
