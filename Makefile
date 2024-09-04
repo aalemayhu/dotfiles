@@ -1,10 +1,17 @@
 project=scanf/config-files
+elixir_repo_path=~/src/github.com/elixir-lang/elixir
 PATH :=${HOME}/.local/bin:${PATH}
 
 all:
 	ruby bin/run.rb
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
 	if [ ! -d "${HOME}/.nvm" ]; then ${MAKE} install_node; fi
+
+install_elixir:
+	mkdir -pv ${elixir_repo_path}
+	ls ${elixir_repo_path} || git clone https://github.com/elixir-lang/elixir.git ${elixir_repo_path}
+	cd ${elixir_repo_path}
+	make -C ${elixir_repo_path} clean compile
 
 install_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
