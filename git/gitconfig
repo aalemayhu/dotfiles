@@ -61,3 +61,5 @@
 [pager]
         status = false
         branch = false
+[format]
+        signoff = true
