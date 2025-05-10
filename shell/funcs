@@ -28,7 +28,7 @@ gicp() {
 }
 
 # Create mp3 file from youtube video.
-_ymp3() {
+_onlymp3() {
   yt-dlp --extract-audio --audio-format mp3 $1
 }
 
