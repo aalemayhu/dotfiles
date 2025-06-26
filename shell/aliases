@@ -15,14 +15,21 @@ alias gs='git status -s'
 # Show the commits for today
 alias heute='git shortlog --since=1day'
 # Pull in new changes from configuration files if any.
-alias reload='source ~/.bashrc'
+if [[ "$DOTFILES_OS" == "gitbash" ]]; then
+  alias reload='source ~/.bashrc'
+else
+  alias reload='source ~/.bashrc'
+fi
 
 alias vgrep='ggrep'
 
 alias tt='make tt'
 
 alias q='exit'
+# Only define Linux-specific aliases if not on Git Bash
+if [[ "$DOTFILES_OS" != "gitbash" ]]; then
 alias lock='i3lock --color 000000'
+fi
 alias p='python'
 alias dcc='curl https://dc.alemayhu.com/api/contributions | jq'
 alias vimide="vim +:NERDTree +':vertical botright term'"

@@ -1,11 +1,20 @@
 # vi:syntax=sh
 
+# Detect Git Bash on Windows
+if [[ "$(uname -s)" =~ MINGW* || "$(uname -s)" =~ MSYS* ]]; then
+  export DOTFILES_OS="gitbash"
+else
+  export DOTFILES_OS="unix"
+fi
+
 export VISUAL=vim
 
 # Locale
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+if [[ "$DOTFILES_OS" != "gitbash" ]]; then
+  export LANGUAGE=en_US.UTF-8
+  export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
+fi
 
 export GOPATH="$HOME"/opt/og
 if [[ `uname` == 'Darwin' ]]; then
@@ -16,12 +25,21 @@ fi
 export PATH=$PATH:$GOROOT/bin
 export GOROOT_BOOTSTRAP="$HOME"/src/github.com/scanf/go
 
-export PATH=$PATH:~/Scripts
+# Add Windows-specific Scripts path if on Git Bash
+if [[ "$DOTFILES_OS" == "gitbash" ]]; then
+  export PATH="$PATH:/c/Users/$USER/Scripts"
+else
+  export PATH=$PATH:~/Scripts
+fi
+
 export PATH="$PATH:$GOROOT/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH=~/.local/bin:$PATH
 export PATH=$HOME/src/llvm.org/llvm/build/bin:$PATH
-export PATH=/Applications/Wine\ Stable.app/Contents/Resources/wine/bin:$PATH
+# Only add Wine path on macOS
+if [[ "$DOTFILES_OS" != "gitbash" ]]; then
+  export PATH=/Applications/Wine\ Stable.app/Contents/Resources/wine/bin:$PATH
+fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Fix Yarn path

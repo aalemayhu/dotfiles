@@ -1,11 +1,22 @@
 # vi:syntax=sh
 
+# Detect Git Bash on Windows
+if [[ "$(uname -s)" =~ MINGW* || "$(uname -s)" =~ MSYS* ]]; then
+  export DOTFILES_OS="gitbash"
+else
+  export DOTFILES_OS="unix"
+fi
+
 source $HOME/.git-completion.bash
 source $HOME/.shell/.aliases
 source $HOME/.shell/.env
 source $HOME/.shell/.funcs
 
-ulimit -c 256
+# Only run ulimit on non-Windows
+if [[ "$DOTFILES_OS" != "gitbash" ]]; then
+  ulimit -c 256
+fi
+
 if [ -f /etc/fedora-release ]; then
   . /usr/share/powerline/bash/powerline.sh
 elif [ -f /etc/debian-release ]; then
