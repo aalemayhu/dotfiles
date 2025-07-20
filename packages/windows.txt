@@ -1,0 +1,14 @@
+git
+ruby
+make
+vim
+curl
+wget
+7zip
+vscode
+nodejs
+python
+jq
+grep
+sed
+awk

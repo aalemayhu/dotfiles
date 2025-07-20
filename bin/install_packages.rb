@@ -3,6 +3,9 @@
 require_relative './distro'
 
 def ensure_sudo
+  # Skip sudo check on Windows
+  return if windows?
+  
   sudo_path = '/usr/bin/sudo'
   return if File.exist?(sudo_path)
 
@@ -40,6 +43,23 @@ def install_fedora_packages(config_dir)
   end
 end
 
+def install_windows_packages(config_dir)
+  # Check if chocolatey is installed
+  unless system('choco --version > nul 2>&1')
+    puts 'Installing Chocolatey package manager...'
+    system('powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://community.chocolatey.org/install.ps1\'))"')
+  end
+
+  puts 'Installing Windows packages via Chocolatey...'
+  packages_file = File.readlines("#{config_dir}/packages/windows.txt")
+  packages_file.each do |package|
+    package = package.strip
+    next if package.empty?
+    puts "Installing #{package}..."
+    system("choco install -y #{package}")
+  end
+end
+
 def install_packages
   ensure_sudo
   config_dir = "#{File.dirname(__FILE__)}/.."
@@ -47,6 +67,11 @@ def install_packages
   return install_macos_packages(config_dir) if darwin?
   return install_debian_packages(config_dir) if debian?
   return install_fedora_packages(config_dir) if fedora?
+  return install_windows_packages(config_dir) if windows?
+
+  puts 'Unsupported operating system'
+  exit 1
+end
 
   puts 'fatal: unsupported system'
   exit 1
