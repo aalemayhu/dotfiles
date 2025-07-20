@@ -51,7 +51,7 @@ def install_windows_packages(config_dir)
   end
 
   puts 'Installing Windows packages via Chocolatey...'
-  packages_file = File.readlines("#{config_dir}/packages/windows.txt")
+  packages_file = File.readlines("#{config_dir}/windows/windows.txt")
   packages_file.each do |package|
     package = package.strip
     next if package.empty?

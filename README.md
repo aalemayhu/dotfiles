@@ -36,14 +36,14 @@ make
 ```powershell
 git clone https://github.com/scanf/dotfiles $env:USERPROFILE\src\github.com\scanf\dotfiles
 cd $env:USERPROFILE\src\github.com\scanf\dotfiles
-.\setup-windows.ps1
+windows\setup-windows.ps1
 ```
 
 #### Option 3: Using Command Prompt (Administrator required)
 ```cmd
 git clone https://github.com/scanf/dotfiles %USERPROFILE%\src\github.com\scanf\dotfiles
 cd %USERPROFILE%\src\github.com\scanf\dotfiles
-setup-windows.bat
+windows\setup-windows.bat
 ```
 
 #### Option 4: Manual Setup (No Ruby required)
@@ -51,8 +51,10 @@ If you just want the basic configuration without installing Ruby:
 ```cmd
 git clone https://github.com/scanf/dotfiles %USERPROFILE%\src\github.com\scanf\dotfiles
 cd %USERPROFILE%\src\github.com\scanf\dotfiles
-setup-manual.bat
+windows\setup-manual.bat
 ```
+
+> 📖 **See [windows/README.md](windows/README.md) for detailed Windows setup instructions and troubleshooting.**
 
 ### What gets installed on Windows
 
