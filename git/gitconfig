@@ -63,3 +63,5 @@
         branch = false
 [format]
         signoff = true
+[advice]
+        diverging = false
