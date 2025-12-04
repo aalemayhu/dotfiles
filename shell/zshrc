@@ -1,16 +1,26 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-plugins+=(zsh-nvm)
-plugins+=(yarn-completion)
+plugins=(git)
+
+# Remove duplicate sourcing of aliases, funcs, env (already handled below)
+# source $HOME/.shell/.aliases
+# source $HOME/.shell/.funcs
+# source $HOME/.shell/.env
+
+# Profile zsh startup
+zmodload zsh/zprof
+
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.shell/.aliases
-source $HOME/.shell/.funcs
-source $HOME/.shell/.env
-
 # Add Git completion
-autoload -Uz compinit && compinit
+zstyle ':completion::compinit' rehash true
+autoload -Uz compinit
+compinit -C
+
+# Optionally, disable compaudit security check (less secure, but faster)
+# ZSH_DISABLE_COMPAUDIT=true
+# export ZSH_DISABLE_COMPAUDIT
 
 setopt autocd
 
@@ -49,9 +59,39 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 fi
 
+# --- Custom logic for dotfiles portability ---
+# Detect Git Bash on Windows
+if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* ]]; then
+  export DOTFILES_OS="gitbash"
+else
+  export DOTFILES_OS="unix"
+fi
+
+# Source dotfiles shell files if present
+[ -f $HOME/.shell/.aliases ] && source $HOME/.shell/.aliases
+[ -f $HOME/.shell/.env ] && source $HOME/.shell/.env
+[ -f $HOME/.shell/.funcs ] && source $HOME/.shell/.funcs
+
+# Only run ulimit on non-Windows
+if [[ "$DOTFILES_OS" != "gitbash" ]]; then
+  ulimit -c 256
+fi
+
+# Powerline for zsh (adjust path if needed)
+if [ -f /etc/fedora-release ]; then
+  [ -f /usr/share/powerline/zsh/powerline.zsh ] && source /usr/share/powerline/zsh/powerline.zsh
+elif [ -f /etc/debian-release ]; then
+  [ -f /usr/share/powerline/bindings/zsh/powerline.zsh ] && source /usr/share/powerline/bindings/zsh/powerline.zsh
+fi
+
+# Fun prompt if TERMINOLOGY is set
+if [[ "$TERMINOLOGY" -eq "1" ]]; then
+    pokemon
+fi
+
 # Use Spaceship prompt
 autoload -U promptinit; promptinit
-prompt spaceship
+# prompt spaceship
 
 setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
