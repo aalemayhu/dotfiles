@@ -73,8 +73,4 @@ def install_packages
   exit 1
 end
 
-  puts 'fatal: unsupported system'
-  exit 1
-end
-
 install_packages if __FILE__ == $PROGRAM_NAME
