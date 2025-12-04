@@ -1,8 +1,9 @@
 # vi: filetype=sh
 
+# Ensure compatibility with bash and zsh
+unalias gp 2>/dev/null
 # Push all the local branches and tags
-gp()
-{
+gp() {
   git remote | xargs -L1 git push --all
   git remote | xargs -L1 git push --tags
 }
@@ -10,7 +11,7 @@ gp()
 # Clone a users repository, this depends on the current directory having the
 # correct username.
 gicp() {
-  GITHUB_USER=$(basename `pwd`)
+  GITHUB_USER=$(basename "$(pwd)")
   GITHUB_PROJECT=$1
 
   echo "Will clone $GITHUB_PROJECT for $GITHUB_USER" 
