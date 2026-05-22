@@ -5,4 +5,3 @@ Host alemayhu.com rubina.alemayhu.com alemayhu.de
     ServerAliveInterval 120
 Host nerdhaven.nuug.no
     User ccscanf
-    HostkeyAlgorithms +ssh-dss
