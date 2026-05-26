@@ -12,7 +12,7 @@ your default setup.
 Assuming you have already installed the essential build tools on your OS. You will need Ruby, git and make to be present.
 
 ```sh
-git clone https://github.com/scanf/dotfiles ~/src/github.com/scanf/dotfiles
+git clone git@github.com:scanf/dotfiles.git ~/src/github.com/scanf/dotfiles
 cd ~/src/github.com/scanf/dotfiles
 ruby bin/run.rb
 ```
@@ -27,21 +27,21 @@ For Windows, you have several options:
 3. Open Git Bash and run:
 
 ```bash
-git clone https://github.com/scanf/dotfiles ~/src/github.com/scanf/dotfiles
+git clone git@github.com:scanf/dotfiles.git ~/src/github.com/scanf/dotfiles
 cd ~/src/github.com/scanf/dotfiles
 make
 ```
 
 #### Option 2: Using PowerShell (Administrator required)
 ```powershell
-git clone https://github.com/scanf/dotfiles $env:USERPROFILE\src\github.com\scanf\dotfiles
+git clone git@github.com:scanf/dotfiles.git $env:USERPROFILE\src\github.com\scanf\dotfiles
 cd $env:USERPROFILE\src\github.com\scanf\dotfiles
 windows\setup-windows.ps1
 ```
 
 #### Option 3: Using Command Prompt (Administrator required)
 ```cmd
-git clone https://github.com/scanf/dotfiles %USERPROFILE%\src\github.com\scanf\dotfiles
+git clone git@github.com:scanf/dotfiles.git %USERPROFILE%\src\github.com\scanf\dotfiles
 cd %USERPROFILE%\src\github.com\scanf\dotfiles
 windows\setup-windows.bat
 ```
@@ -49,7 +49,7 @@ windows\setup-windows.bat
 #### Option 4: Manual Setup (No Ruby required)
 If you just want the basic configuration without installing Ruby:
 ```cmd
-git clone https://github.com/scanf/dotfiles %USERPROFILE%\src\github.com\scanf\dotfiles
+git clone git@github.com:scanf/dotfiles.git %USERPROFILE%\src\github.com\scanf\dotfiles
 cd %USERPROFILE%\src\github.com\scanf\dotfiles
 windows\setup-manual.bat
 ```

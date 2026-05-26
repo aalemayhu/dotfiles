@@ -22,7 +22,7 @@ class Repository
   def self.defaults(src, home)
     [
       Repository.new("#{src}/VundleVim/Vundle.vim", 'https://github.com/VundleVim/Vundle.vim.git'),
-      Repository.new("#{src}/scanf/dotfiles", 'https://github.com/scanf/dotfiles'),
+      Repository.new("#{src}/scanf/dotfiles", 'git@github.com:scanf/dotfiles.git'),
       Repository.new("#{home}/.vim", 'https://github.com/scanf/.vim'),
       Repository.new("#{src}/ggreer/the_silver_searcher", 'https://github.com/ggreer/the_silver_searcher'),
       Repository.new("#{home}/.mutt", 'https://github.com/scanf/.mutt'),
