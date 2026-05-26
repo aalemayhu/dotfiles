@@ -9,6 +9,7 @@ require_relative './install_packages'
 home = Dir.home
 remote_repository = 'https://github.com/scanf/dotfiles/'
 local_repository = "#{home}/src/github.com/scanf/dotfiles"
+
 if File.exist?(local_repository)
   puts "Already checked out #{local_repository}. Updating!"
   system("git -C #{local_repository} pull origin")
@@ -20,10 +21,16 @@ end
 install_packages
 create_directories(home, "#{File.dirname(__FILE__)}/../DirectoriesList")
 synchronize_repositories
-copy_files
+sync_files # Renamed from copy_files in bin/copy_files.rb
 
-vimrc = "#{home}/.vimrc"
-File.symlink("#{home}/.vim/.vimrc", vimrc) unless File.exist?(vimrc)
+# Neovim setup (Headless sync)
+if system('command -v nvim > /dev/null')
+  puts 'Syncing Neovim plugins...'
+  system('nvim --headless "+Lazy! sync" +qa')
+end
 
-system('vim', '+PluginInstall', '+qa!')
-system('ssh-keygen', '-t', 'ed25519', '-C', 'a@alemayhu.com') unless File.exist?("#{home}/.ssh/id_ed25519")
+# SSH Key generation (only if missing)
+unless File.exist?("#{home}/.ssh/id_ed25519")
+  puts 'Generating SSH key...'
+  system('ssh-keygen', '-t', 'ed25519', '-C', 'a@alemayhu.com', '-N', '')
+end

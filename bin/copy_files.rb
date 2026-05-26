@@ -1,54 +1,65 @@
 # frozen_string_literal: true
 
 require 'fileutils'
-
 require_relative './distro'
 
-def copy_shell_files(config_dir, home)
-  puts 'Copying shell files'
-  FileUtils.cp "#{config_dir}/shell/aliases", "#{home}/.shell/.aliases"
-  FileUtils.cp "#{config_dir}/shell/env", "#{home}/.shell/.env"
-  FileUtils.cp "#{config_dir}/shell/funcs", "#{home}/.shell/.funcs"
-  FileUtils.cp "#{config_dir}/shell/tmux.conf", "#{home}/.tmux.conf"
-  
-  if windows?
-    # On Windows, we'll set up bash profile for Git Bash / WSL / MSYS2
-    FileUtils.cp "#{config_dir}/shell/bashrc", "#{home}/.bashrc"
-    FileUtils.cp "#{config_dir}/term/bash_profile", "#{home}/.bash_profile"
-  else
-    FileUtils.cp "#{config_dir}/shell/bashrc", "#{home}/.bashrc"
-    FileUtils.cp "#{config_dir}/shell/zshrc", "#{home}/.zshrc"
-    FileUtils.cp "#{config_dir}/shell/config.fish", "#{home}/.config/fish/config.fish"
-    FileUtils.cp "#{config_dir}/term/bash_profile", "#{home}/.bash_profile" if darwin?
+def link_file(source, target)
+  if File.exist?(target) || File.symlink?(target)
+    if File.symlink?(target) && File.readlink(target) == source
+      puts "Link already exists: #{target} -> #{source}"
+      return
+    end
+    
+    puts "Backing up existing #{target} to #{target}.bak"
+    FileUtils.rm_rf("#{target}.bak")
+    FileUtils.mv(target, "#{target}.bak")
   end
+
+  puts "Linking #{source} to #{target}"
+  FileUtils.mkdir_p(File.dirname(target))
+  File.symlink(source, target)
 end
 
-def copy_files
+def sync_shell_files(config_dir, home)
+  puts 'Syncing shell files'
+  link_file "#{config_dir}/shell/aliases", "#{home}/.shell/.aliases"
+  link_file "#{config_dir}/shell/env", "#{home}/.shell/.env"
+  link_file "#{config_dir}/shell/funcs", "#{home}/.shell/.funcs"
+  link_file "#{config_dir}/shell/tmux.conf", "#{home}/.tmux.conf"
+  
+  link_file "#{config_dir}/shell/bashrc", "#{home}/.bashrc"
+  link_file "#{config_dir}/shell/zshrc", "#{home}/.zshrc" unless windows?
+  link_file "#{config_dir}/shell/config.fish", "#{home}/.config/fish/config.fish" unless windows?
+  link_file "#{config_dir}/term/bash_profile", "#{home}/.bash_profile" if darwin? || windows?
+end
+
+def sync_files
   dirname = File.dirname(__FILE__)
-  config_dir = "#{dirname}/.."
+  config_dir = File.expand_path("#{dirname}/..")
   home = Dir.home
 
-  copy_shell_files(config_dir, home)
+  sync_shell_files(config_dir, home)
 
-  # Skip some Unix-specific configs on Windows
+  # Neovim
+  link_file "#{config_dir}/nvim", "#{home}/.config/nvim"
+
+  # Git
+  link_file "#{config_dir}/git/git-completion.bash", "#{home}/.git-completion.bash"
+  link_file "#{config_dir}/git/gitconfig", "#{home}/.gitconfig"
+
+  # SSH & GPG (Non-Windows or specific handling)
   unless windows?
-    # Misc
-    FileUtils.cp "#{config_dir}/gnupg/gpg.conf", "#{home}/.gnupg/gpg.conf"
-    FileUtils.cp "#{config_dir}/ssh/config", "#{home}/.ssh/config"
-    File.chmod(0o600, "#{home}/.ssh/config")
+    link_file "#{config_dir}/gnupg/gpg.conf", "#{home}/.gnupg/gpg.conf"
+    link_file "#{config_dir}/ssh/config", "#{home}/.ssh/config"
+    File.chmod(0o600, "#{home}/.ssh/config") rescue nil
   else
-    # Windows-specific SSH config handling
     ssh_config_path = "#{home}/.ssh/config"
     if File.exist?("#{config_dir}/ssh/config")
-      FileUtils.cp "#{config_dir}/ssh/config", ssh_config_path
-      # Note: chmod may not work the same way on Windows, but we'll try
-      File.chmod(0o600, ssh_config_path) rescue nil
+      link_file "#{config_dir}/ssh/config", ssh_config_path
     end
   end
-
-  # Git (works on all platforms)
-  FileUtils.cp "#{config_dir}/git/git-completion.bash", "#{home}/.git-completion.bash"
-  FileUtils.cp "#{config_dir}/git/gitconfig", "#{home}/.gitconfig"
 end
 
-copy_files if __FILE__ == $PROGRAM_NAME
+if __FILE__ == $PROGRAM_NAME
+  sync_files
+end
