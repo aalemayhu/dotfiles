@@ -25,6 +25,7 @@ def sync_shell_files(config_dir, home)
   link_file "#{config_dir}/shell/aliases", "#{home}/.shell/.aliases"
   link_file "#{config_dir}/shell/env", "#{home}/.shell/.env"
   link_file "#{config_dir}/shell/funcs", "#{home}/.shell/.funcs"
+  link_file "#{config_dir}/shell/shellrc", "#{home}/.shell/.shellrc"
   link_file "#{config_dir}/shell/tmux.conf", "#{home}/.tmux.conf"
   
   link_file "#{config_dir}/shell/bashrc", "#{home}/.bashrc"

@@ -14,9 +14,10 @@ alias git-amn='git ci -v --amend --signoff'
 alias gs='git status -s'
 # Show the commits for today
 alias heute='git shortlog --since=1day'
-# Pull in new changes from configuration files if any.
-if [[ "$DOTFILES_OS" == "gitbash" ]]; then
-  alias reload='source ~/.bashrc'
+# Pull in new changes from configuration files if any. Reload the rc for the
+# current shell so `reload` works under both bash and zsh.
+if [ -n "$ZSH_VERSION" ]; then
+  alias reload='source ~/.zshrc'
 else
   alias reload='source ~/.bashrc'
 fi
