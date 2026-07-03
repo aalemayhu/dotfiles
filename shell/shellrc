@@ -1,0 +1,46 @@
+# vi:syntax=sh
+#
+# Shared shell runtime, sourced by both .bashrc and .zshrc.
+# Keep shell-agnostic logic here; put bash-only / zsh-only bits in their rc.
+
+# Detect the running shell so shell-specific paths can be selected below.
+if [ -n "$ZSH_VERSION" ]; then
+  DOTFILES_SHELL=zsh
+elif [ -n "$BASH_VERSION" ]; then
+  DOTFILES_SHELL=bash
+else
+  DOTFILES_SHELL=sh
+fi
+export DOTFILES_SHELL
+
+# Shared config. .env defines DOTFILES_OS, so source it first.
+[ -f "$HOME/.shell/.env" ]     && . "$HOME/.shell/.env"
+[ -f "$HOME/.shell/.aliases" ] && . "$HOME/.shell/.aliases"
+[ -f "$HOME/.shell/.funcs" ]   && . "$HOME/.shell/.funcs"
+
+# Core dump limit (skip on Git Bash, no ulimit there).
+if [ "$DOTFILES_OS" != "gitbash" ]; then
+  ulimit -c 256
+fi
+
+# Powerline. Binding directory and file extension differ per shell.
+if [ "$DOTFILES_SHELL" = "zsh" ]; then
+  _pl_ext=zsh
+else
+  _pl_ext=sh
+fi
+if [ -f /etc/fedora-release ]; then
+  [ -f "/usr/share/powerline/$DOTFILES_SHELL/powerline.$_pl_ext" ] && \
+    . "/usr/share/powerline/$DOTFILES_SHELL/powerline.$_pl_ext"
+elif [ -f /etc/debian-release ]; then
+  [ -f "/usr/share/powerline/bindings/$DOTFILES_SHELL/powerline.$_pl_ext" ] && \
+    . "/usr/share/powerline/bindings/$DOTFILES_SHELL/powerline.$_pl_ext"
+fi
+unset _pl_ext
+
+# Fun prompt under Terminology.
+if [ "$TERMINOLOGY" = "1" ]; then
+  pokemon
+fi
+
+unset LESS

@@ -8,6 +8,7 @@ else
 fi
 
 export VISUAL=vim
+export EDITOR=vim
 
 # Locale
 if [[ "$DOTFILES_OS" != "gitbash" ]]; then
