@@ -14,24 +14,18 @@ alias git-amn='git ci -v --amend --signoff'
 alias gs='git status -s'
 # Show the commits for today
 alias heute='git shortlog --since=1day'
-# Pull in new changes from configuration files if any. Reload the rc for the
-# current shell so `reload` works under both bash and zsh.
-if [ -n "$ZSH_VERSION" ]; then
-  alias reload='source ~/.zshrc'
-else
-  alias reload='source ~/.bashrc'
-fi
-
-alias vgrep='ggrep'
-
-alias tt='make tt'
+# Pull in new changes from configuration files if any.
+alias reload='source ~/.bashrc'
 
 alias q='exit'
-# Only define Linux-specific aliases if not on Git Bash
-if [[ "$DOTFILES_OS" != "gitbash" ]]; then
-alias lock='i3lock --color 000000'
-fi
-alias p='python'
 alias dcc='curl https://dc.alemayhu.com/api/contributions | jq'
-alias vimide="vim +:NERDTree +':vertical botright term'"
-alias vid='vimide'
+
+# Claude Code: new session, continue the last one, pick one to resume
+alias c='claude'
+alias cl='claude --continue'
+alias cr='claude --resume'
+
+alias v='nvim'
+alias lg='lazygit'
+alias ll='eza -la --git --group-directories-first'
+alias lt='eza --tree --level=2 --git-ignore'

@@ -1,0 +1,5 @@
+# vi:syntax=sh
+#
+# Login shells (Terminal.app, Ghostty and ssh start these on macOS) read only
+# this file, so hand over to .bashrc.
+[ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

@@ -1,52 +1,19 @@
 # vi:syntax=sh
+#
+# Environment for every bash, login or not. Sourced by .bashrc.
 
-# Detect Git Bash on Windows
-if [[ "$(uname -s)" =~ MINGW* || "$(uname -s)" =~ MSYS* ]]; then
-  export DOTFILES_OS="gitbash"
-else
-  export DOTFILES_OS="unix"
-fi
+export VISUAL=nvim
+export EDITOR=nvim
 
-export VISUAL=vim
-export EDITOR=vim
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
-# Locale
-if [[ "$DOTFILES_OS" != "gitbash" ]]; then
-  export LANGUAGE=en_US.UTF-8
-  export LANG=en_US.UTF-8
-  export LC_ALL=en_US.UTF-8
-fi
+# Homebrew: PATH, MANPATH and HOMEBREW_PREFIX
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export GOPATH="$HOME"/opt/og
-if [[ `uname` == 'Darwin' ]]; then
-  export GOROOT=/usr/local/opt/go/libexec
-else
-  export GOROOT="$HOME"/src/github.com/scanf/go
-fi
-export PATH=$PATH:$GOROOT/bin
-export GOROOT_BOOTSTRAP="$HOME"/src/github.com/scanf/go
+# mise shims, so tools it manages (node, java, ...) also work in
+# non-interactive shells. Interactive shells use `mise activate` (.bashrc).
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-# Add Windows-specific Scripts path if on Git Bash
-if [[ "$DOTFILES_OS" == "gitbash" ]]; then
-  export PATH="$PATH:/c/Users/$USER/Scripts"
-else
-  export PATH=$PATH:~/Scripts
-fi
-
-export PATH="$PATH:$GOROOT/bin"
-export PATH="$PATH:$GOPATH/bin"
-export PATH=~/.local/bin:$PATH
-export PATH=$HOME/src/llvm.org/llvm/build/bin:$PATH
-# Only add Wine path on macOS
-if [[ "$DOTFILES_OS" != "gitbash" ]]; then
-  export PATH=/Applications/Wine\ Stable.app/Contents/Resources/wine/bin:$PATH
-fi
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Fix Yarn path
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# Fix permission issue on macOS
-export GEM_HOME="$HOME/.gem"
-
-export PATH="$GEM_HOME/bin":$PATH
+# Own scripts, claude, nvim (~/.local/bin) and rustup (~/.cargo/bin)
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/Scripts:$PATH"

@@ -1,7 +1,35 @@
 # vi:syntax=sh
+#
+# Interactive bash. Login shells get here through ~/.bash_profile.
+# Machine-specific settings and secrets go in ~/.shell/local (not in git).
 
-# bash-only completion
-source $HOME/.git-completion.bash
+. "$HOME/.shell/.env"
+. "$HOME/.shell/.aliases"
+. "$HOME/.shell/.funcs"
 
-# Shared runtime (env, aliases, funcs, ulimit, powerline, ...)
-source $HOME/.shell/.shellrc
+# History: large, written after every command, no duplicates
+HISTSIZE=100000
+HISTFILESIZE=100000
+HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+PROMPT_COMMAND="history -a${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+
+shopt -s checkwinsize
+# bash 4+ only (macOS /bin/bash is 3.2, Homebrew's is current)
+shopt -s autocd globstar 2>/dev/null
+
+# git completion ships with Homebrew's git
+_git_completion="${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-completion.bash"
+[ -r "$_git_completion" ] && . "$_git_completion"
+unset _git_completion
+
+# mise: per-directory node/java/... versions (replaces nvm and sdkman)
+command -v mise >/dev/null && eval "$(mise activate bash)"
+# fzf: Ctrl-R fuzzy history, Ctrl-T file picker, Alt-C cd
+command -v fzf >/dev/null && eval "$(fzf --bash)"
+# zoxide: `z foo` jumps to the most used directory matching foo
+command -v zoxide >/dev/null && eval "$(zoxide init bash)"
+# starship prompt (git branch/status, runtime versions, exit codes)
+command -v starship >/dev/null && eval "$(starship init bash)"
+
+[ -f "$HOME/.shell/local" ] && . "$HOME/.shell/local"

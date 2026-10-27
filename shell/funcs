@@ -1,13 +1,5 @@
-# Load nvm (Node Version Manager)
-load_nvm() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-}
 # vi: filetype=sh
 
-# Ensure compatibility with bash and zsh
-unalias gp 2>/dev/null
 # Push all the local branches and tags
 gp() {
   git remote | xargs -L1 git push --all
@@ -20,7 +12,7 @@ gicp() {
   GITHUB_USER=$(basename "$(pwd)")
   GITHUB_PROJECT=$1
 
-  echo "Will clone $GITHUB_PROJECT for $GITHUB_USER" 
+  echo "Will clone $GITHUB_PROJECT for $GITHUB_USER"
 
   if [ ! -d "$GITHUB_PROJECT" ]; then
     echo Cloning $GITHUB_PROJECT
@@ -44,33 +36,12 @@ _onlymp4() {
   yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" $1
 }
 
-# Retrieve new updates to my key.
-_refreshk() {
-  myid=756753E5
-  echo "Refreshing $myid"
-  gpg --keyserver pool.sks-keyservers.net --send-key $myid
-  gpg --refresh-key $myid
-}
-
-# List URLs from website.
-_href() {
-  lynx -dump -listonly
-}
-
-# Retrieve missing keys for email verification.
-_fetchMissingKeys() {
-# Source Start { http://www.commandlinefu.com/
-  echo "Fetching any missing keys for $myid"
-  for i in `gpg --list-sigs | perl -ne 'if(/User ID not found/){s/^.+([a-fA-F0-9]{8}).*/\1/; print}' | sort | uniq`; do gpg --keyserver-options no-auto-key-retrieve --recv-keys $i; done
-# } Source End
-}
-
-# Clone a whole github organization.
+# Clone a whole github organization into ./ORG.
 orgclone() {
-  mkdir -p $1
-  cd $1
-  curl -s https://api.github.com/orgs/$1/repos?per_page=200 | ruby -rubygems -e 'require "json"; JSON.load(STDIN.read).each { |repo| %x[git clone #{repo["ssh_url"]} ]}'
-  cd -
+  gh repo list "$1" --limit 1000 --json name --jq '.[].name' |
+    while read -r repo; do
+      [ -d "$1/$repo" ] || gh repo clone "$1/$repo" "$1/$repo"
+    done
 }
 
 # Show commits by authors.
@@ -78,18 +49,7 @@ cpa() {
   git shortlog -s -n
 }
 
-# Compile BPF program.
-__bcc() {
-  clang -O2 -emit-llvm -c $1 -o - | \
-    llc -march=bpf -filetype=obj -o "`basename $1 .c`.o"
-}
-
-# Compile with local LLVM and clang
-make_with_clang() {
-  make CLANG=~/src/llvm.org/llvm/build/bin/clang LLC=~/src/llvm.org/llvm/build/bin/llc
-}
-
-# Delete merged branches
+# Delete merged branches (except the current one and main/master)
 dmb() {
-  git branch -d `git branch --merged`
+  git branch --merged | grep -vE '^[*+]|^ *(main|master)$' | xargs git branch -d
 }
