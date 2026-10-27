@@ -30,7 +30,7 @@ vim.opt.listchars = {
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
 
-vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = 'indent' -- treesitter.lua switches to expr when a parser exists
 vim.opt.foldlevelstart = 99
 
 vim.opt.updatetime = 250 -- CursorHold delay (no swapfile, so only that)
