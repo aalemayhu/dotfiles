@@ -32,3 +32,18 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     pattern = { '*.txt', '*.md', '*.tex' },
     command = 'setlocal spell',
 })
+
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold' }, {
+    group = group,
+    desc = 'Reload files changed outside nvim (e.g. by Claude)',
+    callback = function()
+        -- :checktime is not allowed in the command-line window
+        if vim.fn.getcmdwintype() == '' then vim.cmd('checktime') end
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+    group = group,
+    desc = 'Say when a buffer was reloaded from disk',
+    callback = function(args) vim.notify('Reloaded ' .. vim.fn.fnamemodify(args.file, ':.'), vim.log.levels.INFO) end,
+})
