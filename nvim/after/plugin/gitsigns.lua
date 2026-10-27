@@ -11,20 +11,19 @@ require('gitsigns').setup {
         -- Navigation
         map('n', ']c', function()
             if vim.wo.diff then return ']c' end
-            vim.schedule(function() gs.next_hunk() end)
+            vim.schedule(function() gs.nav_hunk('next') end)
             return '<Ignore>'
         end, { expr = true, desc = 'Next git change' })
 
         map('n', '[c', function()
             if vim.wo.diff then return '[c' end
-            vim.schedule(function() gs.prev_hunk() end)
+            vim.schedule(function() gs.nav_hunk('prev') end)
             return '<Ignore>'
         end, { expr = true, desc = 'Previous git change' })
 
         -- Actions
-        map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = 'git: stage hunk' })
+        map({ 'n', 'v' }, '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = 'git: stage/unstage hunk' })
         map({ 'n', 'v' }, '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = 'git: reset hunk' })
-        map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'git: undo stage hunk' })
         map('n', '<leader>gS', gs.stage_buffer, { desc = 'git: stage file' })
         map('n', '<leader>gR', gs.reset_buffer, { desc = 'git: reset file' })
         map('n', '<leader>gp', gs.preview_hunk, { desc = 'git: diff hunk' })
@@ -34,7 +33,7 @@ require('gitsigns').setup {
 
         -- Toggles
         map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'git: toggle blame' })
-        map('n', '<leader>td', gs.toggle_deleted, { desc = 'git: toggle deleted' })
+        map('n', '<leader>td', gs.preview_hunk_inline, { desc = 'git: preview hunk inline' })
 
         -- Text object (e.g. vig -> select current hunk)
         map({ 'o', 'x' }, 'ig', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'git: select hunk' })

@@ -1,10 +1,7 @@
 require('trouble').setup { padding = false }
 
 vim.keymap.set('n', '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>',
-    { silent = true, noremap = true, desc = 'Trouble: toggle diagnostics window' }
-)
-vim.keymap.set('n', '<leader>xw', '<cmd>Trouble diagnostics toggle<cr>',
-    { silent = true, noremap = true, desc = 'Trouble: workspace mode' }
+    { silent = true, noremap = true, desc = 'Trouble: workspace diagnostics' }
 )
 vim.keymap.set('n', '<leader>xd', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
     { silent = true, noremap = true, desc = 'Trouble: document mode' }

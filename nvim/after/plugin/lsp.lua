@@ -69,9 +69,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts('Hover'))
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts('Go to definition'))
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration'))
-        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts('Go to implementation'))
         vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts('Go to type definition'))
-        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts('Signature help'))
         vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts('Show diagnostics'))
         vim.keymap.set('n', '[d', function() vim.diagnostic.jump { count = -1, float = true } end,
             opts('Previous diagnostic'))
@@ -79,7 +77,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
             opts('Next diagnostic'))
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts('Rename'))
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('Code action'))
-        -- gr/grr (references) and gra/grn/gri are nvim defaults
+        -- nvim defaults: grr (references), gri (implementation), grt (type
+        -- definition), gra/grn, gO (symbols), <C-s> in insert (signature help).
+        -- gi (insert at last position) and gs (leap from window) stay untouched.
 
         -- highlight all references to symbol under cursor
         if client and client.server_capabilities.documentHighlightProvider then

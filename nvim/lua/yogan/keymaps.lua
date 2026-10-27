@@ -26,12 +26,7 @@ vim.keymap.set('n', '<leader>f', function()
   require('conform').format { lsp_format = 'fallback' }
 end, { desc = 'Format file' })
 
--- navigating between entries from quickfix/location list
--- currently not needed, but might be, so let's keep 'em ready to go
--- vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz')
--- vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz')
--- vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
--- vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
+-- quickfix/location list: use the built-in ]q [q ]l [l
 
 -- replace current word under cursor (with live preview)
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
@@ -41,16 +36,15 @@ vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set('n', '<leader>X', '<cmd>!chmod +x %<CR>',
     { silent = true, desc = 'Make file executable' })
 
--- same as .vimrc: Q does nothing useful (no Ex mode), q records macros as usual
-vim.keymap.set({ 'n', 'v', 'o' }, 'Q', '<cmd>echo "You pressed Q"<CR>')
+-- Q is left alone: in nvim it replays the last recorded macro
 
 -- same as .vimrc: arrow keys disabled
 for _, key in ipairs({ '<Up>', '<Down>', '<Left>', '<Right>' }) do
   vim.keymap.set({ 'n', 'v', 'o' }, key, '<nop>')
 end
 
--- same as .vimrc: <C-t> opens a new tab
-vim.keymap.set({ 'n', 'v', 'o' }, '<C-t>', '<Esc>:tabnew<CR>', { desc = 'New tab' })
+-- new tab (<C-t> is left alone: it pops the tag stack, e.g. back from gd)
+vim.keymap.set('n', '<leader>T', '<cmd>tabnew<CR>', { desc = 'New tab' })
 
 -- same as .vimrc: <F1>..<F10> jump to tab 1..10
 for i = 1, 10 do

@@ -95,7 +95,18 @@ lazy.setup({
             vim.o.timeoutlen = 500
         end,
         config = function()
-            require('which-key').setup()
+            local wk = require('which-key')
+            wk.setup()
+            wk.add {
+                { '<leader>a', group = 'claude' },
+                { '<leader>b', group = 'buffers' },
+                { '<leader>g', group = 'git' },
+                { '<leader>h', group = 'harpoon' },
+                { '<leader>p', group = 'pick (telescope)' },
+                { '<leader>ps', group = 'insert symbol' },
+                { '<leader>t', group = 'toggles' },
+                { '<leader>x', group = 'trouble' },
+            }
         end
     },
 
