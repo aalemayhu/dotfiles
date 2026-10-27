@@ -60,6 +60,12 @@ for i = 1, 10 do
     vim.keymap.set('t', '<F' .. i .. '>', '<C-\\><C-n>' .. i .. 'gt', { desc = 'Go to tab ' .. i })
 end
 
+-- Ctrl+/ toggles comments with the built-in gc (terminals send it as <C-_>)
+for _, key in ipairs({ '<C-/>', '<C-_>' }) do
+    vim.keymap.set('n', key, 'gcc', { remap = true, desc = 'Toggle comment' })
+    vim.keymap.set('v', key, 'gc', { remap = true, desc = 'Toggle comment' })
+end
+
 -- toggles
 vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<CR>', { desc = 'Toggle line numbers' })
 vim.keymap.set('n', '<leader>tl', '<cmd>set invlist<CR>', { desc = 'Toggle invisible char (list mode)' })

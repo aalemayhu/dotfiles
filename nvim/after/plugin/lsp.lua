@@ -52,16 +52,14 @@ require('mason-tool-installer').setup { ensure_installed = tools }
 
 -- Completion
 local cmp = require('cmp')
-local luasnip = require('luasnip')
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup {
     snippet = {
-        expand = function(args) luasnip.lsp_expand(args.body) end,
+        expand = function(args) vim.snippet.expand(args.body) end,
     },
     sources = cmp.config.sources {
         { name = 'nvim_lsp' }, -- lsp
-        { name = 'luasnip' }, -- snippets
         { name = 'buffer' }, -- text within current buffer
         { name = 'path' }, -- file system paths
     },
@@ -106,7 +104,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('Code action'))
         -- nvim defaults: grr (references), gri (implementation), grt (type
         -- definition), gra/grn, gO (symbols), <C-s> in insert (signature help).
-        -- gi (insert at last position) and gs (leap from window) stay untouched.
+        -- gi (insert at last position) stays untouched.
         -- References under the cursor are highlighted by snacks.words.
     end,
 })

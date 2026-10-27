@@ -1,4 +1,4 @@
--- Only the modules that do not overlap with telescope / zen-mode / ibl / alpha.
+-- Only the modules that do not overlap with telescope / ibl / alpha.
 require('snacks').setup {
     bigfile = { enabled = true }, -- disable heavy features on huge files
     quickfile = { enabled = true }, -- render the first file before plugins load

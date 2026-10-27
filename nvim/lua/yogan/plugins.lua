@@ -28,14 +28,6 @@ lazy.setup({
     'nvim-tree/nvim-web-devicons', -- also used by nvim-tree
     'lukas-reineke/indent-blankline.nvim',
     'ntpeters/vim-better-whitespace',
-    'sphamba/smear-cursor.nvim', -- animated cursor trail (terminal only)
-
-    -- Comments.nvim
-    'numToStr/Comment.nvim',
-    'JoosepAlviste/nvim-ts-context-commentstring', -- for jsx/tsx support
-
-    -- Bufferline and close buffers
-    { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
 
     -- File explorer
     { 'nvim-tree/nvim-tree.lua', version = '*' },
@@ -73,19 +65,6 @@ lazy.setup({
     -- Render markdown (headings, tables, code blocks) in the buffer
     'MeanderingProgrammer/render-markdown.nvim',
 
-    -- Harpoon (jump around and shit)
-    'theprimeagen/harpoon',
-
-    -- Surround
-    {
-        'kylechui/nvim-surround',
-        version = '*',
-        config = function() require('nvim-surround').setup() end,
-    },
-
-    -- Leap (similar to EasyMotion)
-    { url = 'https://codeberg.org/andyg/leap.nvim' }, -- moved off GitHub
-
     -- Shows not only key mappings, but also registers, marks, etc.
     {
         'folke/which-key.nvim',
@@ -108,7 +87,6 @@ lazy.setup({
                 { '<leader>f', group = 'find' },
                 { '<leader>fs', group = 'insert symbol' },
                 { '<leader>g', group = 'git' },
-                { '<leader>h', group = 'harpoon (marked files)' },
                 { '<leader>t', group = 'toggles' },
                 { '<leader>x', group = 'diagnostics (trouble)' },
             }
@@ -131,29 +109,15 @@ lazy.setup({
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
-
-            -- Snippets
-            'L3MON4D3/LuaSnip',
-            'rafamadriz/friendly-snippets',
         },
     },
     -- Trouble: project wide diagnostics
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
-    -- Find and display URLs
-    'axieax/urlview.nvim',
-
-    -- Zen mode
-    'folke/zen-mode.nvim',
-
     -- Formatting (prettier, rustfmt, gofmt, shfmt, ... falling back to LSP)
     'stevearc/conform.nvim',
-
-    -- Auto-close brackets/quotes
-    'windwp/nvim-autopairs',
 
     -- Git: fugitive (:G) and flog (commit graph)
     'tpope/vim-fugitive',
