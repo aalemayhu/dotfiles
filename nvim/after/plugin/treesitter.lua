@@ -13,7 +13,10 @@ local ensure_installed = {
     'rust',
     'python',
     'markdown',
-    'markdown_inline', -- markdown_inline is injected, so not auto-installed
+    -- injected into markdown, so the FileType installer below never sees them
+    'markdown_inline',
+    'html',
+    'yaml', -- frontmatter
 }
 ts.install(ensure_installed)
 
