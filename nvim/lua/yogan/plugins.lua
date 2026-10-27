@@ -51,7 +51,7 @@ lazy.setup({
     { 'jedrzejboczar/possession.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
     -- Telescope fuzzy thingy
-    { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+    { 'nvim-telescope/telescope.nvim', branch = 'master', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'nvim-telescope/telescope-symbols.nvim',
 
