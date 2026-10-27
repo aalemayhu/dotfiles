@@ -12,6 +12,7 @@ ifeq ($(UNAME_S),Windows)
 else
 	if [ ! -d "${HOME}/.cargo" ]; then ${MAKE} install_rust; fi
 	if [ ! -d "${HOME}/.nvm" ]; then ${MAKE} install_node; fi
+	if ! command -v nvim >/dev/null 2>&1; then ${MAKE} install_neovim; fi
 endif
 
 windows:
@@ -24,6 +25,10 @@ install_elixir:
 	ls ${elixir_repo_path} || git clone https://github.com/elixir-lang/elixir.git ${elixir_repo_path}
 	cd ${elixir_repo_path}
 	make -C ${elixir_repo_path} clean compile
+
+# Latest stable prebuilt Neovim into ~/.local (re-run to upgrade)
+install_neovim:
+	bash bin/install_neovim.sh
 
 install_rust:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
