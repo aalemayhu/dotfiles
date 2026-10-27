@@ -1,14 +1,18 @@
+# Shared git config. ~/.gitconfig is a local file that includes this one, so
+# `git config --global` (gh, installers) writes there and never touches the repo.
+
 [user]
         email = alexander@alemayhu.com
         name = Alexander Alemayhu
-        signingkey = 756753E5
 
 [core]
-        editor = vim
+        editor = nvim
         abbrev = 12
+[init]
+        defaultBranch = main
 [alias]
-	      ci = commit
-	      st = status
+        ci = commit
+        st = status
         br = branch
         ch = checkout
         clf = clean -fd
@@ -40,21 +44,27 @@
         changed = green
         untracked = cyan
 [push]
-	      default = matching
+        # push the current branch to its upstream, creating it on first push
+        default = simple
+        autoSetupRemote = true
+[fetch]
+        prune = true
+[pull]
+        rebase = true
+[rebase]
+        autoStash = true
+[rerere]
+        # remember conflict resolutions and replay them
+        enabled = true
+[merge]
+        conflictStyle = zdiff3
 [diff]
-        tool = icdiff
+        algorithm = histogram
+        colorMoved = default
         renames = true
         renameLimit = 2000
-
-[difftool "icdiff"]
-        cmd = icdiff $LOCAL $REMOTE
-[sendemail]
-	      smtpserver = /usr/local/bin/msmtp
-        chainreplyto = false
 [log]
         decorate = auto
-[pull]
-	rebase = true
 [checkout]
         defaultRemote = origin
 
@@ -65,3 +75,11 @@
         signoff = true
 [advice]
         diverging = false
+
+# GitHub over HTTPS authenticates through gh (`gh auth login`)
+[credential "https://github.com"]
+        helper =
+        helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+        helper =
+        helper = !/opt/homebrew/bin/gh auth git-credential
