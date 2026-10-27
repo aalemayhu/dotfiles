@@ -20,10 +20,6 @@ require('bufferline').setup {
     }
 }
 
--- NOTE: we have to call this a second time (after colors.lua), otherwise stuff
--- is broken :-/
-vim.cmd('colorscheme nightfox')
-
 vim.keymap.set('n', '<leader>bb', '<cmd>BufferLinePick<cr>',
     { noremap = true, silent = true, desc = 'Jump to buffer' }
 )

@@ -1,6 +1,6 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -21,9 +21,13 @@ end
 -- Load the actual plugins
 lazy.setup({
     -- Color scheme, status line, icons, indent guides, trailing whitespace
-    'EdenEast/nightfox.nvim',
+    {
+        'EdenEast/nightfox.nvim',
+        priority = 1000, -- load before everything that derives colors from it
+        config = function() require('yogan.colors') end,
+    },
     'nvim-lualine/lualine.nvim',
-    'kyazdani42/nvim-web-devicons', -- also used by nvim-tree
+    'nvim-tree/nvim-web-devicons', -- also used by nvim-tree
     'lukas-reineke/indent-blankline.nvim',
     'ntpeters/vim-better-whitespace',
 

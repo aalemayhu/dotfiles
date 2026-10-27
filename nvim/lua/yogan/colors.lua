@@ -22,8 +22,8 @@ require('nightfox').setup {
 }
 
 -- Setting a dimmed red (taken from color scheme) as backgroud for trailing
--- whitespace. Needs to be at the very end, any further call to 'colorscheme'
--- resets to the default full bright red. :-/
+-- whitespace. Loaded from the nightfox lazy spec (priority 1000), so this runs
+-- before vim-better-whitespace reads the variable.
 local spec = require('nightfox.spec').load('nightfox')
 -- print(vim.inspect(spec.palette)) -- for finding stuff
 vim.g.better_whitespace_guicolor = spec.palette.red.dim
