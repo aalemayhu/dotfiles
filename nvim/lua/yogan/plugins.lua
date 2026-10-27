@@ -28,6 +28,7 @@ lazy.setup({
     'nvim-tree/nvim-web-devicons', -- also used by nvim-tree
     'lukas-reineke/indent-blankline.nvim',
     'ntpeters/vim-better-whitespace',
+    'sphamba/smear-cursor.nvim', -- animated cursor trail (terminal only)
 
     -- Comments.nvim
     'numToStr/Comment.nvim',
