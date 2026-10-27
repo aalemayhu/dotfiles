@@ -102,7 +102,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             function() vim.diagnostic.jump { count = 1, float = true } end,
             opts('Next diagnostic')
         )
-        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts('Rename'))
+        vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, opts('Rename symbol'))
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('Code action'))
         -- nvim defaults: grr (references), gri (implementation), grt (type
         -- definition), gra/grn, gO (symbols), <C-s> in insert (signature help).

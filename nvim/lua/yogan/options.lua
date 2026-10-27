@@ -48,3 +48,6 @@ vim.opt.splitbelow = true
 
 vim.opt.spelllang = 'en_us'
 vim.opt.spellsuggest = 'best,9'
+
+-- vim-better-whitespace: no <leader>s operator (use :StripWhitespace instead)
+vim.g.better_whitespace_operator = ''

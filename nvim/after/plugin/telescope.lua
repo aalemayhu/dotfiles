@@ -49,61 +49,62 @@ telescope.setup {
 telescope.load_extension('fzf')
 
 -- help (<F1> is reserved for "go to tab 1", like in the vim setup)
-vim.keymap.set('n', '<leader>ph?', builtin.help_tags, { desc = 'Help tags' })
+vim.keymap.set('n', '<leader>fh?', builtin.help_tags, { desc = 'Help tags' })
 
 -- search
 vim.keymap.set('n', '<C-f>', builtin.live_grep) -- search prompt, regex on
-vim.keymap.set('n', '<leader>*', builtin.grep_string, { desc = 'Search for word under cursor' })
+vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Search in project (grep)' })
+vim.keymap.set('n', '<leader>*', builtin.grep_string, { desc = 'Search word under cursor' })
 
 -- buffers
 vim.keymap.set('n', '<C-b>', builtin.buffers, { desc = 'Buffers' })
-vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Buffers' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Buffers' })
 
 -- files
-vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Find file' })
-vim.keymap.set('n', '<leader>pe', builtin.oldfiles, { desc = 'Recent files (edited)' })
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find file' })
+vim.keymap.set('n', '<leader>fe', builtin.oldfiles, { desc = 'Recent files (edited)' })
 
 -- reopen the last picker with its query and selection
-vim.keymap.set('n', '<leader>pp', builtin.resume, { desc = 'Resume last picker' })
+vim.keymap.set('n', '<leader>fp', builtin.resume, { desc = 'Resume last picker' })
 
 -- code
-vim.keymap.set('n', '<leader>pl', builtin.lsp_document_symbols, { desc = 'LSP symbols (file)' })
-vim.keymap.set('n', '<leader>pw', builtin.lsp_dynamic_workspace_symbols, { desc = 'LSP symbols (workspace)' })
-vim.keymap.set('n', '<leader>pd', builtin.diagnostics, { desc = 'Diagnostics' })
-vim.keymap.set('n', '<leader>pt', '<cmd>TodoTelescope<cr>', { desc = 'TODO comments' })
+vim.keymap.set('n', '<leader>fl', builtin.lsp_document_symbols, { desc = 'LSP symbols (file)' })
+vim.keymap.set('n', '<leader>fw', builtin.lsp_dynamic_workspace_symbols, { desc = 'LSP symbols (workspace)' })
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Diagnostics' })
+vim.keymap.set('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'TODO comments' })
 
 -- git
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file (like fzf :Files)' })
-vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = 'Git files' })
-vim.keymap.set('n', '<leader>pc', builtin.git_status, { desc = 'Git status (changes)' })
+vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = 'Git files' })
+vim.keymap.set('n', '<leader>fc', builtin.git_status, { desc = 'Git status (changes)' })
 
 -- vim things
-vim.keymap.set('n', '<leader>p/', builtin.search_history, { desc = 'Search history' })
-vim.keymap.set('n', '<leader>p=', builtin.spell_suggest, { desc = 'Spell suggestions' }) -- vim: z=
-vim.keymap.set('n', '<leader>ph', builtin.highlights, { desc = 'Highlights' })
-vim.keymap.set('n', '<leader>pj', builtin.jumplist, { desc = 'Jumplist (previous locations)' })
-vim.keymap.set('n', '<leader>pk', builtin.keymaps, { desc = 'Keymaps' })
-vim.keymap.set('n', '<leader>pm', builtin.marks, { desc = 'Marks' })
-vim.keymap.set('n', '<leader>po', builtin.vim_options, { desc = 'Options' })
-vim.keymap.set('n', '<leader>pr', builtin.registers, { desc = 'Registers' })
+vim.keymap.set('n', '<leader>f/', builtin.search_history, { desc = 'Search history' })
+vim.keymap.set('n', '<leader>f=', builtin.spell_suggest, { desc = 'Spell suggestions' }) -- vim: z=
+vim.keymap.set('n', '<leader>fh', builtin.highlights, { desc = 'Highlights' })
+vim.keymap.set('n', '<leader>fj', builtin.jumplist, { desc = 'Jumplist (previous locations)' })
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Keymaps' })
+vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Marks' })
+vim.keymap.set('n', '<leader>fo', builtin.vim_options, { desc = 'Options' })
+vim.keymap.set('n', '<leader>fr', builtin.registers, { desc = 'Registers' })
 
--- symbols (telescope-symbols.nvim) (ps = symbols)
-vim.keymap.set('n', '<leader>pse', function() builtin.symbols { sources = { 'emoji' } } end, { desc = 'Insert Emoji' })
+-- symbols (telescope-symbols.nvim) (fs = symbols)
+vim.keymap.set('n', '<leader>fse', function() builtin.symbols { sources = { 'emoji' } } end, { desc = 'Insert Emoji' })
 vim.keymap.set(
     'n',
-    '<leader>psg',
+    '<leader>fsg',
     function() builtin.symbols { sources = { 'gitmoji' } } end,
     { desc = 'Insert Git Emoji' }
 )
 vim.keymap.set(
     'n',
-    '<leader>psn',
+    '<leader>fsn',
     function() builtin.symbols { sources = { 'nerd' } } end,
     { desc = 'Insert Nerd Font icon' }
 )
 vim.keymap.set(
     'n',
-    '<leader>psm',
+    '<leader>fsm',
     function() builtin.symbols { sources = { 'math' } } end,
     { desc = 'Insert math symbol' }
 )

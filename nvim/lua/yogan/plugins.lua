@@ -96,16 +96,21 @@ lazy.setup({
         end,
         config = function()
             local wk = require('which-key')
-            wk.setup()
+            wk.setup {
+                -- groups first, then single keys (the default puts groups last)
+                sort = { 'local', 'order', function(item) return item.group and 0 or 1 end, 'alphanum', 'mod' },
+            }
+            -- group names also pick which-key's icons (ai, buffer, code, find, …)
             wk.add {
-                { '<leader>a', group = 'claude' },
+                { '<leader>a', group = 'ai (claude)' },
                 { '<leader>b', group = 'buffers' },
+                { '<leader>c', group = 'code' },
+                { '<leader>f', group = 'find' },
+                { '<leader>fs', group = 'insert symbol' },
                 { '<leader>g', group = 'git' },
-                { '<leader>h', group = 'harpoon' },
-                { '<leader>p', group = 'pick (telescope)' },
-                { '<leader>ps', group = 'insert symbol' },
+                { '<leader>h', group = 'harpoon (marked files)' },
                 { '<leader>t', group = 'toggles' },
-                { '<leader>x', group = 'trouble' },
+                { '<leader>x', group = 'diagnostics (trouble)' },
             }
         end,
     },

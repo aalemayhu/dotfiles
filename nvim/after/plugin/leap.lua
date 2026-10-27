@@ -42,4 +42,4 @@ vim.keymap.set('n', '<leader>l', function()
         targets = get_line_starts(winid),
     }
     vim.api.nvim_input('^')
-end, { desc = 'Leap to line start (non-blank character)' })
+end, { desc = 'Leap to a line' })

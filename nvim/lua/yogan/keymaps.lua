@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 
--- clear search highlight
-vim.keymap.set('n', '<leader>/', ':noh<CR>', { desc = 'Clear search highlight' })
+-- clear search highlight (<leader>/ is project search now, see telescope.lua)
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR><Esc>', { desc = 'Clear search highlight' })
 
 -- move selected lines up and down, with correct indentation (visual J/K)
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -17,14 +17,14 @@ vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result' })
 
 -- delete into blackhole register (keep current paste)
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [['_d]], { desc = 'Delete without yank' })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [['_d]], { desc = 'Delete (keep yank register)' })
 -- copy to system clipboard (works magically from WSL to Windows)
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [['+y]], { desc = 'Copy to system clipboard' })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [['+y]], { desc = 'Yank to system clipboard' })
 
--- format whole file
+-- code (<leader>c…, LSP adds ca/cr in lsp.lua)
 vim.keymap.set(
     'n',
-    '<leader>f',
+    '<leader>cf',
     function() require('conform').format { lsp_format = 'fallback' } end,
     { desc = 'Format file' }
 )
@@ -34,13 +34,13 @@ vim.keymap.set(
 -- replace current word under cursor (with live preview)
 vim.keymap.set(
     'n',
-    '<leader>s',
+    '<leader>cs',
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = 'Replace current word' }
+    { desc = 'Substitute word under cursor' }
 )
 
 -- make current file executable (shell scripts)
-vim.keymap.set('n', '<leader>X', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
+vim.keymap.set('n', '<leader>cx', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
 
 -- Q is left alone: in nvim it replays the last recorded macro
 

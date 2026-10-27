@@ -3,6 +3,8 @@ local claude = require('yogan.claude')
 
 claude.start_watching()
 
+-- <leader><space> is the most used one: what are my sessions doing?
+vim.keymap.set('n', '<leader><space>', claude.pick_live, { desc = 'Claude sessions' })
 vim.keymap.set('n', '<leader>an', function() claude.open() end, { desc = 'Claude: new session (tab)' })
 vim.keymap.set('n', '<leader>al', claude.pick_live, { desc = 'Claude: running sessions' })
 vim.keymap.set('n', '<leader>ar', claude.pick_history, { desc = 'Claude: resume session' })
