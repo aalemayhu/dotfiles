@@ -120,6 +120,7 @@ lazy.setup({
             -- LSP Support
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
+            'WhoIsSethDaniel/mason-tool-installer.nvim', -- formatters, linters
 
             -- Autocompletion
             'hrsh7th/nvim-cmp',

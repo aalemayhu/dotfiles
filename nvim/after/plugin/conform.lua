@@ -16,6 +16,17 @@ require('conform').setup {
         python = { 'ruff_format', 'black', stop_after_first = true },
         lua = { 'stylua' },
     },
-    -- format on save with whatever formatter is installed, else the LSP
-    format_on_save = { timeout_ms = 1000, lsp_format = 'fallback' },
+    -- format on save with whatever formatter is installed, else the LSP;
+    -- <leader>tf toggles it globally, :let b:disable_autoformat = 1 per buffer
+    format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+        end
+        return { timeout_ms = 1000, lsp_format = 'fallback' }
+    end,
 }
+
+vim.keymap.set('n', '<leader>tf', function()
+    vim.g.disable_autoformat = not vim.g.disable_autoformat
+    vim.notify('Format on save ' .. (vim.g.disable_autoformat and 'disabled' or 'enabled'))
+end, { desc = 'Toggle format on save' })

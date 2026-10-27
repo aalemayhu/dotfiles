@@ -1,7 +1,14 @@
 -- LSP using the native nvim 0.11+ API (vim.lsp.config / vim.lsp.enable),
 -- mason for installing servers and nvim-cmp for completion.
 
-local servers = { 'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'yamlls' }
+local servers = {
+    'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'yamlls',
+    'basedpyright', 'bashls', 'jsonls',
+    -- 'gopls', -- needs a Go toolchain to install
+}
+
+-- formatters used by conform.lua, plus shellcheck for bashls diagnostics
+local tools = { 'prettierd', 'stylua', 'shfmt', 'ruff', 'shellcheck' }
 
 -- completion capabilities for all servers
 vim.lsp.config('*', {
@@ -29,6 +36,7 @@ require('mason-lspconfig').setup {
     -- enables every installed server with vim.lsp.enable()
     automatic_enable = true,
 }
+require('mason-tool-installer').setup { ensure_installed = tools }
 
 -- Completion
 local cmp = require('cmp')
