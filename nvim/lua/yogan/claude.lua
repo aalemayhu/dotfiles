@@ -120,19 +120,26 @@ function M.open(dir, args)
     vim.b[buf].claude = true
 end
 
+-- JavaScript for Automation: AppleScript's `windows of application "Terminal"`
+-- comes back empty on this macOS, JXA sees them. argv[0] is the tty path.
 local focus_terminal_tab = [[
-tell application "Terminal"
-    repeat with w in windows
-        repeat with t in tabs of w
-            if tty of t is "%s" then
-                set selected of t to true
-                set index of w to 1
-                activate
-                return "ok"
-            end if
-        end repeat
-    end repeat
-end tell]]
+function run(argv) {
+    const terminal = Application('Terminal')
+    for (const w of terminal.windows()) {
+        let tabs
+        try { tabs = w.tabs() } catch (e) { continue }
+        for (const t of tabs) {
+            if (t.tty() === argv[0]) {
+                t.selected = true
+                w.miniaturized = false
+                w.index = 1
+                terminal.activate()
+                return 'ok'
+            }
+        }
+    }
+    return ''
+}]]
 
 --- Jump to a live session: its nvim tab, or the terminal window it runs in.
 function M.focus(s)
@@ -152,9 +159,13 @@ function M.focus(s)
         vim.notify(('Claude %s runs in another terminal (%s), could not focus it'):format(s.name, tty))
     end
     if vim.fn.has('mac') == 0 or tty == '' or tty == '??' then return cannot() end
-    vim.system({ 'osascript', '-e', focus_terminal_tab:format('/dev/' .. tty) }, { text = true }, function(r)
-        if r.code ~= 0 or vim.trim(r.stdout or '') ~= 'ok' then vim.schedule(cannot) end
-    end)
+    vim.system(
+        { 'osascript', '-l', 'JavaScript', '-e', focus_terminal_tab, '/dev/' .. tty },
+        { text = true },
+        function(r)
+            if r.code ~= 0 or vim.trim(r.stdout or '') ~= 'ok' then vim.schedule(cannot) end
+        end
+    )
 end
 
 M.counts = { waiting = 0, idle = 0, busy = 0 }
