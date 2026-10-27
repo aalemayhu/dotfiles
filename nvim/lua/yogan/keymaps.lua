@@ -39,9 +39,19 @@ vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set('n', '<leader>X', '<cmd>!chmod +x %<CR>',
     { silent = true, desc = 'Make file executable' })
 
--- move "record macro" from q to Q (q is hit accidentally way too often)
-vim.keymap.set('n', 'Q', 'q', { desc = 'Record macro' })
-vim.keymap.set('n', 'q', '<nop>')
+-- same as .vimrc: Q does nothing useful (no Ex mode), q records macros as usual
+vim.keymap.set({ 'n', 'v', 'o' }, 'Q', '<cmd>echo "You pressed Q"<CR>')
+
+-- same as .vimrc: arrow keys disabled
+for _, key in ipairs({ '<Up>', '<Down>', '<Left>', '<Right>' }) do
+  vim.keymap.set({ 'n', 'v', 'o' }, key, '<nop>')
+end
+
+-- same as .vimrc: <F1>..<F10> jump to tab 1..10
+for i = 1, 10 do
+  vim.keymap.set('n', '<F' .. i .. '>', i .. 'gt', { desc = 'Go to tab ' .. i })
+  vim.keymap.set('i', '<F' .. i .. '>', '<Esc>' .. i .. 'gta', { desc = 'Go to tab ' .. i })
+end
 
 -- toggles
 vim.keymap.set('n', '<leader>tn', '<cmd>set invnumber<CR>', { desc = 'Toggle line numbers' })

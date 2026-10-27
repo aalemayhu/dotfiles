@@ -36,8 +36,8 @@ telescope.setup {
 
 telescope.load_extension('fzf')
 
--- help
-vim.keymap.set('n', '<F1>', builtin.help_tags, { desc = 'Help tags' })
+-- help (<F1> is reserved for "go to tab 1", like in the vim setup)
+vim.keymap.set('n', '<leader>ph?', builtin.help_tags, { desc = 'Help tags' })
 
 -- search
 vim.keymap.set('n', '<C-f>', builtin.live_grep) -- search prompt, regex on
@@ -51,8 +51,8 @@ vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Buffers' })
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Find file' })
 
 -- git
-vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Git files' })
-vim.keymap.set('n', '<leader>pg', builtin.find_files, { desc = 'Git files' })
+vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file (like fzf :Files)' })
+vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = 'Git files' })
 vim.keymap.set('n', '<leader>pc', builtin.git_status, { desc = 'Git status (changes)' })
 
 -- vim things
