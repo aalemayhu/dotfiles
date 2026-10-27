@@ -141,6 +141,9 @@ lazy.setup({
     'tpope/vim-fugitive',
     'rbong/vim-flog',
 
+    -- snacks.nvim: small QoL modules (bigfile, notifier, bufdelete, words, ...)
+    { 'folke/snacks.nvim', priority = 1000, lazy = false },
+
     -- Claude Code integration
     { 'coder/claudecode.nvim', dependencies = { 'folke/snacks.nvim' } },
 }, {
