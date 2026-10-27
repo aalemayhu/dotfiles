@@ -42,5 +42,5 @@ vim.opt.laststatus = 3 -- one global status line at the bottom
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.spelllang    = "en_us,de_20" -- de_20 = new spelling (see spell-german)
+vim.opt.spelllang    = "en_us"
 vim.opt.spellsuggest = "best,9"

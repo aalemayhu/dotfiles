@@ -1,10 +1,8 @@
-vim.o.number         = false
-vim.o.relativenumber = false
-vim.o.spell          = true
+vim.opt_local.number         = false
+vim.opt_local.relativenumber = false
+vim.opt_local.spell          = true
 
 vim.cmd [[
-    iab grt Greetings,<CR>Frank')
-    iab grs Grüße,<CR>Frank
-    iab mfg Mit freundlichen Grüßen,<CR>Frank Blendinger
-    iab fbl Frank Blendinger
+    iab <buffer> grt Greetings,<CR>Alexander
+    iab <buffer> aal Alexander Alemayhu
 ]]
