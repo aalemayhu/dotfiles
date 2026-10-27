@@ -29,7 +29,7 @@ vim.opt.signcolumn = 'yes'
 vim.opt.foldmethod = 'indent'
 vim.opt.foldlevelstart = 99
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250 -- CursorHold delay (no swapfile, so only that)
 
 vim.opt.wrap = true
 vim.opt.textwidth = 80

@@ -63,7 +63,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('yogan_lsp_attach', { clear = true }),
     callback = function(args)
         local bufnr = args.buf
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
         local opts = function(desc) return { buffer = bufnr, remap = false, desc = desc } end
 
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts('Hover'))
@@ -80,26 +79,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- nvim defaults: grr (references), gri (implementation), grt (type
         -- definition), gra/grn, gO (symbols), <C-s> in insert (signature help).
         -- gi (insert at last position) and gs (leap from window) stay untouched.
-
-        -- highlight all references to symbol under cursor
-        if client and client.server_capabilities.documentHighlightProvider then
-            local group = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = false })
-            vim.api.nvim_clear_autocmds { group = group, buffer = bufnr }
-
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                callback = vim.lsp.buf.document_highlight,
-                group = group,
-                buffer = bufnr,
-                desc = 'Highlight symbol under cursor',
-            })
-
-            vim.api.nvim_create_autocmd('CursorMoved', {
-                callback = vim.lsp.buf.clear_references,
-                group = group,
-                buffer = bufnr,
-                desc = 'Clear old highlights',
-            })
-        end
+        -- References under the cursor are highlighted by snacks.words.
     end,
 })
 
