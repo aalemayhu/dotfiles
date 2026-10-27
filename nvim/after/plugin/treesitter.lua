@@ -3,7 +3,18 @@
 local ts = require('nvim-treesitter')
 ts.setup {}
 
-local ensure_installed = { 'vimdoc', 'javascript', 'typescript', 'c', 'lua', 'vim', 'rust', 'python' }
+local ensure_installed = {
+    'vimdoc',
+    'javascript',
+    'typescript',
+    'c',
+    'lua',
+    'vim',
+    'rust',
+    'python',
+    'markdown',
+    'markdown_inline', -- markdown_inline is injected, so not auto-installed
+}
 ts.install(ensure_installed)
 
 -- like the old `auto_install`: install a missing parser when opening a buffer

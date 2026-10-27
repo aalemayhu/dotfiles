@@ -70,6 +70,9 @@ lazy.setup({
     -- (playground is obsolete: use the built-in :InspectTree / :Inspect)
     'nvim-treesitter/nvim-treesitter-context',
 
+    -- Render markdown (headings, tables, code blocks) in the buffer
+    'MeanderingProgrammer/render-markdown.nvim',
+
     -- Harpoon (jump around and shit)
     'theprimeagen/harpoon',
 
