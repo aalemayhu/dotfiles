@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+# ~/.claude/settings.json is built from two files:
+#   claude/settings.json             shared settings, in this (public) repo
+#   ~/.claude/settings.private.json  rules naming servers, accounts, ... (not in git)
+# Claude Code can't read a second user-level file (autoMode only applies from
+# ~/.claude/settings.json), so the two are merged into a regular file.
+#
+#   bin/claude-settings build   write ~/.claude/settings.json from the two files
+#   bin/claude-settings save    copy changes Claude Code made (e.g. /config,
+#                               plugins) back to the repo, minus the private part
+set -euo pipefail
+
+dotfiles="$(cd "$(dirname "$0")/.." && pwd)"
+shared="$dotfiles/claude/settings.json"
+private="$HOME/.claude/settings.private.json"
+live="$HOME/.claude/settings.json"
+
+# Objects merge key by key, lists are joined, other values come from the
+# private file.
+merge='def m($a; $b):
+  if ($a|type) == "object" and ($b|type) == "object" then
+    reduce (($a + $b) | keys_unsorted[]) as $k ({};
+      .[$k] = if ($a|has($k)) and ($b|has($k)) then m($a[$k]; $b[$k])
+              elif ($a|has($k)) then $a[$k] else $b[$k] end)
+  elif ($a|type) == "array" and ($b|type) == "array" then $a + ($b - $a)
+  else $b end;
+m(.[0]; .[1])'
+
+# The reverse: drop list entries and keys that come from the private file.
+strip='def s($a; $b):
+  if ($a|type) == "object" and ($b|type) == "object" then
+    reduce ($a | keys_unsorted[]) as $k ({};
+      if ($b|has($k)) then (s($a[$k]; $b[$k]) as $v | if $v == null then . else .[$k] = $v end)
+      else .[$k] = $a[$k] end)
+  elif ($a|type) == "array" and ($b|type) == "array" then $a - $b
+  else null end;
+s(.[0]; .[1])'
+
+[ -f "$private" ] || echo '{}' >"$private"
+
+case "${1:-}" in
+    build)
+        # replace an old symlink to the repo with a regular file
+        [ -L "$live" ] && rm "$live"
+        jq -s "$merge" "$shared" "$private" >"$live.tmp"
+        mv "$live.tmp" "$live"
+        echo "wrote ~/.claude/settings.json"
+        ;;
+    save)
+        jq -s "$strip" "$live" "$private" >"$shared.tmp"
+        mv "$shared.tmp" "$shared"
+        git -C "$dotfiles" diff --stat -- claude/settings.json
+        ;;
+    *)
+        echo "usage: $0 build|save" >&2
+        exit 2
+        ;;
+esac

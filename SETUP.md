@@ -25,7 +25,9 @@ that need a GUI or a password, tell me exactly what to click or type.)
 6. Claude Code: run `claude` and log in. Plugins listed in
    `claude/settings.json` come from the marketplaces there; install any that
    are missing with `/plugin`. Recreate the graphify skill with
-   `graphify install --platform claude`.
+   `graphify install --platform claude`. Copy
+   `~/.claude/settings.private.json` (the 2anki.net ssh rules and auto-mode
+   notes) from the old Mac or 1Password, then run `bin/claude-settings build`.
 7. Fill in `~/.shell/local` (not in git). Current machine has:
    ```sh
    export ASC_KEY_ID=...        # App Store Connect API (1Password)

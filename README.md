@@ -26,6 +26,7 @@ it: run `claude` in this directory and say "follow SETUP.md".
 | `make dump`  | Refresh the `Brewfile` after installing something new           |
 | `make check` | Show missing links and Brewfile entries that aren't installed   |
 | `make link`  | Recreate the symlinks only                                      |
+| `make claude-save` | Copy Claude Code settings changes back into the repo     |
 
 ## Layout
 
@@ -34,9 +35,15 @@ it: run `claude` in this directory and say "follow SETUP.md".
 | `shell/`         | `~/.bashrc`, `~/.bash_profile`, `~/.shell/`, `~/.tmux.conf`  |
 | `git/gitconfig`  | included from `~/.gitconfig` (which stays a local file)      |
 | `nvim/`          | `~/.config/nvim`                                             |
-| `claude/`        | `~/.claude/` (settings, CLAUDE.md, statusline, commands)     |
+| `claude/`        | `~/.claude/` (CLAUDE.md, statusline, commands)               |
 | `ghostty/`, `zellij/`, `mise/` | `~/.config/…`                                  |
 | `ssh/config`     | `~/.ssh/config`                                              |
 
 Machine-specific settings and secrets go in `~/.shell/local` and
 `~/.gitconfig`, which are not in git.
+
+`~/.claude/settings.json` is a regular file built by `bin/claude-settings`
+from `claude/settings.json` plus `~/.claude/settings.private.json`, which holds
+the permission rules that name servers and accounts (not in git). After
+changing settings from inside Claude Code, run `make claude-save` to bring
+the shared part back into the repo.

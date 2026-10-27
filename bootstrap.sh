@@ -23,7 +23,6 @@ links=(
     "ghostty/config               .config/ghostty/config"
     "zellij/config.kdl            .config/zellij/config.kdl"
     "mise/config.toml             .config/mise/config.toml"
-    "claude/settings.json         .claude/settings.json"
     "claude/CLAUDE.md             .claude/CLAUDE.md"
     "claude/statusline-command.sh .claude/statusline-command.sh"
     "claude/commands              .claude/commands"
@@ -59,6 +58,9 @@ link_all() {
     [ -L "$HOME/.gitconfig" ] && rm "$HOME/.gitconfig"
     git config --global --get-all include.path | grep -qxF "$dotfiles/git/gitconfig" ||
         git config --global --add include.path "$dotfiles/git/gitconfig"
+
+    # Claude Code settings: shared part from the repo + ~/.claude/settings.private.json
+    "$dotfiles/bin/claude-settings" build
 
     # machine-specific shell settings and secrets
     mkdir -p "$HOME/.shell"

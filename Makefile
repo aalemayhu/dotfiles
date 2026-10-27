@@ -10,6 +10,10 @@ check:
 	./bootstrap.sh check
 	brew bundle check --file=Brewfile --no-upgrade --verbose
 
+# Copy settings Claude Code changed (/config, plugins, ...) back into the repo
+claude-save:
+	bin/claude-settings save
+
 # Upgrade everything: Homebrew, mise runtimes, Neovim and its plugins, Claude Code
 update:
 	brew update
@@ -25,4 +29,4 @@ dump:
 	{ sed -n '1,3p' Brewfile; brew bundle dump --file=- | grep -vE '^(npm|cargo) '; } > Brewfile.new
 	mv Brewfile.new Brewfile
 
-.PHONY: install link check update dump
+.PHONY: install link check claude-save update dump
