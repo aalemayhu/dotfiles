@@ -30,7 +30,19 @@ telescope.setup {
     defaults = {
         -- mappings used while telescope prompt is open
         mappings = { i = insert_mappings, n = normal_mappings, },
-        file_ignore_patterns = { 'node_modules', '_compiled.lua' }
+        file_ignore_patterns = { 'node_modules', '_compiled.lua' },
+        -- use the whole screen: side by side on wide terminals, stacked
+        -- (results on top, preview below) on narrow/tall ones
+        layout_strategy = 'flex',
+        layout_config = {
+            width = 0.97,
+            height = 0.97,
+            prompt_position = 'top',
+            flex = { flip_columns = 160 },
+            horizontal = { preview_width = 0.55 },
+            vertical = { preview_height = 0.5, mirror = false },
+        },
+        sorting_strategy = 'ascending', -- best match at the top, no empty gap
     }
 }
 
