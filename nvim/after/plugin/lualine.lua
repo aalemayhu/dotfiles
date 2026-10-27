@@ -6,6 +6,8 @@ local function session_name()
     return ' ' .. name
 end
 
+local claude = require('yogan.claude')
+
 require('lualine').setup {
     extensions = { 'nvim-tree', 'quickfix' },
     sections = {
@@ -21,6 +23,15 @@ require('lualine').setup {
                     newfile = '',
                 },
             },
+        },
+        -- Claude sessions on this machine, e.g. "● 1 needs you ◐ 2 working"
+        lualine_x = {
+            { claude.statusline('waiting'), color = 'DiagnosticError' },
+            { claude.statusline('idle'), color = 'DiagnosticWarn' },
+            { claude.statusline('busy'), color = 'DiagnosticInfo' },
+            'encoding',
+            'fileformat',
+            'filetype',
         },
     },
 }
