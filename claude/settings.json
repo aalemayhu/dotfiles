@@ -1,0 +1,99 @@
+{
+  "env": {
+    "SLASH_COMMAND_TOOL_CHAR_BUDGET": "100000",
+    "PATH": "/Users/a/.claude/bin:/Users/a/.local/bin:/Users/a/.local/share/mise/shims:/Users/a/.cargo/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/a/google-cloud-sdk/bin:/Users/a/.local/share/sonarqube-cli/bin"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(gh *)",
+      "Bash(git *)",
+      "Bash(himalaya *)"
+    ],
+    "defaultMode": "auto"
+  },
+  "model": "opus",
+  "skillOverrides": {
+    "cate-theme": "off"
+  },
+  "hooks": {},
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"/Users/a/.claude/statusline-command.sh\""
+  },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": true,
+    "caveman@caveman": false,
+    "design-for-ai@rtd": false,
+    "typescript-lsp@claude-plugins-official": true,
+    "code-review@claude-plugins-official": false,
+    "context7@claude-plugins-official": false,
+    "skill-creator@claude-plugins-official": false,
+    "code-simplifier@claude-plugins-official": false,
+    "github@claude-plugins-official": false,
+    "playwright@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": false,
+    "security-guidance@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": false,
+    "commit-commands@claude-plugins-official": false,
+    "stripe@claude-plugins-official": true,
+    "mcp-server-dev@claude-plugins-official": false,
+    "sonarqube@claude-plugins-official": false,
+    "rust-analyzer-lsp@claude-plugins-official": false,
+    "brand-voice@synced": false,
+    "design@synced": false,
+    "engineering@synced": false,
+    "marketing@synced": false,
+    "cowork-plugin-management@synced": false,
+    "2anki@2anki": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "rtd": {
+      "source": {
+        "source": "github",
+        "repo": "ryanthedev/rtd-claude-inn"
+      }
+    },
+    "2anki": {
+      "source": {
+        "source": "github",
+        "repo": "2anki/claude-plugin"
+      }
+    }
+  },
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "tap"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark",
+  "editorMode": "vim",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "autoMode": {
+    "allow": [
+      "$defaults"
+    ],
+    "environment": [
+      "$defaults"
+    ]
+  },
+  "voiceEnabled": true
+}

@@ -1,0 +1,5 @@
+# Ghostty (https://ghostty.org/docs/config). `ghostty +show-config --default --docs`
+# lists every option.
+
+# Homebrew's bash: macOS ships bash 3.2 from 2007 as /bin/bash
+command = /opt/homebrew/bin/bash --login

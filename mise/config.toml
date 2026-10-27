@@ -1,0 +1,18 @@
+# Global runtimes and CLI tools, managed by mise (https://mise.jdx.dev).
+# Projects can pin their own versions in a mise.toml / .nvmrc / .tool-versions.
+# Rust stays with rustup, Python tools with uv.
+
+[tools]
+node = "22"
+java = "temurin-26"
+bun = "latest"
+
+# global npm CLIs (were `npm -g` under nvm)
+"npm:@2anki/cli" = "latest"
+"npm:cline" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+
+[settings]
+# read .nvmrc / .node-version / .java-version files in projects
+idiomatic_version_file_enable_tools = ["node", "java"]
