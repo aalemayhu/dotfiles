@@ -61,7 +61,16 @@ function jwt() {
 }
 
 const [method = 'GET', path = '/v1/apps', body] = process.argv.slice(2);
-const res = await fetch(`https://api.appstoreconnect.apple.com${path}`, {
+// Only ever send the token to Apple: a path like '@evil.com/' would otherwise
+// turn the host into userinfo and the request would go to evil.com.
+const origin = 'https://api.appstoreconnect.apple.com';
+if (!path.startsWith('/') || path.startsWith('//'))
+  throw new Error(`Path must start with a single '/': ${path}`);
+const url = new URL(path, origin);
+if (url.origin !== origin) throw new Error(`Refusing to call ${url.origin}`);
+if (!['GET', 'POST', 'PATCH', 'DELETE'].includes(method))
+  throw new Error(`Unsupported method: ${method}`);
+const res = await fetch(url, {
   method,
   headers: {
     Authorization: `Bearer ${jwt()}`,
