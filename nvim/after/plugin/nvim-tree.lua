@@ -46,3 +46,15 @@ require('nvim-tree').setup {
 }
 
 vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', { desc = 'Toggle file tree' })
+
+-- :q in the last real window should exit nvim, not leave the tree open on its own
+vim.api.nvim_create_autocmd('BufEnter', {
+    group = vim.api.nvim_create_augroup('yogan_nvimtree_autoclose', { clear = true }),
+    nested = true,
+    desc = 'Quit nvim when the file tree is the only window left',
+    callback = function()
+        if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == 'NvimTree' then
+            vim.cmd('quit')
+        end
+    end,
+})

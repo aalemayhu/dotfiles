@@ -144,6 +144,9 @@ lazy.setup({
     -- snacks.nvim: small QoL modules (bigfile, notifier, bufdelete, words, ...)
     { 'folke/snacks.nvim', priority = 1000, lazy = false },
 
+    -- Zellij: <C-h/j/k/l> moves between nvim splits and zellij panes
+    'swaits/zellij-nav.nvim',
+
     -- Claude Code integration
     { 'coder/claudecode.nvim', dependencies = { 'folke/snacks.nvim' } },
 }, {
