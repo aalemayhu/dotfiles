@@ -154,6 +154,9 @@ lazy.setup({
     'tpope/vim-fugitive',
     'rbong/vim-flog',
 
+    -- Review changes across files (e.g. everything Claude touched)
+    'sindrets/diffview.nvim',
+
     -- snacks.nvim: small QoL modules (bigfile, notifier, bufdelete, words, ...)
     { 'folke/snacks.nvim', priority = 1000, lazy = false },
 
