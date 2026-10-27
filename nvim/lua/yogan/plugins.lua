@@ -171,6 +171,7 @@ lazy.setup({
     -- Claude Code integration
     { 'coder/claudecode.nvim', dependencies = { 'folke/snacks.nvim' } },
 }, {
+    rocks = { enabled = false }, -- no plugin needs luarocks
     display = {
         open_fn = function() return require('lazy.util').float { border = 'rounded' } end,
     },

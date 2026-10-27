@@ -51,3 +51,9 @@ vim.opt.spellsuggest = 'best,9'
 
 -- vim-better-whitespace: no <leader>s operator (use :StripWhitespace instead)
 vim.g.better_whitespace_operator = ''
+
+-- no plugin here uses the remote-plugin hosts; skip loading them
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
