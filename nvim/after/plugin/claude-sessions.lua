@@ -29,6 +29,9 @@ vim.api.nvim_create_autocmd('TermClose', {
     group = group,
     desc = 'Close the tab of a Claude session that exited cleanly',
     callback = function(args)
+        -- another TermClose handler (e.g. snacks/claudecode terminals) may
+        -- already have deleted the buffer
+        if not vim.api.nvim_buf_is_valid(args.buf) then return end
         if vim.b[args.buf].claude and vim.v.event.status == 0 then
             vim.schedule(function()
                 if vim.api.nvim_buf_is_valid(args.buf) then vim.api.nvim_buf_delete(args.buf, { force = true }) end
