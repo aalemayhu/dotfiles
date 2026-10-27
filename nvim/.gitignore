@@ -42,3 +42,6 @@ luac.out
 
 
 plugin/packer_compiled.lua
+
+# machine-specific overrides (not for the public repo)
+lua/yogan/local.lua

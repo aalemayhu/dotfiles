@@ -33,7 +33,6 @@ lazy.setup({
 
     -- Bufferline and close buffers
     { 'akinsho/bufferline.nvim', version = '*', dependencies = 'nvim-tree/nvim-web-devicons' },
-    'kazhala/close-buffers.nvim',
 
     -- File explorer
     { 'nvim-tree/nvim-tree.lua', version = '*' },
@@ -131,10 +130,19 @@ lazy.setup({
 
     -- Zen mode
     'folke/zen-mode.nvim',
-    'folke/twilight.nvim',
 
-    -- Just for fun
-    'eandrju/cellular-automaton.nvim',
+    -- Formatting (prettier, rustfmt, gofmt, shfmt, ... falling back to LSP)
+    'stevearc/conform.nvim',
+
+    -- Auto-close brackets/quotes
+    'windwp/nvim-autopairs',
+
+    -- Git: fugitive (:G) and flog (commit graph)
+    'tpope/vim-fugitive',
+    'rbong/vim-flog',
+
+    -- Claude Code integration
+    { 'coder/claudecode.nvim', dependencies = { 'folke/snacks.nvim' } },
 }, {
     display = {
         open_fn = function()

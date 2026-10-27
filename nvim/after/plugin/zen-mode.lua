@@ -12,7 +12,6 @@ require('zen-mode').setup {
     plugins = {
         gitsigns = { enabled = true },
         tmux = { enabled = true },
-        twilight = { enabled = true },
     },
 }
 

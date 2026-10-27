@@ -45,30 +45,3 @@ vim.keymap.set('n', '<leader>bp', '<cmd>BufferLineTogglePin<cr>',
 vim.keymap.set('n', '<leader>bc', '<cmd>BufferLinePickClose<cr>',
     { noremap = true, silent = true, desc = 'Close buffer' }
 )
-
-local close_buffers = require('close_buffers')
-
-close_buffers.setup {
-    preserve_window_layout = { 'this' },
-    next_buffer_cmd = function(windows)
-        require('bufferline').cycle(1)
-        local bufnr = vim.api.nvim_get_current_buf()
-
-        for _, window in ipairs(windows) do
-            vim.api.nvim_win_set_buf(window, bufnr)
-        end
-    end,
-}
-
-vim.keymap.set('n', '<leader>bH',
-    function() close_buffers.delete { type = 'hidden' } end,
-    { noremap = true, silent = true, desc = 'Close hidden buffers' }
-)
-vim.keymap.set('n', '<leader>bU',
-    function() close_buffers.delete { type = 'nameless' } end,
-    { noremap = true, silent = true, desc = 'Close unnamed buffers' }
-)
-vim.keymap.set('n', '<leader>bC',
-    function() close_buffers.delete { type = 'this' } end,
-    { noremap = true, silent = true, desc = 'Close current buffer' }
-)
