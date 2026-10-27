@@ -47,6 +47,9 @@ for _, key in ipairs({ '<Up>', '<Down>', '<Left>', '<Right>' }) do
   vim.keymap.set({ 'n', 'v', 'o' }, key, '<nop>')
 end
 
+-- same as .vimrc: <C-t> opens a new tab
+vim.keymap.set({ 'n', 'v', 'o' }, '<C-t>', '<Esc>:tabnew<CR>', { desc = 'New tab' })
+
 -- same as .vimrc: <F1>..<F10> jump to tab 1..10
 for i = 1, 10 do
   vim.keymap.set('n', '<F' .. i .. '>', i .. 'gt', { desc = 'Go to tab ' .. i })

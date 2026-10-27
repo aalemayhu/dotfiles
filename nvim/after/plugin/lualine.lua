@@ -1,9 +1,13 @@
 local function session_name()
     local session_ok, session = pcall(require, 'possession.session')
-    if not session_ok or not session.session_name then
+    if not session_ok then
         return ''
     end
-    return ' ' .. session.session_name
+    local name = session.get_session_name()
+    if not name or name == '' then
+        return ''
+    end
+    return ' ' .. name
 end
 
 require('lualine').setup {

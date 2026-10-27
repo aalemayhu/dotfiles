@@ -3,7 +3,6 @@ vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { link = 'BufferVisible' })
 vim.api.nvim_set_hl(0, 'NvimTreeModifiedFile', { link = 'BufferVisibleMod' })
 
 require('nvim-tree').setup {
-    open_on_setup = false, -- open tree when nvim is started without file arg
     hijack_unnamed_buffer_when_opening = true,
     hijack_cursor = true,
     actions = {

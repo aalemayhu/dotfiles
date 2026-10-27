@@ -1,22 +1,22 @@
-require 'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or 'all'
-    ensure_installed = { 'vimdoc', 'javascript', 'typescript', 'c', 'lua', 'vim', 'rust', 'python' },
+-- nvim-treesitter `main` branch: it only installs parsers, highlighting is
+-- started by neovim itself (vim.treesitter.start).
+local ts = require('nvim-treesitter')
+ts.setup {}
 
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
+local ensure_installed = { 'vimdoc', 'javascript', 'typescript', 'c', 'lua', 'vim', 'rust', 'python' }
+ts.install(ensure_installed)
 
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
-
-    highlight = {
-        -- `false` will disable the whole extension
-        enable = true,
-
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-    },
-}
+-- like the old `auto_install`: install a missing parser when opening a buffer
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup('yogan_treesitter', { clear = true }),
+    callback = function(args)
+        local lang = vim.treesitter.language.get_lang(args.match)
+        if not lang then return end
+        if not pcall(vim.treesitter.start, args.buf, lang) then
+            -- parser missing: install in the background, highlight next time
+            if vim.tbl_contains(ts.get_available(), lang) then
+                ts.install({ lang })
+            end
+        end
+    end,
+})

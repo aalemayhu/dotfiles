@@ -61,9 +61,11 @@ lazy.setup({
     -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
+        branch = 'main', -- the rewrite; no more nvim-treesitter.configs
+        lazy = false,
         build = ':TSUpdate',
     },
-    'nvim-treesitter/playground',
+    -- (playground is obsolete: use the built-in :InspectTree / :Inspect)
     'nvim-treesitter/nvim-treesitter-context',
 
     -- Harpoon (jump around and shit)
@@ -79,7 +81,7 @@ lazy.setup({
     },
 
     -- Leap (similar to EasyMotion)
-    'ggandor/leap.nvim',
+    { url = 'https://codeberg.org/andyg/leap.nvim' }, -- moved off GitHub
 
     -- Shows not only key mappings, but also registers, marks, etc.
     {
@@ -99,11 +101,9 @@ lazy.setup({
 
     -- LSP & Friends
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        'neovim/nvim-lspconfig', -- server definitions (used via vim.lsp.config)
         dependencies = {
             -- LSP Support
-            'neovim/nvim-lspconfig',
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
@@ -120,9 +120,6 @@ lazy.setup({
             'rafamadriz/friendly-snippets',
         }
     },
-    -- additional functionality for typescript server
-    'jose-elias-alvarez/typescript.nvim',
-
     -- Trouble: project wide diagnostics
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
