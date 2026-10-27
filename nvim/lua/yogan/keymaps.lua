@@ -56,6 +56,8 @@ vim.keymap.set('n', '<leader>T', '<cmd>tabnew<CR>', { desc = 'New tab' })
 for i = 1, 10 do
     vim.keymap.set('n', '<F' .. i .. '>', i .. 'gt', { desc = 'Go to tab ' .. i })
     vim.keymap.set('i', '<F' .. i .. '>', '<Esc>' .. i .. 'gta', { desc = 'Go to tab ' .. i })
+    -- also from terminals, e.g. to hop between Claude session tabs
+    vim.keymap.set('t', '<F' .. i .. '>', '<C-\\><C-n>' .. i .. 'gt', { desc = 'Go to tab ' .. i })
 end
 
 -- toggles
