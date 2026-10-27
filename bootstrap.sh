@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# Set up this Mac from the dotfiles repo. Safe to re-run.
+#
+#   ./bootstrap.sh          everything: Homebrew, Brewfile, links, runtimes, ...
+#   ./bootstrap.sh link     only (re)create the symlinks
+#   ./bootstrap.sh check    list links that are missing or were replaced by files
+#
+# The manual steps (logins, permissions, apps outside Homebrew) are in SETUP.md.
+set -euo pipefail
+
+dotfiles="$(cd "$(dirname "$0")" && pwd)"
+
+# "file in this repo   where it goes, relative to $HOME"
+links=(
+    "shell/bashrc                 .bashrc"
+    "shell/bash_profile           .bash_profile"
+    "shell/env                    .shell/.env"
+    "shell/aliases                .shell/.aliases"
+    "shell/funcs                  .shell/.funcs"
+    "shell/tmux.conf              .tmux.conf"
+    "ssh/config                   .ssh/config"
+    "nvim                         .config/nvim"
+    "ghostty/config               .config/ghostty/config"
+    "zellij/config.kdl            .config/zellij/config.kdl"
+    "mise/config.toml             .config/mise/config.toml"
+    "claude/settings.json         .claude/settings.json"
+    "claude/CLAUDE.md             .claude/CLAUDE.md"
+    "claude/statusline-command.sh .claude/statusline-command.sh"
+    "claude/commands              .claude/commands"
+    "claude/scripts/asc-api.mjs   .claude/scripts/asc-api.mjs"
+)
+
+link() {
+    local src="$dotfiles/$1" dst="$HOME/$2"
+    [ "$(readlink "$dst" 2>/dev/null)" = "$src" ] && return
+    if [ -e "$dst" ] || [ -L "$dst" ]; then
+        local backup
+        backup="$dst.bak.$(date +%Y%m%d-%H%M%S)"
+        mv "$dst" "$backup"
+        echo "moved ~/$2 to ${backup/#$HOME/~}"
+    fi
+    mkdir -p "$(dirname "$dst")"
+    ln -s "$src" "$dst"
+    echo "linked ~/$2"
+}
+
+link_all() {
+    local entry src dst
+    for entry in "${links[@]}"; do
+        read -r src dst <<<"$entry"
+        link "$src" "$dst"
+    done
+    chmod 600 "$dotfiles/ssh/config"
+    # mise follows the link into the repo, which it doesn't trust by default
+    if command -v mise >/dev/null; then mise trust --quiet "$dotfiles/mise/config.toml"; fi
+
+    # ~/.gitconfig stays a local file that includes the shared config, so
+    # `git config --global` never rewrites the repo (or breaks a symlink).
+    [ -L "$HOME/.gitconfig" ] && rm "$HOME/.gitconfig"
+    git config --global --get-all include.path | grep -qxF "$dotfiles/git/gitconfig" ||
+        git config --global --add include.path "$dotfiles/git/gitconfig"
+
+    # machine-specific shell settings and secrets
+    mkdir -p "$HOME/.shell"
+    touch "$HOME/.shell/local"
+}
+
+check() {
+    local entry src dst status=0
+    for entry in "${links[@]}"; do
+        read -r src dst <<<"$entry"
+        if [ "$(readlink "$HOME/$dst" 2>/dev/null)" != "$dotfiles/$src" ]; then
+            echo "not linked: ~/$dst"
+            status=1
+        fi
+    done
+    git config --global --get-all include.path | grep -qxF "$dotfiles/git/gitconfig" ||
+        { echo "not included: git/gitconfig in ~/.gitconfig"; status=1; }
+    [ $status -eq 0 ] && echo "all links in place"
+    return $status
+}
+
+install() {
+    # Command Line Tools: git, make, compilers
+    if ! xcode-select -p >/dev/null 2>&1; then
+        xcode-select --install
+        echo "Run ./bootstrap.sh again once the Command Line Tools are installed."
+        exit 1
+    fi
+
+    if [ ! -x /opt/homebrew/bin/brew ]; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    # one failed entry (e.g. App Store apps before signing in) should not stop the rest
+    brew bundle --file="$dotfiles/Brewfile" || echo "brew bundle: some entries failed, see above"
+
+    link_all
+
+    MISE_YES=1 mise install
+
+    command -v claude >/dev/null || curl -fsSL https://claude.ai/install.sh | bash
+    [ -x "$HOME/.local/bin/nvim" ] || bash "$dotfiles/bin/install_neovim.sh"
+    "$HOME/.local/bin/nvim" --headless "+Lazy! restore" +qa
+
+    [ -f "$HOME/.ssh/id_ed25519" ] ||
+        ssh-keygen -t ed25519 -C a@alemayhu.com -N '' -f "$HOME/.ssh/id_ed25519"
+
+    echo
+    echo "Done. The manual steps left are in SETUP.md."
+}
+
+case "${1:-install}" in
+    install) install ;;
+    link) link_all ;;
+    check) check ;;
+    *)
+        echo "usage: $0 [install|link|check]" >&2
+        exit 2
+        ;;
+esac

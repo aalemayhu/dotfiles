@@ -1,74 +1,42 @@
-![Build Status](https://github.com/aalemayhu/dotfiles/actions/workflows/dockerimage.yml/badge.svg)
+# dotfiles
 
-This repository contains the ⚙️ configurations files I use on Linux, macOS, and Windows.
+My Mac setup: shell, git, Neovim, Ghostty, zellij, mise and Claude Code
+config, plus a `Brewfile` with every app and CLI I use.
 
 Use this at your own risk and don't expect any support from me if you break
 your default setup.
 
-## Installing
-
-### Linux and macOS
-
-Assuming you have already installed the essential build tools on your OS. You will need Ruby, git and make to be present.
+## New Mac
 
 ```sh
-git clone git@github.com:scanf/dotfiles.git ~/src/github.com/scanf/dotfiles
-cd ~/src/github.com/scanf/dotfiles
-ruby bin/run.rb
+git clone https://github.com/aalemayhu/dotfiles.git ~/src/github.com/aalemayhu/dotfiles
+cd ~/src/github.com/aalemayhu/dotfiles
+./bootstrap.sh
 ```
 
-### Windows
+Then work through [SETUP.md](SETUP.md) for the parts a script can't do
+(logins, permissions, apps outside Homebrew). Claude Code can walk you through
+it: run `claude` in this directory and say "follow SETUP.md".
 
-For Windows, you have several options:
+## Day to day
 
-#### Option 1: Using Git Bash (Recommended)
-1. Install [Git for Windows](https://git-scm.com/download/win) (includes Git Bash)
-2. Install [Ruby](https://rubyinstaller.org/) 
-3. Open Git Bash and run:
+| Command      | What it does                                                    |
+| ------------ | --------------------------------------------------------------- |
+| `make update`| Upgrade Homebrew, mise runtimes, Neovim + plugins, Claude Code  |
+| `make dump`  | Refresh the `Brewfile` after installing something new           |
+| `make check` | Show missing links and Brewfile entries that aren't installed   |
+| `make link`  | Recreate the symlinks only                                      |
 
-```bash
-git clone git@github.com:scanf/dotfiles.git ~/src/github.com/scanf/dotfiles
-cd ~/src/github.com/scanf/dotfiles
-make
-```
+## Layout
 
-#### Option 2: Using PowerShell (Administrator required)
-```powershell
-git clone git@github.com:scanf/dotfiles.git $env:USERPROFILE\src\github.com\scanf\dotfiles
-cd $env:USERPROFILE\src\github.com\scanf\dotfiles
-windows\setup-windows.ps1
-```
+| Path             | Linked to                                                    |
+| ---------------- | ------------------------------------------------------------ |
+| `shell/`         | `~/.bashrc`, `~/.bash_profile`, `~/.shell/`, `~/.tmux.conf`  |
+| `git/gitconfig`  | included from `~/.gitconfig` (which stays a local file)      |
+| `nvim/`          | `~/.config/nvim`                                             |
+| `claude/`        | `~/.claude/` (settings, CLAUDE.md, statusline, commands)     |
+| `ghostty/`, `zellij/`, `mise/` | `~/.config/…`                                  |
+| `ssh/config`     | `~/.ssh/config`                                              |
 
-#### Option 3: Using Command Prompt (Administrator required)
-```cmd
-git clone git@github.com:scanf/dotfiles.git %USERPROFILE%\src\github.com\scanf\dotfiles
-cd %USERPROFILE%\src\github.com\scanf\dotfiles
-windows\setup-windows.bat
-```
-
-#### Option 4: Manual Setup (No Ruby required)
-If you just want the basic configuration without installing Ruby:
-```cmd
-git clone git@github.com:scanf/dotfiles.git %USERPROFILE%\src\github.com\scanf\dotfiles
-cd %USERPROFILE%\src\github.com\scanf\dotfiles
-windows\setup-manual.bat
-```
-
-> 📖 **See [windows/README.md](windows/README.md) for detailed Windows setup instructions and troubleshooting.**
-
-### What gets installed on Windows
-
-- **Git aliases and configuration**: Your custom Git shortcuts and settings
-- **Bash aliases**: All your shell aliases work in Git Bash
-- **Shell functions**: Custom functions available in Git Bash
-- **Development tools**: Optional installation via Chocolatey
-
-### Using the configuration
-
-After setup, your aliases and Git config will work in:
-- **Git Bash** (recommended - full compatibility)
-- **Windows Subsystem for Linux (WSL)**
-- **PowerShell** (limited compatibility)
-- **Command Prompt** (Git commands only)
-
-Enjoy!
+Machine-specific settings and secrets go in `~/.shell/local` and
+`~/.gitconfig`, which are not in git.

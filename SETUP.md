@@ -1,0 +1,47 @@
+# New Mac checklist
+
+Everything `./bootstrap.sh` can't do by itself. Work top to bottom; each step
+is safe to repeat. (Claude: do what you can from the terminal, and for steps
+that need a GUI or a password, tell me exactly what to click or type.)
+
+## Before bootstrap
+
+1. Sign in to the App Store, so the `mas` apps in the `Brewfile` install.
+2. Install 1Password from 1password.com and sign in. The secrets below come from it.
+
+## Bootstrap
+
+3. `./bootstrap.sh` (asks for your password for Homebrew; re-run it after the
+   Command Line Tools finish installing if it stops there).
+
+## After bootstrap
+
+4. Use Homebrew's bash as the login shell (macOS's `/bin/bash` is 3.2 from 2007):
+   ```sh
+   echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
+   chsh -s /opt/homebrew/bin/bash
+   ```
+5. GitHub: `gh auth login`, then `gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(scutil --get ComputerName)"`.
+6. Claude Code: run `claude` and log in. Plugins listed in
+   `claude/settings.json` come from the marketplaces there; install any that
+   are missing with `/plugin`. Recreate the graphify skill with
+   `graphify install --platform claude`.
+7. Fill in `~/.shell/local` (not in git). Current machine has:
+   ```sh
+   export ASC_KEY_ID=...        # App Store Connect API (1Password)
+   export ASC_ISSUER_ID=...
+   export ANDROID_HOME="$HOME/Library/Android/sdk"
+   # Google Cloud SDK, if installed to ~/google-cloud-sdk
+   . "$HOME/google-cloud-sdk/path.bash.inc"
+   . "$HOME/google-cloud-sdk/completion.bash.inc"
+   ```
+   and copy `~/.appstoreconnect/private_keys/AuthKey_*.p8` from 1Password.
+8. Mail: copy `~/.config/himalaya/config.toml` from the old Mac; its passwords
+   live in the Keychain (`security add-generic-password ...`).
+9. Grant Accessibility / Input Monitoring when asked: Raycast, Rectangle,
+   Karabiner-Elements, Hidden Bar. Raycast: import settings (Raycast →
+   Settings → Advanced → Import) or sign in for cloud sync.
+10. Apps that are not in the `Brewfile` yet. Install by hand, or add a
+    `cask "..."` line and run `brew bundle`:
+    Claude, cmux, Google Chrome, Anki, AppCleaner, Cap, Zoom, NordVPN,
+    Godot, DaVinci Resolve, Microsoft Edge, RØDE Central.

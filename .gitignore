@@ -1,8 +1,2 @@
 *.swp
-
-# Windows installer files
-*.exe
-*.msi
-
-# PowerShell downloaded scripts
-install-chocolatey.ps1
+Brewfile.lock.json
