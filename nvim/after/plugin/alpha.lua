@@ -2,13 +2,7 @@ local alpha = require 'alpha'
 local theme = require 'alpha.themes.startify'
 
 local query = require 'possession.query'
-local get_layout = function()
-    return query.alpha_workspace_layout(
-        {},
-        theme.button,
-        { others_name = 'ﮛ Sessions', }
-    )
-end
+local get_layout = function() return query.alpha_workspace_layout({}, theme.button, { others_name = 'ﮛ Sessions' }) end
 local utils = require('possession.utils')
 local function session()
     return {

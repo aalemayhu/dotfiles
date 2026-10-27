@@ -19,9 +19,7 @@ require('conform').setup {
     -- format on save with whatever formatter is installed, else the LSP;
     -- <leader>tf toggles it globally, :let b:disable_autoformat = 1 per buffer
     format_on_save = function(bufnr)
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-            return
-        end
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then return end
         return { timeout_ms = 1000, lsp_format = 'fallback' }
     end,
 }

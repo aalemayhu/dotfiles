@@ -10,34 +10,48 @@ require('bufferline').setup {
         offsets = {
             {
                 filetype = 'NvimTree',
-                text = function()
-                    return '  ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-                end,
+                text = function() return '  ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t') end,
                 separator = true, -- uses offset_separator colors
                 highlight = 'BufferLineFill',
-            }
+            },
         },
-    }
+    },
 }
 
-vim.keymap.set('n', '<leader>bb', '<cmd>BufferLinePick<cr>',
-    { noremap = true, silent = true, desc = 'Jump to buffer' }
-)
-vim.keymap.set('n', '<leader>bj', '<cmd>BufferLineCycleNext<cr>',
+vim.keymap.set('n', '<leader>bb', '<cmd>BufferLinePick<cr>', { noremap = true, silent = true, desc = 'Jump to buffer' })
+vim.keymap.set(
+    'n',
+    '<leader>bj',
+    '<cmd>BufferLineCycleNext<cr>',
     { noremap = true, silent = true, desc = 'Next buffer' }
 )
-vim.keymap.set('n', '<leader>bk', '<cmd>BufferLineCyclePrev<cr>',
+vim.keymap.set(
+    'n',
+    '<leader>bk',
+    '<cmd>BufferLineCyclePrev<cr>',
     { noremap = true, silent = true, desc = 'Previous buffer' }
 )
-vim.keymap.set('n', '<leader>bl', '<cmd>BufferLineMoveNext<cr>',
+vim.keymap.set(
+    'n',
+    '<leader>bl',
+    '<cmd>BufferLineMoveNext<cr>',
     { noremap = true, silent = true, desc = 'Move buffer right' }
 )
-vim.keymap.set('n', '<leader>bh', '<cmd>BufferLineMovePrev<cr>',
+vim.keymap.set(
+    'n',
+    '<leader>bh',
+    '<cmd>BufferLineMovePrev<cr>',
     { noremap = true, silent = true, desc = 'Move buffer left' }
 )
-vim.keymap.set('n', '<leader>bp', '<cmd>BufferLineTogglePin<cr>',
+vim.keymap.set(
+    'n',
+    '<leader>bp',
+    '<cmd>BufferLineTogglePin<cr>',
     { noremap = true, silent = true, desc = 'Pin/unpin buffer' }
 )
-vim.keymap.set('n', '<leader>bc', '<cmd>BufferLinePickClose<cr>',
+vim.keymap.set(
+    'n',
+    '<leader>bc',
+    '<cmd>BufferLinePickClose<cr>',
     { noremap = true, silent = true, desc = 'Close buffer' }
 )

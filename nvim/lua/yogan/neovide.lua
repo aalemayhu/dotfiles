@@ -1,8 +1,6 @@
-if not vim.g.neovide then
-    return
-end
+if not vim.g.neovide then return end
 
-vim.keymap.set({'i', 'c'}, '<S-Insert>', '<C-R>+')
+vim.keymap.set({ 'i', 'c' }, '<S-Insert>', '<C-R>+')
 
 vim.o.guifont = 'VictorMono Nerd Font:h12'
 

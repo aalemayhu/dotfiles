@@ -37,5 +37,5 @@ require('gitsigns').setup {
 
         -- Text object (e.g. vig -> select current hunk)
         map({ 'o', 'x' }, 'ig', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'git: select hunk' })
-    end
+    end,
 }

@@ -16,21 +16,21 @@ require('nvim-tree').setup {
         show_on_open_dirs = false,
     },
     filters = {
-        custom = { '^\\.git', '^node_modules' }
+        custom = { '^\\.git', '^node_modules' },
     },
     renderer = {
         group_empty = true, -- show foo/bar/quz/ in single line
         symlink_destination = false,
-        highlight_opened_files = "all",
-        highlight_modified = "all",
+        highlight_opened_files = 'all',
+        highlight_modified = 'all',
         highlight_git = true,
         icons = {
-            git_placement = "before",
+            git_placement = 'before',
             show = {
                 modified = true,
             },
             glyphs = {
-                modified = "",
+                modified = '',
             },
         },
     },
@@ -53,8 +53,6 @@ vim.api.nvim_create_autocmd('BufEnter', {
     nested = true,
     desc = 'Quit nvim when the file tree is the only window left',
     callback = function()
-        if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == 'NvimTree' then
-            vim.cmd('quit')
-        end
+        if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == 'NvimTree' then vim.cmd('quit') end
     end,
 })

@@ -1,9 +1,7 @@
 -- Machine-specific settings live in lua/yogan/local.lua (git-ignored, optional).
 -- It may return { claude_cmd = '/path/to/claude-or-wrapper' }.
 local ok, localcfg = pcall(require, 'yogan.local')
-if not ok or type(localcfg) ~= 'table' then
-    localcfg = {}
-end
+if not ok or type(localcfg) ~= 'table' then localcfg = {} end
 
 require('claudecode').setup {
     terminal_cmd = localcfg.claude_cmd, -- nil: use `claude` from $PATH

@@ -1,6 +1,6 @@
 require('todo-comments').setup {
     keywords = {
-        FIX  = { icon = ' ', color = 'error', alt = { 'FIXME', 'FIXIT', 'BUG', 'BUGS' } },
+        FIX = { icon = ' ', color = 'error', alt = { 'FIXME', 'FIXIT', 'BUG', 'BUGS' } },
         WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'WARNINGS', 'ATTENTION' } },
         TODO = { icon = ' ', color = 'info', alt = { 'TODOS', 'ISSUE', 'ISSUES' } },
         NOTE = { icon = '󰎞 ', color = 'hint', alt = { 'NOTES', 'INFO', 'INFOS', 'HINT', 'HINTS' } },
@@ -19,5 +19,5 @@ require('todo-comments').setup {
     },
     search = {
         pattern = [[\b(KEYWORDS):?\b]], -- ripgrep regex
-    }
+    },
 }

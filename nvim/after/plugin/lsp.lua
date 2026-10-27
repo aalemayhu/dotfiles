@@ -2,8 +2,14 @@
 -- mason for installing servers and nvim-cmp for completion.
 
 local servers = {
-    'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'yamlls',
-    'basedpyright', 'bashls', 'jsonls',
+    'ts_ls',
+    'eslint',
+    'lua_ls',
+    'rust_analyzer',
+    'yamlls',
+    'basedpyright',
+    'bashls',
+    'jsonls',
     -- 'gopls', -- needs a Go toolchain to install
 }
 
@@ -16,18 +22,24 @@ vim.lsp.config('*', {
 })
 
 vim.lsp.config('lua_ls', {
-    settings = { Lua = { diagnostics = {
-        -- Fix false positive undefined global '…'
-        globals = {
-            'vim',
-            'P', 'RELOAD', 'R', -- from ../../lua/yogan/globals.lua
-        }
-    } } }
+    settings = {
+        Lua = {
+            diagnostics = {
+                -- Fix false positive undefined global '…'
+                globals = {
+                    'vim',
+                    'P',
+                    'RELOAD',
+                    'R', -- from ../../lua/yogan/globals.lua
+                },
+            },
+        },
+    },
 })
 
 vim.lsp.config('yamlls', {
     -- https://github.com/redhat-developer/yaml-language-server#language-server-settings
-    settings = { yaml = { keyOrdering = false } }
+    settings = { yaml = { keyOrdering = false } },
 })
 
 require('mason').setup()
@@ -78,10 +90,18 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts('Go to declaration'))
         vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts('Go to type definition'))
         vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts('Show diagnostics'))
-        vim.keymap.set('n', '[d', function() vim.diagnostic.jump { count = -1, float = true } end,
-            opts('Previous diagnostic'))
-        vim.keymap.set('n', ']d', function() vim.diagnostic.jump { count = 1, float = true } end,
-            opts('Next diagnostic'))
+        vim.keymap.set(
+            'n',
+            '[d',
+            function() vim.diagnostic.jump { count = -1, float = true } end,
+            opts('Previous diagnostic')
+        )
+        vim.keymap.set(
+            'n',
+            ']d',
+            function() vim.diagnostic.jump { count = 1, float = true } end,
+            opts('Next diagnostic')
+        )
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts('Rename'))
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts('Code action'))
         -- nvim defaults: grr (references), gri (implementation), grt (type

@@ -14,9 +14,7 @@ vim.api.nvim_create_autocmd('FileType', {
         if not lang then return end
         if not pcall(vim.treesitter.start, args.buf, lang) then
             -- parser missing: install in the background, highlight next time
-            if vim.tbl_contains(ts.get_available(), lang) then
-                ts.install({ lang })
-            end
+            if vim.tbl_contains(ts.get_available(), lang) then ts.install({ lang }) end
         end
     end,
 })

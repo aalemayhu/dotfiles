@@ -19,8 +19,12 @@ vim.opt.incsearch = true
 
 vim.opt.showbreak = ' ↪  '
 vim.opt.listchars = {
-    nbsp = '␣', tab = '»┄', trail = '·', eol = '↵',
-    extends = '›', precedes = '‹'
+    nbsp = '␣',
+    tab = '»┄',
+    trail = '·',
+    eol = '↵',
+    extends = '›',
+    precedes = '‹',
 }
 
 vim.opt.scrolloff = 8
@@ -42,5 +46,5 @@ vim.opt.laststatus = 3 -- one global status line at the bottom
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
-vim.opt.spelllang    = "en_us"
-vim.opt.spellsuggest = "best,9"
+vim.opt.spelllang = 'en_us'
+vim.opt.spellsuggest = 'best,9'

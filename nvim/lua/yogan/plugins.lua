@@ -1,22 +1,20 @@
 -- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.uv.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Use a protected call so we don't error out on first use
 local status_ok, lazy = pcall(require, 'lazy')
-if not status_ok then
-    return
-end
+if not status_ok then return end
 
 -- Load the actual plugins
 lazy.setup({
@@ -78,9 +76,7 @@ lazy.setup({
     {
         'kylechui/nvim-surround',
         version = '*',
-        config = function()
-            require('nvim-surround').setup()
-        end
+        config = function() require('nvim-surround').setup() end,
     },
 
     -- Leap (similar to EasyMotion)
@@ -89,7 +85,7 @@ lazy.setup({
     -- Shows not only key mappings, but also registers, marks, etc.
     {
         'folke/which-key.nvim',
-        event = "VeryLazy",
+        event = 'VeryLazy',
         init = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 500
@@ -107,7 +103,7 @@ lazy.setup({
                 { '<leader>t', group = 'toggles' },
                 { '<leader>x', group = 'trouble' },
             }
-        end
+        end,
     },
 
     -- Undo tree
@@ -133,7 +129,7 @@ lazy.setup({
             -- Snippets
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
-        }
+        },
     },
     -- Trouble: project wide diagnostics
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
@@ -167,8 +163,6 @@ lazy.setup({
     { 'coder/claudecode.nvim', dependencies = { 'folke/snacks.nvim' } },
 }, {
     display = {
-        open_fn = function()
-            return require('lazy.util').float { border = 'rounded' }
-        end
-    }
+        open_fn = function() return require('lazy.util').float { border = 'rounded' } end,
+    },
 })

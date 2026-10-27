@@ -25,6 +25,5 @@ if telescope_ok then
     telescope.load_extension('possession')
     -- shift S to not clash with ps… (symbols) mappings
     -- also: ^A S brings up tmux session switcher, so consistency and all…
-    vim.keymap.set('n', '<leader>pS', telescope.extensions.possession.list,
-        { desc = 'Load session' })
+    vim.keymap.set('n', '<leader>pS', telescope.extensions.possession.list, { desc = 'Load session' })
 end

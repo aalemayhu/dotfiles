@@ -1,12 +1,8 @@
 local function session_name()
     local session_ok, session = pcall(require, 'possession.session')
-    if not session_ok then
-        return ''
-    end
+    if not session_ok then return '' end
     local name = session.get_session_name()
-    if not name or name == '' then
-        return ''
-    end
+    if not name or name == '' then return '' end
     return ' ' .. name
 end
 
@@ -21,10 +17,10 @@ require('lualine').setup {
                 symbols = {
                     modified = '',
                     readonly = '󰷤',
-                    unnamed  = '',
-                    newfile  = '',
-                }
-            }
+                    unnamed = '',
+                    newfile = '',
+                },
+            },
         },
     },
 }

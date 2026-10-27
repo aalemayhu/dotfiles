@@ -22,8 +22,7 @@ vim.keymap.set('n', ']]', function() snacks.words.jump(vim.v.count1) end, { desc
 vim.keymap.set('n', '[[', function() snacks.words.jump(-vim.v.count1) end, { desc = 'Previous reference' })
 
 -- git
-vim.keymap.set({ 'n', 'v' }, '<leader>go', function() snacks.gitbrowse() end,
-    { desc = 'git: open in browser' })
+vim.keymap.set({ 'n', 'v' }, '<leader>go', function() snacks.gitbrowse() end, { desc = 'git: open in browser' })
 if vim.fn.executable('lazygit') == 1 then
     vim.keymap.set('n', '<leader>gL', function() snacks.lazygit() end, { desc = 'git: lazygit' })
 end

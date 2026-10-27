@@ -22,25 +22,31 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', [['_d]], { desc = 'Delete without yank
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [['+y]], { desc = 'Copy to system clipboard' })
 
 -- format whole file
-vim.keymap.set('n', '<leader>f', function()
-  require('conform').format { lsp_format = 'fallback' }
-end, { desc = 'Format file' })
+vim.keymap.set(
+    'n',
+    '<leader>f',
+    function() require('conform').format { lsp_format = 'fallback' } end,
+    { desc = 'Format file' }
+)
 
 -- quickfix/location list: use the built-in ]q [q ]l [l
 
 -- replace current word under cursor (with live preview)
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = 'Replace current word' })
+vim.keymap.set(
+    'n',
+    '<leader>s',
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = 'Replace current word' }
+)
 
 -- make current file executable (shell scripts)
-vim.keymap.set('n', '<leader>X', '<cmd>!chmod +x %<CR>',
-    { silent = true, desc = 'Make file executable' })
+vim.keymap.set('n', '<leader>X', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
 
 -- Q is left alone: in nvim it replays the last recorded macro
 
 -- same as .vimrc: arrow keys disabled
 for _, key in ipairs({ '<Up>', '<Down>', '<Left>', '<Right>' }) do
-  vim.keymap.set({ 'n', 'v', 'o' }, key, '<nop>')
+    vim.keymap.set({ 'n', 'v', 'o' }, key, '<nop>')
 end
 
 -- new tab (<C-t> is left alone: it pops the tag stack, e.g. back from gd)
@@ -48,8 +54,8 @@ vim.keymap.set('n', '<leader>T', '<cmd>tabnew<CR>', { desc = 'New tab' })
 
 -- same as .vimrc: <F1>..<F10> jump to tab 1..10
 for i = 1, 10 do
-  vim.keymap.set('n', '<F' .. i .. '>', i .. 'gt', { desc = 'Go to tab ' .. i })
-  vim.keymap.set('i', '<F' .. i .. '>', '<Esc>' .. i .. 'gta', { desc = 'Go to tab ' .. i })
+    vim.keymap.set('n', '<F' .. i .. '>', i .. 'gt', { desc = 'Go to tab ' .. i })
+    vim.keymap.set('i', '<F' .. i .. '>', '<Esc>' .. i .. 'gta', { desc = 'Go to tab ' .. i })
 end
 
 -- toggles

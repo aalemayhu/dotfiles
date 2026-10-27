@@ -6,13 +6,13 @@ vim.api.nvim_create_autocmd('FileType', {
     group = group,
     pattern = { 'TelescopePrompt', 'help' },
     desc = 'Disable cursorline in TelescopePrompt and help',
-    command = 'setlocal nocursorline'
+    command = 'setlocal nocursorline',
 })
 
 vim.api.nvim_create_autocmd('VimResized', {
     group = group,
     desc = 'Resize windows when terminal size changes',
-    command = 'wincmd ='
+    command = 'wincmd =',
 })
 
 vim.api.nvim_create_autocmd('TermOpen', {
@@ -23,12 +23,12 @@ vim.api.nvim_create_autocmd('TermOpen', {
         vim.opt_local.relativenumber = false
         vim.cmd('DisableWhitespace')
         vim.cmd('startinsert')
-    end
+    end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
     group = group,
     desc = 'Enable spell checking for text files',
-    pattern = { "*.txt", "*.md", "*.tex" },
-    command = "setlocal spell"
+    pattern = { '*.txt', '*.md', '*.tex' },
+    command = 'setlocal spell',
 })

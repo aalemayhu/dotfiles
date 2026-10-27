@@ -1,19 +1,19 @@
-local telescope     = require('telescope')
+local telescope = require('telescope')
 local action_layout = require('telescope.actions.layout')
-local builtin       = require('telescope.builtin')
+local builtin = require('telescope.builtin')
 
 local insert_mappings = {
-    ['<C-h>']      = 'which_key', -- show mappings (same as <C-/>)
-    ['<C-j>']      = 'move_selection_next',
-    ['<C-k>']      = 'move_selection_previous',
-    ['<C-u>']      = false, -- remove to fallback to clear line
-    ['<PageUp>']   = 'preview_scrolling_up', -- replacements for
+    ['<C-h>'] = 'which_key', -- show mappings (same as <C-/>)
+    ['<C-j>'] = 'move_selection_next',
+    ['<C-k>'] = 'move_selection_previous',
+    ['<C-u>'] = false, -- remove to fallback to clear line
+    ['<PageUp>'] = 'preview_scrolling_up', -- replacements for
     ['<PageDown>'] = 'preview_scrolling_down', -- <C-u>/<C-d>
-    ['<F4>']       = action_layout.toggle_preview,
+    ['<F4>'] = action_layout.toggle_preview,
 }
 
 local normal_mappings = {
-    ['<F4>'] = action_layout.toggle_preview
+    ['<F4>'] = action_layout.toggle_preview,
 }
 
 local trouble_ok, trouble = pcall(require, 'trouble.sources.telescope')
@@ -29,7 +29,7 @@ end
 telescope.setup {
     defaults = {
         -- mappings used while telescope prompt is open
-        mappings = { i = insert_mappings, n = normal_mappings, },
+        mappings = { i = insert_mappings, n = normal_mappings },
         file_ignore_patterns = { 'node_modules', '_compiled.lua' },
         -- use the whole screen: side by side on wide terminals, stacked
         -- (results on top, preview below) on narrow/tall ones
@@ -43,7 +43,7 @@ telescope.setup {
             vertical = { preview_height = 0.5, mirror = false },
         },
         sorting_strategy = 'ascending', -- best match at the top, no empty gap
-    }
+    },
 }
 
 telescope.load_extension('fzf')
@@ -78,11 +78,22 @@ vim.keymap.set('n', '<leader>po', builtin.vim_options, { desc = 'Options' })
 vim.keymap.set('n', '<leader>pr', builtin.registers, { desc = 'Registers' })
 
 -- symbols (telescope-symbols.nvim) (ps = symbols)
-vim.keymap.set('n', '<leader>pse', function() builtin.symbols { sources = { 'emoji' } } end,
-    { desc = 'Insert Emoji' })
-vim.keymap.set('n', '<leader>psg', function() builtin.symbols { sources = { 'gitmoji' } } end,
-    { desc = 'Insert Git Emoji' })
-vim.keymap.set('n', '<leader>psn', function() builtin.symbols { sources = { 'nerd' } } end,
-    { desc = 'Insert Nerd Font icon' })
-vim.keymap.set('n', '<leader>psm', function() builtin.symbols { sources = { 'math' } } end,
-    { desc = 'Insert math symbol' })
+vim.keymap.set('n', '<leader>pse', function() builtin.symbols { sources = { 'emoji' } } end, { desc = 'Insert Emoji' })
+vim.keymap.set(
+    'n',
+    '<leader>psg',
+    function() builtin.symbols { sources = { 'gitmoji' } } end,
+    { desc = 'Insert Git Emoji' }
+)
+vim.keymap.set(
+    'n',
+    '<leader>psn',
+    function() builtin.symbols { sources = { 'nerd' } } end,
+    { desc = 'Insert Nerd Font icon' }
+)
+vim.keymap.set(
+    'n',
+    '<leader>psm',
+    function() builtin.symbols { sources = { 'math' } } end,
+    { desc = 'Insert math symbol' }
+)

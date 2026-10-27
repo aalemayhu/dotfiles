@@ -12,10 +12,10 @@ require('nightfox').setup {
     },
     groups = {
         nightfox = {
-            ColorColumn         = { bg = 'bg0' },
-            CursorLine          = { bg = 'bg2' },
-            LineNr              = { fg = 'bg4', bg = 'bg0' },
-            Substitute          = { bg = 'palette.yellow.dim' },
+            ColorColumn = { bg = 'bg0' },
+            CursorLine = { bg = 'bg2' },
+            LineNr = { fg = 'bg4', bg = 'bg0' },
+            Substitute = { bg = 'palette.yellow.dim' },
             NvimTreeSpecialFile = { fg = 'palette.green.dim' },
         },
     },
