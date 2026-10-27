@@ -61,6 +61,16 @@ vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Buffers' })
 
 -- files
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Find file' })
+vim.keymap.set('n', '<leader>pe', builtin.oldfiles, { desc = 'Recent files (edited)' })
+
+-- reopen the last picker with its query and selection
+vim.keymap.set('n', '<leader>pp', builtin.resume, { desc = 'Resume last picker' })
+
+-- code
+vim.keymap.set('n', '<leader>pl', builtin.lsp_document_symbols, { desc = 'LSP symbols (file)' })
+vim.keymap.set('n', '<leader>pw', builtin.lsp_dynamic_workspace_symbols, { desc = 'LSP symbols (workspace)' })
+vim.keymap.set('n', '<leader>pd', builtin.diagnostics, { desc = 'Diagnostics' })
+vim.keymap.set('n', '<leader>pt', '<cmd>TodoTelescope<cr>', { desc = 'TODO comments' })
 
 -- git
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file (like fzf :Files)' })
