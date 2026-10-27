@@ -12,3 +12,4 @@ swiftlint
 fish
 emacs
 lazygit
+zellij
