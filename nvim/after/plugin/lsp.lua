@@ -67,7 +67,7 @@ cmp.setup {
     },
     -- Do NOT use <Return> to confirm the menu entry, but use <Ctrl><y>.
     -- The reason for this is to allow abbreviation expansion with <Return>.
-    -- <Tab> is left alone as well, it clashes with GitHub Copilot.
+    -- <Tab> is left alone as well.
     mapping = cmp.mapping.preset.insert {
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),

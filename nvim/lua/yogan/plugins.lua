@@ -138,9 +138,6 @@ lazy.setup({
     -- Trouble: project wide diagnostics
     { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
 
-    -- GitHub Copilot
-    'github/copilot.vim',
-
     -- Find and display URLs
     'axieax/urlview.nvim',
 
