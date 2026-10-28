@@ -62,6 +62,23 @@ install_zellij_autolock() {
     echo "installed zellij-autolock $version"
 }
 
+# Klee One (textbook-style Japanese font, OFL) for kanji/kanji; pinned and checked against its checksum
+install_klee_one() {
+    local commit=a881eac792f94326957e5796541b99ac9e434a52 sha=b031ec426c23ca1143ef1f7d58bee7a79efe119ed654152f121c922202b303fd
+    local dst="$HOME/.local/share/fonts/KleeOne-SemiBold.ttf" tmp
+    [ -f "$dst" ] && [ "$(shasum -a 256 "$dst" | cut -d' ' -f1)" = "$sha" ] && return
+    tmp="$(mktemp)"
+    curl -fsSL -o "$tmp" "https://raw.githubusercontent.com/google/fonts/$commit/ofl/kleeone/KleeOne-SemiBold.ttf"
+    if [ "$(shasum -a 256 "$tmp" | cut -d' ' -f1)" != "$sha" ]; then
+        rm -f "$tmp"
+        echo "Klee One: checksum mismatch, not installed" >&2
+        return 1
+    fi
+    mkdir -p "$(dirname "$dst")"
+    mv "$tmp" "$dst"
+    echo "installed Klee One"
+}
+
 link_all() {
     local entry src dst
     for entry in "${links[@]}"; do
@@ -118,6 +135,7 @@ install() {
 
     link_all
     install_zellij_autolock || true
+    install_klee_one || true
 
     MISE_YES=1 mise install
 

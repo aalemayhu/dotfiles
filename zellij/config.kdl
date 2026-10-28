@@ -171,7 +171,18 @@ keybinds clear-defaults=true {
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
-        bind "Ctrl q" { Quit; }
+        // Ctrl q asks first: a small floating prompt, y quits (kills this session), anything else cancels
+        bind "Ctrl q" {
+            Run "bash" "-c" r#"printf '\n  Quit zellij? [y/N] '; read -rsn1 k; [[ $k == [yY] ]] && zellij kill-session "$ZELLIJ_SESSION_NAME""# {
+                floating true
+                close_on_exit true
+                name "quit"
+                x "35%"
+                y "40%"
+                width "30%"
+                height "5"
+            }
+        }
     }
     shared_except "locked" "move" {
         bind "Alt m" { SwitchToMode "move"; }

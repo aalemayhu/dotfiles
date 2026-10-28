@@ -1,38 +1,160 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S uv run --quiet --script
+# /// script
+# requires-python = ">=3.9"
+# dependencies = ["pillow"]
+# ///
 # A random JLPT N5 kanji, drawn big with its readings and meanings. Stays up until Enter.
 # KANJI_LEVEL picks another level (N4 ... N1).
 # zellij shows it in a floating pane at startup and in each new tab (zellij/layouts/kanji.kdl).
 # Terminals with the kitty graphics protocol get a smooth image, others block art; KANJI_IMAGE=1/0
 # forces either. The ink follows ZR_THEME_KIND (dark/light, set by zr in shell/funcs).
-set -euo pipefail
+# Runs on macOS and Linux with uv. The font is Klee One (bootstrap.sh installs it), else KANJI_FONT,
+# else whatever Japanese font the system has.
+import base64
+import fcntl
+import io
+import os
+import random
+import shutil
+import struct
+import subprocess
+import sys
+import termios
+import unicodedata
+from pathlib import Path
 
-dir="$(cd "$(dirname "$(readlink "$0" || echo "$0")")" && pwd)"
-data="$dir/kanji.tsv"
+from PIL import Image, ImageDraw, ImageFont
 
-# render.swift is compiled once (and again when it changes); osascript took seconds per kanji
-render="${XDG_CACHE_HOME:-$HOME/.cache}/kanji/render"
-if [ ! -x "$render" ] || [ "$dir/render.swift" -nt "$render" ]; then
-    mkdir -p "$(dirname "$render")"
-    swiftc -O -o "$render" "$dir/render.swift"
-fi
+DATA = Path(__file__).resolve().parent / "kanji.tsv"
+FONTS = [
+    os.environ.get("KANJI_FONT", ""),
+    str(Path.home() / ".local/share/fonts/KleeOne-SemiBold.ttf"),
+    "/System/Library/Fonts/ヒラギノ角ゴシック W4.ttc",
+    "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/google-noto-cjk/NotoSansCJK-Regular.ttc",
+]
 
-pool=$(awk -F'\t' -v level="${KANJI_LEVEL:-N5}" '$2 == level' "$data")
-[ -n "$pool" ] || { echo "kanji: no kanji for level ${KANJI_LEVEL:-N5}" >&2; exit 1; }
-n=$((RANDOM % $(wc -l <<<"$pool")))
-IFS=$'\t' read -r kanji jlpt strokes on kun meanings < <(sed -n "$((n + 1))p" <<<"$pool")
 
-info="$strokes stroke$([ "$strokes" = 1 ] || echo s)"
-[ "$jlpt" != - ] && info="JLPT $jlpt · $info"
-lines=($'\e[1m'"$meanings")
-[ -n "$on" ] && lines+=($'\e[36m'"$on")
-[ -n "$kun" ] && lines+=($'\e[32m'"$kun")
-lines+=("" $'\e[2m'"$info · ⏎ to close")
+def font_path():
+    for f in FONTS:
+        if f and Path(f).is_file():
+            return f
+    if shutil.which("fc-match"):
+        f = subprocess.run(["fc-match", "-f", "%{file}", ":lang=ja"], capture_output=True, text=True).stdout
+        if f:
+            return f
+    sys.exit("kanji: no Japanese font found; set KANJI_FONT")
 
-printf '\e[?25l\e[H\e[2J'
-trap 'printf "\e[0m\e[?25h"' EXIT
-image=()
-case "${KANJI_IMAGE:-${TERM_PROGRAM:-}}" in
-    1 | ghostty | kitty | WezTerm) image=(--image "${ZR_THEME_KIND:-dark}") ;;
-esac
-"$render" ${image[@]+"${image[@]}"} "$kanji" "$(tput cols)" "$(tput lines)" "${lines[@]}"
-read -rs || true
+
+def width(s):
+    # East Asian wide characters take two terminal columns; ANSI colors take none
+    out, esc = 0, False
+    for c in s:
+        if c == "\x1b":
+            esc = True
+        elif esc:
+            esc = c != "m"
+        else:
+            out += 2 if unicodedata.east_asian_width(c) in "WF" else 1
+    return out
+
+
+def centered(s, cols):
+    return " " * max(0, (cols - width(s)) // 2) + s + "\x1b[0m"
+
+
+def blocks(ch, font, cols, rows, text):
+    # square pixels: one column is one pixel wide, one row two pixels high
+    S = max(8, min(cols - 4, 2 * (rows - len(text) - 2), 80))
+    img = Image.new("L", (2 * S, 2 * S))
+    ImageDraw.Draw(img).text((S // 2, S // 2), ch, font=ImageFont.truetype(font, S), fill=255)
+    img = img.crop(img.getbbox())
+    w, h = img.size
+    px = img.load()
+    on = lambda x, y: y < h and px[x, y] > 128
+    # pack two pixel rows into each line with ▀ ▄ █
+    art = []
+    for y in range(0, h, 2):
+        art.append("".join(" ▀▄█"[on(x, y) + 2 * on(x, y + 1)] for x in range(w)).rstrip())
+    pad = " " * max(0, (cols - w) // 2)
+    out = [pad + a for a in art] + [""] + [centered(t, cols) for t in text]
+    return "\n" * max(0, (rows - len(out)) // 2) + "\n".join(out)
+
+
+def kitty(ch, font, cols, rows, text, kind):
+    # cell height / width, from the pty's pixel size when the terminal reports it
+    try:
+        r_, c_, xpx, ypx = struct.unpack("HHHH", fcntl.ioctl(1, termios.TIOCGWINSZ, b"\0" * 8))
+        ratio = (ypx / r_) / (xpx / c_) if xpx and ypx else 2.1
+    except OSError:
+        ratio = 2.1
+    r = rows - len(text) - 3
+    c = round(r * ratio)
+    if c > cols - 4:
+        c = cols - 4
+        r = round(c / ratio)
+    top, left = max(0, (rows - r - 1 - len(text)) // 2), max(0, (cols - c) // 2)
+
+    # the glyph centered on a transparent square PNG
+    S = 512
+    ink = (34, 34, 38) if kind == "light" else (237, 237, 227)
+    glyph = Image.new("RGBA", (2 * S, 2 * S))
+    ImageDraw.Draw(glyph).text((S // 4, S // 4), ch, font=ImageFont.truetype(font, int(S * 0.85)), fill=ink)
+    glyph = glyph.crop(glyph.getbbox())
+    img = Image.new("RGBA", (S, S))
+    img.paste(glyph, ((S - glyph.width) // 2, (S - glyph.height) // 2))
+    buf = io.BytesIO()
+    img.save(buf, "PNG")
+
+    # sent in 4096-byte chunks; C=1 leaves the cursor where the image starts
+    b64 = base64.b64encode(buf.getvalue()).decode()
+    out = f"\x1b[{top + 1};{left + 1}H"
+    for i in range(0, len(b64), 4096):
+        more = int(i + 4096 < len(b64))
+        keys = f"a=T,f=100,q=2,C=1,c={c},r={r},m={more}" if i == 0 else f"m={more}"
+        out += f"\x1b_G{keys};{b64[i:i + 4096]}\x1b\\"
+    return out + f"\x1b[{top + r + 2};1H" + "\n".join(centered(t, cols) for t in text)
+
+
+def main():
+    level = os.environ.get("KANJI_LEVEL", "N5")
+    rows_ = [l.rstrip("\n").split("\t") for l in DATA.open(encoding="utf-8") if not l.startswith("#")]
+    pool = [r for r in rows_ if r[1] == level]
+    if not pool:
+        sys.exit(f"kanji: no kanji for level {level}")
+    kanji, jlpt, strokes, on, kun, meanings = random.choice(pool)
+
+    info = f"{strokes} stroke" + ("" if strokes == "1" else "s")
+    if jlpt != "-":
+        info = f"JLPT {jlpt} · {info}"
+    text = [f"\x1b[1m{meanings}"] + [f"\x1b[36m{on}"] * bool(on) + [f"\x1b[32m{kun}"] * bool(kun)
+    text += ["", f"\x1b[2m{info} · ⏎ to close"]
+
+    cols, rows = shutil.get_terminal_size()
+    image = os.environ.get("KANJI_IMAGE", os.environ.get("TERM_PROGRAM", ""))
+    font = font_path()
+    sys.stdout.write("\x1b[?25l\x1b[H\x1b[2J")
+    if image in ("1", "ghostty", "kitty", "WezTerm"):
+        sys.stdout.write(kitty(kanji, font, cols, rows, text, os.environ.get("ZR_THEME_KIND", "dark")))
+    else:
+        sys.stdout.write(blocks(kanji, font, cols, rows, text))
+    sys.stdout.flush()
+
+    # wait for Enter without echoing what is typed
+    old = termios.tcgetattr(0) if sys.stdin.isatty() else None
+    try:
+        if old:
+            new = termios.tcgetattr(0)
+            new[3] &= ~termios.ECHO
+            termios.tcsetattr(0, termios.TCSADRAIN, new)
+        sys.stdin.readline()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        if old:
+            termios.tcsetattr(0, termios.TCSADRAIN, old)
+        sys.stdout.write("\x1b[0m\x1b[?25h")
+
+
+main()
