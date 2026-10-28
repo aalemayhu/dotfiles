@@ -43,6 +43,23 @@ link() {
     echo "linked ~/$2"
 }
 
+# zellij-autolock (locks zellij while nvim runs); pinned and checked against its checksum
+install_zellij_autolock() {
+    local version=0.3.0 sha=217e071b785981efda480b279d1a98e86da21971cf0bc7edd45f8b7c6359ab02
+    local dst="$HOME/.config/zellij/plugins/zellij-autolock.wasm" tmp
+    [ -f "$dst" ] && [ "$(shasum -a 256 "$dst" | cut -d' ' -f1)" = "$sha" ] && return
+    tmp="$(mktemp)"
+    curl -fsSL -o "$tmp" "https://github.com/fresh2dev/zellij-autolock/releases/download/$version/zellij-autolock.wasm"
+    if [ "$(shasum -a 256 "$tmp" | cut -d' ' -f1)" != "$sha" ]; then
+        rm -f "$tmp"
+        echo "zellij-autolock: checksum mismatch, not installed" >&2
+        return 1
+    fi
+    mkdir -p "$(dirname "$dst")"
+    mv "$tmp" "$dst"
+    echo "installed zellij-autolock $version"
+}
+
 link_all() {
     local entry src dst
     for entry in "${links[@]}"; do
@@ -98,6 +115,7 @@ install() {
     brew bundle --file="$dotfiles/Brewfile" || echo "brew bundle: some entries failed, see above"
 
     link_all
+    install_zellij_autolock || true
 
     MISE_YES=1 mise install
 
