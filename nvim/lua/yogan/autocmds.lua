@@ -47,3 +47,39 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
     desc = 'Say when a buffer was reloaded from disk',
     callback = function(args) vim.notify('Reloaded ' .. vim.fn.fnamemodify(args.file, ':.'), vim.log.levels.INFO) end,
 })
+
+-- apply config edits on save, without restarting nvim
+local config_dir = vim.uv.fs_realpath(vim.fn.stdpath('config'))
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group = group,
+    pattern = '*.lua',
+    desc = 'Reload nvim config files when saved',
+    callback = function(args)
+        local file = vim.uv.fs_realpath(args.file)
+        if not (config_dir and file and vim.startswith(file, config_dir .. '/')) then return end
+        local rel = file:sub(#config_dir + 2)
+
+        if rel == 'init.lua' or rel == 'lua/yogan/plugins.lua' then
+            vim.notify(rel .. ' saved: run :Lazy sync for plugin changes, other edits need a restart', vim.log.levels.WARN)
+            return
+        end
+
+        local ok, err
+        local module = rel:match('^lua/(.+)%.lua$')
+        if module then
+            module = module:gsub('/', '.')
+            package.loaded[module] = nil
+            ok, err = pcall(require, module)
+        elseif rel:match('^after/') or rel:match('^ftplugin/') then
+            ok, err = pcall(vim.cmd.source, file)
+        else
+            return
+        end
+
+        if ok then
+            vim.notify('Reloaded ' .. rel, vim.log.levels.INFO)
+        else
+            vim.notify('Error reloading ' .. rel .. ':\n' .. tostring(err), vim.log.levels.ERROR)
+        end
+    end,
+})
