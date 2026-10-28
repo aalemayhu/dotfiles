@@ -53,3 +53,24 @@ cpa() {
 dmb() {
   git branch --merged | grep -vE '^[*+]|^ *(main|master)$' | xargs git branch -d
 }
+
+# Start a zellij session with a random built-in theme: zr [dark|light] [session-name].
+# Only this session is themed (zellij options --theme); config.kdl is left alone.
+# ZR_QUIT=1 ends the session when its terminal is closed (default: it detaches and lingers).
+zr() {
+  local dark=(ayu-dark ayu-mirage blade-runner catppuccin-frappe catppuccin-macchiato catppuccin-mocha
+    cyber-noir dracula everforest-dark flexoki-dark gruber-darker gruvbox-dark iceberg-dark kanagawa
+    lucario menace molokai-dark night-owl nightfox nord one-half-dark onedark retro-wave solarized-dark terafox
+    tokyo-night tokyo-night-dark tokyo-night-storm vesper)
+  local light=(ayu-light catppuccin-latte dayfox default-light everforest-light gruvbox-light
+    iceberg-light pencil-light solarized-light tokyo-night-light)
+  local pool theme
+  case "${1:-}" in
+    dark) pool=("${dark[@]}"); shift ;;
+    light) pool=("${light[@]}"); shift ;;
+    *) pool=("${dark[@]}" "${light[@]}") ;;
+  esac
+  theme="${pool[RANDOM % ${#pool[@]}]}"
+  echo "zellij theme: $theme"
+  zellij ${1:+--session "$1"} options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
+}

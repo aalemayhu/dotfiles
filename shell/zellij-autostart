@@ -1,0 +1,10 @@
+# vi:syntax=sh
+#
+# Every interactive terminal starts in its own zellij session with a random theme (see zr in
+# .funcs). Skipped inside zellij/tmux/nvim, over ssh, in IDE terminals, without zellij, or when
+# NO_ZELLIJ is set. Exiting zellij drops back to a plain shell; closing the terminal ends the session.
+if [[ $- == *i* && -t 0 && -t 1 && "${TERM:-dumb}" != dumb ]] &&
+    [[ -z "${ZELLIJ:-}${TMUX:-}${NVIM:-}${NO_ZELLIJ:-}${SSH_CONNECTION:-}${INSIDE_EMACS:-}" ]] &&
+    [[ "${TERM_PROGRAM:-}" != vscode ]] && command -v zellij >/dev/null; then
+    ZR_QUIT=1 zr
+fi
