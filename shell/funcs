@@ -57,6 +57,7 @@ dmb() {
 # Start a zellij session with a random built-in theme: zr [dark|light] [session-name].
 # Only this session is themed (zellij options --theme); config.kdl is left alone.
 # ZR_QUIT=1 ends the session when its terminal is closed (default: it detaches and lingers).
+# With kanji on PATH, the session uses zellij/layouts/kanji.kdl: a random kanji in each new tab.
 zr() {
   local dark=(ayu-dark ayu-mirage blade-runner catppuccin-frappe catppuccin-macchiato catppuccin-mocha
     cyber-noir dracula everforest-dark flexoki-dark gruber-darker gruvbox-dark iceberg-dark kanagawa
@@ -64,15 +65,17 @@ zr() {
     tokyo-night tokyo-night-dark tokyo-night-storm vesper)
   local light=(ayu-light catppuccin-latte dayfox default-light everforest-light gruvbox-light
     iceberg-light pencil-light solarized-light tokyo-night-light)
-  local pool theme
+  local pool theme kind=dark layout=()
   case "${1:-}" in
     dark) pool=("${dark[@]}"); shift ;;
     light) pool=("${light[@]}"); shift ;;
     *) pool=("${dark[@]}" "${light[@]}") ;;
   esac
   theme="${pool[RANDOM % ${#pool[@]}]}"
+  [[ " ${light[*]} " == *" $theme "* ]] && kind=light
   echo "zellij theme: $theme"
+  command -v kanji >/dev/null && layout=(--new-session-with-layout kanji)
   # zellij 0.45 keeps re-announcing itself (DCS 2666) until a host zellij acks; Terminal.app
   # prints those as base64 junk at the prompt. 0 keeps only the first one, which the first frame wipes.
-  ZELLIJ_NESTED_MAX_UNACKED_ANNOUNCES=0 zellij ${1:+--session "$1"} options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
+  ZR_THEME_KIND=$kind ZELLIJ_NESTED_MAX_UNACKED_ANNOUNCES=0 zellij ${1:+--session "$1"} "${layout[@]}" options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
 }

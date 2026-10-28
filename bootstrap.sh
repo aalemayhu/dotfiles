@@ -22,6 +22,8 @@ links=(
     "nvim                         .config/nvim"
     "ghostty/config               .config/ghostty/config"
     "zellij/config.kdl            .config/zellij/config.kdl"
+    "zellij/layouts               .config/zellij/layouts"
+    "kanji/kanji                  .local/bin/kanji"
     "mise/config.toml             .config/mise/config.toml"
     "claude/CLAUDE.md             .claude/CLAUDE.md"
     "claude/statusline-command.sh .claude/statusline-command.sh"

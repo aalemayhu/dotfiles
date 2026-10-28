@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# A random JLPT N5 kanji, drawn big with its readings and meanings. Stays up until Enter.
+# KANJI_LEVEL picks another level (N4 ... N1).
+# zellij shows it in a floating pane at startup and in each new tab (zellij/layouts/kanji.kdl).
+# Terminals with the kitty graphics protocol get a smooth image, others block art; KANJI_IMAGE=1/0
+# forces either. The ink follows ZR_THEME_KIND (dark/light, set by zr in shell/funcs).
+set -euo pipefail
+
+dir="$(cd "$(dirname "$(readlink "$0" || echo "$0")")" && pwd)"
+data="$dir/kanji.tsv"
+
+# render.swift is compiled once (and again when it changes); osascript took seconds per kanji
+render="${XDG_CACHE_HOME:-$HOME/.cache}/kanji/render"
+if [ ! -x "$render" ] || [ "$dir/render.swift" -nt "$render" ]; then
+    mkdir -p "$(dirname "$render")"
+    swiftc -O -o "$render" "$dir/render.swift"
+fi
+
+pool=$(awk -F'\t' -v level="${KANJI_LEVEL:-N5}" '$2 == level' "$data")
+[ -n "$pool" ] || { echo "kanji: no kanji for level ${KANJI_LEVEL:-N5}" >&2; exit 1; }
+n=$((RANDOM % $(wc -l <<<"$pool")))
+IFS=$'\t' read -r kanji jlpt strokes on kun meanings < <(sed -n "$((n + 1))p" <<<"$pool")
+
+info="$strokes stroke$([ "$strokes" = 1 ] || echo s)"
+[ "$jlpt" != - ] && info="JLPT $jlpt · $info"
+lines=($'\e[1m'"$meanings")
+[ -n "$on" ] && lines+=($'\e[36m'"$on")
+[ -n "$kun" ] && lines+=($'\e[32m'"$kun")
+lines+=("" $'\e[2m'"$info · ⏎ to close")
+
+printf '\e[?25l\e[H\e[2J'
+trap 'printf "\e[0m\e[?25h"' EXIT
+image=()
+case "${KANJI_IMAGE:-${TERM_PROGRAM:-}}" in
+    1 | ghostty | kitty | WezTerm) image=(--image "${ZR_THEME_KIND:-dark}") ;;
+esac
+"$render" ${image[@]+"${image[@]}"} "$kanji" "$(tput cols)" "$(tput lines)" "${lines[@]}"
+read -rs || true
