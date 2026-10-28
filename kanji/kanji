@@ -7,7 +7,7 @@
 # KANJI_LEVEL picks another level (N4 ... N1).
 # zellij shows it in a floating pane at startup and in each new tab (zellij/layouts/kanji.kdl).
 # Terminals with the kitty graphics protocol get a smooth image, others block art; KANJI_IMAGE=1/0
-# forces either. The ink follows ZR_THEME_KIND (dark/light, set by zr in shell/funcs).
+# forces either. The ink is the terminal's own text color (asked with OSC 10), so it shows on any background.
 # Runs on macOS and Linux with uv. The font is Klee One (bootstrap.sh installs it), else KANJI_FONT,
 # else whatever Japanese font the system has.
 import base64
@@ -15,6 +15,8 @@ import fcntl
 import io
 import os
 import random
+import re
+import select
 import shutil
 import struct
 import subprocess
@@ -82,7 +84,29 @@ def blocks(ch, font, cols, rows, text):
     return "\n" * max(0, (rows - len(out)) // 2) + "\n".join(out)
 
 
-def kitty(ch, font, cols, rows, text, kind):
+def foreground():
+    # Ask the terminal for its text color (OSC 10); DA1 after it ends the wait when there is no answer
+    default = (237, 237, 227)
+    if not sys.stdin.isatty():
+        return default
+    old = termios.tcgetattr(0)
+    new = termios.tcgetattr(0)
+    new[3] &= ~(termios.ECHO | termios.ICANON)
+    termios.tcsetattr(0, termios.TCSANOW, new)
+    reply = b""
+    try:
+        os.write(1, b"\x1b]10;?\x1b\\\x1b[c")
+        while not re.search(rb"\x1b\[\?[0-9;]*c", reply) and select.select([0], [], [], 0.5)[0]:
+            reply += os.read(0, 256)
+    finally:
+        termios.tcsetattr(0, termios.TCSANOW, old)
+    m = re.search(rb"\]10;rgb:([0-9a-fA-F]+)/([0-9a-fA-F]+)/([0-9a-fA-F]+)", reply)
+    if not m:
+        return default
+    return tuple(int(h, 16) * 255 // (16 ** len(h) - 1) for h in m.groups())
+
+
+def kitty(ch, font, cols, rows, text, ink):
     # cell height / width, from the pty's pixel size when the terminal reports it
     try:
         r_, c_, xpx, ypx = struct.unpack("HHHH", fcntl.ioctl(1, termios.TIOCGWINSZ, b"\0" * 8))
@@ -98,7 +122,6 @@ def kitty(ch, font, cols, rows, text, kind):
 
     # the glyph centered on a transparent square PNG
     S = 512
-    ink = (34, 34, 38) if kind == "light" else (237, 237, 227)
     glyph = Image.new("RGBA", (2 * S, 2 * S))
     ImageDraw.Draw(glyph).text((S // 4, S // 4), ch, font=ImageFont.truetype(font, int(S * 0.85)), fill=ink)
     glyph = glyph.crop(glyph.getbbox())
@@ -136,7 +159,7 @@ def main():
     font = font_path()
     sys.stdout.write("\x1b[?25l\x1b[H\x1b[2J")
     if image in ("1", "ghostty", "kitty", "WezTerm"):
-        sys.stdout.write(kitty(kanji, font, cols, rows, text, os.environ.get("ZR_THEME_KIND", "dark")))
+        sys.stdout.write(kitty(kanji, font, cols, rows, text, foreground()))
     else:
         sys.stdout.write(blocks(kanji, font, cols, rows, text))
     sys.stdout.flush()

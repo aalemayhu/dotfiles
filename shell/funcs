@@ -65,17 +65,16 @@ zr() {
     tokyo-night tokyo-night-dark tokyo-night-storm vesper)
   local light=(ayu-light catppuccin-latte dayfox default-light everforest-light gruvbox-light
     iceberg-light pencil-light solarized-light tokyo-night-light)
-  local pool theme kind=dark layout=()
+  local pool theme layout=()
   case "${1:-}" in
     dark) pool=("${dark[@]}"); shift ;;
     light) pool=("${light[@]}"); shift ;;
     *) pool=("${dark[@]}" "${light[@]}") ;;
   esac
   theme="${pool[RANDOM % ${#pool[@]}]}"
-  [[ " ${light[*]} " == *" $theme "* ]] && kind=light
   echo "zellij theme: $theme"
   command -v kanji >/dev/null && layout=(--new-session-with-layout kanji)
   # zellij 0.45 keeps re-announcing itself (DCS 2666) until a host zellij acks; Terminal.app
   # prints those as base64 junk at the prompt. 0 keeps only the first one, which the first frame wipes.
-  ZR_THEME_KIND=$kind ZELLIJ_NESTED_MAX_UNACKED_ANNOUNCES=0 zellij ${1:+--session "$1"} "${layout[@]}" options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
+  ZELLIJ_NESTED_MAX_UNACKED_ANNOUNCES=0 zellij ${1:+--session "$1"} "${layout[@]}" options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
 }
