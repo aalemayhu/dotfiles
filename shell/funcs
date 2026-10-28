@@ -72,5 +72,7 @@ zr() {
   esac
   theme="${pool[RANDOM % ${#pool[@]}]}"
   echo "zellij theme: $theme"
-  zellij ${1:+--session "$1"} options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
+  # zellij 0.45 keeps re-announcing itself (DCS 2666) until a host zellij acks; Terminal.app
+  # prints those as base64 junk at the prompt. 0 keeps only the first one, which the first frame wipes.
+  ZELLIJ_NESTED_MAX_UNACKED_ANNOUNCES=0 zellij ${1:+--session "$1"} options --theme "$theme" ${ZR_QUIT:+--on-force-close quit}
 }
