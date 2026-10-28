@@ -283,7 +283,7 @@ keybinds clear-defaults=true {
 // changing these requires a restart to take effect
 plugins {
     about location="zellij:about"
-    autolock location="file:/Users/a/.config/zellij/plugins/zellij-autolock.wasm" {
+    autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
         ignore_regex "^$"
         is_enabled true
         lock_regex "(^|/)n?vim( .*)?$"
