@@ -87,6 +87,7 @@ lazy.setup({
                 { '<leader>f', group = 'find' },
                 { '<leader>fs', group = 'insert symbol' },
                 { '<leader>g', group = 'git' },
+                { '<leader>j', group = 'jira' },
                 { '<leader>t', group = 'toggles' },
                 { '<leader>x', group = 'diagnostics (trouble)' },
             }
@@ -135,6 +136,9 @@ lazy.setup({
             'nvim-tree/nvim-web-devicons',
         },
     },
+
+    -- Jira board, tasks and JQL queries (:Jira auth login to sign in)
+    'letieu/jira.nvim',
 
     -- snacks.nvim: small QoL modules (bigfile, notifier, bufdelete, words, ...)
     { 'folke/snacks.nvim', priority = 1000, lazy = false },
