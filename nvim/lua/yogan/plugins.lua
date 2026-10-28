@@ -126,6 +126,16 @@ lazy.setup({
     -- Review changes across files (e.g. everything Claude touched)
     'sindrets/diffview.nvim',
 
+    -- GitHub PRs and issues inside nvim (needs `gh auth login`)
+    {
+        'pwntester/octo.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'nvim-tree/nvim-web-devicons',
+        },
+    },
+
     -- snacks.nvim: small QoL modules (bigfile, notifier, bufdelete, words, ...)
     { 'folke/snacks.nvim', priority = 1000, lazy = false },
 
