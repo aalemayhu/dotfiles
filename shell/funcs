@@ -1,57 +1,11 @@
 # vi: filetype=sh
 
-# Push all the local branches and tags
-gp() {
-  git remote | xargs -L1 git push --all
-  git remote | xargs -L1 git push --tags
-}
-
-# Clone a users repository, this depends on the current directory having the
-# correct username.
-gicp() {
-  GITHUB_USER=$(basename "$(pwd)")
-  GITHUB_PROJECT=$1
-
-  echo "Will clone $GITHUB_PROJECT for $GITHUB_USER"
-
-  if [ ! -d "$GITHUB_PROJECT" ]; then
-    echo Cloning $GITHUB_PROJECT
-    git clone https://github.com/$GITHUB_USER/$GITHUB_PROJECT
-  else
-    echo There seems to already be directory named $GITHUB_PROJECT
-    echo Updating instead.
-    cd $GITHUB_PROJECT
-    git pull
-    cd ..
-  fi
-}
-
-# Create mp3 file from youtube video.
-_onlymp3() {
-  yt-dlp --extract-audio --audio-format mp3 $1
-}
-
-# Only download mp4 files
-_onlymp4() {
-  yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" $1
-}
-
 # Clone a whole github organization into ./ORG.
 orgclone() {
   gh repo list "$1" --limit 1000 --json name --jq '.[].name' |
     while read -r repo; do
       [ -d "$1/$repo" ] || gh repo clone "$1/$repo" "$1/$repo"
     done
-}
-
-# Show commits by authors.
-cpa() {
-  git shortlog -s -n
-}
-
-# Delete merged branches (except the current one and main/master)
-dmb() {
-  git branch --merged | grep -vE '^[*+]|^ *(main|master)$' | xargs git branch -d
 }
 
 # Start a zellij session with a random built-in theme: zr [dark|light] [session-name].

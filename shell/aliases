@@ -1,19 +1,5 @@
 # vi:syntax=sh
 
-# Interactively pick chunks for upcoming commit(s).
-alias ga='git add -p'
-# Verify that we are using the right branch.
-alias gbvv='git branch -v -v'
-# Perform verbose commit.
-alias gc='git commit -v --signoff'
-# Clone a repository.
-alias gic='git clone'
-# Reword a the last commit.
-alias git-amn='git ci -v --amend --signoff'
-# Show very short repository status.
-alias gs='git status -s'
-# Show the commits for today
-alias heute='git shortlog --since=1day'
 # Pull in new changes from configuration files if any.
 alias reload='source ~/.bashrc'
 
