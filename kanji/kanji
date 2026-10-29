@@ -17,6 +17,7 @@ import os
 import random
 import re
 import select
+import signal
 import shutil
 import struct
 import subprocess
@@ -68,7 +69,7 @@ def centered(s, cols):
 
 def blocks(ch, font, cols, rows, text):
     # square pixels: one column is one pixel wide, one row two pixels high
-    S = max(8, min(cols - 4, 2 * (rows - len(text) - 2), 80))
+    S = max(8, min(cols - 4, 2 * (rows - len(text) - 2), 120))
     img = Image.new("L", (2 * S, 2 * S))
     ImageDraw.Draw(img).text((S // 2, S // 2), ch, font=ImageFont.truetype(font, S), fill=255)
     img = img.crop(img.getbbox())
@@ -154,15 +155,22 @@ def main():
     text = [f"\x1b[1m{meanings}"] + [f"\x1b[36m{on}"] * bool(on) + [f"\x1b[32m{kun}"] * bool(kun)
     text += ["", f"\x1b[2m{info} · ⏎ to close"]
 
-    cols, rows = shutil.get_terminal_size()
     image = os.environ.get("KANJI_IMAGE", os.environ.get("TERM_PROGRAM", ""))
     font = font_path()
-    sys.stdout.write("\x1b[?25l\x1b[H\x1b[2J")
-    if image in ("1", "ghostty", "kitty", "WezTerm"):
-        sys.stdout.write(kitty(kanji, font, cols, rows, text, foreground()))
-    else:
-        sys.stdout.write(blocks(kanji, font, cols, rows, text))
-    sys.stdout.flush()
+    ink = foreground() if image in ("1", "ghostty", "kitty", "WezTerm") else None
+
+    def draw(*_):
+        # redrawn on resize: zellij sizes a floating pane after the command has started
+        cols, rows = shutil.get_terminal_size()
+        sys.stdout.write("\x1b[?25l\x1b[H\x1b[2J\x1b_Ga=d,q=2\x1b\\")
+        if ink:
+            sys.stdout.write(kitty(kanji, font, cols, rows, text, ink))
+        else:
+            sys.stdout.write(blocks(kanji, font, cols, rows, text))
+        sys.stdout.flush()
+
+    draw()
+    signal.signal(signal.SIGWINCH, draw)
 
     # wait for Enter without echoing what is typed
     old = termios.tcgetattr(0) if sys.stdin.isatty() else None
