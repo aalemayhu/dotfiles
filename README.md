@@ -32,7 +32,7 @@ it: run `claude` in this directory and say "follow SETUP.md".
 
 | Path             | Linked to                                                    |
 | ---------------- | ------------------------------------------------------------ |
-| `shell/`         | `~/.bashrc`, `~/.bash_profile`, `~/.shell/`, `~/.tmux.conf`  |
+| `shell/`         | `~/.bashrc`, `~/.bash_profile`, `~/.shell/`                  |
 | `git/gitconfig`  | included from `~/.gitconfig` (which stays a local file)      |
 | `nvim/`          | `~/.config/nvim`                                             |
 | `claude/`        | `~/.claude/` (CLAUDE.md, statusline, commands)               |

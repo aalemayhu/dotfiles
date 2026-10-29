@@ -17,7 +17,6 @@ links=(
     "shell/env                    .shell/.env"
     "shell/aliases                .shell/.aliases"
     "shell/funcs                  .shell/.funcs"
-    "shell/tmux.conf              .tmux.conf"
     "ssh/config                   .ssh/config"
     "nvim                         .config/nvim"
     "ghostty/config               .config/ghostty/config"
