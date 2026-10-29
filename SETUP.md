@@ -7,7 +7,7 @@ that need a GUI or a password, tell me exactly what to click or type.)
 ## Before bootstrap
 
 1. Sign in to the App Store, so the `mas` apps in the `Brewfile` install.
-2. Install 1Password from 1password.com and sign in. The secrets below come from it.
+2. Install Bitwarden from the App Store and sign in. The secrets below come from it.
 
 ## Bootstrap
 
@@ -22,24 +22,23 @@ that need a GUI or a password, tell me exactly what to click or type.)
    chsh -s /opt/homebrew/bin/bash
    ```
 5. SSH: copy `~/.ssh/config.d/private` (the ssh hosts) from the old Mac or
-   1Password.
+   Bitwarden.
    GitHub: `gh auth login`, then `gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(scutil --get ComputerName)"`.
 6. Claude Code: run `claude` and log in. Plugins listed in
    `claude/settings.json` come from the marketplaces there; install any that
    are missing with `/plugin`. Recreate the graphify skill with
    `graphify install --platform claude`. Copy
    `~/.claude/settings.private.json` (the 2anki.net ssh rules and auto-mode
-   notes) from the old Mac or 1Password, then run `bin/claude-settings build`.
+   notes) from the old Mac or Bitwarden, then run `bin/claude-settings build`.
 7. Fill in `~/.shell/local` (not in git). Current machine has:
    ```sh
-   export ASC_KEY_ID=...        # App Store Connect API (1Password)
+   export ASC_KEY_ID=...        # App Store Connect API (Bitwarden)
    export ASC_ISSUER_ID=...
-   export ANDROID_HOME="$HOME/Library/Android/sdk"
    # Google Cloud SDK, if installed to ~/google-cloud-sdk
    . "$HOME/google-cloud-sdk/path.bash.inc"
    . "$HOME/google-cloud-sdk/completion.bash.inc"
    ```
-   and copy `~/.appstoreconnect/private_keys/AuthKey_*.p8` from 1Password.
+   and copy `~/.appstoreconnect/private_keys/AuthKey_*.p8` from Bitwarden.
 8. Mail: copy `~/.config/himalaya/config.toml` from the old Mac; its passwords
    live in the Keychain (`security add-generic-password ...`).
 9. Grant Accessibility / Input Monitoring when asked: Raycast, Rectangle,

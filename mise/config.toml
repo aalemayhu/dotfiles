@@ -9,7 +9,6 @@ bun = "latest"
 
 # global npm CLIs (were `npm -g` under nvm)
 "npm:@2anki/cli" = "latest"
-"npm:cline" = "latest"
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
 
