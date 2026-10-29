@@ -21,7 +21,9 @@ that need a GUI or a password, tell me exactly what to click or type.)
    echo /opt/homebrew/bin/bash | sudo tee -a /etc/shells
    chsh -s /opt/homebrew/bin/bash
    ```
-5. GitHub: `gh auth login`, then `gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(scutil --get ComputerName)"`.
+5. SSH: copy `~/.ssh/config.d/private` (the ssh hosts) from the old Mac or
+   1Password.
+   GitHub: `gh auth login`, then `gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(scutil --get ComputerName)"`.
 6. Claude Code: run `claude` and log in. Plugins listed in
    `claude/settings.json` come from the marketplaces there; install any that
    are missing with `/plugin`. Recreate the graphify skill with

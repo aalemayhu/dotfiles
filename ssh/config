@@ -1,7 +1,3 @@
-Host hotell.nuug.no profsys-integrator.no test.profsys-integrator.no nuug.no
-    User ccscanf
-Host alemayhu.com rubina.alemayhu.com alemayhu.de
-    User a
-    ServerAliveInterval 120
-Host nerdhaven.nuug.no
-    User ccscanf
+# Hosts live in ~/.ssh/config.d/ (not in git), so the repo doesn't map out
+# servers and accounts. Copy them from the old Mac or 1Password.
+Include config.d/*

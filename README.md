@@ -40,7 +40,7 @@ it: run `claude` in this directory and say "follow SETUP.md".
 | `ssh/config`     | `~/.ssh/config`                                              |
 
 Machine-specific settings and secrets go in `~/.shell/local` and
-`~/.gitconfig`, which are not in git.
+`~/.gitconfig`, and ssh hosts in `~/.ssh/config.d/`, which are not in git.
 
 `~/.claude/settings.json` is a regular file built by `bin/claude-settings`
 from `claude/settings.json` plus `~/.claude/settings.private.json`, which holds

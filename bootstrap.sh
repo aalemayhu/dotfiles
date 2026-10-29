@@ -101,6 +101,8 @@ link_all() {
     # machine-specific shell settings and secrets
     mkdir -p "$HOME/.shell"
     touch "$HOME/.shell/local"
+    # ssh hosts, included from ssh/config
+    mkdir -m 700 -p "$HOME/.ssh/config.d"
 }
 
 check() {
