@@ -21,26 +21,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', [['_d]], { desc = 'Delete (keep yank r
 -- copy to system clipboard (works magically from WSL to Windows)
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [['+y]], { desc = 'Yank to system clipboard' })
 
--- code (<leader>c…, LSP adds ca/cr in lsp.lua)
-vim.keymap.set(
-    'n',
-    '<leader>cf',
-    function() require('conform').format { lsp_format = 'fallback' } end,
-    { desc = 'Format file' }
-)
-
 -- quickfix/location list: use the built-in ]q [q ]l [l
-
--- replace current word under cursor (with live preview)
-vim.keymap.set(
-    'n',
-    '<leader>cs',
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = 'Substitute word under cursor' }
-)
-
--- make current file executable (shell scripts)
-vim.keymap.set('n', '<leader>cx', '<cmd>!chmod +x %<CR>', { silent = true, desc = 'Make file executable' })
 
 -- Q is left alone: in nvim it replays the last recorded macro
 

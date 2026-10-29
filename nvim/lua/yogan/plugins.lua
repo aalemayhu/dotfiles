@@ -35,9 +35,6 @@ lazy.setup({
     -- Git
     'lewis6991/gitsigns.nvim',
 
-    -- Automatically set indentation settings
-    'nmac427/guess-indent.nvim',
-
     -- Start screen
     { 'goolord/alpha-nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
 
@@ -47,10 +44,6 @@ lazy.setup({
     -- Telescope fuzzy thingy
     { 'nvim-telescope/telescope.nvim', branch = 'master', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    'nvim-telescope/telescope-symbols.nvim',
-
-    -- Todo comments
-    { 'folke/todo-comments.nvim', dependencies = 'nvim-lua/plenary.nvim' },
 
     -- Treesitter
     {
@@ -60,7 +53,6 @@ lazy.setup({
         build = ':TSUpdate',
     },
     -- (playground is obsolete: use the built-in :InspectTree / :Inspect)
-    'nvim-treesitter/nvim-treesitter-context',
 
     -- Render markdown (headings, tables, code blocks) in the buffer
     'MeanderingProgrammer/render-markdown.nvim',
@@ -79,50 +71,17 @@ lazy.setup({
                 -- groups first, then single keys (the default puts groups last)
                 sort = { 'local', 'order', function(item) return item.group and 0 or 1 end, 'alphanum', 'mod' },
             }
-            -- group names also pick which-key's icons (ai, buffer, code, find, …)
+            -- group names also pick which-key's icons (ai, buffer, find, git, …)
             wk.add {
                 { '<leader>a', group = 'ai (claude)' },
                 { '<leader>b', group = 'buffers' },
-                { '<leader>c', group = 'code' },
                 { '<leader>f', group = 'find' },
-                { '<leader>fs', group = 'insert symbol' },
                 { '<leader>g', group = 'git' },
                 { '<leader>j', group = 'jira' },
                 { '<leader>t', group = 'toggles' },
-                { '<leader>x', group = 'diagnostics (trouble)' },
             }
         end,
     },
-
-    -- Undo tree
-    'mbbill/undotree',
-
-    -- LSP & Friends
-    {
-        'neovim/nvim-lspconfig', -- server definitions (used via vim.lsp.config)
-        dependencies = {
-            -- LSP Support
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
-            'WhoIsSethDaniel/mason-tool-installer.nvim', -- formatters, linters
-
-            -- Autocompletion
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua',
-        },
-    },
-    -- Trouble: project wide diagnostics
-    { 'folke/trouble.nvim', dependencies = 'nvim-tree/nvim-web-devicons' },
-
-    -- Formatting (prettier, rustfmt, gofmt, shfmt, ... falling back to LSP)
-    'stevearc/conform.nvim',
-
-    -- Git: fugitive (:G) and flog (commit graph)
-    'tpope/vim-fugitive',
-    'rbong/vim-flog',
 
     -- Review changes across files (e.g. everything Claude touched)
     'sindrets/diffview.nvim',

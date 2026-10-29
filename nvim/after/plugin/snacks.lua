@@ -3,8 +3,7 @@ require('snacks').setup {
     bigfile = { enabled = true }, -- disable heavy features on huge files
     quickfile = { enabled = true }, -- render the first file before plugins load
     notifier = { enabled = true }, -- nicer vim.notify popups
-    input = { enabled = true }, -- nicer vim.ui.input (e.g. LSP rename)
-    words = { enabled = true }, -- highlight/jump between LSP references
+    input = { enabled = true }, -- nicer vim.ui.input (e.g. the :Jira prompts)
     rename = { enabled = true },
     gitbrowse = { enabled = true },
     scratch = { enabled = true },
@@ -16,10 +15,6 @@ local snacks = require('snacks')
 -- buffers (replaces the old close-buffers maps)
 vim.keymap.set('n', '<leader>bd', function() snacks.bufdelete() end, { desc = 'Delete buffer' })
 vim.keymap.set('n', '<leader>bo', function() snacks.bufdelete.other() end, { desc = 'Delete other buffers' })
-
--- jump between references of the word under cursor
-vim.keymap.set('n', ']]', function() snacks.words.jump(vim.v.count1) end, { desc = 'Next reference' })
-vim.keymap.set('n', '[[', function() snacks.words.jump(-vim.v.count1) end, { desc = 'Previous reference' })
 
 -- git
 vim.keymap.set({ 'n', 'v' }, '<leader>go', function() snacks.gitbrowse() end, { desc = 'git: open in browser' })

@@ -16,16 +16,6 @@ local normal_mappings = {
     ['<F4>'] = action_layout.toggle_preview,
 }
 
-local trouble_ok, trouble = pcall(require, 'trouble.sources.telescope')
-if trouble_ok then
-    -- Move telescope results to trouble window with <C-t>
-    -- Usage example:
-    --     <leader>* to search for word under cursor (see mapping below),
-    --     preview results in telescope, <C-t> to move to trouble window.
-    insert_mappings['<C-t>'] = trouble.open
-    normal_mappings['<C-t>'] = trouble.open
-end
-
 telescope.setup {
     defaults = {
         -- mappings used while telescope prompt is open
@@ -67,12 +57,6 @@ vim.keymap.set('n', '<leader>fe', builtin.oldfiles, { desc = 'Recent files (edit
 -- reopen the last picker with its query and selection
 vim.keymap.set('n', '<leader>fp', builtin.resume, { desc = 'Resume last picker' })
 
--- code
-vim.keymap.set('n', '<leader>fl', builtin.lsp_document_symbols, { desc = 'LSP symbols (file)' })
-vim.keymap.set('n', '<leader>fw', builtin.lsp_dynamic_workspace_symbols, { desc = 'LSP symbols (workspace)' })
-vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Diagnostics' })
-vim.keymap.set('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'TODO comments' })
-
 -- git
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file (like fzf :Files)' })
 vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = 'Git files' })
@@ -87,24 +71,3 @@ vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Keymaps' })
 vim.keymap.set('n', '<leader>fm', builtin.marks, { desc = 'Marks' })
 vim.keymap.set('n', '<leader>fo', builtin.vim_options, { desc = 'Options' })
 vim.keymap.set('n', '<leader>fr', builtin.registers, { desc = 'Registers' })
-
--- symbols (telescope-symbols.nvim) (fs = symbols)
-vim.keymap.set('n', '<leader>fse', function() builtin.symbols { sources = { 'emoji' } } end, { desc = 'Insert Emoji' })
-vim.keymap.set(
-    'n',
-    '<leader>fsg',
-    function() builtin.symbols { sources = { 'gitmoji' } } end,
-    { desc = 'Insert Git Emoji' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>fsn',
-    function() builtin.symbols { sources = { 'nerd' } } end,
-    { desc = 'Insert Nerd Font icon' }
-)
-vim.keymap.set(
-    'n',
-    '<leader>fsm',
-    function() builtin.symbols { sources = { 'math' } } end,
-    { desc = 'Insert math symbol' }
-)

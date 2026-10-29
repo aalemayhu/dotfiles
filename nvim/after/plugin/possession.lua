@@ -23,6 +23,5 @@ require('possession').setup {
 local telescope_ok, telescope = pcall(require, 'telescope')
 if telescope_ok then
     telescope.load_extension('possession')
-    -- shift S to not clash with fs… (symbols) mappings
     vim.keymap.set('n', '<leader>fS', telescope.extensions.possession.list, { desc = 'Load session' })
 end
