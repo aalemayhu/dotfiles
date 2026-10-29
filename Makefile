@@ -1,4 +1,4 @@
-# Set up or update this Mac from the repo. See README.md.
+# Set up or update this Mac or Linux machine from the repo. See README.md.
 
 install:
 	./bootstrap.sh
@@ -27,6 +27,6 @@ update:
 # Refresh the Brewfile from what is installed now (npm/cargo CLIs live in mise)
 dump:
 	{ sed -n '1,3p' Brewfile; brew bundle dump --file=- | grep -vE '^(npm|cargo) '; } > Brewfile.new
-	mv Brewfile.new Brewfile
+	@echo "Wrote Brewfile.new; merge it by hand, Brewfile keeps its 'if OS.mac?' block"
 
 .PHONY: install link check claude-save update dump

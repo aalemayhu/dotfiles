@@ -18,9 +18,11 @@ shopt -s checkwinsize
 # bash 4+ only (macOS /bin/bash is 3.2, Homebrew's is current)
 shopt -s autocd globstar 2>/dev/null
 
-# git completion ships with Homebrew's git
-_git_completion="${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-completion.bash"
-[ -r "$_git_completion" ] && . "$_git_completion"
+# git completion ships with Homebrew's git (or the distro's on Linux)
+for _git_completion in "${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-completion.bash" \
+    /usr/share/bash-completion/completions/git; do
+    [ -r "$_git_completion" ] && { . "$_git_completion"; break; }
+done
 unset _git_completion
 
 # mise: per-directory node/java/... versions (replaces nvm and sdkman)

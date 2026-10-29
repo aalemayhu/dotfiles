@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Set up this Mac from the dotfiles repo. Safe to re-run.
+# Set up this Mac or Linux machine from the dotfiles repo. Safe to re-run.
 #
 #   ./bootstrap.sh          everything: Homebrew, Brewfile, links, runtimes, ...
 #   ./bootstrap.sh link     only (re)create the symlinks
@@ -30,6 +30,17 @@ links=(
     "claude/scripts/asc-api.mjs   .claude/scripts/asc-api.mjs"
 )
 
+# macOS only
+if [ "$(uname -s)" = Darwin ]; then
+    links+=("ghostty/config.mac           .config/ghostty/config.mac")
+fi
+
+# sha256 of a file: macOS has shasum, most Linux distros have sha256sum
+sha256() {
+    if command -v sha256sum >/dev/null; then sha256sum "$1" | cut -d' ' -f1
+    else shasum -a 256 "$1" | cut -d' ' -f1; fi
+}
+
 link() {
     local src="$dotfiles/$1" dst="$HOME/$2"
     [ "$(readlink "$dst" 2>/dev/null)" = "$src" ] && return
@@ -48,10 +59,10 @@ link() {
 install_zellij_autolock() {
     local version=0.3.0 sha=217e071b785981efda480b279d1a98e86da21971cf0bc7edd45f8b7c6359ab02
     local dst="$HOME/.config/zellij/plugins/zellij-autolock.wasm" tmp
-    [ -f "$dst" ] && [ "$(shasum -a 256 "$dst" | cut -d' ' -f1)" = "$sha" ] && return
+    [ -f "$dst" ] && [ "$(sha256 "$dst")" = "$sha" ] && return
     tmp="$(mktemp)"
     curl -fsSL -o "$tmp" "https://github.com/fresh2dev/zellij-autolock/releases/download/$version/zellij-autolock.wasm"
-    if [ "$(shasum -a 256 "$tmp" | cut -d' ' -f1)" != "$sha" ]; then
+    if [ "$(sha256 "$tmp")" != "$sha" ]; then
         rm -f "$tmp"
         echo "zellij-autolock: checksum mismatch, not installed" >&2
         return 1
@@ -65,10 +76,10 @@ install_zellij_autolock() {
 install_klee_one() {
     local commit=a881eac792f94326957e5796541b99ac9e434a52 sha=b031ec426c23ca1143ef1f7d58bee7a79efe119ed654152f121c922202b303fd
     local dst="$HOME/.local/share/fonts/KleeOne-SemiBold.ttf" tmp
-    [ -f "$dst" ] && [ "$(shasum -a 256 "$dst" | cut -d' ' -f1)" = "$sha" ] && return
+    [ -f "$dst" ] && [ "$(sha256 "$dst")" = "$sha" ] && return
     tmp="$(mktemp)"
     curl -fsSL -o "$tmp" "https://raw.githubusercontent.com/google/fonts/$commit/ofl/kleeone/KleeOne-SemiBold.ttf"
-    if [ "$(shasum -a 256 "$tmp" | cut -d' ' -f1)" != "$sha" ]; then
+    if [ "$(sha256 "$tmp")" != "$sha" ]; then
         rm -f "$tmp"
         echo "Klee One: checksum mismatch, not installed" >&2
         return 1
@@ -119,18 +130,38 @@ check() {
     return $status
 }
 
+find_brew() {
+    local b
+    for b in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew "$HOME/.linuxbrew/bin/brew"; do
+        [ -x "$b" ] && { echo "$b"; return; }
+    done
+}
+
 install() {
-    # Command Line Tools: git, make, compilers
-    if ! xcode-select -p >/dev/null 2>&1; then
-        xcode-select --install
-        echo "Run ./bootstrap.sh again once the Command Line Tools are installed."
-        exit 1
+    if [ "$(uname -s)" = Darwin ]; then
+        # Command Line Tools: git, make, compilers
+        if ! xcode-select -p >/dev/null 2>&1; then
+            xcode-select --install
+            echo "Run ./bootstrap.sh again once the Command Line Tools are installed."
+            exit 1
+        fi
+    else
+        # Homebrew on Linux needs these from the distro (apt install build-essential curl git)
+        local tool missing=()
+        for tool in git curl gcc make; do command -v "$tool" >/dev/null || missing+=("$tool"); done
+        if [ ${#missing[@]} -gt 0 ]; then
+            echo "Install these with your package manager first: ${missing[*]}" >&2
+            exit 1
+        fi
     fi
 
-    if [ ! -x /opt/homebrew/bin/brew ]; then
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    local brew_bin
+    brew_bin="$(find_brew)"
+    if [ -z "$brew_bin" ]; then
+        NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        brew_bin="$(find_brew)"
     fi
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$("$brew_bin" shellenv)"
     # one failed entry (e.g. App Store apps before signing in) should not stop the rest
     brew bundle --file="$dotfiles/Brewfile" || echo "brew bundle: some entries failed, see above"
 
