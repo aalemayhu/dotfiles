@@ -137,15 +137,35 @@ find_brew() {
     done
 }
 
-install() {
+login_shell() {
     if [ "$(uname -s)" = Darwin ]; then
-        # Command Line Tools: git, make, compilers
-        if ! xcode-select -p >/dev/null 2>&1; then
-            xcode-select --install
-            echo "Run ./bootstrap.sh again once the Command Line Tools are installed."
-            exit 1
-        fi
+        dscl . -read "$HOME" UserShell | awk '{print $2}'
     else
+        getent passwd "$USER" | cut -d: -f7
+    fi
+}
+
+# Installing Homebrew and changing the login shell need root: ask for the
+# password once, up front, and keep it cached until bootstrap exits.
+keep_sudo() {
+    sudo -v
+    while kill -0 "$$" 2>/dev/null; do sudo -n true; sleep 50; done >/dev/null 2>&1 &
+}
+
+# Homebrew's bash as the login shell (macOS's /bin/bash is 3.2 from 2007)
+set_login_shell() {
+    local shell="$HOMEBREW_PREFIX/bin/bash"
+    [ -x "$shell" ] || return 0
+    grep -qxF "$shell" /etc/shells || echo "$shell" | sudo tee -a /etc/shells >/dev/null
+    if [ "$(login_shell)" != "$shell" ]; then
+        sudo chsh -s "$shell" "$USER"
+        echo "login shell is now $shell"
+    fi
+}
+
+install() {
+    # On macOS the Homebrew installer also installs the Command Line Tools
+    if [ "$(uname -s)" != Darwin ]; then
         # Homebrew on Linux needs these from the distro (apt install build-essential curl git)
         local tool missing=()
         for tool in git curl gcc make; do command -v "$tool" >/dev/null || missing+=("$tool"); done
@@ -157,6 +177,9 @@ install() {
 
     local brew_bin
     brew_bin="$(find_brew)"
+    if [ -z "$brew_bin" ] || [ "$(login_shell)" != "$(dirname "$brew_bin")/bash" ]; then
+        keep_sudo
+    fi
     if [ -z "$brew_bin" ]; then
         NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
         brew_bin="$(find_brew)"
@@ -164,6 +187,7 @@ install() {
     eval "$("$brew_bin" shellenv)"
     # one failed entry should not stop the rest
     brew bundle --file="$dotfiles/Brewfile" || echo "brew bundle: some entries failed, see above"
+    set_login_shell
 
     link_all
     install_zellij_autolock || true

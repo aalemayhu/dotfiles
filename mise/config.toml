@@ -8,7 +8,8 @@ java = "temurin-26"
 bun = "latest"
 
 # global npm CLIs (were `npm -g` under nvm)
-"npm:@2anki/cli" = "latest"
+# our own package; too few weekly downloads for mise's new-package check
+"npm:@2anki/cli" = { version = "latest", allow_low_downloads = true }
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
 
