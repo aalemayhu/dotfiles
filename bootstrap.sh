@@ -160,10 +160,20 @@ login_shell() {
 }
 
 # Installing Homebrew and changing the login shell need root: ask for the
-# password once, up front, and keep it cached until bootstrap exits.
+# password once, up front, and keep it cached until drop_sudo.
+sudo_keepalive=
 keep_sudo() {
     sudo -v
     while kill -0 "$$" 2>/dev/null; do sudo -n true; sleep 50; done >/dev/null 2>&1 &
+    sudo_keepalive=$!
+}
+
+# Forget the password before running anything downloaded (mise, curl | bash, ...)
+drop_sudo() {
+    [ -n "$sudo_keepalive" ] || return 0
+    kill "$sudo_keepalive" 2>/dev/null || true
+    sudo -k
+    sudo_keepalive=
 }
 
 # Homebrew's bash as the login shell (macOS's /bin/bash is 3.2 from 2007)
@@ -202,6 +212,7 @@ install() {
     # one failed entry should not stop the rest
     brew bundle --file="$dotfiles/Brewfile" || echo "brew bundle: some entries failed, see above"
     set_login_shell
+    drop_sudo
 
     link_all
     install_zellij_autolock || true
