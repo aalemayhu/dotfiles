@@ -26,6 +26,7 @@ it: run `claude` in this directory and say "follow SETUP.md".
 | `make dump`  | Refresh the `Brewfile` after installing something new           |
 | `make check` | Show missing links and Brewfile entries that aren't installed   |
 | `make link`  | Recreate the symlinks only                                      |
+| `make fonts` | Install the fonts (Klee One, JetBrains Mono Nerd Font)          |
 | `make claude-save` | Copy Claude Code settings changes back into the repo     |
 
 ## Layout

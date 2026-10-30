@@ -4,6 +4,7 @@
 #   ./bootstrap.sh          everything: Homebrew, Brewfile, links, runtimes, ...
 #   ./bootstrap.sh link     only (re)create the symlinks
 #   ./bootstrap.sh check    list links that are missing or were replaced by files
+#   ./bootstrap.sh fonts    only install the fonts
 #
 # The manual steps (logins, permissions, apps outside Homebrew) are in SETUP.md.
 set -euo pipefail
@@ -87,6 +88,19 @@ install_klee_one() {
     mkdir -p "$(dirname "$dst")"
     mv "$tmp" "$dst"
     echo "installed Klee One"
+}
+
+# Klee One, plus the terminal font (a Brewfile cask, so macOS only)
+install_fonts() {
+    install_klee_one
+    [ "$(uname -s)" = Darwin ] || return 0
+    local brew_bin
+    brew_bin="$(find_brew)"
+    if [ -z "$brew_bin" ]; then
+        echo "Homebrew is not installed; run ./bootstrap.sh first" >&2
+        return 1
+    fi
+    "$brew_bin" install --cask --quiet font-jetbrains-mono-nerd-font
 }
 
 link_all() {
@@ -210,8 +224,9 @@ case "${1:-install}" in
     install) install ;;
     link) link_all ;;
     check) check ;;
+    fonts) install_fonts ;;
     *)
-        echo "usage: $0 [install|link|check]" >&2
+        echo "usage: $0 [install|link|check|fonts]" >&2
         exit 2
         ;;
 esac

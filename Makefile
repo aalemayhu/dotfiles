@@ -6,6 +6,9 @@ install:
 link:
 	./bootstrap.sh link
 
+fonts:
+	./bootstrap.sh fonts
+
 check:
 	./bootstrap.sh check
 	brew bundle check --file=Brewfile --no-upgrade --verbose
@@ -30,4 +33,4 @@ dump:
 	{ sed -n '1,3p' Brewfile; brew bundle dump --file=- | grep -vE '^(npm|cargo|mas) '; } > Brewfile.new
 	@echo "Wrote Brewfile.new; merge it by hand, Brewfile keeps its 'if OS.mac?' block"
 
-.PHONY: install link check claude-save update dump
+.PHONY: install link fonts check claude-save update dump
