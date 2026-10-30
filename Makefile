@@ -24,9 +24,10 @@ update:
 	nvim --headless "+Lazy! sync" +qa
 	claude update
 
-# Refresh the Brewfile from what is installed now (npm/cargo CLIs live in mise)
+# Refresh the Brewfile from what is installed now (npm/cargo CLIs live in mise;
+# App Store apps stay out, they need an Apple ID sign-in)
 dump:
-	{ sed -n '1,3p' Brewfile; brew bundle dump --file=- | grep -vE '^(npm|cargo) '; } > Brewfile.new
+	{ sed -n '1,3p' Brewfile; brew bundle dump --file=- | grep -vE '^(npm|cargo|mas) '; } > Brewfile.new
 	@echo "Wrote Brewfile.new; merge it by hand, Brewfile keeps its 'if OS.mac?' block"
 
 .PHONY: install link check claude-save update dump

@@ -70,7 +70,7 @@ brew "zoxide"
 uv "graphifyy"
 uv "nwave-ai"
 
-# macOS only: Xcode tooling, GUI apps, App Store
+# macOS only: Xcode tooling, GUI apps
 if OS.mac?
   tap "facebook/fb"
   # Dependency manager for Cocoa projects
@@ -79,34 +79,23 @@ if OS.mac?
   brew "fastlane"
   # Library to communicate with iOS devices natively
   brew "libimobiledevice"
-  # Mac App Store command-line interface
-  brew "mas"
   # Generate your Xcode project from a spec file and your folder structure
   brew "xcodegen"
   # Companion server for automating iOS Simulators
   brew "facebook/fb/idb-companion", trusted: true
+  # Desktop password manager
+  cask "bitwarden"
   cask "font-jetbrains-mono-nerd-font"
   # Terminal emulator that uses platform-native UI and GPU acceleration
   cask "ghostty"
   # Utility to hide menu bar items
   cask "hiddenbar"
-  # Keyboard customiser
-  cask "karabiner-elements"
   # Control your tools with a few keystrokes
   cask "raycast"
   # Move and resize windows using keyboard shortcuts or snap areas
   cask "rectangle"
-  mas "Bitwarden", id: 1352778147
-  mas "Developer", id: 640199958
-  mas "Kindle", id: 302584613
-  mas "Microsoft Excel", id: 462058435
-  mas "Microsoft OneNote", id: 784801555
-  mas "Microsoft Outlook", id: 985367838
-  mas "Microsoft PowerPoint", id: 462062816
-  mas "Microsoft Word", id: 462054704
-  mas "OneDrive", id: 823766827
-  mas "RetroArch", id: 6499539433
-  mas "Slack", id: 803453959
-  mas "WhatsApp", id: 310633997
-  mas "Xcode", id: 497799835
+  # Team communication and collaboration software
+  cask "slack"
+  # Native desktop client for WhatsApp
+  cask "whatsapp"
 end

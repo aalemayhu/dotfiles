@@ -162,7 +162,7 @@ install() {
         brew_bin="$(find_brew)"
     fi
     eval "$("$brew_bin" shellenv)"
-    # one failed entry (e.g. App Store apps before signing in) should not stop the rest
+    # one failed entry should not stop the rest
     brew bundle --file="$dotfiles/Brewfile" || echo "brew bundle: some entries failed, see above"
 
     link_all
