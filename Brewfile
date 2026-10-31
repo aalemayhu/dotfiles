@@ -72,6 +72,8 @@ uv "nwave-ai"
 
 # macOS only: Xcode tooling, GUI apps
 if OS.mac?
+  # apps go to ~/Applications, so moving them in never needs sudo
+  cask_args appdir: "~/Applications"
   tap "facebook/fb"
   # Dependency manager for Cocoa projects
   brew "cocoapods"
